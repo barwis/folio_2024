@@ -1,0 +1,266 @@
+:root {
+    --color-1: #1e1e1e;
+    --orange: #ff6945;
+}
+
+@font-face {
+    font-family: 'Helveticanowdisplay';
+    src: url('./fonts/HelveticaNowDisplay-Light.woff') format('woff');
+    font-weight: 300;
+    font-style: normal;
+    font-display: swap;
+  }
+  @font-face {
+    font-family: 'Helveticanowdisplay';
+    src: url('./fonts/HelveticaNowDisplay-Regular.woff') format('woff');
+    font-weight: 400;
+    font-style: normal;
+    font-display: swap;
+  }
+  @font-face {
+    font-family: 'Helveticanowdisplay';
+    src: url('./fonts/HelveticaNowDisplay-Medium.woff') format('woff');
+    font-weight: 500;
+    font-style: normal;
+    font-display: swap;
+  }
+  @font-face {
+    font-family: 'Helveticanowdisplay extlt';
+    src: url('./fonts/HelveticaNowDisplay-ExtLt.woff') format('woff');
+    font-weight: 200;
+    font-style: normal;
+    font-display: swap;
+  }
+  @font-face {
+    font-family: 'Wulkan display';
+    src: url('./fonts/WulkanDisplay-Medium.otf') format('opentype');
+    font-weight: 500;
+    font-style: normal;
+    font-display: swap;
+  }
+  @font-face {
+    font-family: 'Wulkan display';
+    src: url('./fonts/WulkanDisplay-SemiBold.otf') format('opentype');
+    font-weight: 600;
+    font-style: normal;
+    font-display: swap;
+  }
+/*   
+  @font-face {
+    font-family: 'Wulkan display';
+    src: url('https://uploads-ssl.webflow.com/63143e4e25b46d68a2b66c86/63143e4e25b46d2c68b66c9f_Wulkan%20Display%20Regular.otf') format('opentype');
+    font-weight: 400;
+    font-style: normal;
+    font-display: swap;
+  } */
+
+
+
+html.lenis, html.lenis body {
+height: auto;
+}
+
+.lenis.lenis-smooth {
+scroll-behavior: auto !important;
+}
+
+.lenis.lenis-smooth [data-lenis-prevent] {
+overscroll-behavior: contain;
+}
+
+.lenis.lenis-stopped {
+overflow: hidden;
+}
+
+.lenis.lenis-smooth iframe {
+pointer-events: none;
+}
+
+* {
+    scrollbar-width: none !important;
+    -webkit-tap-highlight-color: transparent;
+    box-sizing: border-box;
+}
+
+html, body {
+    margin: 0;
+    height: 100%;
+}
+
+body {
+    background: var(--color-1);
+    font-size: 14px;
+    font-size: 1vw;
+    line-height: 20px;
+}
+
+nav {
+    position: fixed;
+    left: 0;
+    width: 100px;
+    height: 100vw;
+    border-right: 1px solid rgba(122, 122, 122, .1);
+}
+
+nav .scroll {
+    position: fixed;
+    width: 100px;
+    height: 0px;
+    border-right: 1px solid var(--orange);
+}
+
+
+h1 {
+    color: rgba(255, 255, 255, 0.7);
+    font-family: "Wulkan display";
+    font-size: 8em;
+    font-weight: 500;
+    position: relative;
+    margin-top: 0;
+    margin-bottom: 0;
+    line-height: 1;
+}
+
+
+.page {
+    display: flex;
+    z-index: 1;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    height: auto;
+    padding: 50px 2em 50px 200px;
+    position: relative;
+}
+
+.page .content {
+    display: grid;
+    grid-template-columns: 1fr 4fr;
+    grid-template-areas: 'aside main';
+    grid-column-gap: 0em;
+    grid-row-gap: 2em;
+    grid-template-rows: auto;
+    width: 100%;
+    font-family: 'Helveticanowdisplay extlt', sans-serif;
+    font-size: 1.27em;
+    font-weight: 300;
+    line-height: 1.3;
+    color: rgba(255, 255, 255, 0.5);
+}
+
+.page .content aside {
+    padding-top: 80px;
+    color: rgba(255, 255, 255, 0.5);
+    letter-spacing: .2px;
+    width: 14ch;
+    margin-bottom: 10px;
+    font-family: Helveticanowdisplay extlt, sans-serif;
+    line-height: 1.2;
+    display: flex;
+
+}
+
+.page .content div {
+    border-top: 1px solid hsla(0, 0%, 100%, 0.15);
+    padding-top: 80px;
+    width: 34%;
+
+}
+
+
+.hero {
+    align-items: center;
+    height: 100vh;
+    margin-bottom: 10vh;
+    padding-left: 100px;
+    overflow: hidden;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.hero div {
+    width: 65%;
+
+}
+
+.p1-1 {
+    flex-direction: row;
+    align-items: flex-end;
+    width: 65%;
+    display: flex;
+}
+
+
+.p1-2 {
+    flex-direction: row;
+    justify-content: flex-end;
+    width: 65%;
+    padding-top: .5em;
+    padding-bottom: .5em;
+    padding-right: 8em;
+    display: flex;
+}
+
+.hero p {
+    margin: 0;
+    text-align: center;
+    flex-direction: row;
+    width: 70%;
+    letter-spacing: .2px;
+    margin-bottom: 0;
+    padding-top: .3em;
+    color: rgba(255, 255, 255, 0.5);
+    font-family: 'Helveticanowdisplay extlt';
+    font-weight: 300;
+    font-size: 1.8em;
+    padding-right: 4em;
+    line-height: 1.3;
+    font-weight: 300;
+}
+
+
+.hero p span {
+    color: #ff6945;
+}
+
+
+h2 {
+    color: rgba(255, 255, 255, 0.7);
+    letter-spacing: 1px;
+    margin-top: 0;
+    margin-bottom: 0;
+    margin-left: -5px;
+    padding-bottom: 65px;
+    font-family: Wulkan display, sans-serif;
+    font-size: 8em;
+    font-weight: 500;
+    line-height: 1.3;
+}
+
+
+
+
+.page5 {
+    display: grid;
+    grid-template-columns: 20% 34% 46%;
+    grid-column-gap: 0em;
+    grid-row-gap: 2em;
+    grid-template-rows: auto;
+    width: 100%;
+    font-family: 'Helveticanowdisplay extlt', sans-serif;
+    font-size: 1.27em;
+    font-weight: 300;
+    line-height: 1.3;
+    color: rgba(255, 255, 255, 0.5);
+}
+
+.separator {
+    border-top: 1px solid rgba(255, 255, 255, .15);
+    /* width: 34%; */
+    height: 1px;
+    padding-top: 10px;
+    padding-bottom: 20px;
+    border-top: 1px solid hsla(0, 0%, 100%, 0.15);
+    /* grid-area: aside; */
+    grid-column: 2;
+}

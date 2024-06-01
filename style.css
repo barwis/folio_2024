@@ -85,6 +85,7 @@ pointer-events: none;
 html, body {
     margin: 0;
     height: 100%;
+    -webkit-text-size-adjust: 100%;
 }
 
 body {
@@ -121,6 +122,22 @@ h1 {
     line-height: 1;
 }
 
+h2 {
+    color: rgba(255, 255, 255, 0.7);
+    letter-spacing: 1px;
+    margin-top: 0;
+    margin-bottom: 0;
+    margin-left: -5px;
+    /* padding-bottom: 65px; */
+    font-family: 'Wulkan display', sans-serif;
+    font-size: 8em;
+    font-weight: 500;
+    line-height: 1.3;
+}
+
+p {
+    font-size: 1.27em;
+}
 
 .page {
     display: flex;
@@ -131,6 +148,8 @@ h1 {
     height: auto;
     padding: 50px 2em 50px 200px;
     position: relative;
+    padding-bottom: 300px;
+
 }
 
 .page .content {
@@ -224,34 +243,40 @@ h1 {
 }
 
 
-h2 {
-    color: rgba(255, 255, 255, 0.7);
-    letter-spacing: 1px;
-    margin-top: 0;
-    margin-bottom: 0;
-    margin-left: -5px;
-    padding-bottom: 65px;
-    font-family: Wulkan display, sans-serif;
-    font-size: 8em;
-    font-weight: 500;
-    line-height: 1.3;
-}
 
 
 
 
 .page5 {
-    display: grid;
-    grid-template-columns: 20% 34% 46%;
+    /* display: grid;
+    grid-template-columns: calc(20% - 1em) calc(34% - 1em) calc(40% - 1em) 6%;
     grid-column-gap: 0em;
     grid-row-gap: 2em;
-    grid-template-rows: auto;
+    grid-template-rows: auto; */
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
     width: 100%;
     font-family: 'Helveticanowdisplay extlt', sans-serif;
-    font-size: 1.27em;
     font-weight: 300;
     line-height: 1.3;
     color: rgba(255, 255, 255, 0.5);
+}
+/* 
+.page5 > div {
+    padding-right: 2em;
+}
+
+.page5 > div:first-child {
+    width: 14ch;
+    padding-right: 0;
+} */
+
+.page5 p {
+    letter-spacing: .2px;
+    width: 34%;
+    margin: 0 0 0 20%;
 }
 
 .separator {
@@ -261,6 +286,11 @@ h2 {
     padding-top: 10px;
     padding-bottom: 20px;
     border-top: 1px solid hsla(0, 0%, 100%, 0.15);
+    width: 80%;
+    margin-left: 20%;
     /* grid-area: aside; */
-    grid-column: 2;
+}
+
+.separator.short {
+    width: 34%;
 }

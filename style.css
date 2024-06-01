@@ -1,6 +1,7 @@
 :root {
     --color-1: #1e1e1e;
     --orange: #ff6945;
+    --sidebar-width: 100px;
 }
 
 @font-face {
@@ -38,6 +39,8 @@
     font-style: normal;
     font-display: swap;
   }
+
+
   @font-face {
     font-family: 'Wulkan display';
     src: url('./fonts/WulkanDisplay-SemiBold.otf') format('opentype');
@@ -98,14 +101,14 @@ body {
 nav {
     position: fixed;
     left: 0;
-    width: 100px;
+    width: var(--sidebar-width);
     height: 100vw;
     border-right: 1px solid rgba(122, 122, 122, .1);
 }
 
 nav .scroll {
     position: fixed;
-    width: 100px;
+    width: var(--sidebar-width);
     height: 0px;
     border-right: 1px solid var(--orange);
 }
@@ -136,105 +139,58 @@ h2 {
 }
 
 p {
-    font-size: 1.27em;
+    font: 1.27em / 1.3 'Helveticanowdisplay extlt';
+    color: rgba(255, 255, 255, 0.5);
+
 }
 
 .page {
     display: flex;
-    z-index: 1;
     flex-direction: column;
-    justify-content: center;
-    align-items: flex-start;
     height: auto;
+    padding-bottom: 300px;
     padding: 50px 2em 50px 200px;
     position: relative;
-    padding-bottom: 300px;
-
+    z-index: 1;
 }
 
-.page .content {
-    display: grid;
-    grid-template-columns: 1fr 4fr;
-    grid-template-areas: 'aside main';
-    grid-column-gap: 0em;
-    grid-row-gap: 2em;
-    grid-template-rows: auto;
-    width: 100%;
-    font-family: 'Helveticanowdisplay extlt', sans-serif;
-    font-size: 1.27em;
-    font-weight: 300;
-    line-height: 1.3;
-    color: rgba(255, 255, 255, 0.5);
-}
 
-.page .content aside {
-    padding-top: 80px;
-    color: rgba(255, 255, 255, 0.5);
-    letter-spacing: .2px;
-    width: 14ch;
-    margin-bottom: 10px;
-    font-family: Helveticanowdisplay extlt, sans-serif;
-    line-height: 1.2;
-    display: flex;
-
-}
-
-.page .content div {
-    border-top: 1px solid hsla(0, 0%, 100%, 0.15);
-    padding-top: 80px;
-    width: 34%;
-
-}
+/** 
+------------------------
+HERO
+========================
+*/
 
 
 .hero {
     align-items: center;
-    height: 100vh;
-    margin-bottom: 10vh;
-    padding-left: 100px;
-    overflow: hidden;
     flex-direction: column;
+    height: 100vh;
     justify-content: center;
+    margin-bottom: 10vh;
+    overflow: hidden;
+    padding-left: var(--sidebar-width);
 }
 
 .hero div {
-    width: 65%;
-
-}
-
-.p1-1 {
-    flex-direction: row;
-    align-items: flex-end;
-    width: 65%;
     display: flex;
+    flex-direction: row;
+    width: 65%;
 }
 
 
-.p1-2 {
-    flex-direction: row;
+.hero div + div {
     justify-content: flex-end;
-    width: 65%;
-    padding-top: .5em;
-    padding-bottom: .5em;
-    padding-right: 8em;
-    display: flex;
+    padding: .5em 8em 0.5em 0;
 }
 
 .hero p {
-    margin: 0;
-    text-align: center;
-    flex-direction: row;
-    width: 70%;
-    letter-spacing: .2px;
-    margin-bottom: 0;
-    padding-top: .3em;
     color: rgba(255, 255, 255, 0.5);
-    font-family: 'Helveticanowdisplay extlt';
-    font-weight: 300;
     font-size: 1.8em;
-    padding-right: 4em;
-    line-height: 1.3;
-    font-weight: 300;
+    margin: 0;
+    padding: .3em 4em 0 0;
+    text-align: center;
+    width: 70%;
 }
 
 
@@ -242,55 +198,41 @@ p {
     color: #ff6945;
 }
 
-
-
-
-
-
-.page5 {
-    /* display: grid;
-    grid-template-columns: calc(20% - 1em) calc(34% - 1em) calc(40% - 1em) 6%;
-    grid-column-gap: 0em;
-    grid-row-gap: 2em;
-    grid-template-rows: auto; */
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    justify-content: flex-start;
-    width: 100%;
-    font-family: 'Helveticanowdisplay extlt', sans-serif;
-    font-weight: 300;
-    line-height: 1.3;
-    color: rgba(255, 255, 255, 0.5);
-}
-/* 
-.page5 > div {
-    padding-right: 2em;
+.page section {
+    margin-bottom: 14em;
+    position: relative;
 }
 
-.page5 > div:first-child {
-    width: 14ch;
-    padding-right: 0;
-} */
-
-.page5 p {
+.page section p {
     letter-spacing: .2px;
     width: 34%;
     margin: 0 0 0 20%;
 }
 
 .separator {
+    display: block;
     border-top: 1px solid rgba(255, 255, 255, .15);
-    /* width: 34%; */
     height: 1px;
     padding-top: 10px;
     padding-bottom: 20px;
     border-top: 1px solid hsla(0, 0%, 100%, 0.15);
     width: 80%;
     margin-left: 20%;
-    /* grid-area: aside; */
 }
 
 .separator.short {
     width: 34%;
+}
+
+
+.page section.numbered::after {
+    content: attr(data-letters);
+    position: absolute;
+    right: 0;
+    top: 50%;
+
+    font: 30em/1 'Wulkan display';
+    color: var(--orange);
+    opacity: .2;
+    transform: rotate(-90deg) translateX(calc(50% - 55px)) translateY(20px);
 }

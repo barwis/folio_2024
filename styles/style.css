@@ -1,0 +1,110 @@
+@import 'global.css';
+@import 'fonts.css';
+@import 'vendor.css';
+@import "works.css";
+
+
+aside {
+    font: 1.27em / 1.3 'Helveticanowdisplay extlt';
+    color: rgba(255, 255, 255, 0.5);
+    letter-spacing: .2px;
+    width: 14ch;
+    margin-bottom: 10px;
+    font-family: 'Helveticanowdisplay extlt';
+    line-height: 1.2;
+    display: flex;
+    font-size: 1em;
+}
+
+.page {
+    display: flex;
+    flex-direction: column;
+    height: auto;
+    padding-bottom: 300px;
+    padding: 50px 2em 50px 200px;
+    position: relative;
+    z-index: 1;
+}
+
+
+/** 
+------------------------
+HERO
+========================
+*/
+
+
+.hero {
+    align-items: center;
+    flex-direction: column;
+    height: 100vh;
+    justify-content: center;
+    margin-bottom: 10vh;
+    overflow: hidden;
+    padding-left: var(--sidebar-width);
+}
+
+.hero div {
+    display: flex;
+    flex-direction: row;
+    width: 65%;
+}
+
+
+.hero div + div {
+    justify-content: flex-end;
+    padding: .5em 8em 0.5em 0;
+}
+
+.hero p {
+    color: rgba(255, 255, 255, 0.5);
+    font-size: 1.8em;
+    margin: 0;
+    padding: .3em 4em 0 0;
+    text-align: center;
+    width: 70%;
+}
+
+
+.hero p span {
+    color: #ff6945;
+}
+
+.page section {
+    margin-bottom: 14em;
+    position: relative;
+}
+
+.page section p {
+    letter-spacing: .2px;
+    width: 34%;
+    margin: 0 0 0 20%;
+}
+
+
+
+
+/* .page section.numbered::after {
+    content: attr(data-number);
+    position: absolute;
+    right: 0;
+    top: 50%;
+    font-size: 30em;
+    line-height: 1;
+    font-family: 'Playfair';
+    color: var(--orange);
+    opacity: .2;
+    transform: rotate(-90deg) translateX(calc(50% - 0.2em)) translateY(0.25em);
+} */
+
+.grid aside {
+    color: rgba(255, 255, 255, 0.5);
+}
+
+.grid {
+    display: grid;
+    width: 100%;
+    grid-template-columns: 20% 80%;
+}
+
+

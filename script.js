@@ -51,7 +51,6 @@ const animateScrollBar = () => {
     })
 }
 
-
 const animateHero = () => {
 
     /**
@@ -86,8 +85,29 @@ const animateHero = () => {
     })
 }
 
+const animateSectionHeadings = () => {
+
+    const headings = [...document.querySelectorAll('h2')];
+    console.log(headings);
+
+    headings.forEach(heading => {
+        gsap.to(`#${heading.id}`, {
+            scrollTrigger: {
+                trigger:`#${heading.id}`,
+                toggleActions: "play reset play reset"
+            }, // start the animation when ".box" enters the viewport (once)
+            opacity: 1,
+            x: 0,
+            ease: "power2.out",
+            duration: 2,
+        });
+    })
+
+}
+
 animateScrollBar();
 animateHero();
+animateSectionHeadings();
 
 // const getEndPos = (elem) => {
 //     const e = document.querySelector(elem);

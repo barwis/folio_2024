@@ -83,8 +83,6 @@ HERO
 }
 
 
-
-
 @media screen and (min-width:768px) {
     .works {
         grid-template-columns: 1fr 1fr;

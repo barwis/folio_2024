@@ -25,6 +25,7 @@ aside {
     position: relative;
     z-index: 1;
     padding: 120px 20px 0;
+    width: calc(100% - 20px);
 }
 
 .logo {
@@ -81,6 +82,7 @@ HERO
     overflow: hidden;
     /* padding: 120px 20px 0; */
     padding-top: 0px;
+    padding-left: 0;
 }
 
 .hero div {

@@ -31,11 +31,10 @@ aside {
     position: fixed;
     left: 0;
     top: 0;
-    padding: 30px;
     transition: all .3s linear;
     z-index: 999;
     display: block;
-    height: 100px;
+    height: 80px;
     box-sizing: border-box;
     width: 100%;
 }
@@ -50,6 +49,7 @@ aside {
 
 .logo img {
     height: 40px;
+    margin: 20px;
 }
 
 @media screen and (min-width:768px) {

@@ -124,7 +124,7 @@ p {
 
 .skills {
     display: grid;
-    grid-template-columns: 25% 75%;
+    grid-template-columns: 30% 70%;
     font-family: 'Helveticanowdisplay extlt', sans-serif;
     color: rgba(255, 255, 255, 0.5);
     gap: 16px;

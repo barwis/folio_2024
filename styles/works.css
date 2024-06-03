@@ -12,38 +12,40 @@ HERO
     grid-template-rows: auto auto;
     grid-template-columns: 1fr 1fr;
     grid-auto-columns: 1fr;
-
+    margin-bottom: 6em;
 }
+
 .works > div:nth-child(2n)  {
     margin-top: 6em;
     margin-bottom: -6em;
 }
 
 .works img {
-    object-fit: cover;
-    width: 37em;
-    max-width: 37em;
+    width: auto;
     height: 100%;
     position: absolute;
-}
-.item {
-    position: relative;
+
 }
 
-.works div.image-container  {
+.item {
+    position: relative;
+    opacity: 0;
+    transform: translateY(5em);
+}
+
+.works .image-container  {
     flex-direction: column;
     justify-content: center;
     align-items: center;
     width: 100%;
     height: 42em;
-    min-height: 42em;
     margin-top: 0;
     display: flex;
     position: relative;
     overflow: hidden;
     border-radius: 1em;
-
 }
+
 
 .works h4 {
     position: absolute;

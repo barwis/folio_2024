@@ -31,6 +31,8 @@ const colors = [
 
 
 gsap.registerPlugin(ScrollTrigger);
+gsap.registerPlugin(TextPlugin);
+
 
 const lenis = new Lenis()
 
@@ -67,10 +69,16 @@ const animateHero = () => {
             transform: 'translateX(5em)',
             opacity: 0
         },
-        '#p1-tag': {
-            opacity: 0
-        }
+        // '#p1-tag': {
+        //     opacity: 0
+        // }
     }
+
+    gsap.to('#p1-tag', {
+        duration: 2,
+        text: "This is the new text",
+        ease: "none",
+      });
 
     Object.entries(elements).forEach(([id, styles]) => {
         gsap.to(id, {
@@ -88,7 +96,6 @@ const animateHero = () => {
 const animateSectionHeadings = () => {
 
     const headings = [...document.querySelectorAll('h2')];
-    console.log(headings);
 
     headings.forEach(heading => {
         gsap.to(`#${heading.id}`, {
@@ -105,9 +112,72 @@ const animateSectionHeadings = () => {
 
 }
 
+
+const animateWorks = () => {
+    const items = [...document.querySelectorAll('.item')];
+    console.log(items)
+
+    items.forEach((item, index) => {
+        console.log(item, index)
+        gsap.to(`#${item.id}`, {
+            scrollTrigger: {
+                start: "top 80%",
+                trigger:`#${item.id}`,
+            }, // start the animation when ".box" enters the viewport (once)
+            opacity: 1,
+            y: 0,
+            ease: "power1.out",
+            delay:  (index % 2) / 3,
+            duration: 2,
+        });
+    });
+
+
+    // work-aside
+    // gsap.to(`#work-aside`, {
+    //       scrollTrigger: {
+    //             trigger:`#work-aside`,
+    //             start: 'top top',
+    //             pin: true,
+    //         },
+
+    //     });
+
+
+}
+
+
+const animateSkillBars = () => {
+
+    const skillBars = [...document.querySelectorAll('.bar')]
+
+    console.log(skillBars)
+
+    skillBars.forEach((bar, index) => {
+        const skillBar = bar.firstElementChild;
+        const id = `#${skillBar.id}`;
+        const width = parseInt(bar.dataset.years) * 10;
+        console.log({skillBar, id, width});
+        gsap.to(id, {
+            scrollTrigger: {
+                trigger: id,
+                start: "top 80%",
+                ease: "power4.out",
+                // toggleActions: "play reset play reset"
+            }, // start the animation when ".box" enters the viewport (once)
+            width: `${width}%`,
+        });
+    })
+
+
+}
+
 animateScrollBar();
 animateHero();
 animateSectionHeadings();
+animateWorks();
+animateSkillBars();
+
 
 // const getEndPos = (elem) => {
 //     const e = document.querySelector(elem);

@@ -2,6 +2,7 @@
 @import 'fonts.css';
 @import 'vendor.css';
 @import "works.css";
+@import "animate.css";
 
 
 aside {
@@ -82,8 +83,6 @@ HERO
 }
 
 
-
-
 /* .page section.numbered::after {
     content: attr(data-number);
     position: absolute;
@@ -99,6 +98,12 @@ HERO
 
 .grid aside {
     color: rgba(255, 255, 255, 0.5);
+    padding-top: 2em;
+    margin-top: -2em;
+
+}
+.grid aside div {
+    position: absolute;
 }
 
 .grid {
@@ -106,5 +111,3 @@ HERO
     width: 100%;
     grid-template-columns: 20% 80%;
 }
-
-

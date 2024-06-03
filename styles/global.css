@@ -89,3 +89,74 @@ p {
     padding-bottom: 20px;
     padding-top: 10px;
 }
+
+.skills {
+    display: grid;
+    grid-template-columns: 20% 80%;
+    font-family: 'Helveticanowdisplay extlt', sans-serif;
+    color: rgba(255, 255, 255, 0.5);
+    gap: 16px;
+    width: 80%;
+}
+
+.skills .heading + .heading {
+    justify-content: flex-end;
+}
+
+.skills > div {
+    font-size: 1.25em;
+
+}
+.skills div {
+    box-sizing: border-box;
+    
+    display: flex;
+    align-items: center;
+}
+
+.skills .heading {
+    opacity: 0.7;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    font-size: .8em;
+}
+
+.bar {
+    height: 100%;
+    width: calc(100% - 2em - 16px);
+    position: relative;
+    color: rgba(255, 255, 255, 0.7);
+    text-indent: 5px;
+
+}
+
+.bar div {
+    position: absolute;
+    padding: 0;
+    text-indent: 5px;
+    box-sizing: border-box;
+    width:0;
+    display: block;
+    height: 100%;
+    left: 0;
+    color: var(--color-1);
+    overflow: hidden;
+    background-color: var(--orange);
+}
+
+.skills .value {
+    justify-content: end;
+}
+
+.bar::after {
+    box-sizing: border-box;
+    position: absolute;
+    left: calc(100% + 16px);
+    content: attr(data-years);
+    height: 100%;
+    width: 2em;
+    text-align: right;
+    display: flex;
+    align-items: center;
+    justify-content: end;
+}

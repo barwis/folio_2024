@@ -34,7 +34,7 @@ gsap.registerPlugin(ScrollTrigger);
 gsap.registerPlugin(TextPlugin);
 
 
-const lenis = new Lenis()
+const lenis = new Lenis();
 
 const viewportHeight = window.innerHeight;
 const pageHeight = (document.height !== undefined) ? document.height : document.body.offsetHeight;
@@ -42,14 +42,15 @@ const pageHeight = (document.height !== undefined) ? document.height : document.
 const animateScrollBar = () => {
     let scrollBarTimeline = gsap.timeline();
     let _docHeight = (document.height !== undefined) ? document.height : document.body.offsetHeight;
+    const h = document.body.getBoundingClientRect().height;
+    console.log(viewportHeight)
     scrollBarTimeline.to('#scrollbar', {
         scrollTrigger: {
             scrub: true,
             start: 'top top',
             end: () => `${pageHeight - viewportHeight}px`
             }, 
-        height: '100%'
-
+        height: `${viewportHeight}px`
     })
 }
 
@@ -74,11 +75,11 @@ const animateHero = () => {
         // }
     }
 
-    gsap.to('#p1-tag', {
-        duration: 2,
-        text: "This is the new text",
-        ease: "none",
-      });
+    // gsap.to('#p1-tag', {
+    //     duration: 2,
+    //     text: "This is the new text",
+    //     ease: "none",
+    //   });
 
     Object.entries(elements).forEach(([id, styles]) => {
         gsap.to(id, {
@@ -109,26 +110,45 @@ const animateSectionHeadings = () => {
             duration: 2,
         });
     })
+}
 
+const animateParagraphs = () => {
+    const paragraphs = [...document.querySelectorAll('.slide-up')];
+
+    paragraphs.forEach(paragraph => {
+        gsap.to(`#${paragraph.id}`, {
+            scrollTrigger: {
+                trigger:`#${paragraph.id}`,
+                toggleActions: "play reset play reset"
+            }, // start the animation when ".box" enters the viewport (once)
+            y: 0,
+            opacity: 1,
+            ease: "power2.out",
+            duration: 1,
+        });
+    })
 }
 
 
-const animateWorks = () => {
+
+const animateWorks = (breakpoint) => {
     const items = [...document.querySelectorAll('.item')];
     console.log(items)
+    const duration = breakpoint === 'desktop' ? 2 : .5;
+    const start = breakpoint === 'desktop' ? "top 80%" : "top 100%";
 
     items.forEach((item, index) => {
         console.log(item, index)
         gsap.to(`#${item.id}`, {
             scrollTrigger: {
-                start: "top 80%",
+                start: start,
                 trigger:`#${item.id}`,
             }, // start the animation when ".box" enters the viewport (once)
             opacity: 1,
             y: 0,
-            ease: "power1.out",
+            ease: "power3.out",
             delay:  (index % 2) / 3,
-            duration: 2,
+            duration: duration,
         });
     });
 
@@ -172,10 +192,22 @@ const animateSkillBars = () => {
 
 }
 
-animateScrollBar();
+const mediaQuery = window.matchMedia('(min-width: 768px)')
+// Check if the media query is true
+if (mediaQuery.matches) {
+  // Then trigger an alert
+    animateScrollBar();
+    animateSectionHeadings();
+    animateWorks('desktop');
+
+} else {
+    animateWorks('mobile');
+
+}
+
+animateParagraphs()
+
 animateHero();
-animateSectionHeadings();
-animateWorks();
 animateSkillBars();
 
 

@@ -22,10 +22,18 @@ aside {
     flex-direction: column;
     height: auto;
     padding-bottom: 300px;
-    padding: 50px 2em 50px 200px;
     position: relative;
     z-index: 1;
+    padding: 120px 20px 0;
 }
+
+
+@media screen and (min-width:768px) {
+    .page {
+        padding: 50px 2em 50px 200px;
+    }
+}
+
 
 
 /** 
@@ -34,36 +42,41 @@ HERO
 ========================
 */
 
+/*         font-size: 64px; */
+
+
 
 .hero {
     align-items: center;
     flex-direction: column;
     height: 100vh;
     justify-content: center;
-    margin-bottom: 10vh;
     overflow: hidden;
-    padding-left: var(--sidebar-width);
 }
 
 .hero div {
     display: flex;
     flex-direction: row;
-    width: 65%;
 }
+
 
 
 .hero div + div {
     justify-content: flex-end;
-    padding: .5em 8em 0.5em 0;
 }
+
+
+
+
 
 .hero p {
     color: rgba(255, 255, 255, 0.5);
-    font-size: 1.8em;
     margin: 0;
-    padding: .3em 4em 0 0;
     text-align: center;
     width: 70%;
+    font-size: 20px;
+    line-height: 1.2;
+    margin-top: 20px;
 }
 
 
@@ -72,15 +85,47 @@ HERO
 }
 
 .page section {
-    margin-bottom: 14em;
     position: relative;
 }
 
 .page section p {
     letter-spacing: .2px;
-    width: 34%;
-    margin: 0 0 0 20%;
+    width: 75%;
+    margin-left: 25%;
+
 }
+
+
+@media screen and (min-width:768px) {
+    .page {
+
+    }
+    .page section p {
+        width: 34%;
+        margin: 0 0 0 20%;
+    }
+}
+
+
+@media screen and (min-width:768px) {
+    .hero {
+        padding-left: var(--sidebar-width);
+    }
+    .hero div {
+        width: 65%;
+    }
+    .hero div + div {
+        justify-content: flex-end;
+        padding: .5em 8em 0.5em 0;
+    }
+
+    .hero p {
+        font-size: 1.8em;
+        padding: .3em 4em 0 0;
+        margin-top: 0;
+    }
+}
+
 
 
 /* .page section.numbered::after {
@@ -96,10 +141,12 @@ HERO
     transform: rotate(-90deg) translateX(calc(50% - 0.2em)) translateY(0.25em);
 } */
 
+
 .grid aside {
     color: rgba(255, 255, 255, 0.5);
     padding-top: 2em;
     margin-top: -2em;
+    display: none;
 
 }
 .grid aside div {
@@ -107,7 +154,28 @@ HERO
 }
 
 .grid {
-    display: grid;
+    display: block;
     width: 100%;
-    grid-template-columns: 20% 80%;
 }
+
+
+@media screen and (min-width:768px) {
+    .hero {
+        margin-bottom: 10vh;
+
+    }
+    .grid {
+    display: grid;
+    grid-template-columns: 20% 80%;
+
+    }
+    .grid aside {
+        display: flex;
+        font-size: 1.27em;
+    }
+
+    .page section {
+        margin-bottom: 14em;
+    }
+}
+

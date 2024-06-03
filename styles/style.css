@@ -27,10 +27,37 @@ aside {
     padding: 120px 20px 0;
 }
 
+.logo {
+    position: fixed;
+    left: 0;
+    top: 0;
+    padding: 30px;
+    transition: all .3s linear;
+    z-index: 999;
+    display: block;
+    height: 100px;
+    box-sizing: border-box;
+    width: 100%;
+}
+
+
+.scrolling-down .logo {
+    transform: translateY(-100px)
+}
+.scrolling-up .logo {
+    transform: translateY(0px)
+}
+
+.logo img {
+    height: 40px;
+}
 
 @media screen and (min-width:768px) {
     .page {
         padding: 50px 2em 50px 200px;
+    }
+    .logo { 
+        width: 100px;
     }
 }
 
@@ -52,6 +79,8 @@ HERO
     height: 100vh;
     justify-content: center;
     overflow: hidden;
+    /* padding: 120px 20px 0; */
+    padding-top: 0px;
 }
 
 .hero div {
@@ -64,7 +93,6 @@ HERO
 .hero div + div {
     justify-content: flex-end;
 }
-
 
 
 
@@ -104,12 +132,10 @@ HERO
         width: 34%;
         margin: 0 0 0 20%;
     }
-}
 
-
-@media screen and (min-width:768px) {
     .hero {
         padding-left: var(--sidebar-width);
+        padding-top: 120px;
     }
     .hero div {
         width: 65%;
@@ -159,6 +185,25 @@ HERO
 }
 
 
+
+footer {
+    width: 100%;
+    padding:2em;
+    display: flex;
+    justify-content: center;
+    font-family: 'Helveticanowdisplay extlt';
+    color: rgba(255, 255, 255, 0.5);
+    font-size: 16px;
+    border-top: 1px solid rgba(255, 255, 255, .15);
+    margin-top: 120px;
+}
+
+a {
+    color: rgba(255, 255, 255, 0.5);
+
+}
+
+
 @media screen and (min-width:768px) {
     .hero {
         margin-bottom: 10vh;
@@ -177,5 +222,8 @@ HERO
     .page section {
         margin-bottom: 14em;
     }
+    footer {
+        margin-left: 100px;
+        border-top: none;
+    }
 }
-

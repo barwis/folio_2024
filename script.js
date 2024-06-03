@@ -5,30 +5,6 @@ const colors = [
     ['#1C2226',   '#549E8D','#A8BDBF',  '#A67041','#106973',]
 ]
 
-// color-4: text
-// color-1: body bg
-// color-5: highlights, headings
-
-
-// --color-5 - "I make the"
-
-// const addColors = (colorsArray) => {
-
-//     const stylesArray = colorsArray.map((color, index) => `--color-${index +1}: ${color};`)
-//     const styleString = `:root { ${stylesArray.join(' ')} }`
-//     return styleString
-// }
-
-
-// const stylesArray =  Object.entries(colors).map(([rule, value]) => `${rule}: ${value};`)
-// const styleString = addColors(colors[2]);
-
-
-
-// var styleSheet = document.createElement("style")
-// styleSheet.innerText +=  styleString
-// document.head.appendChild(styleSheet)
-
 
 gsap.registerPlugin(ScrollTrigger);
 gsap.registerPlugin(TextPlugin);
@@ -70,9 +46,9 @@ const animateHero = () => {
             transform: 'translateX(5em)',
             opacity: 0
         },
-        // '#p1-tag': {
-        //     opacity: 0
-        // }
+        '#p1-tag': {
+            opacity: 0
+        }
     }
 
     // gsap.to('#p1-tag', {
@@ -103,7 +79,7 @@ const animateSectionHeadings = () => {
             scrollTrigger: {
                 trigger:`#${heading.id}`,
                 toggleActions: "play reset play reset"
-            }, // start the animation when ".box" enters the viewport (once)
+            },
             opacity: 1,
             x: 0,
             ease: "power2.out",
@@ -120,7 +96,7 @@ const animateParagraphs = () => {
             scrollTrigger: {
                 trigger:`#${paragraph.id}`,
                 toggleActions: "play reset play reset"
-            }, // start the animation when ".box" enters the viewport (once)
+            },
             y: 0,
             opacity: 1,
             ease: "power2.out",
@@ -145,7 +121,7 @@ const animateWorks = (breakpoint) => {
             scrollTrigger: {
                 start: start,
                 trigger:`#${item.id}`,
-            }, // start the animation when ".box" enters the viewport (once)
+            },
             opacity: 1,
             y: 0,
             ease: "power3.out",
@@ -153,19 +129,6 @@ const animateWorks = (breakpoint) => {
             duration: duration,
         });
     });
-
-
-    // work-aside
-    // gsap.to(`#work-aside`, {
-    //       scrollTrigger: {
-    //             trigger:`#work-aside`,
-    //             start: 'top top',
-    //             pin: true,
-    //         },
-
-    //     });
-
-
 }
 
 
@@ -192,7 +155,33 @@ const animateSkillBars = () => {
     })
 
 
+    
 }
+
+const animateLogo = () => {
+    const body = document.querySelector('body');
+
+    /*----------------------------
+    Fixed Nav
+    ----------------------------*/
+    ScrollTrigger.create({
+      markers: false,
+      trigger: body,
+      start: 'top -20%',
+      onUpdate: self => {
+        if (self.direction === 1) {
+          body.classList.add('scrolling-down');
+          body.classList.remove('scrolling-up');
+        } else {
+          body.classList.add('scrolling-up');
+          body.classList.remove('scrolling-down');
+        }
+      },
+  
+    });
+  
+}
+
 
 const mediaQuery = window.matchMedia('(min-width: 768px)')
 // Check if the media query is true
@@ -204,6 +193,7 @@ if (mediaQuery.matches) {
 
 } else {
     animateWorks('mobile');
+    animateLogo();
 
 }
 
@@ -213,141 +203,8 @@ animateHero();
 animateSkillBars();
 
 
-// const getEndPos = (elem) => {
-//     const e = document.querySelector(elem);
-//     return Math.round(e.getBoundingClientRect().top + e.offsetHeight)
-// }
 
 
-// const defaulTriggerOptions = {
-//     scrub: true,
-//     start: 'top top',
-// }
-
-// let tl = gsap.timeline();
-
-
-// // snap h1s
-// ['#page2-heading','#page4-heading'].forEach(heading => {
-// // [...document.querySelectorAll('h2')].forEach(heading => {
-
-//     const parentHeight = document.querySelector(heading).closest('.page').getBoundingClientRect().height;
-    
-
-//     tl.to(heading, {
-//       scrollTrigger: {
-//         ...defaulTriggerOptions,
-//         trigger: heading,
-//         pin: true,
-//         end: () => `+=${parentHeight - document.querySelector(heading).offsetHeight}`,
-//     },
-// });
-// })
-
-
-// tl.to('#p1-1', {
-//     scrollTrigger: {
-//         ...defaulTriggerOptions,
-//         trigger: '.page1',
-//         end: () => `+=${getEndPos('.p1-1')}`,
-//     },
-//     opacity: 0,
-//     x: -50
-// })
-// tl.to('#p1-2', {
-//     scrollTrigger: {
-//         ...defaulTriggerOptions,
-//         trigger: '.page1',
-//         end: () => `+=${getEndPos('.p1-2')}`,
-//     },
-//     opacity: 0,
-//     x: 50
-// });
-
-
-
-
-// const setSkillsBarWidth = () => {
-//     const skillBarContainer = document.getElementById("skills");
-//     const skillsBarMaxWidth = Math.floor(skillBarContainer.getBoundingClientRect().width / 10) * 10;
-//     skillBarContainer.style.width = `${skillsBarMaxWidth}px`
-
-//     const skillBarWidth = (skillsBarMaxWidth - 16) / 4 * 3;
-//     console.log(skillsBarMaxWidth, skillBarWidth)
-
-// }
-
-
-// // setSkillsBarWidth();
-
-// const animateSkillBars = () => {
-//     const bars = [...document.querySelectorAll(".skill-bar")];
-
-//     bars.forEach((bar, index) => {
-//         const id = `#${bar.id}`;
-//         const width = `${bar.dataset.width}%`
-//         // tl.to(id, {
-//         //     scrollTrigger: {
-//         //         ...defaulTriggerOptions,
-//         //         start: 'top bottom',
-//         //         trigger: id,
-//         //         end: () => `+=500px`,
-//         //     },
-//         //     width: width,
-//         // });
-
-//         // tl.to(id, { duration: .5, width: width, ease: "power4.inOut" })
-
-
-//         console.log({id, width})
-
-//         // tl
-//         // .from(id, {width: 0})
-//         // .to(id, {
-//         //     width: width,
-//         // });
-//         gsap.to(id, {
-//             scrollTrigger: {
-//                 trigger: id,
-//                 toggleActions: "play reset play reset"
-//             }, // start the animation when ".box" enters the viewport (once)
-//             width: width,
-//             delay: index / 5
-//         });
-
-
-//     })
-
-
-// }
-
-// animateSkillBars()
-
-
-
-// tl
-//     .from('.box', {opacity: 1})
-//     .to()
-// // add animations and labels to the timeline
-// tl.addLabel('start')
-//     .addLabel('color')
-//     .from('.box', { backgroundColor: '#28a92b' })
-//     .addLabel('end');
-
-
-// gsap.to(".box-2", {
-//   y: -120,
-//   backgroundColor: "#1e90ff",
-//   ease: "none",
-//   scrollTrigger: {
-//     trigger: ".box-2",
-//     containerAnimation: scrollTween,
-//     start: "center 80%",
-//     end: "center 20%",
-//     scrub: true,
-//     id: "2"
-//   }
-// });
 
 lenis.on('scroll', ScrollTrigger.update)
 

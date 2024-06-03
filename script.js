@@ -139,6 +139,8 @@ const animateWorks = (breakpoint) => {
 
     items.forEach((item, index) => {
         console.log(item, index)
+        const delay = breakpoint === 'desktop' ? (index % 2) / 3 : 0
+
         gsap.to(`#${item.id}`, {
             scrollTrigger: {
                 start: start,

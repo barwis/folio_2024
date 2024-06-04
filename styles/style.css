@@ -242,6 +242,23 @@ h2 {
     transform-style: preserve-3d;
 }
 
+h3 {
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    font-size: 12px;
+    font-family: 'Helveticanowdisplay extlt', sans-serif;
+    color: rgba(255, 255, 255, 0.5);
+    font-weight: normal;
+}
+
+
+@media screen and (min-width:768px) {
+    h3 { 
+        font-size: .8em;
+    }
+}
+
+
 p {
     font: 21px / 1.3 'Helveticanowdisplay extlt';
     color: rgba(255, 255, 255, 0.5);
@@ -742,7 +759,83 @@ HERO
         border-radius: 1em;
     }
 }
+.project {
+    padding-top: 10em;
+}
+.showcase {
+    padding-bottom: 5em
+}
 
+.case-study {
+
+   width: 100%;
+   display: block;
+   width: 100%;
+}
+
+
+.case-study aside {
+    display: none;
+}
+
+.case-study text {
+    width: 80%;
+    margin-bottom: 2.5em;
+    margin-left: 0;
+}
+
+.page .case-study p {
+    width: 100%;
+    margin-bottom: 2.5em;
+    margin-left: 0;
+}
+
+.tech-stack {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    margin: 2em 0 4.5em;;
+    width: 100%;
+}
+
+.tech-stack > * {
+    width: 60px;
+    margin: 16px;
+}
+.case-study h3 {
+
+}
+
+
+
+@media screen and (min-width:768px) {
+
+    .case-study {
+        display: grid;
+        grid-template-columns: 20% 80%;
+       grid-row-gap: 2em;
+    }
+    .case-study h3 {
+        display: none;
+    }
+    
+    .page .case-study p {
+        width: 80%
+    }
+    .tech-stack {
+        width: 80%;
+    }
+
+    .tech-stack > * {
+        width: 6em;
+        margin: 1em;
+    }
+
+    .case-study aside {
+        display: flex;
+    }
+}
 
 .contact {
     font-size: 40px;

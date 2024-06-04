@@ -157,17 +157,29 @@ nav {
     position: absolute;
 }
 
-
-.circle .scroll-text {
-    animation: example 10s linear infinite;
-    opacity: .8;
-}
-
 .circle .scroll-text-wrapper {
     width: 100px;
     height: 100px;
     display: block;
+    transform-origin: 50px 50px;
+    position: relative;
 }
+
+
+.circle .scroll-text {
+    animation: example 10s linear infinite;
+    opacity: .8;
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    width: 100%;
+    height: 100%;
+    display: block;
+}
+
+
 
 
 .circle .scroll-line {

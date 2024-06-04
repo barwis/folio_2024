@@ -286,7 +286,7 @@ if (mediaQuery.matches) {
     animateWorks('mobile');
     animateLogo();
     animateSCrollIndicator()
-    animateChatBubble();
+    // animateChatBubble();
 
     // button.addEventListener("click", createRipple);
     // bubble.addEventListener("click", createRipple);

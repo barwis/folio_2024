@@ -161,7 +161,7 @@ nav {
     width: 100px;
     height: 100px;
     display: block;
-    transform-origin: 50px 50px;
+    transform-origin: 50% 50%;
     position: relative;
 }
 
@@ -207,6 +207,11 @@ nav {
     .circle .scroll-line {
         left:50px;
     }
+    .circle .scroll-text-wrapper {
+        width: 120px;
+        height: 120px;
+    }
+    
 }
 
 

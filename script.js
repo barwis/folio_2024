@@ -109,12 +109,10 @@ const animateParagraphs = () => {
 
 const animateWorks = (breakpoint) => {
     const items = [...document.querySelectorAll('.item')];
-    console.log(items)
     const duration = breakpoint === 'desktop' ? 2 : .5;
     const start = breakpoint === 'desktop' ? "top 80%" : "top 100%";
 
     items.forEach((item, index) => {
-        console.log(item, index)
         const delay = breakpoint === 'desktop' ? (index % 2) / 3 : 0
 
         gsap.to(`#${item.id}`, {
@@ -136,13 +134,11 @@ const animateSkillBars = () => {
 
     const skillBars = [...document.querySelectorAll('.bar')]
 
-    console.log(skillBars)
 
     skillBars.forEach((bar, index) => {
         const skillBar = bar.firstElementChild;
         const id = `#${skillBar.id}`;
         const width = parseInt(bar.dataset.years) * 10;
-        console.log({skillBar, id, width});
         gsap.to(id, {
             scrollTrigger: {
                 trigger: id,
@@ -177,11 +173,51 @@ const animateLogo = () => {
           body.classList.remove('scrolling-down');
         }
       },
-  
     });
   
 }
 
+
+const animateSCrollIndicator = (breakpoint) => {
+    const scrollArrow = document.querySelector('#scroll-line');
+    const scrollText = document.querySelector('#scroll-text-wrapper');
+    const end = breakpoint === 'desktop' ? `+=${viewportHeight}` : `+=${viewportHeight *2.5}`
+    gsap.to(scrollArrow, {
+        scrollTrigger: {
+            trigger: '#page1',
+            start: 'top 100%',
+            end: end,
+            scrub: true,
+        },
+        y: 100,
+    });
+
+    gsap.to(scrollText, {
+        scrollTrigger: {
+            trigger: '#page1',
+            start: 'top 100%',
+            end: viewportHeight,
+            scrub: true,
+        },
+        opacity: breakpoint === 'desktop' ? 1 : 0,
+        rotation: 180,
+    });
+}
+
+const animateChatBubble = () => {
+    const button = document.querySelector('#message-bubble');
+    gsap.to('#contact-page', {
+        scrollTrigger: {
+          start: 'top bottom',
+          end: '+=1000',
+          trigger: button,
+          toggleClass: 'disabled'
+        }
+      });
+}
+
+
+animateChatBubble();
 
 const mediaQuery = window.matchMedia('(min-width: 768px)')
 // Check if the media query is true
@@ -190,10 +226,14 @@ if (mediaQuery.matches) {
     animateScrollBar();
     animateSectionHeadings();
     animateWorks('desktop');
+animateSCrollIndicator('desktop')
+
 
 } else {
     animateWorks('mobile');
     animateLogo();
+animateSCrollIndicator()
+
 
 }
 
@@ -205,7 +245,6 @@ animateSkillBars();
 
 
 
-
 lenis.on('scroll', ScrollTrigger.update)
 
 gsap.ticker.add((time)=>{
@@ -213,3 +252,32 @@ gsap.ticker.add((time)=>{
 })
 
 gsap.ticker.lagSmoothing(0)
+
+
+function createRipple(event) {
+    const button = event.currentTarget;
+
+    const circle = document.createElement("span");
+    const diameter = Math.max(button.clientWidth, button.clientHeight);
+    const radius = diameter / 2;
+    const diff = Math.round(event.clientY - button.getBoundingClientRect().top - (button.getBoundingClientRect().height /2));
+    console.log(diff, event.clientY, button.getBoundingClientRect().top, button.offsetTop)
+
+    circle.style.width = circle.style.height = `${diameter}px`;
+    circle.style.left = `${event.clientX - button.offsetLeft - radius}px`;
+    circle.style.top = `${diff}px`;
+    circle.classList.add("ripple");
+
+    const ripple = button.getElementsByClassName("ripple")[0];
+
+    if (ripple) {
+        ripple.remove();
+    }
+
+    button.appendChild(circle);
+}
+
+
+const button = document.getElementById('contact');
+
+button.addEventListener("click", createRipple);

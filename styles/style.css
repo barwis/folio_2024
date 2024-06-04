@@ -760,8 +760,10 @@ HERO
     }
 }
 .project {
-    padding-top: 10em;
+    padding-top: 120px;
 }
+
+
 .showcase {
     padding-bottom: 5em
 }
@@ -810,7 +812,9 @@ HERO
 
 
 @media screen and (min-width:768px) {
-
+    .project {
+        padding-top: 10em;
+    }
     .case-study {
         display: grid;
         grid-template-columns: 20% 80%;

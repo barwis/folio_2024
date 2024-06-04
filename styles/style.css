@@ -597,7 +597,7 @@ HERO
     font-weight: 300;
     line-height: 1.1;
     bottom: 1em;
-    left: 0%;
+    /* left: 0%; */
     right: auto;
     z-index: 10;
     margin: 0;

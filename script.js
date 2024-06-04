@@ -125,7 +125,7 @@ const animateWorks = (breakpoint) => {
             opacity: 1,
             y: 0,
             ease: "power3.out",
-            delay:  (index % 2) / 3,
+            delay: delay,
             duration: duration,
         });
     });

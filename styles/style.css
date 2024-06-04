@@ -163,6 +163,13 @@ nav {
     opacity: .8;
 }
 
+.circle .scroll-text-wrapper {
+    width: 100px;
+    height: 100px;
+    display: block;
+}
+
+
 .circle .scroll-line {
     /* transform: translateX(50px) translateY(-50px) */
     position: absolute;

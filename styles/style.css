@@ -674,6 +674,9 @@ HERO
         transform: translateY(5em);
 
     }
+    .works {
+        grid-template-columns: 1fr 1fr;
+    }
 
 }
 

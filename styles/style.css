@@ -277,7 +277,7 @@ nav .scroll {
     grid-template-columns: 30% 70%;
     font-family: 'Helveticanowdisplay extlt', sans-serif;
     color: rgba(255, 255, 255, 0.5);
-    gap: 16px;
+    gap: 1em;
     width: calc(100% - 3em);
 }
 

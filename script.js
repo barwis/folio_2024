@@ -219,28 +219,7 @@ const animateSCrollIndicator = (breakpoint) => {
 
 // animateChatBubble();
 
-const mediaQuery = window.matchMedia('(min-width: 768px)')
-// Check if the media query is true
-if (mediaQuery.matches) {
-  // Then trigger an alert
-    animateScrollBar();
-    animateSectionHeadings();
-    animateWorks('desktop');
-animateSCrollIndicator('desktop')
 
-
-} else {
-    animateWorks('mobile');
-    animateLogo();
-animateSCrollIndicator()
-
-
-}
-
-animateParagraphs()
-
-animateHero();
-animateSkillBars();
 
 
 
@@ -256,6 +235,7 @@ gsap.ticker.lagSmoothing(0)
 
 function createRipple(event) {
     const button = event.currentTarget;
+    event.preventDefault();
 
     const circle = document.createElement("span");
     const diameter = Math.max(button.clientWidth, button.clientHeight);
@@ -275,9 +255,71 @@ function createRipple(event) {
     }
 
     button.appendChild(circle);
+
+
+    setTimeout(() => {
+        window.location.href = "mailto:wisniewski.bart@gmail.com";
+    }, 300)
 }
 
 
 const button = document.getElementById('contact');
 
-button.addEventListener("click", createRipple);
+
+
+const mediaQuery = window.matchMedia('(min-width: 768px)')
+// Check if the media query is true
+if (mediaQuery.matches) {
+  // Then trigger an alert
+    animateScrollBar();
+    animateSectionHeadings();
+    animateWorks('desktop');
+    animateSCrollIndicator('desktop')
+
+
+} else {
+    animateWorks('mobile');
+    animateLogo();
+    animateSCrollIndicator()
+    button.addEventListener("click", createRipple);
+}
+
+animateParagraphs()
+
+animateHero();
+animateSkillBars();
+
+
+TweenLite.set('#asdasd',{scale:0, transformOrigin:'center'})
+
+//var action = new TimelineMax({repeat:5, yoyo:true, repeatDelay:1, ease: Power0.easeNone})
+//.to('#circle',2,{borderRadius:'0%',scale:1.5, transformOrigin:'center'})
+
+
+// TweenMax.to('#asdasd',2,{borderRadius:'0%',scale:1.5, transformOrigin:'center', ease: Power0.easeNone})
+
+
+// const wave = document.querySelector('#wave')
+
+// const shape2 = 'M469.539032,263.986786H-0.000001L0,229.890961c310.649475,58.156982,255.61113-98.5,469.539032-65.062302V263.986786z'
+// const shape3 = 'M469.539032,263.986786H-0.000001L0,0c226.11113,0,182.887283-0.414484,469.539032,0V263.986786zz'
+
+// const start = "M75,100H25c-33.33-33.33-33.33-66.67,0-100h50V100Z";
+// const end = "M 0 100 V 0 Q 50 0 100 0 V 100 z";
+
+// new TimelineMax({
+//     repeat: -1,
+//     repeatDelay: 1
+// })
+// .to(wave, .8, {
+//     attr: { d: start },
+//     ease: Power2.easeIn
+// })
+// .to(wave, .8, {
+//     attr: { d: end },
+//     ease: Power2.easeOut,
+//     fill: '#77aeff'
+// })
+// // .from(logo, .8, {
+// //     y: 75
+// // }, '-=.8')

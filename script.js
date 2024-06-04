@@ -204,20 +204,24 @@ const animateSCrollIndicator = (breakpoint) => {
     });
 }
 
-// const animateChatBubble = () => {
-//     const button = document.querySelector('#message-bubble');
-//     gsap.to('#contact-page', {
-//         scrollTrigger: {
-//           start: 'top bottom',
-//           end: '+=1000',
-//           trigger: button,
-//           toggleClass: 'disabled'
-//         }
-//       });
-// }
+const animateChatBubble = () => {
+    const button = document.querySelector('#message-bubble');
+    // gsap.to(button, {
+    let tl =gsap.timeline({
+        scrollTrigger: {
+          start: 'top bottom',
+          end: '+=500',
+          trigger: '#contact-page',
+          toggleActions: 'play none none reverse',
+          toggleClass: 'hidden'
+        },
+      });
+
+    tl.from(button, {opacity: 1, duration: .1})
+        .to(button, {opacity: 0, duration: .1})
+}
 
 
-// animateChatBubble();
 
 
 
@@ -264,6 +268,7 @@ function createRipple(event) {
 
 
 const button = document.getElementById('contact');
+const bubble = document.getElementById('message-bubble')
 
 
 
@@ -281,7 +286,10 @@ if (mediaQuery.matches) {
     animateWorks('mobile');
     animateLogo();
     animateSCrollIndicator()
+    animateChatBubble();
+
     button.addEventListener("click", createRipple);
+    bubble.addEventListener("click", createRipple);
 }
 
 animateParagraphs()
@@ -290,7 +298,7 @@ animateHero();
 animateSkillBars();
 
 
-TweenLite.set('#asdasd',{scale:0, transformOrigin:'center'})
+// TweenLite.set('#asdasd',{scale:0, transformOrigin:'center'})
 
 //var action = new TimelineMax({repeat:5, yoyo:true, repeatDelay:1, ease: Power0.easeNone})
 //.to('#circle',2,{borderRadius:'0%',scale:1.5, transformOrigin:'center'})

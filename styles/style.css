@@ -784,61 +784,16 @@ HERO
     height: 70px;
     position: fixed;
     background: var(--orange);
-    padding: 15px;
+    padding: 20px;
     right: 15px;
     bottom: 20px;
     border-radius: 130px;
     box-shadow: 0 6px 10px 0 rgba(0, 0, 0, 0.5);
     transition: all .2s linear;
     opacity: 1;
-}
-
-.message-bubble.disabled {
-    opacity: 0;
-}
-/* 
-.message-bubble-text {
-    transition: none;
-
-}
-.message-bubble.big .message-bubble-text {
-    display: none;
-}
-
-.message-bubble.big {
-    font-size: 40px;
-    line-height: 2;
-    font-family: 'Wulkan display', sans-serif;
-    font-weight: 400;
-    text-decoration: none;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin: 0 auto;
-    padding: 0 ;
-    border-radius: 100px;
-    background: var(--orange);
-    color: var(--color-1);
-    width: 200px;
-    height: 200px;
-    position: relative;
     overflow: hidden;
-    right: 0;
-    bottom: 0;
 }
 
-.message-bubble.big .message-bubble-icon {
-    display: none;
-}
-
-.message-bubble.big .message-bubble-text {
-    display: block;
-}
-
-.message-bubble:hover {
-    box-shadow: 0 6px 14px 0 #666;
-    transform: scale(1.05);
- } */
 
 
 @media screen and (min-width:768px) {
@@ -872,5 +827,9 @@ HERO
     .contact:hover::after {
         width: 100%;
 
+    }
+
+    .message-bubble {
+        display: none;
     }
 }

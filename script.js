@@ -268,9 +268,6 @@ function createRipple(event) {
 
 
 const button = document.getElementById('contact');
-const bubble = document.getElementById('message-bubble')
-
-
 
 const mediaQuery = window.matchMedia('(min-width: 768px)')
 // Check if the media query is true

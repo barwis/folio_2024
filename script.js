@@ -204,20 +204,20 @@ const animateSCrollIndicator = (breakpoint) => {
     });
 }
 
-const animateChatBubble = () => {
-    const button = document.querySelector('#message-bubble');
-    gsap.to('#contact-page', {
-        scrollTrigger: {
-          start: 'top bottom',
-          end: '+=1000',
-          trigger: button,
-          toggleClass: 'disabled'
-        }
-      });
-}
+// const animateChatBubble = () => {
+//     const button = document.querySelector('#message-bubble');
+//     gsap.to('#contact-page', {
+//         scrollTrigger: {
+//           start: 'top bottom',
+//           end: '+=1000',
+//           trigger: button,
+//           toggleClass: 'disabled'
+//         }
+//       });
+// }
 
 
-animateChatBubble();
+// animateChatBubble();
 
 const mediaQuery = window.matchMedia('(min-width: 768px)')
 // Check if the media query is true

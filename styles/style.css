@@ -140,6 +140,9 @@ nav {
     width: 100px !important;
     height: 100px;
     bottom: 10%;
+    left: 50%;
+    transform: translateX(-50%) translateY(-50%);
+    position: absolute;
 }
 
 
@@ -155,12 +158,6 @@ nav {
     top: 50px;
 }
 
-
-.circle {
-    left: 50%;
-    transform: translateX(-50%);
-    position: absolute;
-}
 
 
 @media screen and (min-width:768px) {
@@ -450,10 +447,13 @@ HERO
 .hero div {
     display: flex;
     flex-direction: row;
+    margin-top: -30%;
 }
 
 .hero div + div {
     justify-content: flex-end;
+    margin-top:0;
+
 }
 
 .hero p {
@@ -498,10 +498,13 @@ HERO
     }
     .hero div {
         width: 65%;
+        margin-top: 0;
     }
     .hero div + div {
         justify-content: flex-end;
         padding: .5em 8em 0.5em 0;
+        margin-top: 0;
+
     }
 
     .hero p {

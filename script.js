@@ -173,7 +173,7 @@ const animateLogo = () => {
     ScrollTrigger.create({
       markers: false,
       trigger: body,
-      start: 'top -20%',
+      start: 'top top',
       onUpdate: self => {
         if (self.direction === 1) {
           body.classList.add('scrolling-down');
@@ -191,11 +191,9 @@ const animateSCrollIndicator = (breakpoint) => {
     const scrollArrow = document.querySelector('#scroll-line');
     const scrollText = document.querySelector('#scroll-text-wrapper');
     const trigger = document.querySelector('#page');
-    if (!trigger)
-        return;
+
 
     const end = breakpoint === 'desktop' ? `+=${viewportHeight}` : `+=${viewportHeight *2.5}`
-    if (scrollArrow && trigger) {
         gsap.to(scrollArrow, {
             scrollTrigger: {
                 trigger: '#page1',
@@ -205,20 +203,17 @@ const animateSCrollIndicator = (breakpoint) => {
             },
             y: 100,
         });
-    }
 
-    if (scrollText && trigger) {
-        gsap.to(scrollText, {
-            scrollTrigger: {
-                trigger: '#page1',
-                start: 'top 100%',
-                end: viewportHeight,
-                scrub: true,
-            },
-            opacity: breakpoint === 'desktop' ? 1 : 0,
-            rotation: 180,
-        });
-    } 
+    gsap.to(scrollText, {
+        scrollTrigger: {
+            trigger: '#page1',
+            start: 'top 100%',
+            end: viewportHeight,
+            scrub: true,
+        },
+        opacity: breakpoint === 'desktop' ? 1 : 0,
+        rotation: 180,
+    });
 }
 
 const animateChatBubble = () => {
@@ -350,13 +345,13 @@ animateSkillBars();
 // TweenMax.to('#asdasd',2,{borderRadius:'0%',scale:1.5, transformOrigin:'center', ease: Power0.easeNone})
 
 
-// const wave = document.querySelector('#wave')
+const wave = document.querySelector('#wave')
 
 // const shape2 = 'M469.539032,263.986786H-0.000001L0,229.890961c310.649475,58.156982,255.61113-98.5,469.539032-65.062302V263.986786z'
 // const shape3 = 'M469.539032,263.986786H-0.000001L0,0c226.11113,0,182.887283-0.414484,469.539032,0V263.986786zz'
 
-// const start = "M75,100H25c-33.33-33.33-33.33-66.67,0-100h50V100Z";
-// const end = "M 0 100 V 0 Q 50 0 100 0 V 100 z";
+const start = "M45.01,0s-15.11,23.24-15.11,50,15.11,50,15.11,50H0V0H45.01Z";
+const end = "M0 0h10.06 v100H0Z";
 
 // new TimelineMax({
 //     repeat: -1,
@@ -377,3 +372,20 @@ animateSkillBars();
 
 // parallax background
 // https://gsap.com/community/forums/topic/30623-parallax-image-backgrounds-with-scrolltrigger-smooth-scrollbar-js-and-scrollerproxy/
+
+
+// ScrollTrigger.create({
+//     trigger: '#body',
+//     start: 'top top',
+//     onToggle: (self) => console.log('toggled, isActive:', self.isActive),
+//     onUpdate: (self) => {
+//         console.log(
+//             'progress:',
+//             self.progress.toFixed(3),
+//             'direction:',
+//             self.direction,
+//             'velocity',
+//             self.getVelocity()
+//         );
+//     }
+// });

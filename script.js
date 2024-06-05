@@ -17,9 +17,8 @@ const pageHeight = (document.height !== undefined) ? document.height : document.
 
 const animateScrollBar = () => {
     let scrollBarTimeline = gsap.timeline();
-    let _docHeight = (document.height !== undefined) ? document.height : document.body.offsetHeight;
+    // let _docHeight = (document.height !== undefined) ? document.height : document.body.offsetHeight;
     const h = document.body.getBoundingClientRect().height;
-    console.log(viewportHeight)
     scrollBarTimeline.to('#scrollbar', {
         scrollTrigger: {
             scrub: true,
@@ -30,7 +29,7 @@ const animateScrollBar = () => {
     })
 }
 
-const animateHero = () => {
+const animateHeroSection = () => {
 
     /**
      * elements object:
@@ -51,28 +50,31 @@ const animateHero = () => {
         }
     }
 
-    // gsap.to('#p1-tag', {
-    //     duration: 2,
-    //     text: "This is the new text",
-    //     ease: "none",
-    //   });
+    const hero = document.querySelector('.hero');
+    if (!hero) 
+        return;
 
     Object.entries(elements).forEach(([id, styles]) => {
-        gsap.to(id, {
-            scrollTrigger: {
-                scrub: true,
-                start: 'top top',
-                trigger: '.hero',
-                end: () => `${viewportHeight}px`
-            },
-           ...styles
-        });
+        const elem = document.querySelector(id);
+        if (elem && hero) {
+            gsap.to(id, {
+                scrollTrigger: {
+                    scrub: true,
+                    start: 'top top',
+                    trigger: '.hero',
+                    end: () => `${viewportHeight}px`
+                },
+            ...styles
+            });
+        }
     })
 }
 
 const animateSectionHeadings = () => {
 
     const headings = [...document.querySelectorAll('h2')];
+    if (headings.length === 0)
+        return;
 
     headings.forEach(heading => {
         gsap.to(`#${heading.id}`, {
@@ -90,6 +92,10 @@ const animateSectionHeadings = () => {
 
 const animateParagraphs = () => {
     const paragraphs = [...document.querySelectorAll('.slide-up')];
+
+    if (paragraphs.length === 0)
+        return;
+
 
     paragraphs.forEach(paragraph => {
         gsap.to(`#${paragraph.id}`, {
@@ -109,6 +115,10 @@ const animateParagraphs = () => {
 
 const animateWorks = (breakpoint) => {
     const items = [...document.querySelectorAll('.item')];
+
+    if (items.length === 0 ) 
+        return;
+
     const duration = breakpoint === 'desktop' ? 2 : .5;
     const start = breakpoint === 'desktop' ? "top 80%" : "top 100%";
 
@@ -131,9 +141,9 @@ const animateWorks = (breakpoint) => {
 
 
 const animateSkillBars = () => {
-
     const skillBars = [...document.querySelectorAll('.bar')]
-
+    if (skillBars.length === 0 ) 
+        return;
 
     skillBars.forEach((bar, index) => {
         const skillBar = bar.firstElementChild;
@@ -174,40 +184,47 @@ const animateLogo = () => {
         }
       },
     });
-  
 }
 
 
 const animateSCrollIndicator = (breakpoint) => {
     const scrollArrow = document.querySelector('#scroll-line');
     const scrollText = document.querySelector('#scroll-text-wrapper');
-    const end = breakpoint === 'desktop' ? `+=${viewportHeight}` : `+=${viewportHeight *2.5}`
-    gsap.to(scrollArrow, {
-        scrollTrigger: {
-            trigger: '#page1',
-            start: 'top 100%',
-            end: end,
-            scrub: true,
-        },
-        y: 100,
-    });
+    const trigger = document.querySelector('#page');
+    if (!trigger)
+        return;
 
-    gsap.to(scrollText, {
-        scrollTrigger: {
-            trigger: '#page1',
-            start: 'top 100%',
-            end: viewportHeight,
-            scrub: true,
-        },
-        opacity: breakpoint === 'desktop' ? 1 : 0,
-        rotation: 180,
-    });
+    const end = breakpoint === 'desktop' ? `+=${viewportHeight}` : `+=${viewportHeight *2.5}`
+    if (scrollArrow && trigger) {
+        gsap.to(scrollArrow, {
+            scrollTrigger: {
+                trigger: '#page1',
+                start: 'top 100%',
+                end: end,
+                scrub: true,
+            },
+            y: 100,
+        });
+    }
+
+    if (scrollText && trigger) {
+        gsap.to(scrollText, {
+            scrollTrigger: {
+                trigger: '#page1',
+                start: 'top 100%',
+                end: viewportHeight,
+                scrub: true,
+            },
+            opacity: breakpoint === 'desktop' ? 1 : 0,
+            rotation: 180,
+        });
+    } 
 }
 
 const animateChatBubble = () => {
     const button = document.querySelector('#message-bubble');
     // gsap.to(button, {
-    let tl =gsap.timeline({
+    let tl = gsap.timeline({
         scrollTrigger: {
           start: 'top bottom',
           end: '+=500',
@@ -222,12 +239,6 @@ const animateChatBubble = () => {
 }
 
 
-
-
-
-
-
-
 lenis.on('scroll', ScrollTrigger.update)
 
 gsap.ticker.add((time)=>{
@@ -239,7 +250,12 @@ gsap.ticker.lagSmoothing(0)
 
 function createRipple(event) {
     const button = event.currentTarget;
+
+    const targetId = event.target.id;
+
+    console.log(event)
     event.preventDefault();
+    event.stopPropagation();
 
     const circle = document.createElement("span");
     const diameter = Math.max(button.clientWidth, button.clientHeight);
@@ -257,17 +273,44 @@ function createRipple(event) {
     if (ripple) {
         ripple.remove();
     }
+    const itemContainer = event.target.closest('.item-container')
 
-    button.appendChild(circle);
-
+    if (itemContainer) {
+        itemContainer.appendChild(circle);
+    } else {
+        button.appendChild(circle);
+    }
+    console.log(button.href)
 
     setTimeout(() => {
-        window.location.href = "mailto:wisniewski.bart@gmail.com";
+        window.location.href = button.href;
     }, 300)
 }
 
+const parallaxImages = () => {
+    const items = [...document.querySelectorAll('.item')];
+    if (items.length === 0 )
+        return;
 
-const button = document.getElementById('contact');
+    items.forEach(item => {
+        const { id: itemId } = item;
+        const image = document.querySelector(`#${itemId} img`);
+        const imageId = image.id;
+
+        console.log(item, itemId, image)
+        gsap.to(`#${imageId}`, {
+            scrollTrigger: {
+                trigger: `#${itemId}`,
+                start: "top top",
+                scrub: true,
+            },
+            top: -200,
+            ease: "none",
+        });
+
+    })
+}
+
 
 const mediaQuery = window.matchMedia('(min-width: 768px)')
 // Check if the media query is true
@@ -277,21 +320,24 @@ if (mediaQuery.matches) {
     animateSectionHeadings();
     animateWorks('desktop');
     animateSCrollIndicator('desktop')
-
-
 } else {
     animateWorks('mobile');
     animateLogo();
-    animateSCrollIndicator()
+    animateSCrollIndicator();
     // animateChatBubble();
+    const button = document.getElementById('contact');
+    if (button) {
+        button.addEventListener("click", createRipple);
+    }
 
-    button.addEventListener("click", createRipple);
     // bubble.addEventListener("click", createRipple);
 }
 
-animateParagraphs()
 
-animateHero();
+[...document.querySelectorAll('a.item')].forEach(item => item.addEventListener("click", createRipple))
+
+animateParagraphs();
+animateHeroSection();
 animateSkillBars();
 
 
@@ -328,3 +374,6 @@ animateSkillBars();
 // // .from(logo, .8, {
 // //     y: 75
 // // }, '-=.8')
+
+// parallax background
+// https://gsap.com/community/forums/topic/30623-parallax-image-backgrounds-with-scrolltrigger-smooth-scrollbar-js-and-scrollerproxy/

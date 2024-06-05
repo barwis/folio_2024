@@ -33,10 +33,11 @@
             fill="none"
             transform="scale(1, 1)"
             stroke="var(--orange)" stroke-width="1"
+            vector-effect="non-scaling-stroke"
             d="
                 M10,0 V90z 
-                M0,80 L10,90z
-                M20,80 L10,90z
+                M0,80 L10,89z
+                M20,80 L10,89z
             "
             />
         </svg>
@@ -73,21 +74,33 @@
         <h2 id="heading-featured-work">Featured work</h2>
         <span class="separator"></span>
         <section class="grid">
-            <aside id="work-aside">Here are some examples of my best work</aside>
+            <aside id="work-aside">Here are some examples of my best work
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 20" width="100" height="20" preserveAspectRatio="xMinYMin">
+                    <path
+                    fill="none"
+                    transform="scale(1, 1)"
+                    stroke="var(--orange)" stroke-width="1"
+                    vector-effect="non-scaling-stroke"
+                    d="
+                        M0,10 L100,10z 
+                        M99,10 L90,0z
+                        M99,10 L90,20z"
+                    />
+                </svg>
+            </aside>
             <div class="works">
                 <a class="item" id="item-1" href="works.html">
                     <div class="item-container">
                         <div class="image-container">
-                            <img src="./images/citi.png" alt=""></div>
+                            <img src="./images/citi.png" alt="" id="item-1-image"></div>
                     </div>
                     <h4>Citi Bank</h4>
                 </a>
                 <div class="item" id="item-2">
                     <div class="item-container">
-
-                    <div class="image-container">
-                        <img src="./images/nowtv.png" alt="">
-                    </div>
+                        <div class="image-container">
+                            <img src="./images/nowtv.png" alt="" id="item-2-image">
+                        </div>
                     </div>
                     <h4>Sky - NowTV</h4>
                 </div>
@@ -95,7 +108,7 @@
                     <div class="item-container">
 
                         <div class="image-container">
-                            <img src="./images/telegraph.png" alt="">
+                            <img src="./images/telegraph.png" alt="" id="item-3-image">
                         </div>
                     </div>
                     <h4>The Telegraphg - Travel</h4>
@@ -104,7 +117,7 @@
                     <div class="item-container">
 
                     <div class="image-container">
-                        <img src="./images/justeat.png" alt="">
+                        <img src="./images/justeat.png" alt="" id="item-4-image">
                     </div>
                     </div>
                     <h4>JustEat</h4>
@@ -114,7 +127,7 @@
                     <div class="item-container">
 
                     <div class="image-container">
-                        <img src="./images/virgin-holidays.png" alt="">
+                        <img src="./images/virgin-holidays.png" alt="" id="item-5-image">
                     </div>
                     </div>
                     <h4>Virgin Holidays</h4>

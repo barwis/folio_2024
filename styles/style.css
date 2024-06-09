@@ -699,13 +699,17 @@ HERO
 
 
 
-.works img {
+.works > img, .works picture {
     transition: all .4s .2s var(--timing-function);
     position: absolute;
     left: 0;
     top: 0;
     right: 0;
     bottom: 0;
+    width: 100%;
+}
+
+.works picture img {
     width: 100%;
 }
 

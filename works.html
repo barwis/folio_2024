@@ -80,7 +80,18 @@
             <aside></aside>
             <div class="works showcase">
                 <div class="item" id="item-1">
-                    <img src="./images/old/citi.png" alt="" style="position:relative; clip-path: inset(0 0 0 0 round 1em);"/>
+                    <div class="item-container">
+                        <div class="image-container">
+                            <!-- <img src="./images/old/citi.png" alt="" id="item-1-image"/> -->
+                            <picture>
+                                <source srcset="./images/1920-citi.jpg" media="(min-width: 1600px)" />
+                                <source srcset="./images/1600-citi.jpg" media="(min-width: 1366px)" />
+                                <source srcset="./images/1366-citi.jpg" media="(min-width: 768px)" />
+                                <source srcset="./images/768-citi.png" media="(min-width: 640px)" />
+                                <img src="./images/640-citi.jpg" />
+                             </picture>
+                        </div>
+                    </div>
                 </div>
                 <div class="item" id="item-2">
                     <img src="./images/old/placeholder.png" alt="" style="position:relative; clip-path: inset(0 0 0 0 round 1em);"/>

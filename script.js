@@ -72,7 +72,7 @@ const animateHeroSection = () => {
 
 const animateSectionHeadings = () => {
 
-    const headings = [...document.querySelectorAll('h2')];
+    const headings = gsap.utils.toArray('h2');
     if (headings.length === 0)
         return;
 
@@ -91,7 +91,7 @@ const animateSectionHeadings = () => {
 }
 
 const animateParagraphs = () => {
-    const paragraphs = [...document.querySelectorAll('.slide-up')];
+    const paragraphs = gsap.utils.toArray('.slide-up');
 
     if (paragraphs.length === 0)
         return;
@@ -114,7 +114,7 @@ const animateParagraphs = () => {
 
 
 const animateWorks = (breakpoint) => {
-    const items = [...document.querySelectorAll('.item')];
+    const items = gsap.utils.toArray('.item');
 
     if (items.length === 0 ) 
         return;
@@ -122,13 +122,13 @@ const animateWorks = (breakpoint) => {
     const duration = breakpoint === 'desktop' ? 2 : .5;
     const start = breakpoint === 'desktop' ? "top 80%" : "top 100%";
 
+
     items.forEach((item, index) => {
         const delay = breakpoint === 'desktop' ? (index % 2) / 3 : 0
-
-        gsap.to(`#${item.id}`, {
+        gsap.to(item, {
             scrollTrigger: {
                 start: start,
-                trigger:`#${item.id}`,
+                trigger: item,
             },
             opacity: 1,
             y: 0,
@@ -136,16 +136,17 @@ const animateWorks = (breakpoint) => {
             delay: delay,
             duration: duration,
         });
-    });
+    })
+
 }
 
 
 const animateSkillBars = () => {
-    const skillBars = [...document.querySelectorAll('.bar')]
+    const skillBars = gsap.utils.toArray('.bar');
     if (skillBars.length === 0 ) 
         return;
 
-    skillBars.forEach((bar, index) => {
+    skillBars.forEach(bar => {
         const skillBar = bar.firstElementChild;
         const id = `#${skillBar.id}`;
         const width = parseInt(bar.dataset.years) * 10;
@@ -188,12 +189,14 @@ const animateLogo = () => {
 
 
 const animateSCrollIndicator = (breakpoint) => {
-    const scrollArrow = document.querySelector('#scroll-line');
-    const scrollText = document.querySelector('#scroll-text-wrapper');
-    const trigger = document.querySelector('#page');
 
+    // https://gsap.com/docs/v3/GSAP/UtilityMethods/selector()/
 
-    const end = breakpoint === 'desktop' ? `+=${viewportHeight}` : `+=${viewportHeight *2.5}`
+    const scrollArrow = document.getElementById('#scroll-line');
+    const scrollText = document.getElementById('#scroll-text-wrapper');
+    const end = breakpoint === 'desktop' ? `+=${viewportHeight}` : `+=${viewportHeight *2.5}`;
+
+    if (scrollArrow) {
         gsap.to(scrollArrow, {
             scrollTrigger: {
                 trigger: '#page1',
@@ -203,21 +206,24 @@ const animateSCrollIndicator = (breakpoint) => {
             },
             y: 100,
         });
+    }
 
-    gsap.to(scrollText, {
-        scrollTrigger: {
-            trigger: '#page1',
-            start: 'top 100%',
-            end: viewportHeight,
-            scrub: true,
-        },
-        opacity: breakpoint === 'desktop' ? 1 : 0,
-        rotation: 180,
-    });
+    if (scrollText) {
+        gsap.to(scrollText, {
+            scrollTrigger: {
+                trigger: '#page1',
+                start: 'top 100%',
+                end: viewportHeight,
+                scrub: true,
+            },
+            opacity: breakpoint === 'desktop' ? 1 : 0,
+            rotation: 180,
+        });
+    }
 }
 
 const animateChatBubble = () => {
-    const button = document.querySelector('#message-bubble');
+    const button = document.getElementById('#message-bubble');
     // gsap.to(button, {
     let tl = gsap.timeline({
         scrollTrigger: {
@@ -282,32 +288,32 @@ function createRipple(event) {
     }, 300)
 }
 
-const parallaxImages = () => {
-    const items = [...document.querySelectorAll('.item')];
-    if (items.length === 0 )
-        return;
+// const parallaxImages = () => {
+//     const items = gsap.utils.toArray('.item');
+//     if (items.length === 0 )
+//         return;
 
-    items.forEach(item => {
-        const { id: itemId } = item;
-        const image = document.querySelector(`#${itemId} img`);
-        const imageId = image.id;
+//     items.forEach(item => {
+//         const { id: itemId } = item;
+//         const image = document.querySelector(`#${itemId} img`);
+//         const imageId = image.id;
 
-        console.log(item, itemId, image)
-        gsap.to(`#${imageId}`, {
-            scrollTrigger: {
-                trigger: `#${itemId}`,
-                start: "top top",
-                scrub: true,
-            },
-            top: -200,
-            ease: "none",
-        });
+//         console.log(item, itemId, image)
+//         gsap.to(`#${imageId}`, {
+//             scrollTrigger: {
+//                 trigger: `#${itemId}`,
+//                 start: "top top",
+//                 scrub: true,
+//             },
+//             top: -200,
+//             ease: "none",
+//         });
 
-    })
-}
+//     })
+// }
 
 
-const mediaQuery = window.matchMedia('(min-width: 768px)')
+const mediaQuery = window.matchMedia('(min-width: 768px)');
 // Check if the media query is true
 if (mediaQuery.matches) {
   // Then trigger an alert

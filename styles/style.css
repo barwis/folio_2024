@@ -632,6 +632,7 @@ HERO
     grid-template-columns: 1fr;
     grid-auto-columns: 1fr;
     margin-bottom: 6em;
+    margin-top: 20px;
 }
 
 
@@ -651,6 +652,7 @@ HERO
     }
     .works {
         grid-template-columns: 1fr 1fr;
+        margin-top: 0;
     }
 
 }

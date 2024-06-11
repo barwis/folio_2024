@@ -15,6 +15,20 @@ const lenis = new Lenis();
 const viewportHeight = window.innerHeight;
 const pageHeight = (document.height !== undefined) ? document.height : document.body.offsetHeight;
 
+
+
+gsap.to(document.body, {
+    scrollTrigger: {
+        trigger: document.body,
+        start: 'top 100%',
+        end: document.body.innerHeight,
+        scrub: true,
+    },
+    backgroundPosition: `0px -${viewportHeight * 2}px`, /* negative width of background image your animating - left top */
+    ease: Linear.easeNone /* make sure you use Linear.easeNone so its smooth */
+});
+
+
 const animateScrollBar = () => {
     let scrollBarTimeline = gsap.timeline();
     // let _docHeight = (document.height !== undefined) ? document.height : document.body.offsetHeight;
@@ -238,6 +252,14 @@ const animateChatBubble = () => {
     tl.from(button, {opacity: 1, duration: .1})
         .to(button, {opacity: 0, duration: .1})
 }
+
+
+
+
+// gsap.to("#clouds", 30,{
+//     backgroundPosition: "-2247px 0px", /* negative width of background image your animating - left top */
+//     ease: Linear.easeNone /* make sure you use Linear.easeNone so its smooth */
+//   });
 
 
 lenis.on('scroll', ScrollTrigger.update)

@@ -100,6 +100,8 @@ body {
     font-size: 14px;
     font-size: 1vw;
     line-height: 20px;
+    background: url('../images/bg.png');
+    background-attachment: fixed;
 }
 
 
@@ -551,18 +553,24 @@ HERO
 
 
 
-/* .page section.numbered::after {
+.page section.numbered::after {
     content: attr(data-number);
     position: absolute;
     right: 0;
     top: 50%;
     font-size: 30em;
     line-height: 1;
-    font-family: 'Playfair';
+    font-family: "Cinzel", serif;
+    font-optical-sizing: auto;
+    font-weight: 400;
+    font-style: normal;
     color: var(--orange);
     opacity: .2;
-    transform: rotate(-90deg) translateX(calc(50% - 0.2em)) translateY(0.25em);
-} */
+    transform: rotate(180deg) translateX(-30%);
+    /* translateX(calc(50% - 0.2em)) translateY(0.25em); */
+    writing-mode: vertical-rl;
+    text-orientation: mixed;
+}
 
 
 .grid aside {

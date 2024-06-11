@@ -192,10 +192,10 @@ const animateSCrollIndicator = (breakpoint) => {
 
     // https://gsap.com/docs/v3/GSAP/UtilityMethods/selector()/
 
-    const scrollArrow = document.getElementById('#scroll-line');
-    const scrollText = document.getElementById('#scroll-text-wrapper');
+    const scrollArrow = document.getElementById('scroll-line');
+    const scrollText = document.getElementById('scroll-text-wrapper');
     const end = breakpoint === 'desktop' ? `+=${viewportHeight}` : `+=${viewportHeight *2.5}`;
-
+    console.log(scrollArrow, scrollText, end)
     if (scrollArrow) {
         gsap.to(scrollArrow, {
             scrollTrigger: {
@@ -223,7 +223,7 @@ const animateSCrollIndicator = (breakpoint) => {
 }
 
 const animateChatBubble = () => {
-    const button = document.getElementById('#message-bubble');
+    const button = document.getElementById('message-bubble');
     // gsap.to(button, {
     let tl = gsap.timeline({
         scrollTrigger: {

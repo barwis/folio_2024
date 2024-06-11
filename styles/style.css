@@ -64,6 +64,14 @@
     font-variation-settings: 'wdth' 100;
 }
 
+.cinzel-number {
+    font-family: "Cinzel", serif;
+    font-optical-sizing: auto;
+    font-weight: 400;
+    font-style: normal;
+    color: var(--orange);
+  }
+
 
 :root {
     --color-1: #1e1e1e;
@@ -609,7 +617,7 @@ a {
     }
 
     .page section {
-        margin-bottom: 14em;
+        margin-bottom: 300px;
     }
     footer {
         margin-left: 100px;

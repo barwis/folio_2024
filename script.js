@@ -1,21 +1,18 @@
 const colors = [
-    ['#074358', '#458985','#d7d6a5','#dba67b','#a55c55'],
-    [ '#1F2A40', '#586F8C', '#D9A79C', '#D9A79C', '#F23545'],
-    ['#081B26', '#014034',  '#D9B6A3', '#012623', '#A6554E',],
-    ['#1C2226',   '#549E8D','#A8BDBF',  '#A67041','#106973',]
+    ['#074358', '#458985', '#d7d6a5', '#dba67b', '#a55c55'],
+    ['#1F2A40', '#586F8C', '#D9A79C', '#D9A79C', '#F23545'],
+    ['#081B26', '#014034', '#D9B6A3', '#012623', '#A6554E'],
+    ['#1C2226', '#549E8D', '#A8BDBF', '#A67041', '#106973'],
 ]
 
+gsap.registerPlugin(ScrollTrigger)
+gsap.registerPlugin(TextPlugin)
 
-gsap.registerPlugin(ScrollTrigger);
-gsap.registerPlugin(TextPlugin);
+const lenis = new Lenis()
 
-
-const lenis = new Lenis();
-
-const viewportHeight = window.innerHeight;
-const pageHeight = (document.height !== undefined) ? document.height : document.body.offsetHeight;
-
-
+const viewportHeight = window.innerHeight
+const pageHeight =
+    document.height !== undefined ? document.height : document.body.offsetHeight
 
 gsap.to(document.body, {
     scrollTrigger: {
@@ -24,27 +21,27 @@ gsap.to(document.body, {
         end: document.body.innerHeight,
         scrub: true,
     },
-    backgroundPosition: `0px -${viewportHeight * 2}px`, /* negative width of background image your animating - left top */
-    ease: Linear.easeNone /* make sure you use Linear.easeNone so its smooth */
-});
-
+    backgroundPosition: `0px -${
+        viewportHeight * 2
+    }px` /* negative width of background image your animating - left top */,
+    ease: Linear.easeNone /* make sure you use Linear.easeNone so its smooth */,
+})
 
 const animateScrollBar = () => {
-    let scrollBarTimeline = gsap.timeline();
+    let scrollBarTimeline = gsap.timeline()
     // let _docHeight = (document.height !== undefined) ? document.height : document.body.offsetHeight;
-    const h = document.body.getBoundingClientRect().height;
+    const h = document.body.getBoundingClientRect().height
     scrollBarTimeline.to('#scrollbar', {
         scrollTrigger: {
             scrub: true,
             start: 'top top',
-            end: () => `${pageHeight - viewportHeight}px`
-            }, 
-        height: `${viewportHeight}px`
+            end: () => `${pageHeight - viewportHeight}px`,
+        },
+        height: `${viewportHeight}px`,
     })
 }
 
 const animateHeroSection = () => {
-
     /**
      * elements object:
      * key: id
@@ -53,89 +50,80 @@ const animateHeroSection = () => {
     const elements = {
         '#p1-1': {
             transform: 'translateX(-5em)',
-            opacity: 0
+            opacity: 0,
         },
         '#p1-2': {
             transform: 'translateX(5em)',
-            opacity: 0
+            opacity: 0,
         },
         '#p1-tag': {
-            opacity: 0
-        }
+            opacity: 0,
+        },
     }
 
-    const hero = document.querySelector('.hero');
-    if (!hero) 
-        return;
+    const hero = document.querySelector('.hero')
+    if (!hero) return
 
     Object.entries(elements).forEach(([id, styles]) => {
-        const elem = document.querySelector(id);
+        const elem = document.querySelector(id)
         if (elem && hero) {
             gsap.to(id, {
                 scrollTrigger: {
                     scrub: true,
                     start: 'top top',
                     trigger: '.hero',
-                    end: () => `${viewportHeight}px`
+                    end: () => `${viewportHeight}px`,
                 },
-            ...styles
-            });
+                ...styles,
+            })
         }
     })
 }
 
 const animateSectionHeadings = () => {
+    const headings = gsap.utils.toArray('h2')
+    if (headings.length === 0) return
 
-    const headings = gsap.utils.toArray('h2');
-    if (headings.length === 0)
-        return;
-
-    headings.forEach(heading => {
+    headings.forEach((heading) => {
         gsap.to(`#${heading.id}`, {
             scrollTrigger: {
-                trigger:`#${heading.id}`,
-                toggleActions: "play reset play reset"
+                trigger: `#${heading.id}`,
+                toggleActions: 'play reset play reset',
             },
             opacity: 1,
             x: 0,
-            ease: "power2.out",
+            ease: 'power2.out',
             duration: 2,
-        });
+        })
     })
 }
 
 const animateParagraphs = () => {
-    const paragraphs = gsap.utils.toArray('.slide-up');
+    const paragraphs = gsap.utils.toArray('.slide-up')
 
-    if (paragraphs.length === 0)
-        return;
+    if (paragraphs.length === 0) return
 
-
-    paragraphs.forEach(paragraph => {
+    paragraphs.forEach((paragraph) => {
         gsap.to(`#${paragraph.id}`, {
             scrollTrigger: {
-                trigger:`#${paragraph.id}`,
-                toggleActions: "play reset play reset"
+                trigger: `#${paragraph.id}`,
+                toggleActions: 'play reset play reset',
             },
             y: 0,
             opacity: 1,
-            ease: "power2.out",
+            ease: 'power2.out',
             duration: 1,
-        });
+        })
     })
 }
 
-
-
 const animateWorks = (breakpoint) => {
-    const items = gsap.utils.toArray('.item');
+    const items = gsap.utils.toArray('.item')
 
-    if (items.length === 0 ) 
-        return;
+    if (items.length === 0) return
 
-    const duration = breakpoint === 'desktop' ? 2 : .5;
-    const start = breakpoint === 'desktop' ? "top 80%" : "top 100%";
-
+    const duration = breakpoint === 'desktop' ? 2 : 0.5
+    const start = breakpoint === 'desktop' ? 'top 80%' : 'top 100%'
 
     items.forEach((item, index) => {
         const delay = breakpoint === 'desktop' ? (index % 2) / 3 : 0
@@ -146,69 +134,64 @@ const animateWorks = (breakpoint) => {
             },
             opacity: 1,
             y: 0,
-            ease: "power3.out",
+            ease: 'power3.out',
             delay: delay,
             duration: duration,
-        });
+        })
     })
-
 }
 
-
 const animateSkillBars = () => {
-    const skillBars = gsap.utils.toArray('.bar');
-    if (skillBars.length === 0 ) 
-        return;
+    const skillBars = gsap.utils.toArray('.bar')
+    if (skillBars.length === 0) return
 
-    skillBars.forEach(bar => {
-        const skillBar = bar.firstElementChild;
-        const id = `#${skillBar.id}`;
-        const width = parseInt(bar.dataset.years) * 10;
+    skillBars.forEach((bar) => {
+        const skillBar = bar.firstElementChild
+        const id = `#${skillBar.id}`
+        const width = parseInt(bar.dataset.years) * 10
         gsap.to(id, {
             scrollTrigger: {
                 trigger: id,
-                start: "top 80%",
-                ease: "power4.out",
+                start: 'top 80%',
+                ease: 'power4.out',
                 // toggleActions: "play reset play reset"
             }, // start the animation when ".box" enters the viewport (once)
             width: `${width}%`,
-        });
+        })
     })
-
-
-    
 }
 
 const animateLogo = () => {
-    const body = document.querySelector('body');
+    const body = document.querySelector('body')
 
     /*----------------------------
     Fixed Nav
     ----------------------------*/
     ScrollTrigger.create({
-      markers: false,
-      trigger: body,
-      start: 'top top',
-      onUpdate: self => {
-        if (self.direction === 1) {
-          body.classList.add('scrolling-down');
-          body.classList.remove('scrolling-up');
-        } else {
-          body.classList.add('scrolling-up');
-          body.classList.remove('scrolling-down');
-        }
-      },
-    });
+        markers: false,
+        trigger: body,
+        start: 'top top',
+        onUpdate: (self) => {
+            if (self.direction === 1) {
+                body.classList.add('scrolling-down')
+                body.classList.remove('scrolling-up')
+            } else {
+                body.classList.add('scrolling-up')
+                body.classList.remove('scrolling-down')
+            }
+        },
+    })
 }
 
-
 const animateSCrollIndicator = (breakpoint) => {
-
     // https://gsap.com/docs/v3/GSAP/UtilityMethods/selector()/
 
-    const scrollArrow = document.getElementById('scroll-line');
-    const scrollText = document.getElementById('scroll-text-wrapper');
-    const end = breakpoint === 'desktop' ? `+=${viewportHeight}` : `+=${viewportHeight *2.5}`;
+    const scrollArrow = document.getElementById('scroll-line')
+    const scrollText = document.getElementById('scroll-text-wrapper')
+    const end =
+        breakpoint === 'desktop'
+            ? `+=${viewportHeight}`
+            : `+=${viewportHeight * 2.5}`
     console.log(scrollArrow, scrollText, end)
     if (scrollArrow) {
         gsap.to(scrollArrow, {
@@ -219,7 +202,7 @@ const animateSCrollIndicator = (breakpoint) => {
                 scrub: true,
             },
             y: 100,
-        });
+        })
     }
 
     if (scrollText) {
@@ -232,83 +215,113 @@ const animateSCrollIndicator = (breakpoint) => {
             },
             opacity: breakpoint === 'desktop' ? 1 : 0,
             rotation: 180,
-        });
+        })
     }
 }
 
 const animateChatBubble = () => {
-    const button = document.getElementById('message-bubble');
+    const button = document.getElementById('message-bubble')
     // gsap.to(button, {
     let tl = gsap.timeline({
         scrollTrigger: {
-          start: 'top bottom',
-          end: '+=500',
-          trigger: '#contact-page',
-          toggleActions: 'play none none reverse',
-          toggleClass: 'hidden'
+            start: 'top bottom',
+            end: '+=500',
+            trigger: '#contact-page',
+            toggleActions: 'play none none reverse',
+            toggleClass: 'hidden',
         },
-      });
+    })
 
-    tl.from(button, {opacity: 1, duration: .1})
-        .to(button, {opacity: 0, duration: .1})
+    tl.from(button, { opacity: 1, duration: 0.1 }).to(button, {
+        opacity: 0,
+        duration: 0.1,
+    })
 }
-
-
-
 
 // gsap.to("#clouds", 30,{
 //     backgroundPosition: "-2247px 0px", /* negative width of background image your animating - left top */
 //     ease: Linear.easeNone /* make sure you use Linear.easeNone so its smooth */
 //   });
 
-
 lenis.on('scroll', ScrollTrigger.update)
 
-gsap.ticker.add((time)=>{
+gsap.ticker.add((time) => {
     lenis.raf(time * 1000)
 })
 
 gsap.ticker.lagSmoothing(0)
 
-
 function createRipple(event) {
-    const button = event.currentTarget;
+    const button = event.currentTarget
 
-    const targetId = event.target.id;
+    const targetId = event.target.id
 
     console.log(event)
-    event.preventDefault();
-    event.stopPropagation();
+    event.preventDefault()
+    event.stopPropagation()
 
-    const circle = document.createElement("span");
-    const diameter = Math.max(button.clientWidth, button.clientHeight);
-    const radius = diameter / 2;
-    const diff = Math.round(event.clientY - button.getBoundingClientRect().top - (button.getBoundingClientRect().height /2));
-    console.log(diff, event.clientY, button.getBoundingClientRect().top, button.offsetTop)
+    const circle = document.createElement('span')
+    const diameter = Math.max(button.clientWidth, button.clientHeight)
+    const radius = diameter / 2
+    const diff = Math.round(
+        event.clientY -
+            button.getBoundingClientRect().top -
+            button.getBoundingClientRect().height / 2
+    )
+    console.log(
+        diff,
+        event.clientY,
+        button.getBoundingClientRect().top,
+        button.offsetTop
+    )
 
-    circle.style.width = circle.style.height = `${diameter}px`;
-    circle.style.left = `${event.clientX - button.offsetLeft - radius}px`;
-    circle.style.top = `${diff}px`;
-    circle.classList.add("ripple");
+    circle.style.width = circle.style.height = `${diameter}px`
+    circle.style.left = `${event.clientX - button.offsetLeft - radius}px`
+    circle.style.top = `${diff}px`
+    circle.classList.add('ripple')
 
-    const ripple = button.getElementsByClassName("ripple")[0];
+    const ripple = button.getElementsByClassName('ripple')[0]
 
     if (ripple) {
-        ripple.remove();
+        ripple.remove()
     }
     const itemContainer = event.target.closest('.item-container')
 
     if (itemContainer) {
-        itemContainer.appendChild(circle);
+        itemContainer.appendChild(circle)
     } else {
-        button.appendChild(circle);
+        button.appendChild(circle)
     }
     console.log(button.href)
 
     setTimeout(() => {
-        window.location.href = button.href;
+        window.location.href = button.href
     }, 300)
 }
+
+const animateShowcaseItems = () => {
+    // showcase-item
+    const items = gsap.utils.toArray('.showcase-item')
+    if (items.length === 0) return
+
+    items.forEach((item, index) => {
+        const offset = index % 2 === 0 ? '0%' : '20%'
+
+        // items.forEach((heading) => {
+        //     gsap.to(item, {
+        //         scrollTrigger: {
+        //             trigger: item,
+        //             scrub: true,
+        //             end: () => `${viewportHeight}px`,
+        //             // toggleActions: "play reset play reset"
+        //         },
+        //         y: offset,
+        //     })
+        // })
+    })
+}
+
+animateShowcaseItems()
 
 // const parallaxImages = () => {
 //     const items = gsap.utils.toArray('.item');
@@ -334,52 +347,49 @@ function createRipple(event) {
 //     })
 // }
 
-
-const mediaQuery = window.matchMedia('(min-width: 768px)');
+const mediaQuery = window.matchMedia('(min-width: 768px)')
 // Check if the media query is true
 if (mediaQuery.matches) {
-  // Then trigger an alert
-    animateScrollBar();
-    animateSectionHeadings();
-    animateWorks('desktop');
+    // Then trigger an alert
+    animateScrollBar()
+    animateSectionHeadings()
+    animateWorks('desktop')
     animateSCrollIndicator('desktop')
 } else {
-    animateWorks('mobile');
-    animateLogo();
-    animateSCrollIndicator();
+    animateWorks('mobile')
+    animateLogo()
+    animateSCrollIndicator()
     // animateChatBubble();
-    const button = document.getElementById('contact');
+    const button = document.getElementById('contact')
     if (button) {
-        button.addEventListener("click", createRipple);
+        button.addEventListener('click', createRipple)
     }
 
     // bubble.addEventListener("click", createRipple);
 }
 
+;[...document.querySelectorAll('a.item')].forEach((item) =>
+    item.addEventListener('click', createRipple)
+)
 
-[...document.querySelectorAll('a.item')].forEach(item => item.addEventListener("click", createRipple))
-
-animateParagraphs();
-animateHeroSection();
-animateSkillBars();
-
+animateParagraphs()
+animateHeroSection()
+animateSkillBars()
 
 // TweenLite.set('#asdasd',{scale:0, transformOrigin:'center'})
 
 //var action = new TimelineMax({repeat:5, yoyo:true, repeatDelay:1, ease: Power0.easeNone})
 //.to('#circle',2,{borderRadius:'0%',scale:1.5, transformOrigin:'center'})
 
-
 // TweenMax.to('#asdasd',2,{borderRadius:'0%',scale:1.5, transformOrigin:'center', ease: Power0.easeNone})
-
 
 const wave = document.querySelector('#wave')
 
 // const shape2 = 'M469.539032,263.986786H-0.000001L0,229.890961c310.649475,58.156982,255.61113-98.5,469.539032-65.062302V263.986786z'
 // const shape3 = 'M469.539032,263.986786H-0.000001L0,0c226.11113,0,182.887283-0.414484,469.539032,0V263.986786zz'
 
-const start = "M45.01,0s-15.11,23.24-15.11,50,15.11,50,15.11,50H0V0H45.01Z";
-const end = "M0 0h10.06 v100H0Z";
+const start = 'M45.01,0s-15.11,23.24-15.11,50,15.11,50,15.11,50H0V0H45.01Z'
+const end = 'M0 0h10.06 v100H0Z'
 
 // new TimelineMax({
 //     repeat: -1,
@@ -400,7 +410,6 @@ const end = "M0 0h10.06 v100H0Z";
 
 // parallax background
 // https://gsap.com/community/forums/topic/30623-parallax-image-backgrounds-with-scrolltrigger-smooth-scrollbar-js-and-scrollerproxy/
-
 
 // ScrollTrigger.create({
 //     trigger: '#body',

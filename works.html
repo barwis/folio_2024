@@ -1,93 +1,135 @@
 <!DOCTYPE html>
 <html lang="en" class="scroll">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>[WIP] - Bart Wisniewski</title>
-    <link rel="icon" class="js-site-favicon" type="image/svg+xml" href="./favicon.svg">
+    <link
+      rel="icon"
+      class="js-site-favicon"
+      type="image/svg+xml"
+      href="./favicon.svg"
+    />
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/2.1.2/TweenMax.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.9.1/gsap.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/TextPlugin.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.9.1/ScrollTrigger.min.js"></script>
-    
-    <script src="./lenis.min.js"></script> 
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap" rel="stylesheet">
 
-    <link rel="stylesheet" href="./styles/style.css">
-</head>
-<body id="body">      
+    <script src="./lenis.min.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap"
+      rel="stylesheet"
+    />
 
+    <link rel="stylesheet" href="./styles/style.css" />
+  </head>
+  <body id="body">
     <div class="logo" id="logo">
-        <img height="40px" src="./images/Asset 1.svg" alt="">
+      <img height="40px" src="./images/Asset 1.svg" alt="" />
     </div>
 
     <div class="go-back" onclick="history.back()">
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 60 60" width="60" height="60" preserveAspectRatio="xMinYMin">
-            <path
-            fill="none"
-            transform="scale(1, 1)"
-            stroke="var(--orange)" stroke-width="1"
-            vector-effect="non-scaling-stroke"
-            d="
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        viewBox="0 0 60 60"
+        width="60"
+        height="60"
+        preserveAspectRatio="xMinYMin"
+      >
+        <path
+          fill="none"
+          transform="scale(1, 1)"
+          stroke="var(--orange)"
+          stroke-width="1"
+          vector-effect="non-scaling-stroke"
+          d="
             M10,10 L50,50z
             M10,50 L50,10z
             "
-            />
-        </svg>
-        <span>Go back</span>
+        />
+      </svg>
+      <span>Go back</span>
     </div>
     <nav>
-        <div class="scroll" id="scrollbar"></div>
-        
+      <div class="scroll" id="scrollbar"></div>
     </nav>
-   
+
     <div class="page project">
-        <!-- <span class="separator"></span> -->
-        <h2 id="heading-featured-work">Citi Bank</h2>
-        <section class="case-study">
-            <aside id="work-aside">May 2023 -</aside>
-                <div>  
-                <img src="./images/showcase-citi.png" alt="" style="width: 100%"/>
+      <!-- <span class="separator"></span> -->
+      <h2 id="heading-featured-work">Citi Bank</h2>
+      <section class="case-study">
+        <aside id="work-aside">May 2023 -</aside>
+        <div>
+          <img src="./images/showcase-citi.png" alt="" style="width: 100%" />
+        </div>
+        <aside></aside>
+        <div class="text">
+          <p>
+            I was part of the XiP Desktop team, responsible for maintaining
+            internal web apps that manage Independent Price Verifications
+            operations and reports.
+          </p>
+          <p>
+            In this role, I utilised JS/TypeScript, React, and GraphQL to
+            develop and enhance our applications. We relied on APIs and
+            microservices to power our apps. Additionally, we used external
+            libraries such as AG Grid for data display.
+          </p>
+        </div>
+        <aside>Tech Stack</aside>
+        <div class="tech-stack">
+          <img src="./images/tech/js.png" alt="" />
+          <img src="./images/tech/ts.png" alt="" />
+          <img src="./images/tech/react.svg" alt="" />
+          <img src="./images/tech/nodejs.svg" alt="" />
+          <img src="./images/tech/GraphQL.svg" alt="" />
+          <img src="./images/tech/ag-grid.svg" alt="" />
+          <img src="./images/tech/tailwindcss.svg" alt="" />
+          <img src="./images/tech/next-js.svg" alt="" />
+        </div>
+
+        <aside></aside>
+
+        <div class="text">
+          <p>
+            Part of my responsibilities, was to liaise with stakeholders and
+            different teams to collect business requirements for new and
+            existing features.
+          </p>
+          <p>
+            I was also responsible for overseeing the deployment of our
+            applications. I ensure smooth and efficient deployment processes.
+          </p>
+        </div>
+
+        <div class="showcase">
+          <div class="showcase-item wide">
+            <div class="showcase-item-container">
+              <picture>
+                <source
+                  srcset="./images/case/1920-citi-wide.jpg"
+                  media="(min-width: 1366px)"
+                />
+                <source
+                  srcset="./images//case/1600-citi-wide.jpg"
+                  media="(min-width: 768px)"
+                />
+                <source
+                  srcset="./images/case/1366-citi-wide.jpg"
+                  media="(min-width: 640px)"
+                />
+                <img src="./images/case/768-citi-wide.jpg" />
+              </picture>
             </div>
-            <aside></aside>
-            <div class="text">
-                <p>I was part of the XiP Desktop team, responsible for maintaining internal web apps that manage Independent Price Verifications operations and reports.  </p>
-                <p> In this role, I utilised JS/TypeScript, React, and GraphQL to develop and enhance our applications. We relied on APIs and microservices to power our apps. Additionally, we used external libraries such as AG Grid for data display. </p>
+          </div>
+          <div class="showcase-item narrow">
+            <div class="showcase-item-container">
+              <img src="./images/case/768-citi-narrow.jpg" />
             </div>
-            <aside>Tech Stack</aside>
-            <div class="tech-stack">
-                <img src="./images/tech/js.png" alt="">
-                <img src="./images/tech/ts.png" alt="">
-                <img src="./images/tech/react.svg" alt="">
-                <img src="./images/tech/nodejs.svg" alt="">
-                <img src="./images/tech/GraphQL.svg" alt="">
-                <img src="./images/tech/ag-grid.svg" alt="">
-                <img src="./images/tech/tailwindcss.svg" alt="">
-                <img src="./images/tech/next-js.svg" alt="">
-            </div>
-
-            <aside></aside>
-
-            <div class="text">
-                <p> Part of my responsibilities, was to liaise with stakeholders and different teams to collect business requirements for new and existing features. </p>
-                <p>I was also responsible for overseeing the deployment of our applications. I ensure smooth and efficient deployment processes. </p>
-            </div>
-
-
-
-            <div class="showcase">
-                <div class="showcase-item wide">
-                    <picture>
-                        <source srcset="./images/case/1920-citi-wide.jpg" media="(min-width: 1366px)" />
-                        <source srcset="./images//case/1600-citi-wide.jpg" media="(min-width: 768px)" />
-                        <source srcset="./images/case/1366-citi-wide.jpg" media="(min-width: 640px)" />
-                        <img src="./images/case/768-citi-wide.jpg" />
-                     </picture>
-                </div>
-                <div class="showcase-item narrow"><img src="./images/case/768-citi-narrow.jpg" /></div>
-                <!-- <div class="item" id="item-1">
+          </div>
+          <!-- <div class="item" id="item-1">
                    <div class="item-container">
                         <div class="image-container wide">
                             <picture>
@@ -111,42 +153,48 @@
                         </div>
                     </div>
                 </div> -->
-            </div>
-            <aside></aside>
+        </div>
+        <aside></aside>
 
-            <div class="text">
-                <p>I have taken ownership of a project within our team, leading the migration to the NextJS framework and incorporating the Tailwind framework. This initiative has enhanced the performance and development efficiency of the project.</p>
-            </div>
-        </section>
+        <div class="text">
+          <p>
+            I have taken ownership of a project within our team, leading the
+            migration to the NextJS framework and incorporating the Tailwind
+            framework. This initiative has enhanced the performance and
+            development efficiency of the project.
+          </p>
+        </div>
+      </section>
     </div>
 
     <footer>
-       <a href="mailto:wisniewski.bart@gmail.com">wisniewski.bart@gmail.com</a>
+      <a href="mailto:wisniewski.bart@gmail.com">wisniewski.bart@gmail.com</a>
     </footer>
-    <div class="go-back-2"  onclick="history.back()">
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" width="100" height="100" preserveAspectRatio="xMinYMin">
-            <path
-            fill="none"
-            transform="scale(1, 1)"
-            stroke="var(--orange)" stroke-width="1"
-            vector-effect="non-scaling-stroke"
-            d="
+    <div class="go-back-2" onclick="history.back()">
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        viewBox="0 0 100 100"
+        width="100"
+        height="100"
+        preserveAspectRatio="xMinYMin"
+      >
+        <path
+          fill="none"
+          transform="scale(1, 1)"
+          stroke="var(--orange)"
+          stroke-width="1"
+          vector-effect="non-scaling-stroke"
+          d="
             M25,50 L75,0z
             M25,50 L75,100z
 
             "
-            />
-        </svg>
-        <span>Go back</span>
+        />
+      </svg>
+      <span>Go back</span>
     </div>
+  </body>
+  <script src="./script.js"></script>
 
-
-</body>
-<script src="./script.js"></script>
-
-<script>
-  
-</script>
+  <script></script>
 </html>
-
-

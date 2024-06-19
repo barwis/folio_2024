@@ -393,7 +393,7 @@ if (mediaQuery.matches) {
 const texts = [
     ['and I make', 'the Web', '( like... really! )'],
     ["and I'm a", 'web magican', '╰( ͡° ͜ʖ ͡° )つ──☆*:・ﾟ'],
-    ['and I make pixels', 'dance', '(~˘▾˘)~'],
+    ['and I make pixels', 'dance'],
     ['and I debug more than', 'I sleep', "( I really shouldn't though... )"],
     ['and I turn coffee', 'into code', "( yeah, I'm THAT cool! )"],
     ['and I prefer spaces', 'over tabs', '( fight me! )'],

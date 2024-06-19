@@ -155,7 +155,7 @@ nav {
     position: absolute;
     width: 100px !important;
     height: 100px;
-    bottom: 10%;
+    bottom: 5%;
     left: 50%;
     transform: translateX(-50%) translateY(-50%);
     position: absolute;

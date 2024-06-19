@@ -397,7 +397,7 @@ const texts = [
     ['and I debug more than', 'I sleep', "( I really shouldn't though... )"],
     ['and I turn coffee', 'into code', "( yeah, I'm THAT cool! )"],
     ['and I prefer spaces', 'over tabs', '( fight me! )'],
-    ['and I turn caffeine', 'into websites', '( weird flex, but OK )'],
+    ['and I turn caffeine', 'into websites', '( weird flex, but OK... )'],
 ]
 
 function shuffle(array) {

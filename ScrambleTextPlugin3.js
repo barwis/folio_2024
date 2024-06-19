@@ -60,7 +60,7 @@
                 )
         return t
     }
-    var a =
+    var _grow =
         ((CharSet.prototype.grow = function grow(D) {
             for (var u = 0; u < 20; u++)
                 this.sets[u] += scrambleText(D - this.length, this.chars)
@@ -71,402 +71,38 @@
         ;(this.chars = emojiSafeSplit(D)), (this.sets = []), (this.length = 50)
         for (var u = 0; u < 20; u++) this.sets[u] = scrambleText(80, this.chars)
     }
-    function isPluginAllowed() {
-        return (
-            E ||
-            ('undefined' != typeof window &&
-                (E = window.gsap) &&
-                E.registerPlugin &&
-                E)
-        )
+    function plugin() {
+        return pluginCtx
     }
     function stringFromCharCode() {
         return String.fromCharCode.apply(null, arguments)
     }
-    function v() {
-        s = E = isPluginAllowed()
+    function initPlugin() {
+        pluginInstance = pluginCtx = plugin()
     }
-    var E,
-        s,
-        t = 'ScrambleTextPlugin',
-        B = 'gsap.com',
-        A = /^(?:[0-9]{1,3}\.){3}[0-9]{1,3}:?\d*$/,
-        performDomainCheck = (function (D) {
-            var _window = 'undefined' != typeof window,
-                allowedDomains = [
-                    'greensock.com',
-                    'gsap.com',
-                    'codepen.io',
-                    'codepen.plumbing',
-                    'codepen.app',
-                    stringFromCharCode(
-                        99,
-                        111,
-                        100,
-                        101,
-                        112,
-                        101,
-                        110,
-                        46,
-                        119,
-                        101,
-                        98,
-                        115,
-                        105,
-                        116,
-                        101
-                    ),
-                    stringFromCharCode(
-                        112,
-                        101,
-                        110,
-                        115,
-                        46,
-                        99,
-                        108,
-                        111,
-                        117,
-                        100
-                    ),
-                    stringFromCharCode(
-                        99,
-                        115,
-                        115,
-                        45,
-                        116,
-                        114,
-                        105,
-                        99,
-                        107,
-                        115,
-                        46,
-                        99,
-                        111,
-                        109
-                    ),
-                    stringFromCharCode(99, 100, 112, 110, 46, 105, 111),
-                    stringFromCharCode(112, 101, 110, 115, 46, 105, 111),
-                    stringFromCharCode(
-                        103,
-                        97,
-                        110,
-                        110,
-                        111,
-                        110,
-                        46,
-                        116,
-                        118
-                    ),
-                    stringFromCharCode(
-                        99,
-                        111,
-                        100,
-                        101,
-                        99,
-                        97,
-                        110,
-                        121,
-                        111,
-                        110,
-                        46,
-                        110,
-                        101,
-                        116
-                    ),
-                    stringFromCharCode(
-                        116,
-                        104,
-                        101,
-                        109,
-                        101,
-                        102,
-                        111,
-                        114,
-                        101,
-                        115,
-                        116,
-                        46,
-                        110,
-                        101,
-                        116
-                    ),
-                    stringFromCharCode(
-                        99,
-                        101,
-                        114,
-                        101,
-                        98,
-                        114,
-                        97,
-                        120,
-                        46,
-                        99,
-                        111,
-                        46,
-                        117,
-                        107
-                    ),
-                    stringFromCharCode(
-                        116,
-                        121,
-                        109,
-                        112,
-                        97,
-                        110,
-                        117,
-                        115,
-                        46,
-                        110,
-                        101,
-                        116
-                    ),
-                    stringFromCharCode(
-                        116,
-                        119,
-                        101,
-                        101,
-                        110,
-                        109,
-                        97,
-                        120,
-                        46,
-                        99,
-                        111,
-                        109
-                    ),
-                    stringFromCharCode(112, 108, 110, 107, 114, 46, 99, 111),
-                    stringFromCharCode(
-                        104,
-                        111,
-                        116,
-                        106,
-                        97,
-                        114,
-                        46,
-                        99,
-                        111,
-                        109
-                    ),
-                    stringFromCharCode(
-                        119,
-                        101,
-                        98,
-                        112,
-                        97,
-                        99,
-                        107,
-                        98,
-                        105,
-                        110,
-                        46,
-                        99,
-                        111,
-                        109
-                    ),
-                    stringFromCharCode(
-                        97,
-                        114,
-                        99,
-                        104,
-                        105,
-                        118,
-                        101,
-                        46,
-                        111,
-                        114,
-                        103
-                    ),
-                    stringFromCharCode(
-                        99,
-                        111,
-                        100,
-                        101,
-                        115,
-                        97,
-                        110,
-                        100,
-                        98,
-                        111,
-                        120,
-                        46,
-                        105,
-                        111
-                    ),
-                    stringFromCharCode(99, 115, 98, 46, 97, 112, 112),
-                    stringFromCharCode(
-                        115,
-                        116,
-                        97,
-                        99,
-                        107,
-                        98,
-                        108,
-                        105,
-                        116,
-                        122,
-                        46,
-                        99,
-                        111,
-                        109
-                    ),
-                    stringFromCharCode(
-                        115,
-                        116,
-                        97,
-                        99,
-                        107,
-                        98,
-                        108,
-                        105,
-                        116,
-                        122,
-                        46,
-                        105,
-                        111
-                    ),
-                    stringFromCharCode(
-                        99,
-                        111,
-                        100,
-                        105,
-                        101,
-                        114,
-                        46,
-                        105,
-                        111
-                    ),
-                    stringFromCharCode(
-                        109,
-                        111,
-                        116,
-                        105,
-                        111,
-                        110,
-                        116,
-                        114,
-                        105,
-                        99,
-                        107,
-                        115,
-                        46,
-                        99,
-                        111,
-                        109
-                    ),
-                    stringFromCharCode(
-                        115,
-                        116,
-                        97,
-                        99,
-                        107,
-                        111,
-                        118,
-                        101,
-                        114,
-                        102,
-                        108,
-                        111,
-                        119,
-                        46,
-                        99,
-                        111,
-                        109
-                    ),
-                    stringFromCharCode(
-                        115,
-                        116,
-                        97,
-                        99,
-                        107,
-                        101,
-                        120,
-                        99,
-                        104,
-                        97,
-                        110,
-                        103,
-                        101,
-                        46,
-                        99,
-                        111,
-                        109
-                    ),
-                    stringFromCharCode(
-                        115,
-                        116,
-                        117,
-                        100,
-                        105,
-                        111,
-                        102,
-                        114,
-                        101,
-                        105,
-                        103,
-                        104,
-                        116,
-                        46,
-                        99,
-                        111,
-                        109
-                    ),
-                    stringFromCharCode(
-                        119,
-                        101,
-                        98,
-                        99,
-                        111,
-                        110,
-                        116,
-                        97,
-                        105,
-                        110,
-                        101,
-                        114,
-                        46,
-                        105,
-                        111
-                    ),
-                    stringFromCharCode(
-                        106,
-                        115,
-                        102,
-                        105,
-                        100,
-                        100,
-                        108,
-                        101,
-                        46,
-                        110,
-                        101,
-                        116
-                    ),
-                ]
-
-            return
-        })('undefined' != typeof window ? window.location.host : ''),
+    var pluginCtx,
+        pluginInstance,
         c = /\s+/g,
         scrambleText = function _scrambleText(D, u) {
             for (var F = u.length, C = ''; -1 < --D; )
                 C += u[~~(Math.random() * F)]
             return C
         },
-        u = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ',
-        C = u.toLowerCase(),
-        f = {
-            upperCase: new a(u),
-            lowerCase: new a(C),
-            upperAndLowerCase: new a(u + C),
+        uppercaseLetters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ',
+        lowercaseLetters = uppercaseLetters.toLowerCase(),
+        characterSets = {
+            upperCase: new _grow(uppercaseLetters),
+            lowerCase: new _grow(lowercaseLetters),
+            upperAndLowerCase: new _grow(uppercaseLetters + lowercaseLetters),
         },
-        e = {
-            version: '3.12.3',
+        main = {
             name: 'scrambleText',
             register: function register(D) {
-                ;(E = D), v()
+                ;(pluginCtx = D), initPlugin()
             },
             init: function init(D, u, F) {
                 if (
-                    (s || v(),
+                    (pluginInstance || initPlugin(),
                     (this.prop =
                         'innerHTML' in D
                             ? 'innerHTML'
@@ -516,7 +152,8 @@
                                 ? '&nbsp;'
                                 : ''),
                         (r.charSet = E =
-                            f[u.chars || 'upperCase'] || new a(u.chars)),
+                            characterSets[u.chars || 'upperCase'] ||
+                            new _grow(u.chars)),
                         (r.speed = 0.05 / (u.speed || 1)),
                         (r.prevScrambleTime = 0),
                         (r.setIndex = (20 * Math.random()) | 0),
@@ -642,14 +279,13 @@
                             : i)
             },
         }
-    ;(e.emojiSafeSplit = emojiSafeSplit),
-        (e.getText = getText),
-        isPluginAllowed() && E.registerPlugin(e),
-        (D.ScrambleTextPlugin = e),
-        (D.default = e)
+    ;(main.emojiSafeSplit = emojiSafeSplit),
+        (main.getText = getText),
+        plugin() && pluginCtx.registerPlugin(main),
+        (D.ScrambleTextPlugin = main),
+        (D.default = main)
     if (typeof window === 'undefined' || window !== D) {
         Object.defineProperty(D, '__esModule', { value: !0 })
     } else {
-        delete D.default
     }
 })

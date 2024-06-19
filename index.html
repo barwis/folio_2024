@@ -14,6 +14,7 @@
         <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.9.1/gsap.min.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/TextPlugin.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.9.1/ScrollTrigger.min.js"></script>
+        <script src="./ScrambleTextPlugin3.js"></script>
 
         <script src="./lenis.min.js"></script>
         <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -29,19 +30,6 @@
         <link rel="stylesheet" href="./styles/style.css" />
     </head>
     <body>
-        <!-- <div class="splash"></div> -->
-
-        <!-- <svg class="wave splash" viewBox="0 0 100 100"  preserveAspectRatio="none">
-        <path class="cls-1" d="M45.01,0s-15.11,23.24-15.11,50,15.11,50,15.11,50H0V0H45.01Z"/>
-        <path id="wave" class="cls-1" d="
-        M45.01,0
-        s-15.11,23.24-15.11,50,15.11,50,15.11,50
-        H0
-        V0
-        H45.01Z"
-        />
-    </svg> -->
-
         <div class="circle">
             <div class="scroll-text-wrapper" id="scroll-text-wrapper">
                 <svg
@@ -199,19 +187,22 @@
             </svg>
         </div>
         <div class="logo" id="logo">
-            <img height="40px" src="./images/Asset 1.svg" alt="" />
+            <img height="40" src="./images/logo.svg" alt="" />
         </div>
         <nav>
             <div class="scroll" id="scrollbar"></div>
         </nav>
         <div class="page hero">
-            <div class="p1-1" id="p1-1">
+            <div class="p1 p1-1" id="p1-1">
                 <h1 style="clip-path: url(#mask)">Hey there!</h1>
             </div>
-            <div class="p1-2" id="p1-2">
+            <div class="p1 p1-2" id="p1-2">
                 <h1>I am <span>Bart</span></h1>
             </div>
-            <p id="p1-tag">and I make <span>the Web</span></p>
+            <div id="p1-tag" class="tagline">
+                <div id="p1-tag-span"></div>
+                <div id="p1-tag-span-orange" class="orange"></div>
+            </div>
         </div>
 
         <div class="page" id="page1">
@@ -258,9 +249,7 @@
                     <a class="item" href="works.html">
                         <div class="item-container">
                             <div class="image-container">
-                                <!-- <img src="./images/old/citi.png" alt="" id="item-1-image"/> -->
                                 <picture>
-                                    <!-- <source srcset="./images/1920-citi.jpg" media="(min-width: 1600px)" /> -->
                                     <source
                                         srcset="./images/1920-citi.jpg"
                                         media="(min-width: 1366px)"
@@ -273,7 +262,10 @@
                                         srcset="./images/1366-citi.png"
                                         media="(min-width: 640px)"
                                     />
-                                    <img src="./images/768-citi.jpg" />
+                                    <img
+                                        src="./images/768-citi.jpg"
+                                        alt="Citi Bank"
+                                    />
                                 </picture>
                             </div>
                         </div>
@@ -282,9 +274,7 @@
                     <div class="item">
                         <div class="item-container">
                             <div class="image-container">
-                                <!-- <img src="./images/old/nowtv.png" alt="" id="item-2-image"/> -->
                                 <picture>
-                                    <!-- <source srcset="./images/1920-nowtv.jpg" media="(min-width: 1600px)" /> -->
                                     <source
                                         srcset="./images/1920-nowtv.jpg"
                                         media="(min-width: 1366px)"
@@ -297,7 +287,10 @@
                                         srcset="./images/1366-nowtv.jpg"
                                         media="(min-width: 640px)"
                                     />
-                                    <img src="./images/768-nowtv.jpg" />
+                                    <img
+                                        src="./images/768-nowtv.jpg"
+                                        alt="NowTV"
+                                    />
                                 </picture>
                             </div>
                         </div>
@@ -306,9 +299,7 @@
                     <div class="item">
                         <div class="item-container">
                             <div class="image-container">
-                                <!-- <img src="./images/old/justeat.png" alt="" id="item-4-image"/> -->
                                 <picture>
-                                    <!-- <source srcset="./images/1920-justeat.jpg" media="(min-width: 1600px)" /> -->
                                     <source
                                         srcset="./images/1920-justeat.jpg"
                                         media="(min-width: 1366px)"
@@ -321,7 +312,10 @@
                                         srcset="./images/1366-justeat.jpg"
                                         media="(min-width: 640px)"
                                     />
-                                    <img src="./images/768-justeat.jpg" />
+                                    <img
+                                        src="./images/768-justeat.jpg"
+                                        alt="JustEat"
+                                    />
                                 </picture>
                             </div>
                         </div>
@@ -330,9 +324,7 @@
                     <div class="item">
                         <div class="item-container">
                             <div class="image-container">
-                                <!-- <img src="./images/old/telegraph.png" alt="" id="item-3-image"/> -->
                                 <picture>
-                                    <!-- <source srcset="./images/1920-telegraph.jpg" media="(min-width: 1600px)" /> -->
                                     <source
                                         srcset="./images/1920-telegraph.jpg"
                                         media="(min-width: 1366px)"
@@ -345,7 +337,10 @@
                                         srcset="./images/1366-telegraph.jpg"
                                         media="(min-width: 640px)"
                                     />
-                                    <img src="./images/768-telegraph.jpg" />
+                                    <img
+                                        src="./images/768-telegraph.jpg"
+                                        alt="Telegraph Travel"
+                                    />
                                 </picture>
                             </div>
                         </div>
@@ -355,9 +350,7 @@
                     <div class="item">
                         <div class="item-container">
                             <div class="image-container">
-                                <!-- <img src="./images/old/virgin-holidays.png" alt="" id="item-5-image"/> -->
                                 <picture>
-                                    <!-- <source srcset="./images/1920-virgin.jpg" media="(min-width: 1600px)" /> -->
                                     <source
                                         srcset="./images/1920-virgin.jpg"
                                         media="(min-width: 1366px)"
@@ -370,7 +363,10 @@
                                         srcset="./images/1366-virgin.jpg"
                                         media="(min-width: 640px)"
                                     />
-                                    <img src="./images/768-virgin.jpg" />
+                                    <img
+                                        src="./images/768-virgin.jpg"
+                                        alt="Virgin Holidays"
+                                    />
                                 </picture>
                             </div>
                         </div>
@@ -381,7 +377,6 @@
                         <div class="item-container">
                             <div class="image-container">
                                 <picture>
-                                    <!-- <source srcset="./images/1920-sky.jpg" media="(min-width: 1600px)" /> -->
                                     <source
                                         srcset="./images/1920-sky.jpg"
                                         media="(min-width: 1366px)"
@@ -394,7 +389,7 @@
                                         srcset="./images/1366-sky.jpg"
                                         media="(min-width: 640px)"
                                     />
-                                    <img src="./images/768-sky.jpg" />
+                                    <img src="./images/768-sky.jpg" alt="Sky" />
                                 </picture>
                             </div>
                         </div>
@@ -405,7 +400,6 @@
                         <div class="item-container">
                             <div class="image-container">
                                 <picture>
-                                    <!-- <source srcset="./images/1920-sky.jpg" media="(min-width: 1600px)" /> -->
                                     <source
                                         srcset="./images/1920-man-utd.jpg"
                                         media="(min-width: 1366px)"
@@ -418,7 +412,10 @@
                                         srcset="./images/1366-man-utd.jpg"
                                         media="(min-width: 640px)"
                                     />
-                                    <img src="./images/768-man-utd.jpg" />
+                                    <img
+                                        src="./images/768-man-utd.jpg"
+                                        alt="Digitas LBi"
+                                    />
                                 </picture>
                             </div>
                         </div>
@@ -607,19 +604,12 @@
                 >Let's talk!</a
             >
         </div>
-        <!-- <div class="message-bubble " id="message-bubble">
-        <svg class="message-bubble-icon" focusable="false" aria-hidden="true" viewBox="0 0 24 24" data-testid="EmailOutlinedIcon"><path d="M22 6c0-1.1-.9-2-2-2H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2zm-2 0-8 5-8-5zm0 12H4V8l8 5 8-5z"></path></svg>
-        <svg class="message-bubble-icon" focusable="false" aria-hidden="true" viewBox="0 0 24 24" width="30px" height="30px" >
-            <path fill="var(--color-1)" d="M4 4h16v12H5.17L4 17.17zm0-2c-1.1 0-1.99.9-1.99 2L2 22l4-4h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm2 10h12v2H6zm0-3h12v2H6zm0-3h12v2H6z"></path>
-        </svg>
-    </div> -->
+
         <footer>
             <a href="mailto:wisniewski.bart@gmail.com"
                 >wisniewski.bart@gmail.com</a
             >
         </footer>
+        <script src="./script.js"></script>
     </body>
-    <script src="./script.js"></script>
-
-    <script></script>
 </html>

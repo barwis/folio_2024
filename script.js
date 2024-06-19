@@ -7,6 +7,7 @@ const colors = [
 
 gsap.registerPlugin(ScrollTrigger)
 gsap.registerPlugin(TextPlugin)
+gsap.registerPlugin(ScrambleTextPlugin)
 
 const lenis = new Lenis()
 
@@ -154,8 +155,7 @@ const animateSkillBars = () => {
                 trigger: id,
                 start: 'top 80%',
                 ease: 'power4.out',
-                // toggleActions: "play reset play reset"
-            }, // start the animation when ".box" enters the viewport (once)
+            },
             width: `${width}%`,
         })
     })
@@ -184,15 +184,13 @@ const animateLogo = () => {
 }
 
 const animateSCrollIndicator = (breakpoint) => {
-    // https://gsap.com/docs/v3/GSAP/UtilityMethods/selector()/
-
     const scrollArrow = document.getElementById('scroll-line')
     const scrollText = document.getElementById('scroll-text-wrapper')
     const end =
         breakpoint === 'desktop'
             ? `+=${viewportHeight}`
             : `+=${viewportHeight * 2.5}`
-    console.log(scrollArrow, scrollText, end)
+
     if (scrollArrow) {
         gsap.to(scrollArrow, {
             scrollTrigger: {
@@ -376,12 +374,98 @@ animateParagraphs()
 animateHeroSection()
 animateSkillBars()
 
-// TweenLite.set('#asdasd',{scale:0, transformOrigin:'center'})
+// setInterval(() => {
+//     console.log('scramble')
 
-//var action = new TimelineMax({repeat:5, yoyo:true, repeatDelay:1, ease: Power0.easeNone})
-//.to('#circle',2,{borderRadius:'0%',scale:1.5, transformOrigin:'center'})
+const texts = [
+    ['and I make', 'the Web'],
+    ["and I'm a", 'web magican'],
+    ['and I make pixels', 'dance'],
+    ['and I debug more than', 'I sleep'],
+    ['and I turn coffee', 'into code'],
+    ['and I', 'delete code'],
+    ['and I prefer spaces', 'over tabs'],
+    ['and I turn caffeine', 'into websites'],
+]
 
-// TweenMax.to('#asdasd',2,{borderRadius:'0%',scale:1.5, transformOrigin:'center', ease: Power0.easeNone})
+function shuffle(array) {
+    let currentIndex = array.length,
+        temporaryValue,
+        randomIndex
+
+    while (0 !== currentIndex) {
+        randomIndex = Math.floor(Math.random() * currentIndex)
+        currentIndex -= 1
+
+        temporaryValue = array[currentIndex]
+        array[currentIndex] = array[randomIndex]
+        array[randomIndex] = temporaryValue
+    }
+
+    return array
+}
+
+function* random(array) {
+    let index = Infinity
+    const items = array.slice() //take a copy of the array;
+
+    while (true) {
+        if (index >= array.length) {
+            shuffle(items)
+            index = 0
+        }
+
+        yield items[index++]
+    }
+}
+
+const scrambleText = () => {
+    const span1 = document.querySelector('#p1-tag-span')
+    const span2 = document.querySelector('#p1-tag-span-orange')
+
+    const defaultProps = {
+        chars: 'lowerCase',
+        tweenLength: true,
+        speed: 0.3,
+    }
+
+    const randomText = random(texts)
+
+    const animate = () => {
+        span1.innerHTML = ''
+        span2.innerHTML = ''
+
+        const textToShuffle = randomText.next().value
+
+        const newDuration = parseFloat(
+            textToShuffle.join('').length / 30
+        ).toFixed(2)
+
+        var tlscramble = gsap.timeline({
+            defaults: { duration: newDuration, ease: 'none' },
+        })
+
+        tlscramble
+            .to(span1, {
+                scrambleText: {
+                    text: textToShuffle[0],
+                    ...defaultProps,
+                },
+            })
+            .to(span2, {
+                scrambleText: {
+                    text: textToShuffle[1],
+                    ...defaultProps,
+                },
+            })
+
+        setTimeout(animate, newDuration * 1000 + 5000)
+    }
+
+    animate()
+}
+
+scrambleText()
 
 const wave = document.querySelector('#wave')
 

@@ -465,7 +465,12 @@ const scrambleText = () => {
     animate()
 }
 
-scrambleText()
+document.addEventListener('readystatechange', (event) => {
+    // When window loaded ( external resources are loaded too- `css`,`src`, etc...)
+    if (event.target.readyState === 'complete') {
+        scrambleText()
+    }
+})
 
 const wave = document.querySelector('#wave')
 

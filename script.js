@@ -7,7 +7,6 @@ const colors = [
 
 gsap.registerPlugin(ScrollTrigger)
 gsap.registerPlugin(TextPlugin)
-gsap.registerPlugin(ScrambleTextPlugin)
 
 const lenis = new Lenis()
 
@@ -15,18 +14,17 @@ const viewportHeight = window.innerHeight
 const pageHeight =
     document.height !== undefined ? document.height : document.body.offsetHeight
 
-gsap.to(document.body, {
-    scrollTrigger: {
-        trigger: document.body,
-        start: 'top 100%',
-        end: document.body.innerHeight,
-        scrub: true,
-    },
-    backgroundPosition: `0px -${
-        viewportHeight * 2
-    }px` /* negative width of background image your animating - left top */,
-    ease: Linear.easeNone /* make sure you use Linear.easeNone so its smooth */,
-})
+const animateBackground = () => {
+    gsap.to(document.body, {
+        scrollTrigger: {
+            trigger: document.body,
+            start: 'top 100%',
+            end: document.body.innerHeight,
+            scrub: true,
+        },
+        backgroundPosition: `0px -${viewportHeight}px` /* negative width of background image your animating - left top */,
+    })
+}
 
 const animateScrollBar = () => {
     let scrollBarTimeline = gsap.timeline()
@@ -299,11 +297,33 @@ function createRipple(event) {
 
 const animateShowcaseItems = () => {
     // showcase-item
-    const items = gsap.utils.toArray('.showcase-item')
+    const items = gsap.utils.toArray('.showcase-item-container img')
     if (items.length === 0) return
+
+    const showcaseItemsContainerHeight = document
+        .querySelector('.showcase')
+        .getBoundingClientRect().height
 
     items.forEach((item, index) => {
         const offset = index % 2 === 0 ? '0%' : '20%'
+
+        // from -10%
+        // to 10%
+
+        items.forEach((item) => {
+            gsap.set(item, { y: '-10%' })
+
+            gsap.to(item, {
+                scrollTrigger: {
+                    trigger: item,
+                    scrub: true,
+                    end: () =>
+                        `${viewportHeight + showcaseItemsContainerHeight}px`,
+                    // toggleActions: "play reset play reset"
+                },
+                y: '10%',
+            })
+        })
 
         // items.forEach((heading) => {
         //     gsap.to(item, {
@@ -318,8 +338,6 @@ const animateShowcaseItems = () => {
         // })
     })
 }
-
-animateShowcaseItems()
 
 // const parallaxImages = () => {
 //     const items = gsap.utils.toArray('.item');
@@ -345,6 +363,11 @@ animateShowcaseItems()
 //     })
 // }
 
+animateBackground()
+animateParagraphs()
+animateHeroSection()
+animateSkillBars()
+
 const mediaQuery = window.matchMedia('(min-width: 768px)')
 // Check if the media query is true
 if (mediaQuery.matches) {
@@ -353,6 +376,7 @@ if (mediaQuery.matches) {
     animateSectionHeadings()
     animateWorks('desktop')
     animateSCrollIndicator('desktop')
+    animateShowcaseItems()
 } else {
     animateWorks('mobile')
     animateLogo()
@@ -366,26 +390,14 @@ if (mediaQuery.matches) {
     // bubble.addEventListener("click", createRipple);
 }
 
-;[...document.querySelectorAll('a.item')].forEach((item) =>
-    item.addEventListener('click', createRipple)
-)
-
-animateParagraphs()
-animateHeroSection()
-animateSkillBars()
-
-// setInterval(() => {
-//     console.log('scramble')
-
 const texts = [
-    ['and I make', 'the Web'],
-    ["and I'm a", 'web magican'],
-    ['and I make pixels', 'dance'],
-    ['and I debug more than', 'I sleep'],
-    ['and I turn coffee', 'into code'],
-    ['and I', 'delete code'],
-    ['and I prefer spaces', 'over tabs'],
-    ['and I turn caffeine', 'into websites'],
+    ['and I make', 'the Web', '( like... really! )'],
+    ["and I'm a", 'web magican', '╰( ͡° ͜ʖ ͡° )つ──☆*:・ﾟ'],
+    ['and I make pixels', 'dance', '(~˘▾˘)~'],
+    ['and I debug more than', 'I sleep', "( I really shouldn't though... )"],
+    ['and I turn coffee', 'into code', "( yeah, I'm THAT cool! )"],
+    ['and I prefer spaces', 'over tabs', '( fight me! )'],
+    ['and I turn caffeine', 'into websites', '( weird flex, but OK )'],
 ]
 
 function shuffle(array) {
@@ -422,20 +434,28 @@ function* random(array) {
 const scrambleText = () => {
     const span1 = document.querySelector('#p1-tag-span')
     const span2 = document.querySelector('#p1-tag-span-orange')
+    const span3 = document.querySelector('#p1-tag-sidenote')
 
     const defaultProps = {
         chars: 'lowerCase',
         tweenLength: true,
         speed: 0.3,
     }
+    if (!span1 || !span2) return
+
+    gsap.registerPlugin(ScrambleTextPlugin)
 
     const randomText = random(texts)
 
     const animate = () => {
         span1.innerHTML = ''
         span2.innerHTML = ''
+        span3.innerHTML = ''
 
         const textToShuffle = randomText.next().value
+        gsap.set(span3, { opacity: 0 })
+
+        span3.innerHTML = textToShuffle[2] || ''
 
         const newDuration = parseFloat(
             textToShuffle.join('').length / 30
@@ -458,6 +478,7 @@ const scrambleText = () => {
                     ...defaultProps,
                 },
             })
+            .to(span3, { opacity: 1, duration: 0.2, delay: 1 })
 
         setTimeout(animate, newDuration * 1000 + 5000)
     }
@@ -466,52 +487,10 @@ const scrambleText = () => {
 }
 
 document.addEventListener('readystatechange', (event) => {
-    // When window loaded ( external resources are loaded too- `css`,`src`, etc...)
     if (event.target.readyState === 'complete') {
         scrambleText()
     }
 })
-
-const wave = document.querySelector('#wave')
-
-// const shape2 = 'M469.539032,263.986786H-0.000001L0,229.890961c310.649475,58.156982,255.61113-98.5,469.539032-65.062302V263.986786z'
-// const shape3 = 'M469.539032,263.986786H-0.000001L0,0c226.11113,0,182.887283-0.414484,469.539032,0V263.986786zz'
-
-const start = 'M45.01,0s-15.11,23.24-15.11,50,15.11,50,15.11,50H0V0H45.01Z'
-const end = 'M0 0h10.06 v100H0Z'
-
-// new TimelineMax({
-//     repeat: -1,
-//     repeatDelay: 1
-// })
-// .to(wave, .8, {
-//     attr: { d: start },
-//     ease: Power2.easeIn
-// })
-// .to(wave, .8, {
-//     attr: { d: end },
-//     ease: Power2.easeOut,
-//     fill: '#77aeff'
-// })
-// // .from(logo, .8, {
-// //     y: 75
-// // }, '-=.8')
-
-// parallax background
-// https://gsap.com/community/forums/topic/30623-parallax-image-backgrounds-with-scrolltrigger-smooth-scrollbar-js-and-scrollerproxy/
-
-// ScrollTrigger.create({
-//     trigger: '#body',
-//     start: 'top top',
-//     onToggle: (self) => console.log('toggled, isActive:', self.isActive),
-//     onUpdate: (self) => {
-//         console.log(
-//             'progress:',
-//             self.progress.toFixed(3),
-//             'direction:',
-//             self.direction,
-//             'velocity',
-//             self.getVelocity()
-//         );
-//     }
-// });
+;[...document.querySelectorAll('a.item')].forEach((item) =>
+    item.addEventListener('click', createRipple)
+)

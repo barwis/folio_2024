@@ -287,9 +287,6 @@ function createRipple(event) {
 }
 
 const animateShowcaseItems = () => {
-    // showcase-item
-    const showcaseItems = gsap.utils.selector('.showcase-item')
-
     const items = gsap.utils.toArray('.showcase-item')
 
     if (items.length === 0) return
@@ -301,16 +298,10 @@ const animateShowcaseItems = () => {
     items.forEach((item) => {
         const img = item.querySelector('img')
         const container = item.querySelector('.showcase-item-container')
-        console.log({
-            img,
-            container,
-            showcaseItemsContainerHeight,
-            viewportHeight,
-        })
 
         const containerOffset = item.classList.contains('wide') ? -1 : 1
-        gsap.set(img, { y: '-10%' })
 
+        gsap.set(img, { y: '-10%' })
         gsap.set(container, { y: `${containerOffset * -10}%` })
 
         gsap.to(img, {

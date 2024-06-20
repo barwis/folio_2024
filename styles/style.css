@@ -342,7 +342,7 @@ nav .scroll {
 
     .separator.short {
         display: block;
-        width: 34%;
+        width: 40%;
     }
 
     .skills {
@@ -496,8 +496,8 @@ HERO
 
 .page section p {
     letter-spacing: 0.2px;
-    width: 80%;
-    margin-left: 20%;
+    width: calc(100% - 50px);
+    margin-left: 50px;
 }
 
 .gs-dev-tools {
@@ -506,7 +506,7 @@ HERO
 
 @media screen and (min-width: 768px) {
     .page section p {
-        width: 34%;
+        width: 40%;
         margin: 0 0 0 20%;
     }
 
@@ -610,6 +610,7 @@ HERO
 */
 
 .works {
+    font-size: 21px;
     display: grid;
     grid-column-gap: 20px;
     grid-row-gap: 20px;
@@ -634,6 +635,7 @@ HERO
     .works {
         grid-template-columns: 1fr 1fr;
         margin-top: 0;
+        font-size: 1.27em;
     }
 }
 
@@ -719,7 +721,8 @@ HERO
         clip-path: inset(2em 2em 2em 2em round 1em);
     }
 
-    .works:not(.showcase) > div:nth-child(2n) {
+    .works:not(.showcase) > div:nth-child(2n),
+    .works:not(.showcase) > a:nth-child(2n) {
         margin-top: 6em;
         margin-bottom: -6em;
     }
@@ -743,9 +746,6 @@ HERO
     margin-top: 20px;
 }
 
-.showcase-item {
-}
-
 .showcase-item-container {
     overflow: hidden;
     border-radius: 1em;
@@ -766,11 +766,11 @@ HERO
     }
 
     .showcase-item.wide {
-        transform: translateY(10%);
+        /* transform: translateY(5%); */
     }
 
     .showcase-item.narrow {
-        transform: translateY(-10%);
+        /* transform: translateY(-5%); */
     }
     .showcase-item img {
         transform: scale(1.2);
@@ -783,8 +783,15 @@ HERO
     width: 100%;
 }
 
+.case-study .lead-asset img {
+    object-fit: cover;
+}
+
 .case-study aside {
-    display: none;
+    /* display: none; */
+    font-size: 20px;
+    width: 25ch;
+    color: rgba(255, 255, 255, 0.5);
 }
 
 .case-study text {
@@ -802,25 +809,34 @@ HERO
 .tech-stack {
     display: flex;
     flex-wrap: wrap;
-    align-items: center;
-    justify-content: center;
     margin: 2em 0 4.5em;
     width: 100%;
+    justify-content: center;
 }
 
-.tech-stack > * {
-    width: 60px;
-    margin: 16px;
+.tech-stack div {
+    flex: 0 1 150px;
+    display: grid;
+    grid-template-rows: auto 3em;
+    align-items: center;
+    text-align: center;
+    font-size: 21px;
+    padding: 16px;
+    margin-bottom: 2em;
 }
+
+.tech-stack img {
+    width: 80%;
+    /* display: block; */
+    /* margin: 0 20px; */
+    margin: auto;
+}
+
 .case-study h3 {
 }
 
 .project h2 {
     color: rgba(255, 255, 255, 0.7);
-}
-
-.project aside {
-    color: rgba(255, 255, 255, 0.6);
 }
 
 .project p {
@@ -834,7 +850,7 @@ HERO
     }
 
     .project p {
-        font-size: 2.2em;
+        font-size: 2.5em;
     }
     .case-study {
         display: grid;
@@ -845,16 +861,22 @@ HERO
         display: none;
     }
 
+    .case-study aside {
+        font-size: 1em;
+    }
+
     .page .case-study p {
         width: 80%;
     }
     .tech-stack {
-        width: 80%;
+        width: 60%;
+        gap: 3em;
+        grid-template-columns: repeat(5, minmax(0, 1fr));
+        margin-left: 10%;
     }
 
-    .tech-stack > * {
-        width: 6em;
-        margin: 1em;
+    .tech-stack img {
+        width: 100%;
     }
 
     .case-study aside {
@@ -886,7 +908,7 @@ HERO
 @keyframes ripple {
     to {
         transform: scale(4);
-        opacity: 0;
+        /* opacity: 0; */
     }
 }
 

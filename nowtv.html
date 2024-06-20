@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>[WIP] - Bart Wisniewski</title>
+        <link
+            rel="icon"
+            class="js-site-favicon"
+            type="image/svg+xml"
+            href="./favicon.svg"
+        />
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/2.1.2/TweenMax.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.9.1/gsap.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/TextPlugin.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.9.1/ScrollTrigger.min.js"></script>
+
+        <script src="./lenis.min.js"></script>
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+        <link
+            href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap"
+            rel="stylesheet"
+        />
+
+        <link rel="stylesheet" href="./styles/style.css" />
+    </head>
+    <body id="body">
+        <div class="logo" id="logo">
+            <img height="40px" src="./images/logo.svg" alt="" />
+        </div>
+
+        <div class="go-back" onclick="history.back()">
+            <svg
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 60 60"
+                width="60"
+                height="60"
+                preserveAspectRatio="xMinYMin"
+            >
+                <path
+                    fill="none"
+                    transform="scale(1, 1)"
+                    stroke="var(--orange)"
+                    stroke-width="1"
+                    vector-effect="non-scaling-stroke"
+                    d="
+            M10,10 L50,50z
+            M10,50 L50,10z
+            "
+                />
+            </svg>
+            <span>Go back</span>
+        </div>
+        <nav>
+            <div class="scroll" id="scrollbar"></div>
+        </nav>
+
+        <div class="page project">
+            <!-- <span class="separator"></span> -->
+            <h2 id="heading-featured-work">NowTV</h2>
+            <section class="case-study">
+                <aside id="work-aside">Apr 2021 - Jan 2023</aside>
+                <div class="lead-asset">
+                    <picture>
+                        <source
+                            srcset="./images/case/1920-nowtv-lead.jpg"
+                            media="(min-width: 1366px)"
+                        />
+                        <source
+                            srcset="./images//case/1600-nowtv-lead.jpg"
+                            media="(min-width: 768px)"
+                        />
+                        <source
+                            srcset="./images/case/1366-nowtv-lead.jpg"
+                            media="(min-width: 640px)"
+                        />
+                        <img
+                            src="./images/case/768-nowtv-lead.jpg"
+                            style="width: 100%"
+                        />
+                    </picture>
+                </div>
+                <aside></aside>
+                <div class="text">
+                    <p>
+                        Part of the NOW TV agile team, building web, hybrid and
+                        native streaming apps for the following systems and
+                        platforms: web, mobile (iOS and Android), Smart TV (LG,
+                        Samsung, Android TV), TalkTalk TV Box, AppleTV, FireTV,
+                        consoles - XBOX S/X and PS5
+                    </p>
+                </div>
+                <aside>Tech Stack</aside>
+                <div class="tech-stack">
+                    <div>
+                        <img src="./images/tech/js.png" alt="" /><span
+                            >JavaScript</span
+                        >
+                    </div>
+                    <div>
+                        <img src="./images/tech/ts.png" alt="" /><span
+                            >TypeScript</span
+                        >
+                    </div>
+                    <div>
+                        <img src="./images/tech/react.svg" alt="" /><span
+                            >React Native</span
+                        >
+                    </div>
+                    <div>
+                        <img src="./images/tech/redux.svg" alt="" /><span
+                            >React Redux</span
+                        >
+                    </div>
+                    <div>
+                        <img src="./images/tech/sass.svg" alt="" /><span
+                            >Sass</span
+                        >
+                    </div>
+                    <div>
+                        <img src="./images/tech/jest.svg" alt="" /><span
+                            >Jest</span
+                        >
+                    </div>
+                    <div>
+                        <img src="./images/tech/GraphQL.svg" alt="" /><span
+                            >GraphQL</span
+                        >
+                    </div>
+                </div>
+
+                <aside></aside>
+
+                <div class="text">
+                    <p>
+                        I worked closely with stakeholders and product owners
+                        throughout the new and existing initiatives - from
+                        planning, through implementing, assisting QA and CI
+                        deployment.
+                    </p>
+                    <p>
+                        I have successfully co-led and implemented a new code
+                        testing strategy – migration from Enzyme to React
+                        Testing Library.
+                    </p>
+                </div>
+
+                <div class="showcase">
+                    <div class="showcase-item wide">
+                        <div class="showcase-item-container">
+                            <picture>
+                                <source
+                                    srcset="./images/case/1920-nowtv-wide.jpg"
+                                    media="(min-width: 1366px)"
+                                />
+                                <source
+                                    srcset="./images//case/1600-nowtv-wide.jpg"
+                                    media="(min-width: 768px)"
+                                />
+                                <source
+                                    srcset="./images/case/1366-nowtv-wide.jpg"
+                                    media="(min-width: 640px)"
+                                />
+                                <img src="./images/case/768-nowtv-wide.jpg" />
+                            </picture>
+                        </div>
+                    </div>
+                    <div class="showcase-item narrow">
+                        <div class="showcase-item-container">
+                            <picture>
+                                <source
+                                    srcset="./images/case/1920-nowtv-narrow.jpg"
+                                    media="(min-width: 1366px)"
+                                />
+                                <source
+                                    srcset="
+                                        ./images//case/1600-nowtv-narrow.jpg
+                                    "
+                                    media="(min-width: 768px)"
+                                />
+                                <source
+                                    srcset="./images/case/1366-nowtv-narrow.jpg"
+                                    media="(min-width: 640px)"
+                                />
+                                <img src="./images/case/768-nowtv-narrow.jpg" />
+                            </picture>
+                        </div>
+                    </div>
+                </div>
+                <aside></aside>
+
+                <div class="text">
+                    <p>
+                        I have been part of the initiative of migrating NOWTV
+                        app codebase from JavaScript to TypeScript.
+                    </p>
+                    <p>
+                        I have implemented new processes within the engineering
+                        team to enhance workflows as well as the quality of the
+                        codebase.
+                    </p>
+                    <p>
+                        I mentored junior developers and graduates and help to
+                        increase their product and technical knowledge.
+                    </p>
+                </div>
+            </section>
+        </div>
+
+        <footer>
+            <a href="mailto:wisniewski.bart@gmail.com"
+                >wisniewski.bart@gmail.com</a
+            >
+        </footer>
+        <div class="go-back-2" onclick="history.back()">
+            <svg
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 100 100"
+                width="100"
+                height="100"
+                preserveAspectRatio="xMinYMin"
+            >
+                <path
+                    fill="none"
+                    transform="scale(1, 1)"
+                    stroke="var(--orange)"
+                    stroke-width="1"
+                    vector-effect="non-scaling-stroke"
+                    d="
+            M25,50 L75,0z
+            M25,50 L75,100z
+
+            "
+                />
+            </svg>
+            <span>Go back</span>
+        </div>
+    </body>
+    <script src="./script.js"></script>
+
+    <script></script>
+</html>

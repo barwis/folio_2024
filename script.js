@@ -87,7 +87,7 @@ const animateSectionHeadings = () => {
         gsap.to(`#${heading.id}`, {
             scrollTrigger: {
                 trigger: `#${heading.id}`,
-                toggleActions: 'play reset play reset',
+                // toggleActions: 'play reset play reset',
             },
             opacity: 1,
             x: 0,
@@ -248,47 +248,38 @@ gsap.ticker.add((time) => {
 gsap.ticker.lagSmoothing(0)
 
 function createRipple(event) {
-    const button = event.currentTarget
-
-    const targetId = event.target.id
-
-    console.log(event)
     event.preventDefault()
     event.stopPropagation()
+    const itemContainer = event.target.closest('.item-container')
+    const button = event.currentTarget
+    const boundingRect = button.getBoundingClientRect()
+    const diameter = Math.max(boundingRect.width, boundingRect.height)
 
+    // calculate ripple position
+    const diffX = Math.round(event.clientX - boundingRect.left - diameter / 2)
+    const diffY = Math.round(event.clientY - boundingRect.top - diameter / 2)
+
+    // generate ripple element
     const circle = document.createElement('span')
-    const diameter = Math.max(button.clientWidth, button.clientHeight)
-    const radius = diameter / 2
-    const diff = Math.round(
-        event.clientY -
-            button.getBoundingClientRect().top -
-            button.getBoundingClientRect().height / 2
-    )
-    console.log(
-        diff,
-        event.clientY,
-        button.getBoundingClientRect().top,
-        button.offsetTop
-    )
 
-    circle.style.width = circle.style.height = `${diameter}px`
-    circle.style.left = `${event.clientX - button.offsetLeft - radius}px`
-    circle.style.top = `${diff}px`
     circle.classList.add('ripple')
+    circle.style.width = circle.style.height = `${diameter}px`
+    circle.style.left = `${diffX}px`
+    circle.style.top = `${diffY}px`
 
+    // remove previous ripple if exists
     const ripple = button.getElementsByClassName('ripple')[0]
 
     if (ripple) {
         ripple.remove()
     }
-    const itemContainer = event.target.closest('.item-container')
 
+    // append new ripple element
     if (itemContainer) {
         itemContainer.appendChild(circle)
     } else {
         button.appendChild(circle)
     }
-    console.log(button.href)
 
     setTimeout(() => {
         window.location.href = button.href
@@ -297,46 +288,63 @@ function createRipple(event) {
 
 const animateShowcaseItems = () => {
     // showcase-item
-    const items = gsap.utils.toArray('.showcase-item-container img')
+    const showcaseItems = gsap.utils.selector('.showcase-item')
+
+    const items = gsap.utils.toArray('.showcase-item')
+
     if (items.length === 0) return
 
     const showcaseItemsContainerHeight = document
         .querySelector('.showcase')
         .getBoundingClientRect().height
 
-    items.forEach((item, index) => {
-        const offset = index % 2 === 0 ? '0%' : '20%'
-
-        // from -10%
-        // to 10%
-
-        items.forEach((item) => {
-            gsap.set(item, { y: '-10%' })
-
-            gsap.to(item, {
-                scrollTrigger: {
-                    trigger: item,
-                    scrub: true,
-                    end: () =>
-                        `${viewportHeight + showcaseItemsContainerHeight}px`,
-                    // toggleActions: "play reset play reset"
-                },
-                y: '10%',
-            })
+    items.forEach((item) => {
+        const img = item.querySelector('img')
+        const container = item.querySelector('.showcase-item-container')
+        console.log({
+            img,
+            container,
+            showcaseItemsContainerHeight,
+            viewportHeight,
         })
 
-        // items.forEach((heading) => {
-        //     gsap.to(item, {
-        //         scrollTrigger: {
-        //             trigger: item,
-        //             scrub: true,
-        //             end: () => `${viewportHeight}px`,
-        //             // toggleActions: "play reset play reset"
-        //         },
-        //         y: offset,
-        //     })
-        // })
+        const containerOffset = item.classList.contains('wide') ? -1 : 1
+        gsap.set(img, { y: '-10%' })
+
+        gsap.set(container, { y: `${containerOffset * -10}%` })
+
+        gsap.to(img, {
+            scrollTrigger: {
+                trigger: item,
+                scrub: true,
+                end: () => `${viewportHeight + showcaseItemsContainerHeight}px`,
+                // toggleActions: "play reset play reset"
+            },
+            y: '10%',
+        })
+
+        gsap.to(container, {
+            scrollTrigger: {
+                trigger: item,
+                scrub: true,
+                end: () => `${viewportHeight}px`,
+                // toggleActions: "play reset play reset"
+            },
+            y: `${containerOffset * 5}%`,
+        })
     })
+
+    // items.forEach((heading) => {
+    //     gsap.to(item, {
+    //         scrollTrigger: {
+    //             trigger: item,
+    //             scrub: true,
+    //             end: () => `${viewportHeight}px`,
+    //             // toggleActions: "play reset play reset"
+    //         },
+    //         y: offset,
+    //     })
+    // })
 }
 
 // const parallaxImages = () => {

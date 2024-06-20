@@ -61,7 +61,7 @@
             <h2 id="heading-featured-work">Citi Bank</h2>
             <section class="case-study">
                 <aside id="work-aside">May 2023 -</aside>
-                <div>
+                <div class="lead-asset">
                     <img
                         src="./images/showcase-citi.png"
                         alt=""
@@ -85,14 +85,46 @@
                 </div>
                 <aside>Tech Stack</aside>
                 <div class="tech-stack">
-                    <img src="./images/tech/js.png" alt="" />
-                    <img src="./images/tech/ts.png" alt="" />
-                    <img src="./images/tech/react.svg" alt="" />
-                    <img src="./images/tech/nodejs.svg" alt="" />
-                    <img src="./images/tech/GraphQL.svg" alt="" />
-                    <img src="./images/tech/ag-grid.svg" alt="" />
-                    <img src="./images/tech/tailwindcss.svg" alt="" />
-                    <img src="./images/tech/next-js.svg" alt="" />
+                    <div>
+                        <img src="./images/tech/js.png" alt="" /><span
+                            >JavaScript</span
+                        >
+                    </div>
+                    <div>
+                        <img src="./images/tech/ts.png" alt="" /><span
+                            >TypeScript</span
+                        >
+                    </div>
+                    <div>
+                        <img src="./images/tech/react.svg" alt="" /><span
+                            >React</span
+                        >
+                    </div>
+                    <div>
+                        <img src="./images/tech/nodejs.svg" alt="" /><span
+                            >Node.js</span
+                        >
+                    </div>
+                    <div>
+                        <img src="./images/tech/GraphQL.svg" alt="" /><span
+                            >GraphQL</span
+                        >
+                    </div>
+                    <div>
+                        <img src="./images/tech/ag-grid.svg" alt="" /><span
+                            >AG-grid</span
+                        >
+                    </div>
+                    <div>
+                        <img src="./images/tech/tailwindcss.svg" alt="" /><span
+                            >TailwindCSS</span
+                        >
+                    </div>
+                    <div>
+                        <img src="./images/tech/next-js.svg" alt="" /><span
+                            >NEXT.js</span
+                        >
+                    </div>
                 </div>
 
                 <aside></aside>
@@ -132,7 +164,21 @@
                     </div>
                     <div class="showcase-item narrow">
                         <div class="showcase-item-container">
-                            <img src="./images/case/768-citi-narrow.jpg" />
+                            <picture>
+                                <source
+                                    srcset="./images/case/1920-citi-narrow.jpg"
+                                    media="(min-width: 1366px)"
+                                />
+                                <source
+                                    srcset="./images//case/1600-citi-narrow.jpg"
+                                    media="(min-width: 768px)"
+                                />
+                                <source
+                                    srcset="./images/case/1366-citi-narrow.jpg"
+                                    media="(min-width: 640px)"
+                                />
+                                <img src="./images/case/768-citi-narrow.jpg" />
+                            </picture>
                         </div>
                     </div>
                     <!-- <div class="item" id="item-1">

@@ -378,7 +378,6 @@ const parallaxBackground = () => {
             },
             // y: `${containerOffset * 5}%`,
             y: `${viewportHeight / 2}`,
-            ease: 'none',
         })
     })
 }

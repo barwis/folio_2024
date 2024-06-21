@@ -383,7 +383,6 @@ const parallaxBackground = () => {
     })
 }
 
-animateBackground()
 animateParagraphs()
 animateHeroSection()
 animateSkillBars()
@@ -393,6 +392,7 @@ const mediaQuery = window.matchMedia('(min-width: 768px)')
 // Check if the media query is true
 if (mediaQuery.matches) {
     // Then trigger an alert
+    animateBackground()
     animateScrollBar()
     animateSectionHeadings()
     animateWorks('desktop')

@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Generator: Adobe Illustrator 26.3.1, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
+<svg version="1.1"
+	 id="svg2" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:svg="http://www.w3.org/2000/svg" xmlns:cc="http://creativecommons.org/ns#" xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd" xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+	 xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 100 101.1"
+	 style="enable-background:new 0 0 100 101.1;" xml:space="preserve">
+<style type="text/css">
+	.st0{fill:url(#path1948_00000154388782029368254620000002010526898863059609_);}
+	.st1{fill:url(#path1950_00000106827857803314747760000008207982356446901888_);}
+</style>
+<sodipodi:namedview  bordercolor="#666666" borderopacity="1.0" gridtolerance="10.0" guidetolerance="10.0" height="40mm" id="base" inkscape:current-layer="svg2" inkscape:cx="91.558698" inkscape:cy="47.9926" inkscape:deskcolor="#d1d1d1" inkscape:document-units="pt" inkscape:pagecheckerboard="0" inkscape:pageopacity="0.0" inkscape:pageshadow="2" inkscape:showpageshadow="2" inkscape:window-height="2080" inkscape:window-maximized="0" inkscape:window-width="1976" inkscape:window-x="1092" inkscape:window-y="72" inkscape:zoom="2.1461642" objecttolerance="10.0" pagecolor="#ffffff" showgrid="false" units="mm" width="210mm">
+	</sodipodi:namedview>
+<linearGradient id="path1948_00000038412678523185616150000005027762108301408145_" gradientUnits="userSpaceOnUse" x1="28.9607" y1="61.5116" x2="127.031" y2="-22.8647" gradientTransform="matrix(0.5625 0 0 -0.568 -18.7448 37.8158)">
+	<stop  offset="0" style="stop-color:#5A9FD4"/>
+	<stop  offset="1" style="stop-color:#306998"/>
+</linearGradient>
+<path id="path1948" style="fill:url(#path1948_00000038412678523185616150000005027762108301408145_);" d="M49.4,0
+	c-4.1,0-8.1,0.4-11.5,1C27.7,2.8,25.8,6.6,25.8,13.5v9.2h24.1v3.1H25.8h-9.1C9.8,25.8,3.6,30,1.7,38c-2.2,9.2-2.3,14.9,0,24.5
+	c1.7,7.1,5.8,12.2,12.8,12.2h8.3v-11c0-8,6.9-15,15.1-15H62c6.7,0,12.1-5.5,12.1-12.3v-23C74,7,68.5,2.1,62,1
+	C57.8,0.3,53.5,0,49.4,0z M36.4,7.4c2.5,0,4.5,2.1,4.5,4.6c0,2.5-2,4.6-4.5,4.6c-2.5,0-4.5-2-4.5-4.6C31.8,9.5,33.9,7.4,36.4,7.4z"
+	/>
+<linearGradient id="path1950_00000031919713578090906080000017863802178052531372_" gradientUnits="userSpaceOnUse" x1="164.9456" y1="-73.9328" x2="129.9248" y2="-24.3843" gradientTransform="matrix(0.5625 0 0 -0.568 -18.7448 37.8158)">
+	<stop  offset="0" style="stop-color:#FFD43B"/>
+	<stop  offset="1" style="stop-color:#FFE873"/>
+</linearGradient>
+<path id="path1950" style="fill:url(#path1950_00000031919713578090906080000017863802178052531372_);" d="M77,25.8v10.7
+	c0,8.3-7,15.3-15.1,15.3H37.9c-6.6,0-12.1,5.6-12.1,12.3v23c0,6.5,5.7,10.4,12.1,12.3c7.6,2.2,15,2.7,24.1,0C68,97.5,74,94,74,87
+	v-9.2H49.9v-3.1H74h12.1c7,0,9.6-4.9,12.1-12.2c2.5-7.6,2.4-14.8,0-24.5c-1.7-7-5-12.2-12.1-12.2L77,25.8z M63.5,83.9
+	c2.5,0,4.5,2,4.5,4.6c0,2.5-2,4.6-4.5,4.6c-2.5,0-4.5-2.1-4.5-4.6C59,86,61,83.9,63.5,83.9z"/>
+</svg>

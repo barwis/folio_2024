@@ -362,11 +362,33 @@ const animateShowcaseItems = () => {
 //     })
 // }
 
+const parallaxBackground = () => {
+    const parallaxSections = gsap.utils.toArray('.parallax-background')
+    console.log(parallaxSections)
+
+    parallaxSections.forEach((section) => {
+        gsap.set(section, { y: 0 })
+        gsap.to(section, {
+            scrollTrigger: {
+                trigger: section,
+                scrub: true,
+                start: 'top top',
+                end: () => `${viewportHeight}px`,
+                // toggleActions: "play reset play reset"
+            },
+            // y: `${containerOffset * 5}%`,
+            y: `${viewportHeight / 2}`,
+            ease: 'none',
+        })
+    })
+}
+
 animateBackground()
 animateParagraphs()
 animateHeroSection()
 animateSkillBars()
 
+parallaxBackground()
 const mediaQuery = window.matchMedia('(min-width: 768px)')
 // Check if the media query is true
 if (mediaQuery.matches) {

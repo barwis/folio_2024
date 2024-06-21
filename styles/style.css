@@ -129,6 +129,7 @@ nav {
     width: var(--sidebar-width);
     height: 100%;
     border-right: 1px solid rgba(122, 122, 122, 0.1);
+    z-index: 99999;
 }
 
 .splash {
@@ -765,13 +766,6 @@ HERO
         grid-template-columns: 60fr 40fr;
     }
 
-    .showcase-item.wide {
-        /* transform: translateY(5%); */
-    }
-
-    .showcase-item.narrow {
-        /* transform: translateY(-5%); */
-    }
     .showcase-item img {
         transform: scale(1.2);
     }
@@ -815,7 +809,8 @@ HERO
 }
 
 .tech-stack div {
-    flex: 0 1 150px;
+    /* flex: 0 1 150px; */
+    flex: 0 1 6em;
     display: grid;
     grid-template-rows: auto 3em;
     align-items: center;
@@ -830,9 +825,6 @@ HERO
     /* display: block; */
     /* margin: 0 20px; */
     margin: auto;
-}
-
-.case-study h3 {
 }
 
 .project h2 {
@@ -862,7 +854,7 @@ HERO
     }
 
     .case-study aside {
-        font-size: 1em;
+        font-size: 2em;
     }
 
     .page .case-study p {
@@ -873,6 +865,9 @@ HERO
         gap: 3em;
         grid-template-columns: repeat(5, minmax(0, 1fr));
         margin-left: 10%;
+    }
+
+    .tech-stack div {
     }
 
     .tech-stack img {
@@ -1033,6 +1028,7 @@ HERO
     left: 0;
     top: 0;
     display: none;
+    z-index: 999999;
 }
 
 .go-back-2 span {
@@ -1084,5 +1080,59 @@ HERO
 
     .go-back-2 {
         display: flex;
+    }
+}
+
+.lead-image {
+    display: flex;
+    width: 100%;
+    height: 70vh;
+    overflow: hidden;
+    align-items: flex-end;
+    position: relative;
+    border-bottom: 1px solid #404040;
+}
+
+.parallax-background {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    display: block;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-attachment: fixed;
+    background-position: 50% 50%;
+}
+
+.lead-image .heading-text {
+    display: flex;
+    width: 100%;
+    background: linear-gradient(to top, black 0%, transparent 100%);
+    flex-direction: column;
+    padding: 0 20px 25px;
+    position: relative;
+    gap: 20px;
+}
+
+.lead-image .heading-text span {
+    font-size: 20px;
+}
+
+.lead-image h2 {
+    margin: 0;
+    color: rgba(255, 255, 255, 1);
+    z-index: 999;
+}
+
+@media screen and (min-width: 768px) {
+    .lead-image .heading-text {
+        padding: 0 5vh 5vh 200px;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: flex-end;
+    }
+
+    .lead-image .heading-text span {
+        font-size: 1em;
     }
 }

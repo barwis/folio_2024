@@ -82,10 +82,6 @@
     box-sizing: border-box;
 }
 
-html {
-    overflow: hidden;
-}
-
 html,
 body {
     background: var(--color-1) url('../images/bg.png');

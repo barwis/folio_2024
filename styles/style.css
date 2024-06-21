@@ -88,6 +88,8 @@ html {
 
 html,
 body {
+    background: var(--color-1) url('../images/bg.png');
+
     margin: 0;
     -webkit-text-size-adjust: 100%;
     -webkit-font-smoothing: antialiased;
@@ -96,12 +98,12 @@ body {
 }
 
 body {
-    background: var(--color-1);
     font-size: 14px;
     font-size: 1vw;
     line-height: 20px;
-    background: url('../images/bg.png');
+    background: var(--color-1) url('../images/bg.png');
     background-attachment: fixed;
+    -webkit-overflow-scrolling: touch;
 }
 
 html.lenis,

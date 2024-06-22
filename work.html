@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>[WIP] - Bart Wisniewski</title>
+        <link
+            rel="icon"
+            class="js-site-favicon"
+            type="image/svg+xml"
+            href="./favicon.svg"
+        />
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/2.1.2/TweenMax.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.9.1/gsap.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/TextPlugin.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.9.1/ScrollTrigger.min.js"></script>
+
+        <script src="./lenis.min.js"></script>
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+        <link
+            href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap"
+            rel="stylesheet"
+        />
+
+        <link rel="stylesheet" href="./styles/style.css" />
+    </head>
+    <body id="body">
+        <div class="logo" id="logo">
+            <img height="40px" src="./images/logo.svg" alt="" />
+        </div>
+
+        <div class="go-back" onclick="history.back()">
+            <svg
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 60 60"
+                width="60"
+                height="60"
+                preserveAspectRatio="xMinYMin"
+            >
+                <path
+                    fill="none"
+                    transform="scale(1, 1)"
+                    stroke="var(--orange)"
+                    stroke-width="1"
+                    vector-effect="non-scaling-stroke"
+                    d="
+            M10,10 L50,50z
+            M10,50 L50,10z
+            "
+                />
+            </svg>
+            <span>Go back</span>
+        </div>
+        <nav>
+            <div class="scroll" id="scrollbar"></div>
+        </nav>
+
+        <header class="header header--big">
+            <div
+                class="header__image"
+                style="background-image: url(./images/case/telegraph/lead.jpg)"
+            ></div>
+            <div class="header__text">
+                <h2 id="heading-featured-work">Telegraph - Travel</h2>
+                <span>Jun 2017 - Mar 2021</span>
+            </div>
+        </header>
+
+        <header class="header header--small">
+            <div class="header__image"></div>
+            <div class="header__text">
+                <h2 id="heading-featured-work">Telegraph - Travel</h2>
+                <span>Jun 2017 - Mar 2021</span>
+            </div>
+        </header>
+
+        <footer>
+            <a href="mailto:wisniewski.bart@gmail.com"
+                >wisniewski.bart@gmail.com</a
+            >
+        </footer>
+        <div class="go-back-2" onclick="history.back()">
+            <svg
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 100 100"
+                width="100"
+                height="100"
+                preserveAspectRatio="xMinYMin"
+            >
+                <path
+                    fill="none"
+                    transform="scale(1, 1)"
+                    stroke="var(--orange)"
+                    stroke-width="1"
+                    vector-effect="non-scaling-stroke"
+                    d="
+            M25,50 L75,0z
+            M25,50 L75,100z
+
+            "
+                />
+            </svg>
+            <span>Go back</span>
+        </div>
+    </body>
+    <script src="./script.js"></script>
+
+    <script></script>
+</html>

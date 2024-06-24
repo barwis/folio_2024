@@ -115,58 +115,6 @@ html.lenis body {
     pointer-events: none;
 }
 
-/* Text styles */
-
-h1 {
-    position: relative;
-    margin-top: 0;
-    margin-bottom: 0;
-}
-
-h2 {
-    margin-top: 0;
-    margin-bottom: 0;
-    margin-left: -5px;
-    transform-style: preserve-3d;
-}
-
-@media (width <= 768px) {
-    h2 {
-        opacity: 0;
-        transform: translate3d(-55px, 0px, 0px) scale3d(1, 1, 1);
-    }
-}
-
-h3 {
-    letter-spacing: 4px;
-}
-
-h4 {
-    position: absolute;
-    font: 400 21px / 2 Helveticanowdisplay extlt, sans-serif;
-    bottom: 1em;
-    right: auto;
-    z-index: 10;
-    margin: 0;
-    color: rgba(255, 255, 255, 1);
-    transform: rotate(-90deg);
-    transform-origin: 0 100%;
-    background: rgba(30, 30, 30, 0.7);
-    padding: 5px 15px;
-    left: 70px;
-    border-radius: 16px;
-}
-@media (min-width: 768px) {
-    h4 {
-        font: 300 1.27em / 1.1 Helveticanowdisplay extlt, sans-serif;
-        background: none;
-        transform: rotate(0deg);
-        top: 0%;
-        bottom: auto;
-        color: rgba(255, 255, 255, 0.5) !important;
-    }
-}
-
 nav {
     position: fixed;
     display: none;
@@ -255,6 +203,23 @@ nav {
         width: 120px;
         height: 120px;
     }
+}
+
+h1 {
+    position: relative;
+    margin-top: 0;
+    margin-bottom: 0;
+}
+
+h2 {
+    margin-top: 0;
+    margin-bottom: 0;
+    margin-left: -5px;
+    transform-style: preserve-3d;
+}
+
+h3 {
+    letter-spacing: 4px;
 }
 
 nav .scroll {
@@ -691,6 +656,26 @@ HERO
     border-radius: 16px;
 }
 
+.works h4 {
+    position: absolute;
+    font-family: Helveticanowdisplay extlt, sans-serif;
+    font-size: 21px;
+    font-weight: 400;
+    line-height: 2;
+    bottom: 1em;
+    right: auto;
+    z-index: 10;
+    margin: 0;
+    color: rgba(255, 255, 255, 1);
+    transform: rotate(-90deg);
+    transform-origin: 0 100%;
+
+    background: rgba(30, 30, 30, 0.7);
+    padding: 5px 15px;
+    left: 70px;
+    border-radius: 16px;
+}
+
 .works > img,
 .works picture {
     transition: all 0.4s 0.2s var(--timing-function);
@@ -711,6 +696,20 @@ HERO
         grid-template-columns: 1fr 1fr;
         grid-row-gap: 1em;
         grid-column-gap: 1em;
+    }
+
+    .works h4 {
+        font-size: 1.27em;
+        line-height: 1.1;
+        font-weight: 300;
+        background: none;
+        transform: rotate(0deg);
+        top: 0%;
+        bottom: auto;
+    }
+
+    .works h4 {
+        color: rgba(255, 255, 255, 0.5) !important;
     }
 
     .item:hover .item-container {
@@ -869,9 +868,6 @@ HERO
         width: 48%;
     }
 
-    .page .case-study p {
-        /* width: 60%; */
-    }
     .tech-stack {
         width: 60%;
         gap: 3em;

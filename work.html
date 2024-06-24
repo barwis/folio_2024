@@ -6,7 +6,6 @@
         <title>[WIP] - Bart Wisniewski</title>
         <link
             rel="icon"
-            class="js-site-favicon"
             type="image/svg+xml"
             href="./favicon.svg"
         />
@@ -14,97 +13,102 @@
         <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.9.1/gsap.min.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/TextPlugin.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.9.1/ScrollTrigger.min.js"></script>
-
         <script src="./lenis.min.js"></script>
-        <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-        <link
-            href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap"
-            rel="stylesheet"
-        />
 
+        <style>
+            :root {
+                --theme-color: #02c3aa;
+            }
+        </style>
         <link rel="stylesheet" href="./styles/style.css" />
+        <link rel="stylesheet" href="./styles/desktop_style.css" />
+
     </head>
     <body id="body">
         <div class="logo" id="logo">
             <img height="40px" src="./images/logo.svg" alt="" />
         </div>
 
-        <div class="go-back" onclick="history.back()">
-            <svg
-                xmlns="http://www.w3.org/2000/svg"
-                viewBox="0 0 60 60"
-                width="60"
-                height="60"
-                preserveAspectRatio="xMinYMin"
-            >
-                <path
-                    fill="none"
-                    transform="scale(1, 1)"
-                    stroke="var(--orange)"
-                    stroke-width="1"
-                    vector-effect="non-scaling-stroke"
-                    d="
-            M10,10 L50,50z
-            M10,50 L50,10z
-            "
-                />
-            </svg>
-            <span>Go back</span>
-        </div>
         <nav>
             <div class="scroll" id="scrollbar"></div>
         </nav>
 
-        <header class="header header--big">
-            <div
-                class="header__image"
-                style="background-image: url(./images/case/telegraph/lead.jpg)"
-            ></div>
+        <!-- <header class="header header--big">
+           
             <div class="header__text">
                 <h2 id="heading-featured-work">Telegraph - Travel</h2>
                 <span>Jun 2017 - Mar 2021</span>
-            </div>
-        </header>
 
-        <header class="header header--small">
-            <div class="header__image"></div>
+                <div
+                    class="header__image"
+                >
+                    <img src="./images/case/telegraph/lead.jpg" alt="">
+                </div>
+            </div>
+        </header> -->
+        <button class="switch-button"> switch theme</button>
+
+        <script>
+
+            const button = document.querySelector('.switch-button')
+            button.addEventListener('click', function (e) {
+                const header = document.querySelector('#header');
+                if (header.classList.contains('header--small')) {
+                    header.classList.remove('header--small');
+                    header.classList.add('header--big')
+                } else {
+                    header.classList.remove('header--big')
+                    header.classList.add('header--small');
+                }
+
+            })
+
+        </script>
+
+        <header id="header" class="header header--small">
             <div class="header__text">
-                <h2 id="heading-featured-work">Telegraph - Travel</h2>
-                <span>Jun 2017 - Mar 2021</span>
+                <h2 class="header__title" id="heading-featured-work">Telegraph - Travel</h2>
+
+                <span class="header__dates">Jun 2017 - Mar 2021</span>
+
+                <div class="header__image-container">
+                    <img class="header__image" src="./images/case/telegraph/lead.jpg" alt="">
+                </div>
+
             </div>
         </header>
 
-        <footer>
-            <a href="mailto:wisniewski.bart@gmail.com"
-                >wisniewski.bart@gmail.com</a
-            >
-        </footer>
-        <div class="go-back-2" onclick="history.back()">
-            <svg
-                xmlns="http://www.w3.org/2000/svg"
-                viewBox="0 0 100 100"
-                width="100"
-                height="100"
-                preserveAspectRatio="xMinYMin"
-            >
-                <path
-                    fill="none"
-                    transform="scale(1, 1)"
-                    stroke="var(--orange)"
-                    stroke-width="1"
-                    vector-effect="non-scaling-stroke"
-                    d="
-            M25,50 L75,0z
-            M25,50 L75,100z
+        <div class="the_rest">
+            <div class="aside">aside</div>
 
-            "
-                />
-            </svg>
-            <span>Go back</span>
+            <div class="rest_content">
+                <div class="cell">cell</div>
+                <div class="cell">cell</div>
+            </div>
+            <div class="aside">aside</div>
+            <div class="aside">aside</div>
+
+            <div class="rest_content">
+                <div class="cell">cell</div>
+                <div class="cell">cell</div>
+                <div class="cell">cell</div>
+            </div>
+            <div class="rest_content">
+                <div class="cell cell_2-3">cell 2/3</div>
+                <div class="cell cell_1-3">cell 1/3</div>
+                <div class="cell cell_1-3">cell 1/3</div>
+                <div class="cell cell_2-3">cell 2/3</div>
+                <div class="cell cell_1-2">cell 1/2</div>
+                <div class="cell cell_1-2">cell 1/2</div>
+                <div class="cell cell_1-2">cell 1/2</div>
+                <div class="cell cell_1-2">cell 1/2</div>
+            </div>
+            <div class="section_title">title</div>
+            
         </div>
+
     </body>
-    <script src="./script.js"></script>
+    <!-- <script src="./script.js"></script> -->
 
     <script></script>
 </html>

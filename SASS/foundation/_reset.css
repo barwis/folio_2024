@@ -1,0 +1,22 @@
+* {
+    box-sizing: border-box;
+}
+
+html,
+body {
+    background: var(--color-1) url('../images/bg.png');
+    margin: 0;
+    -webkit-text-size-adjust: 100%;
+    -webkit-font-smoothing: antialiased;
+    width: 100% !important;
+    margin: 0;
+    overflow-x: hidden !important;
+}
+
+body {
+    background-attachment: fixed;
+    font-size: 14px;
+    font-size: 1vw;
+    line-height: 20px;
+    background: var(--color-1) url('../images/bg.png');
+}

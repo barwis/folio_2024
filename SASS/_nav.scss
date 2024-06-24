@@ -1,0 +1,87 @@
+@import 'foundation/mixins';
+
+nav {
+    position: fixed;
+    display: none;
+    left: 0;
+    width: 100px;
+    height: 100vh;
+    border-right: 1px solid rgba(122, 122, 122, 0.1);
+    z-index: 99999;
+
+    @include desktop {
+        display: block;
+    }
+
+    .scroll {
+        position: fixed;
+        width: 100px;
+        top: 0;
+        height: 0px;
+        border-right: 1px solid #ff6945;
+        // border-right-color: var(--theme-color);
+    }
+}
+
+@keyframes example {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+.circle {
+    display: block !important;
+    position: absolute;
+    width: 100px !important;
+    height: 100px;
+    bottom: 5%;
+    left: 50%;
+    transform: translateX(-50%) translateY(-50%);
+    position: absolute;
+
+    @include desktop {
+        bottom: 10%;
+        right: 10%;
+        left: auto;
+        width: 120px !important;
+        height: 120px;
+    }
+
+    .scroll-line {
+        position: absolute;
+        left: 40px;
+        top: 50px;
+
+        @include desktop {
+            left: 50px;
+        }
+    }
+
+    .scroll-text {
+        animation: example 10s linear infinite;
+    }
+}
+
+.logo {
+    position: fixed;
+    left: 0;
+    top: 0;
+    transition: all 0.3s linear;
+    z-index: 999;
+    display: block;
+    height: 80px;
+    box-sizing: border-box;
+    width: 100%;
+    @include desktop {
+        width: 80px;
+        margin: 10px;
+    }
+
+    img {
+        height: 40px;
+        margin: 20px;
+    }
+}

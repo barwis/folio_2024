@@ -249,7 +249,7 @@ body {
 }
 @media (min-width: 768px) {
   .the_rest {
-    padding: 0 2em 50px 200px;
+    padding: 0 2em 250px 200px;
     display: grid;
     grid-template-columns: repeat(10, 1fr);
     margin-bottom: 300px;

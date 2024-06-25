@@ -1,6 +1,26 @@
 {
-  "editor.defaultFormatter": "esbenp.prettier-vscode",
-  "[javascript]": {
-    "editor.defaultFormatter": "esbenp.prettier-vscode"
-  }
+    "security.workspace.trust.untrustedFiles": "open",
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
+    "editor.formatOnSave": true,
+    "[javascript]": {
+        "editor.defaultFormatter": "esbenp.prettier-vscode"
+    },
+    "liveSassCompile.settings.compileOnWatch": false,
+    "liveSassCompile.settings.useNewCompiler": true,
+    "liveSassCompile.settings.showOutputWindowOn": "Warning",
+    "liveSassCompile.settings.formats": [
+        {
+            "format": "expanded",
+            "extensionName": ".css",
+            "savePath": null,
+            "savePathReplacementPairs": null
+        },
+        {
+            "format": "compressed",
+            "extensionName": "-min.css",
+            "savePath": null,
+            "savePathReplacementPairs": null,
+            "generateMap": true
+        }
+    ]
 }

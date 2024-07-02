@@ -339,6 +339,13 @@ section {
 }
 
 .work {
+    section {
+        gap: calc(var(--gutter) * 2) var(--gutter);
+
+        @include desktop {
+            gap: var(--gutter);
+        }
+    }
     .separator {
         display: none;
         grid-column: 3 / span 8;
@@ -352,7 +359,6 @@ section {
 
     a {
         grid-column-end: span 8;
-        margin-bottom: calc(var(--gutter) * 2);
         position: relative;
 
         @include desktop {
@@ -369,7 +375,6 @@ section {
 
         @include desktop {
             grid-column-end: span 4;
-            margin-bottom: 0;
 
             &:nth-child(2n) {
                 margin-top: 6em;
@@ -429,8 +434,7 @@ section {
             border-radius: 16px;
 
             @include desktop {
-                font-size: 1.27em;
-                line-height: 1.1;
+                font-size: 1em;
                 font-weight: 300;
                 background: none;
                 transform: rotate(0deg) translateY(-50%);

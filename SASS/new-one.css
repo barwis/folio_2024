@@ -471,6 +471,14 @@ section p {
   }
 }
 
+.work section {
+  gap: calc(var(--gutter) * 2) var(--gutter);
+}
+@media (min-width: 768px) {
+  .work section {
+    gap: var(--gutter);
+  }
+}
 .work .separator {
   display: none;
   grid-column: 3/span 8;
@@ -484,7 +492,6 @@ section p {
 }
 .work a {
   grid-column-end: span 8;
-  margin-bottom: calc(var(--gutter) * 2);
   position: relative;
 }
 @media (min-width: 768px) {
@@ -500,7 +507,6 @@ section p {
 @media (min-width: 768px) {
   .work a {
     grid-column-end: span 4;
-    margin-bottom: 0;
   }
   .work a:nth-child(2n) {
     margin-top: 6em;
@@ -559,8 +565,7 @@ section p {
 }
 @media (min-width: 768px) {
   .work a h4 {
-    font-size: 1.27em;
-    line-height: 1.1;
+    font-size: 1em;
     font-weight: 300;
     background: none;
     transform: rotate(0deg) translateY(-50%);

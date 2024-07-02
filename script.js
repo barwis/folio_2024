@@ -129,6 +129,8 @@ const animateWorks = (breakpoint) => {
 
     items.forEach((item, index) => {
         const delay = breakpoint === 'desktop' ? (index % 2) / 3 : 0;
+        const itemContainer = item.querySelector('.item-container');
+        itemContainer.addEventListener('click', createRipple, true);
         gsap.to(item, {
             scrollTrigger: {
                 start: start,
@@ -251,6 +253,7 @@ gsap.ticker.add((time) => {
 gsap.ticker.lagSmoothing(0);
 
 function createRipple(event) {
+    console.log(event);
     event.preventDefault();
     event.stopPropagation();
     const itemContainer = event.target.closest('.item-container');
@@ -284,9 +287,9 @@ function createRipple(event) {
         button.appendChild(circle);
     }
 
-    setTimeout(() => {
-        window.location.href = button.href;
-    }, 300);
+    // setTimeout(() => {
+    //     window.location.href = button.href;
+    // }, 300);
 }
 
 const animateShowcaseItems = () => {
@@ -514,6 +517,6 @@ document.addEventListener('readystatechange', (event) => {
         scrambleText();
     }
 });
-[...document.querySelectorAll('a.item')].forEach((item) =>
-    item.addEventListener('click', createRipple)
-);
+// [...document.querySelectorAll('a.item')].forEach((item) =>
+//     item.addEventListener('click', createRipple)
+// );

@@ -869,9 +869,6 @@ HERO
         width: 48%;
     }
 
-    .page .case-study p {
-        /* width: 60%; */
-    }
     .tech-stack {
         width: 60%;
         gap: 3em;

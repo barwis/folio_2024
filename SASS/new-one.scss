@@ -24,6 +24,24 @@ $orange: rgb(255, 105, 69);
 
 * {
     box-sizing: border-box;
+    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+    -webkit-tap-highlight-color: transparent;
+}
+
+@keyframes circleRotate {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+@keyframes ripple {
+    to {
+        transform: scale(4);
+        /* opacity: 0; */
+    }
 }
 
 html,
@@ -116,14 +134,15 @@ header {
         position: relative;
         margin-top: 186px;
         bottom: 5%;
+        cursor: pointer;
 
         @include desktop {
             position: absolute;
             bottom: 7em;
             right: 7em;
             left: auto;
-            width: 116px;
-            height: 116px;
+            width: 150px;
+            height: 150px;
             margin-top: 0;
         }
 
@@ -139,7 +158,10 @@ header {
             }
         }
 
-        .scroll-line {
+        .scroll-text {
+            animation: circleRotate 10s linear infinite;
+        }
+        .scroll-arrow {
             transform: translateY(-50%);
         }
     }
@@ -161,6 +183,7 @@ nav {
     flex-direction: row;
     justify-content: space-between;
     z-index: 9999;
+    border-right: 1px solid rgba(122, 122, 122, 0.1);
 
     @include desktop {
         width: var(--naw-width);
@@ -173,6 +196,14 @@ nav {
         display: block;
         width: 80px;
         height: 80px;
+        transition: all 0.3s linear;
+
+        &.scrolling-down {
+            transform: translateY(-100px);
+        }
+        &.scrolling-up {
+            transform: translateY(0px);
+        }
 
         @include desktop {
             margin: 10px;
@@ -194,7 +225,7 @@ nav {
 
     .scroll {
         position: absolute;
-        height: 100vh;
+        // height: 100vh;
         width: var(--naw-width);
         top: 0;
         display: none;
@@ -324,13 +355,15 @@ section {
         margin-bottom: calc(var(--gutter) * 2);
         position: relative;
 
-        &:hover {
-            .item-container {
-                clip-path: inset(2em 2em 2em 2em round 1em);
-            }
-            h4 {
-                transform: translateY(0);
-                opacity: 1;
+        @include desktop {
+            &:hover {
+                .item-container {
+                    clip-path: inset(2em 2em 2em 2em round 1em);
+                }
+                h4 {
+                    transform: translateY(0);
+                    opacity: 1;
+                }
             }
         }
 
@@ -348,6 +381,8 @@ section {
             overflow: hidden;
             transition: all 0.4s cubic-bezier(0.33, 1, 0.68, 1);
             clip-path: inset(0 0 0 0 round 1em);
+            display: block;
+            position: relative;
 
             .image-container {
                 width: 100%;
@@ -457,7 +492,7 @@ section {
         .hgroup {
             color: rgba(255, 255, 255, 0.5);
             text-transform: uppercase;
-            font-size: 16px;
+            font-size: 14px;
             opacity: 0.7;
             letter-spacing: 4px;
             display: grid;
@@ -613,10 +648,74 @@ section {
     }
 }
 
+.contact {
+    a {
+        font-size: 40px;
+        line-height: 2;
+        font-family: 'Helveticanowdisplay extlt';
+        font-weight: 400;
+        text-decoration: none;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin: 0 auto;
+        padding: 0;
+        border-radius: 100px;
+        background: var(--accent-color);
+        color: var(--color-1);
+        width: 200px;
+        height: 200px;
+        position: relative;
+        overflow: hidden;
+        cursor: pointer;
+        grid-column: 1 / span var(--col-num);
+
+        @include desktop {
+            font-size: 8em;
+            width: auto;
+            height: auto;
+            background: none;
+            color: var(--accent-color);
+            position: relative;
+            border-radius: 0;
+            overflow: visible;
+            line-height: 1.1;
+
+            &::after {
+                transition: all 300ms cubic-bezier(0.25, 1, 0.5, 1);
+                content: '';
+                position: absolute;
+                display: block;
+                left: 0;
+                bottom: 0;
+                background: var(--accent-color);
+                height: 5px;
+                width: 0%;
+                cursor: pointer;
+            }
+
+            &:hover::after {
+                width: 100%;
+            }
+        }
+    }
+}
+
+.ripple {
+    display: block;
+    position: absolute;
+    border-radius: 50%;
+    transform: scale(0);
+    animation: ripple 600ms linear;
+    background-color: rgba(255, 255, 255, 0.7);
+    clip-path: inset(0 0 0 0 round 1em);
+}
+
 .separator {
     border-top: 1px solid hsla(0, 0%, 100%, 0.15);
     display: block;
     height: 1px;
+    margin-top: -1px;
 
     @include desktop {
         display: block;

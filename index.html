@@ -1,495 +1,522 @@
 <!DOCTYPE html>
-<html lang="en" class="scroll">
+<html lang="en" class="scroll lenis">
     <head>
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <title>[WIP] - Bart Wisniewski</title>
-        <link
-            rel="icon"
-            class="js-site-favicon"
-            type="image/svg+xml"
-            href="./favicon.svg"
-        />
+        <link rel="icon" type="image/svg+xml" href="./favicon.svg" />
         <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/2.1.2/TweenMax.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.9.1/gsap.min.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/TextPlugin.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.9.1/ScrollTrigger.min.js"></script>
         <script src="./ScrambleTextPlugin3.js"></script>
-
         <script src="./lenis.min.js"></script>
 
-        <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-        <link
-            href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap"
-            rel="stylesheet"
-        />
-        <link
-            href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400..900&display=swap"
-            rel="stylesheet"
-        />
         <style>
             :root {
                 --theme-color: #02c3aa;
             }
         </style>
-        <link rel="stylesheet" href="./SASS/style.css" />
+        <link rel="stylesheet" href="./SASS/new-one.css" />
     </head>
-    <body>
-        <div class="circle">
-            <div class="scroll-text-wrapper" id="scroll-text-wrapper">
+    <body id="body">
+        <nav>
+            <div class="logo" id="logo">
+                <img height="40px" src="./images/logo.svg" alt="" />
+            </div>
+            <!-- <div class="menu">=</div> -->
+            <div class="scroll" id="scrollbar"></div>
+        </nav>
+        <header>
+            <h1>
+                <span id="h-1">Hey there!</span>
+                <span id="h-2">I am Bart</span>
+            </h1>
+            <div id="h-tag" class="tagline">
+                <span id="sh1"></span>
+                <span class="orange" id="sh2"></span>
+                <div class="side" id="sh3"></div>
+            </div>
+
+            <div class="circle">
+                <div class="scroll-text-wrapper" id="scroll-text-wrapper">
+                    <img
+                        src="./images/assets/scroll-circle.svg"
+                        class="scroll-text"
+                        id="scroll-text"
+                        alt=""
+                    />
+                </div>
                 <img
-                    src="./images/assets/scroll-circle.svg"
-                    class="scroll-text"
-                    id="scroll-text"
+                    src="./images/assets/scroll-arrow.svg"
+                    class="scroll-arrow"
+                    id="scroll-arrow"
                     alt=""
                 />
             </div>
-            <img
-                src="./images/assets/scroll-arrow.svg"
-                class="scroll-line"
-                id="scroll-line"
-                style="fill: red"
-                alt=""
-            />
-        </div>
-        <div class="logo" id="logo">
-            <img height="40" src="./images/logo.svg" alt="" />
-        </div>
-        <nav>
-            <div class="scroll" id="scrollbar"></div>
-        </nav>
-        <div class="page hero">
-            <div class="p1 p1-1" id="p1-1">
-                <h1 style="clip-path: url(#mask)">Hey there!</h1>
-            </div>
-            <div class="p1 p1-2" id="p1-2">
-                <h1>I am <span>Bart</span></h1>
-            </div>
-            <div id="p1-tag" class="tagline">
-                <div id="p1-tag-span"></div>
-                <div id="p1-tag-span-orange" class="orange"></div>
-                <div id="p1-tag-sidenote"></div>
-            </div>
-        </div>
+        </header>
+        <main id="main">
+            <article class="fact">
+                <div class="separator short"></div>
 
-        <div class="the_rest" id="page1">
-            <span class="separator short"></span>
-
-            <div class="section_title">
-                <h2 id="heading-about">About</h2>
-            </div>
-            <div class="rest_content">
-                <div class="cell cell_1-2 text">
-                    <p class="slide-up" id="slide-up-1">
-                        With over 15 years of experience as a&nbsp;software
-                        engineer, my expertise lies in front-end development.
-                        I&nbsp;have a&nbsp;proven track record of delivering
-                        high&#x2011;quality and scalable websites, web- and
-                        mobile applications using React and React Native.
+                <h2>About</h2>
+                <section>
+                    <p>
+                        With over 15 years of experience as a software engineer,
+                        my expertise lies in front-end development. I have a
+                        proven track record of delivering high‑quality and
+                        scalable websites, web- and mobile applications using
+                        React and React Native.
                     </p>
-                </div>
-            </div>
-        </div>
+                </section>
+            </article>
 
-        <div class="the_rest" id="page2">
-            <div class="section_title">
-                <h2 id="heading-featured-work">Featured work</h2>
-            </div>
-            <span class="separator"></span>
-
-            <div class="aside desktop-only">
-                Here are some examples of my best work
-                <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    viewBox="0 0 100 20"
-                    width="100"
-                    height="20"
-                    preserveAspectRatio="xMinYMin"
-                >
-                    <path
-                        fill="none"
-                        transform="scale(1, 1)"
-                        stroke="var(--orange)"
-                        stroke-width="1"
-                        vector-effect="non-scaling-stroke"
-                        d="
-                    M0,10 L100,10z 
-                    M99,10 L90,0z
-                    M99,10 L90,20z"
+            <article class="work">
+                <h2>Featured Work</h2>
+                <div class="separator"></div>
+                <aside>
+                    Here are some examples of my best work
+                    <img
+                        style="width: 2em; margin-top: 0.5em"
+                        src="./images/assets/arrow-right.svg"
+                        alt=""
                     />
-                </svg>
-            </div>
-            <div class="rest_content w">
-                <a class="cell_1-2 item" href="citi.html">
-                    <div class="item-container">
-                        <div class="image-container">
-                            <picture>
-                                <source
-                                    srcset="./images/1920-citi.jpg"
-                                    media="(min-width: 1366px)"
-                                />
-                                <source
-                                    srcset="./images/1600-citi.jpg"
-                                    media="(min-width: 768px)"
-                                />
-                                <source
-                                    srcset="./images/1366-citi.png"
-                                    media="(min-width: 640px)"
-                                />
-                                <img
-                                    src="./images/768-citi.jpg"
-                                    alt="Citi Bank"
-                                />
-                            </picture>
+                </aside>
+                <section>
+                    <a href="citi.html">
+                        <div class="item-container">
+                            <div class="image-container">
+                                <picture>
+                                    <source
+                                        srcset="./images/1920-citi.jpg"
+                                        media="(min-width: 1366px)"
+                                    />
+                                    <source
+                                        srcset="./images/1600-citi.jpg"
+                                        media="(min-width: 768px)"
+                                    />
+                                    <source
+                                        srcset="./images/1366-citi.png"
+                                        media="(min-width: 640px)"
+                                    />
+                                    <img
+                                        src="./images/768-citi.jpg"
+                                        alt="Citi Bank"
+                                    />
+                                </picture>
+                            </div>
                         </div>
-                    </div>
-                    <h4>Citi Bank</h4>
-                </a>
-                <a class="cell_1-2 item" href="nowtv.html">
-                    <div class="item-container">
-                        <div class="image-container">
-                            <picture>
-                                <source
-                                    srcset="./images/1920-nowtv.jpg"
-                                    media="(min-width: 1366px)"
-                                />
-                                <source
-                                    srcset="./images/1600-nowtv.jpg"
-                                    media="(min-width: 768px)"
-                                />
-                                <source
-                                    srcset="./images/1366-nowtv.jpg"
-                                    media="(min-width: 640px)"
-                                />
-                                <img src="./images/768-nowtv.jpg" alt="NowTV" />
-                            </picture>
+                        <h4>Citi Bank</h4>
+                    </a>
+                    <a href="nowtv.html">
+                        <div class="item-container">
+                            <div class="image-container">
+                                <picture>
+                                    <source
+                                        srcset="./images/1920-nowtv.jpg"
+                                        media="(min-width: 1366px)"
+                                    />
+                                    <source
+                                        srcset="./images/1600-nowtv.jpg"
+                                        media="(min-width: 768px)"
+                                    />
+                                    <source
+                                        srcset="./images/1366-nowtv.jpg"
+                                        media="(min-width: 640px)"
+                                    />
+                                    <img
+                                        src="./images/768-nowtv.jpg"
+                                        alt="NowTV"
+                                    />
+                                </picture>
+                            </div>
                         </div>
-                    </div>
-                    <h4>NowTV</h4>
-                </a>
-                <a href="" class="cell_1-2 item">
-                    <div class="item-container">
-                        <div class="image-container">
-                            <picture>
-                                <source
-                                    srcset="./images/1920-justeat.jpg"
-                                    media="(min-width: 1366px)"
-                                />
-                                <source
-                                    srcset="./images/1600-justeat.jpg"
-                                    media="(min-width: 768px)"
-                                />
-                                <source
-                                    srcset="./images/1366-justeat.jpg"
-                                    media="(min-width: 640px)"
-                                />
-                                <img
-                                    src="./images/768-justeat.jpg"
-                                    alt="JustEat"
-                                />
-                            </picture>
+                        <h4>NowTV</h4>
+                    </a>
+                    <a>
+                        <div class="item-container">
+                            <div class="image-container">
+                                <picture>
+                                    <source
+                                        srcset="./images/1920-justeat.jpg"
+                                        media="(min-width: 1366px)"
+                                    />
+                                    <source
+                                        srcset="./images/1600-justeat.jpg"
+                                        media="(min-width: 768px)"
+                                    />
+                                    <source
+                                        srcset="./images/1366-justeat.jpg"
+                                        media="(min-width: 640px)"
+                                    />
+                                    <img
+                                        src="./images/768-justeat.jpg"
+                                        alt="JustEat"
+                                    />
+                                </picture>
+                            </div>
                         </div>
-                    </div>
-                </a>
-                <a class="cell_1-2 item" href="telegraph.html">
-                    <div class="item-container">
-                        <div class="image-container">
-                            <picture>
-                                <source
-                                    srcset="./images/1920-telegraph.jpg"
-                                    media="(min-width: 1366px)"
-                                />
-                                <source
-                                    srcset="./images/1600-telegraph.jpg"
-                                    media="(min-width: 768px)"
-                                />
-                                <source
-                                    srcset="./images/1366-telegraph.jpg"
-                                    media="(min-width: 640px)"
-                                />
-                                <img
-                                    src="./images/768-telegraph.jpg"
-                                    alt="Telegraph Travel"
-                                />
-                            </picture>
+                        <h4>Just Eat</h4>
+                    </a>
+                    <a href="telegraph.html">
+                        <div class="item-container">
+                            <div class="image-container">
+                                <picture>
+                                    <source
+                                        srcset="./images/1920-telegraph.jpg"
+                                        media="(min-width: 1366px)"
+                                    />
+                                    <source
+                                        srcset="./images/1600-telegraph.jpg"
+                                        media="(min-width: 768px)"
+                                    />
+                                    <source
+                                        srcset="./images/1366-telegraph.jpg"
+                                        media="(min-width: 640px)"
+                                    />
+                                    <img
+                                        src="./images/768-telegraph.jpg"
+                                        alt="Telegraph Travel"
+                                    />
+                                </picture>
+                            </div>
                         </div>
-                    </div>
-                    <h4>The Telegraphg - Travel</h4>
-                </a>
+                        <h4>The Telegraphg - Travel</h4>
+                    </a>
+                    <a>
+                        <div class="item-container">
+                            <div class="image-container">
+                                <picture>
+                                    <source
+                                        srcset="./images/1920-virgin.jpg"
+                                        media="(min-width: 1366px)"
+                                    />
+                                    <source
+                                        srcset="./images/1600-virgin.jpg"
+                                        media="(min-width: 768px)"
+                                    />
+                                    <source
+                                        srcset="./images/1366-virgin.jpg"
+                                        media="(min-width: 640px)"
+                                    />
+                                    <img
+                                        src="./images/768-virgin.jpg"
+                                        alt="Virgin Holidays"
+                                    />
+                                </picture>
+                            </div>
+                        </div>
+                        <h4>Virgin Holidays</h4>
+                    </a>
+                    <a>
+                        <div class="item-container">
+                            <div class="image-container">
+                                <picture>
+                                    <source
+                                        srcset="./images/1920-sky.jpg"
+                                        media="(min-width: 1366px)"
+                                    />
+                                    <source
+                                        srcset="./images/1600-sky.jpg"
+                                        media="(min-width: 768px)"
+                                    />
+                                    <source
+                                        srcset="./images/1366-sky.jpg"
+                                        media="(min-width: 640px)"
+                                    />
+                                    <img src="./images/768-sky.jpg" alt="Sky" />
+                                </picture>
+                            </div>
+                        </div>
+                        <h4>Sky</h4>
+                    </a>
+                    <a>
+                        <div class="item-container">
+                            <div class="image-container">
+                                <picture>
+                                    <source
+                                        srcset="./images/1920-man-utd.jpg"
+                                        media="(min-width: 1366px)"
+                                    />
+                                    <source
+                                        srcset="./images/1600-man-utd.jpg"
+                                        media="(min-width: 768px)"
+                                    />
+                                    <source
+                                        srcset="./images/1366-man-utd.jpg"
+                                        media="(min-width: 640px)"
+                                    />
+                                    <img
+                                        src="./images/768-man-utd.jpg"
+                                        alt="Digitas LBi"
+                                    />
+                                </picture>
+                            </div>
+                        </div>
+                        <h4>Manchester United</h4>
+                    </a>
+                </section>
+            </article>
 
-                <a class="cell_1-2 item">
-                    <div class="item-container">
-                        <div class="image-container">
-                            <picture>
-                                <source
-                                    srcset="./images/1920-virgin.jpg"
-                                    media="(min-width: 1366px)"
-                                />
-                                <source
-                                    srcset="./images/1600-virgin.jpg"
-                                    media="(min-width: 768px)"
-                                />
-                                <source
-                                    srcset="./images/1366-virgin.jpg"
-                                    media="(min-width: 640px)"
-                                />
-                                <img
-                                    src="./images/768-virgin.jpg"
-                                    alt="Virgin Holidays"
-                                />
-                            </picture>
-                        </div>
-                    </div>
-                    <h4>Virgin Holidays</h4>
-                </a>
+            <article class="fact">
+                <div class="separator short"></div>
 
-                <a class="cell_1-2 item">
-                    <div class="item-container">
-                        <div class="image-container">
-                            <picture>
-                                <source
-                                    srcset="./images/1920-sky.jpg"
-                                    media="(min-width: 1366px)"
-                                />
-                                <source
-                                    srcset="./images/1600-sky.jpg"
-                                    media="(min-width: 768px)"
-                                />
-                                <source
-                                    srcset="./images/1366-sky.jpg"
-                                    media="(min-width: 640px)"
-                                />
-                                <img src="./images/768-sky.jpg" alt="Sky" />
-                            </picture>
-                        </div>
-                    </div>
-                    <h4>Sky</h4>
-                </a>
-
-                <a class="cell_1-2 item">
-                    <div class="item-container">
-                        <div class="image-container">
-                            <picture>
-                                <source
-                                    srcset="./images/1920-man-utd.jpg"
-                                    media="(min-width: 1366px)"
-                                />
-                                <source
-                                    srcset="./images/1600-man-utd.jpg"
-                                    media="(min-width: 768px)"
-                                />
-                                <source
-                                    srcset="./images/1366-man-utd.jpg"
-                                    media="(min-width: 640px)"
-                                />
-                                <img
-                                    src="./images/768-man-utd.jpg"
-                                    alt="Digitas LBi"
-                                />
-                            </picture>
-                        </div>
-                    </div>
-                    <h4>Manchester United</h4>
-                </a>
-            </div>
-        </div>
-
-        <div class="the_rest" id="page3">
-            <span class="separator short"></span>
-
-            <div class="section_title">
-                <h2 id="heading-about">Experience</h2>
-            </div>
-            <div class="rest_content">
-                <div class="cell cell_1-2 text">
-                    <p class="slide-up" id="slide-up-2">
-                        Throughout my career, I&nbsp;have successfully delivered
+                <h2>Experience</h2>
+                <section>
+                    <p>
+                        Throughout my career, I have successfully delivered
                         projects for both small and large clients, including
                         Citi bank, Telegraph, Sky, LBi, Barclays, E.on, and
-                        others. I&nbsp;am always eager to take on new and
-                        challenging projects where I&nbsp;can showcase my skills
-                        as a&nbsp;top-class engineer and mentor, ensuring the
-                        delivery of exceptional user experiences for clients.
+                        others. I am always eager to take on new and challenging
+                        projects where I can showcase my skills as a top-class
+                        engineer and mentor, ensuring the delivery of
+                        exceptional user experiences for clients.
                     </p>
+                </section>
+            </article>
+
+            <article class="skills">
+                <h2 class="padded">Skills</h2>
+
+                <div class="separator"></div>
+                <aside>Technologies I use in my everyday work</aside>
+                <section>
+                    <span class="hgroup">Skill</span>
+                    <span class="hgroup">Years of experience</span>
+
+                    <div class="skill-title">HTML/CSS</div>
+                    <div class="bar" data-years="10+">
+                        <div id="bar-1" style="width: 100%">10+</div>
+                    </div>
+                    <div class="value">10+</div>
+
+                    <div class="skill-title">JavaScript</div>
+                    <div class="bar" data-years="10+">
+                        <div style="width: 100%">10+</div>
+                    </div>
+                    <div class="value">10+</div>
+
+                    <div class="skill-title">TypeScript</div>
+                    <div class="bar" data-years="5">
+                        <div style="width: 50%">5</div>
+                    </div>
+                    <div class="value">5</div>
+
+                    <div class="skill-title">React</div>
+                    <div class="bar" data-years="8">
+                        <div style="width: 80%">8</div>
+                    </div>
+                    <div class="value">8</div>
+
+                    <div class="skill-title">npm / yarn</div>
+                    <div class="bar" data-years="8">
+                        <div style="width: 80%">8</div>
+                    </div>
+                    <div class="value">8</div>
+
+                    <div class="skill-title">GraphQL</div>
+                    <div class="bar" data-years="3">
+                        <div style="width: 30%">3</div>
+                    </div>
+                    <div class="value">3</div>
+
+                    <div class="skill-title">NodeJS</div>
+                    <div class="bar" data-years="7">
+                        <div style="width: 70%">7</div>
+                    </div>
+                    <div class="value">7</div>
+
+                    <div class="skill-title">Jest / Vite / RTL</div>
+                    <div class="bar" data-years="6">
+                        <div style="width: 60%">6</div>
+                    </div>
+                    <div class="value">6</div>
+
+                    <div class="skill-title">Storybook</div>
+                    <div class="bar" data-years="2">
+                        <div style="width: 20%">2</div>
+                    </div>
+                    <div class="value">2</div>
+
+                    <div class="skill-title">webpack / babel</div>
+                    <div class="bar" data-years="7">
+                        <div style="width: 70%">7</div>
+                    </div>
+                    <div class="value">7</div>
+
+                    <div class="skill-title">Docker</div>
+                    <div class="bar" data-years="6">
+                        <div style="width: 60%">6</div>
+                    </div>
+                    <div class="value">6</div>
+                </section>
+                <div class="separator short"></div>
+
+                <aside>
+                    Technologies I&nbsp;used before, or use on personal projects
+                </aside>
+                <section class="skiull-subtitle">
+                    <div class="hgroup full">
+                        Technologies I&nbsp;used before, or use on personal
+                        projects
+                    </div>
+                </section>
+
+                <section>
+                    <div class="skill-title">Jenkins</div>
+                    <div class="bar" data-years="6">
+                        <div id="bar-12" style="width: 60%">6</div>
+                    </div>
+                    <div class="value">6</div>
+
+                    <div class="skill-title">React Native</div>
+                    <div class="bar" data-years="3">
+                        <div id="bar-13" style="width: 30%">3</div>
+                    </div>
+                    <div class="value">3</div>
+
+                    <div class="skill-title">MongoDB</div>
+                    <div class="bar" data-years="3">
+                        <div id="bar-14" style="width: 30%">3</div>
+                    </div>
+                    <div class="value">3</div>
+
+                    <div class="skill-title">AWS</div>
+                    <div class="bar" data-years="6">
+                        <div id="bar-15" style="width: 60%">3</div>
+                    </div>
+                    <div class="value">6</div>
+
+                    <div class="skill-title">Python</div>
+                    <div class="bar" data-years="4">
+                        <div id="bar-16" style="width: 40%">4</div>
+                    </div>
+                    <div class="value">4</div>
+
+                    <div class="skill-title">PHP</div>
+                    <div class="bar" data-years="6">
+                        <div id="bar-17" style="width: 60%">4</div>
+                    </div>
+                    <div class="value">6</div>
+
+                    <div class="skill-title">Java</div>
+                    <div class="bar" data-years="4">
+                        <div id="bar-18" style="width: 40%">4</div>
+                    </div>
+                    <div class="value">4</div>
+
+                    <div class="skill-title">SQL</div>
+                    <div class="bar" data-years="6">
+                        <div id="bar-19" style="width: 60%">6</div>
+                    </div>
+                    <div class="value">6</div>
+
+                    <div class="skill-title">C#</div>
+                    <div class="bar" data-years="2">
+                        <div id="bar-20" style="width: 20%">2</div>
+                    </div>
+                    <div class="value">2</div>
+                </section>
+            </article>
+
+            <article class="fact">
+                <div class="separator short"></div>
+
+                <h2>Teamwork</h2>
+                <section>
+                    <p>
+                        I excel at bridging the gap between designers and
+                        back-end developers, appreciating the value of
+                        responsive and accessible designs, which makes me a
+                        favourite collaborator for designers. Similarly, my
+                        ability to create structured, maintainable, and testable
+                        codebases has earned the trust and admiration of fellow
+                        developers.
+                    </p>
+                </section>
+            </article>
+
+            <!-- <article class="recommendations">
+                <h2>What are others saying about me?</h2>
+                <div class="separator"></div>
+                <section>
+                    <p class="indent--mobile">
+                        Throughout my career, I have successfully delivered
+                        projects for both small and large clients, including
+                        Citi bank, Telegraph, Sky, LBi, Barclays, E.on, and
+                        others. I am always eager to take on new and challenging
+                        projects where I can showcase my skills as a top-class
+                        engineer and mentor, ensuring the delivery of
+                        exceptional user experiences for clients.
+                    </p>
+                    <h3>Tim Mustafa</h3>
+                    <span>Delivery Manager</span>
+                </section>
+            </article> -->
+
+            <article class="contact">
+                <a href="mailto:wisniewski.bart@gmail.com" id="contact"
+                    >Let's talk!</a
+                >
+            </article>
+        </main>
+
+        <!-- <header class="header header--big">
+           
+            <div class="header__text">
+                <h2 id="heading-featured-work">Telegraph - Travel</h2>
+                <span>Jun 2017 - Mar 2021</span>
+
+                <div
+                    class="header__image"
+                >
+                    <img src="./images/case/telegraph/lead.jpg" alt="">
                 </div>
             </div>
-        </div>
+        </header> -->
+        <!-- <button class="switch-button">switch theme</button> -->
 
-        <div class="the_rest" id="page4">
-            <div class="section_title">
-                <h2 id="heading-skills">Skills</h2>
+        <!-- <header id="header" class="header header--small">
+            <div class="header__text">
+                <h2 class="header__title" id="heading-featured-work">Telegraph - Travel</h2>
+
+                <span class="header__dates">Jun 2017 - Mar 2021</span>
+
+                <div class="header__image-container">
+                    <img class="header__image" src="./images/case/telegraph/lead.jpg" alt="">
+                </div>
+
             </div>
-            <span class="separator"></span>
+        </header> -->
+        <!-- 
+        <div class="the_rest">
+            <div class="aside">aside</div>
 
-            <div class="aside desktop-only">
-                Technologies I use in my everyday work
+            <div class="rest_content">
+                <div class="cell">cell</div>
+                <div class="cell">cell</div>
             </div>
-            <div class="rest_content skills">
-                <h3 class="skill-title">Skill</h3>
-                <h3 class="yoe">Years of experience</h3>
+            <div class="aside">aside</div>
+            <div class="aside">aside</div>
 
-                <h4 class="skill-title">HTML/CSS</h4>
-                <div class="bar" data-years="10+">
-                    <div id="bar-1"><h3>10+</h3></div>
-                </div>
-                <div class="value">10+</div>
-
-                <h4 class="skill-title">JavaScript</h4>
-                <div class="bar" data-years="10+">
-                    <div id="bar-2"><h3>10+</h3></div>
-                </div>
-                <div class="value">10+</div>
-
-                <h4 class="skill-title">TypeScript</h4>
-                <div class="bar" data-years="5">
-                    <div id="bar-3" data-years="6"><h3>5</h3></div>
-                </div>
-                <div class="value">5</div>
-
-                <h4 class="skill-title">React</h4>
-                <div class="bar" data-years="8">
-                    <div id="bar-4"><h3>8</h3></div>
-                </div>
-                <div class="value">8</div>
-
-                <h4 class="skill-title">npm / yarn</h4>
-                <div class="bar" data-years="8">
-                    <div id="bar-5"><h3>8</h3></div>
-                </div>
-                <div class="value">8</div>
-
-                <h4 class="skill-title">GraphQL</h4>
-                <div class="bar" data-years="3">
-                    <div id="bar-6"><h3>3</h3></div>
-                </div>
-                <div class="value">3</div>
-
-                <h4 class="skill-title">NodeJS</h4>
-                <div class="bar" data-years="7">
-                    <div id="bar-7"><h3>7</h3></div>
-                </div>
-                <div class="value">7</div>
-
-                <h4 class="skill-title">Jest / Vite / RTL</h4>
-                <div class="bar" data-years="6">
-                    <div id="bar-8"><h3>6</h3></div>
-                </div>
-                <div class="value">6</div>
-
-                <h4 class="skill-title">Storybook</h4>
-                <div class="bar" data-years="2">
-                    <div id="bar-9"><h3>2</h3></div>
-                </div>
-                <div class="value">2</div>
-
-                <h4 class="skill-title">webpack / babel</h4>
-                <div class="bar" data-years="7">
-                    <div id="bar-10"><h3>7</h3></div>
-                </div>
-                <div class="value">7</div>
-
-                <h4 class="skill-title">Docker</h4>
-                <div class="bar" data-years="6">
-                    <div id="bar-11"><h3>6</h3></div>
-                </div>
-                <div class="value">6</div>
-
-                <h3 class="heading">
-                    Also used before or using on personal projects
-                </h3>
-
-                <h4 class="skill-title">Jenkins</h4>
-                <div class="bar" data-years="6">
-                    <div id="bar-12"><h3>6</h3></div>
-                </div>
-                <div class="value">6</div>
-
-                <h4 class="skill-title">React Native</h4>
-                <div class="bar" data-years="3">
-                    <div id="bar-13"><h3>3</h3></div>
-                </div>
-                <div class="value">3</div>
-
-                <h4 class="skill-title">MongoDB</h4>
-                <div class="bar" data-years="3">
-                    <div id="bar-14"><h3>3</h3></div>
-                </div>
-                <div class="value">3</div>
-
-                <h4 class="skill-title">AWS</h4>
-                <div class="bar" data-years="6">
-                    <div id="bar-15"><h3>6</h3></div>
-                </div>
-                <div class="value">6</div>
-
-                <h4 class="skill-title">Python</h4>
-                <div class="bar" data-years="4">
-                    <div id="bar-16"><h3>4</h3></div>
-                </div>
-                <div class="value">4</div>
-
-                <h4 class="skill-title">PHP</h4>
-                <div class="bar" data-years="6">
-                    <div id="bar-17"><h3>6</h3></div>
-                </div>
-                <div class="value">6</div>
-
-                <h4 class="skill-title">Java</h4>
-                <div class="bar" data-years="4">
-                    <div id="bar-18"><h3>4</h3></div>
-                </div>
-                <div class="value">4</div>
-
-                <h4 class="skill-title">SQL</h4>
-                <div class="bar" data-years="6">
-                    <div id="bar-19"><h3>6</h3></div>
-                </div>
-                <div class="value">6</div>
-
-                <h4 class="skill-title">C#</h4>
-                <div class="bar" data-years="2">
-                    <div id="bar-20"><h3>2</h3></div>
-                </div>
-                <div class="value">2</div>
-            </div>
-        </div>
-
-        <div class="the_rest" id="page4">
-            <span class="separator short"></span>
-
-            <div class="section_title">
-                <h2 id="heading-teamwork">Teamwork</h2>
+            <div class="rest_content">
+                <div class="cell">cell</div>
+                <div class="cell">cell</div>
+                <div class="cell">cell</div>
             </div>
             <div class="rest_content">
-                <div class="cell cell_1-2 text">
-                    <p class="slide-up" id="slide-up-3">
-                        I&nbsp;excel at bridging the gap between designers and
-                        back-end developers, appreciating the value of
-                        responsive and accessible designs, which makes me
-                        a&nbsp;favourite collaborator for designers. Similarly,
-                        my ability to create structured, maintainable, and
-                        testable codebases has earned the trust and admiration
-                        of&nbsp;fellow developers.
-                    </p>
-                </div>
+                <div class="cell cell_2-3">cell 2/3</div>
+                <div class="cell cell_1-3">cell 1/3</div>
+                <div class="cell cell_1-3">cell 1/3</div>
+                <div class="cell cell_2-3">cell 2/3</div>
+                <div class="cell cell_1-2">cell 1/2</div>
+                <div class="cell cell_1-2">cell 1/2</div>
+                <div class="cell cell_1-2">cell 1/2</div>
+                <div class="cell cell_1-2">cell 1/2</div>
             </div>
-        </div>
-
-        <div class="page contact-page" id="contact-page">
-            <a
-                href="mailto:wisniewski.bart@gmail.com"
-                id="contact"
-                class="contact"
-                >Let's talk!</a
-            >
-        </div>
-
-        <footer>
-            <a href="mailto:wisniewski.bart@gmail.com"
-                >wisniewski.bart@gmail.com</a
-            >
-        </footer>
-        <script src="./script.js"></script>
+            <div class="section_title">title</div>
+        </div> -->
+        <script src="./script2.js"></script>
     </body>
+    <!-- <script src="./script.js"></script> -->
 </html>

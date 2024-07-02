@@ -423,7 +423,7 @@ const texts = [
     ['and I turn caffeine', 'into websites', '( weird flex, but OK... )'],
 ];
 
-function shuffle(array) {
+function shuffleArray(array) {
     let currentIndex = array.length,
         temporaryValue,
         randomIndex;
@@ -440,13 +440,13 @@ function shuffle(array) {
     return array;
 }
 
-function* random(array) {
+function* getRandomArrayItem(array) {
     let index = Infinity;
     const items = array.slice(); //take a copy of the array;
 
     while (true) {
         if (index >= array.length) {
-            shuffle(items);
+            shuffleArray(items);
             index = 0;
         }
 
@@ -468,7 +468,7 @@ const scrambleText = () => {
 
     gsap.registerPlugin(ScrambleTextPlugin);
 
-    const randomText = random(texts);
+    const randomText = getRandomArrayItem(texts);
 
     const animate = () => {
         span1.innerHTML = '';

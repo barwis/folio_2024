@@ -64,6 +64,7 @@
 body {
     font-family: 'Helveticanowdisplay extlt', sans-serif;
     color: rgba(255, 255, 255, 0.5);
+    font-size: 1vw;
 }
 
 h1 {
@@ -102,12 +103,10 @@ h2 {
 }
 
 h3 {
-    letter-spacing: 4px;
     // text-transform: uppercase;
     // font-size: 12px;
-    font-size: 42px;
-    font-family: 'Helveticanowdisplay extlt', sans-serif;
-    color: rgba(255, 255, 255, 0.5);
+    font-family: 'Wulkan display', sans-serif;
+    color: rgba(255, 255, 255, 1);
     font-weight: normal;
     line-height: 1;
     padding: 0;
@@ -115,7 +114,6 @@ h3 {
 
     @include desktop {
         // font-size: 0.8em;
-        font-size: 5.07em;
     }
 }
 
@@ -136,14 +134,9 @@ h4 {
 p {
     color: rgba(255, 255, 255, 0.5);
     font-family: 'Helveticanowdisplay extlt', sans-serif;
-    // font-size: 21px;
     letter-spacing: 0.2px;
     line-height: 1.3;
     margin: 0;
-
-    @include desktop {
-        font-size: 1.27em;
-    }
 }
 
 a {

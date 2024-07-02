@@ -9,6 +9,7 @@
         <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.9.1/gsap.min.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/TextPlugin.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.9.1/ScrollTrigger.min.js"></script>
+        <script src="./ScrambleTextPlugin3.js"></script>
         <script src="./lenis.min.js"></script>
 
         <style>
@@ -23,20 +24,39 @@
             <div class="logo" id="logo">
                 <img height="40px" src="./images/logo.svg" alt="" />
             </div>
-            <div class="menu">=</div>
+            <!-- <div class="menu">=</div> -->
             <div class="scroll" id="scrollbar"></div>
         </nav>
-        <header>header</header>
-        <main>
-            <article>
-                <h2>Featured Work</h2>
-                <div class="separator"></div>
-                <aside></aside>
-                <section>
-                    <p>work</p>
-                </section>
-            </article>
+        <header>
+            <h1>
+                <span>Hey there!</span>
+                <span>I am Bart</span>
+            </h1>
+            <!-- <div class="tagline">
+                <span id="sh1"></span>
+                <span class="orange" id="sh2"></span>
+            </div>
+            <div class="side" id="sh3"></div> -->
 
+            <div class="circle">
+                <div class="scroll-text-wrapper" id="scroll-text-wrapper">
+                    <img
+                        src="./images/assets/scroll-circle.svg"
+                        class="scroll-text"
+                        id="scroll-text"
+                        alt=""
+                    />
+                </div>
+                <img
+                    src="./images/assets/scroll-arrow.svg"
+                    class="scroll-line"
+                    id="scroll-line"
+                    style="fill: red"
+                    alt=""
+                />
+            </div>
+        </header>
+        <main>
             <article class="fact">
                 <div class="separator short"></div>
 
@@ -51,9 +71,379 @@
                     </p>
                 </section>
             </article>
+
+            <article class="work">
+                <h2>Featured Work</h2>
+                <div class="separator"></div>
+                <aside>
+                    Here are some examples of my best work
+                    <img
+                        style="width: 2em; margin-top: 0.5em"
+                        src="./images/assets/arrow-right.svg"
+                        alt=""
+                    />
+                </aside>
+                <section>
+                    <a
+                        class="cell_1-2 item"
+                        href="citi.html"
+                        style="transform: translate(0px, 0px); opacity: 1"
+                    >
+                        <div class="item-container">
+                            <div class="image-container">
+                                <picture>
+                                    <source
+                                        srcset="./images/1920-citi.jpg"
+                                        media="(min-width: 1366px)"
+                                    />
+                                    <source
+                                        srcset="./images/1600-citi.jpg"
+                                        media="(min-width: 768px)"
+                                    />
+                                    <source
+                                        srcset="./images/1366-citi.png"
+                                        media="(min-width: 640px)"
+                                    />
+                                    <img
+                                        src="./images/768-citi.jpg"
+                                        alt="Citi Bank"
+                                    />
+                                </picture>
+                            </div>
+                        </div>
+                        <h4>Citi Bank</h4>
+                    </a>
+                    <a href="nowtv.html">
+                        <div class="item-container">
+                            <div class="image-container">
+                                <picture>
+                                    <source
+                                        srcset="./images/1920-nowtv.jpg"
+                                        media="(min-width: 1366px)"
+                                    />
+                                    <source
+                                        srcset="./images/1600-nowtv.jpg"
+                                        media="(min-width: 768px)"
+                                    />
+                                    <source
+                                        srcset="./images/1366-nowtv.jpg"
+                                        media="(min-width: 640px)"
+                                    />
+                                    <img
+                                        src="./images/768-nowtv.jpg"
+                                        alt="NowTV"
+                                    />
+                                </picture>
+                            </div>
+                        </div>
+                        <h4>NowTV</h4>
+                    </a>
+                    <a>
+                        <div class="item-container">
+                            <div class="image-container">
+                                <picture>
+                                    <source
+                                        srcset="./images/1920-justeat.jpg"
+                                        media="(min-width: 1366px)"
+                                    />
+                                    <source
+                                        srcset="./images/1600-justeat.jpg"
+                                        media="(min-width: 768px)"
+                                    />
+                                    <source
+                                        srcset="./images/1366-justeat.jpg"
+                                        media="(min-width: 640px)"
+                                    />
+                                    <img
+                                        src="./images/768-justeat.jpg"
+                                        alt="JustEat"
+                                    />
+                                </picture>
+                            </div>
+                        </div>
+                        <h4>Just Eat</h4>
+                    </a>
+                    <a href="telegraph.html">
+                        <div class="item-container">
+                            <div class="image-container">
+                                <picture>
+                                    <source
+                                        srcset="./images/1920-telegraph.jpg"
+                                        media="(min-width: 1366px)"
+                                    />
+                                    <source
+                                        srcset="./images/1600-telegraph.jpg"
+                                        media="(min-width: 768px)"
+                                    />
+                                    <source
+                                        srcset="./images/1366-telegraph.jpg"
+                                        media="(min-width: 640px)"
+                                    />
+                                    <img
+                                        src="./images/768-telegraph.jpg"
+                                        alt="Telegraph Travel"
+                                    />
+                                </picture>
+                            </div>
+                        </div>
+                        <h4>The Telegraphg - Travel</h4>
+                    </a>
+                    <a>
+                        <div class="item-container">
+                            <div class="image-container">
+                                <picture>
+                                    <source
+                                        srcset="./images/1920-virgin.jpg"
+                                        media="(min-width: 1366px)"
+                                    />
+                                    <source
+                                        srcset="./images/1600-virgin.jpg"
+                                        media="(min-width: 768px)"
+                                    />
+                                    <source
+                                        srcset="./images/1366-virgin.jpg"
+                                        media="(min-width: 640px)"
+                                    />
+                                    <img
+                                        src="./images/768-virgin.jpg"
+                                        alt="Virgin Holidays"
+                                    />
+                                </picture>
+                            </div>
+                        </div>
+                        <h4>Virgin Holidays</h4>
+                    </a>
+                    <a>
+                        <div class="item-container">
+                            <div class="image-container">
+                                <picture>
+                                    <source
+                                        srcset="./images/1920-sky.jpg"
+                                        media="(min-width: 1366px)"
+                                    />
+                                    <source
+                                        srcset="./images/1600-sky.jpg"
+                                        media="(min-width: 768px)"
+                                    />
+                                    <source
+                                        srcset="./images/1366-sky.jpg"
+                                        media="(min-width: 640px)"
+                                    />
+                                    <img src="./images/768-sky.jpg" alt="Sky" />
+                                </picture>
+                            </div>
+                        </div>
+                        <h4>Sky</h4>
+                    </a>
+                    <a>
+                        <div class="item-container">
+                            <div class="image-container">
+                                <picture>
+                                    <source
+                                        srcset="./images/1920-man-utd.jpg"
+                                        media="(min-width: 1366px)"
+                                    />
+                                    <source
+                                        srcset="./images/1600-man-utd.jpg"
+                                        media="(min-width: 768px)"
+                                    />
+                                    <source
+                                        srcset="./images/1366-man-utd.jpg"
+                                        media="(min-width: 640px)"
+                                    />
+                                    <img
+                                        src="./images/768-man-utd.jpg"
+                                        alt="Digitas LBi"
+                                    />
+                                </picture>
+                            </div>
+                        </div>
+                        <h4>Manchester United</h4>
+                    </a>
+                </section>
+            </article>
+
+            <article class="fact">
+                <div class="separator short"></div>
+
+                <h2>Experience</h2>
+                <section>
+                    <p>
+                        Throughout my career, I have successfully delivered
+                        projects for both small and large clients, including
+                        Citi bank, Telegraph, Sky, LBi, Barclays, E.on, and
+                        others. I am always eager to take on new and challenging
+                        projects where I can showcase my skills as a top-class
+                        engineer and mentor, ensuring the delivery of
+                        exceptional user experiences for clients.
+                    </p>
+                </section>
+            </article>
+
+            <article class="skills">
+                <h2 class="padded">Skills</h2>
+
+                <div class="separator"></div>
+                <aside>Technologies I use in my everyday work</aside>
+                <section>
+                    <span class="hgroup">Skill</span>
+                    <span class="hgroup">Years of experience</span>
+
+                    <div class="skill-title">HTML/CSS</div>
+                    <div class="bar" data-years="10+">
+                        <div id="bar-1" style="width: 100%">10+</div>
+                    </div>
+                    <div class="value">10+</div>
+
+                    <div class="skill-title">JavaScript</div>
+                    <div class="bar" data-years="10+">
+                        <div style="width: 100%">10+</div>
+                    </div>
+                    <div class="value">10+</div>
+
+                    <div class="skill-title">TypeScript</div>
+                    <div class="bar" data-years="5">
+                        <div style="width: 50%">5</div>
+                    </div>
+                    <div class="value">5</div>
+
+                    <div class="skill-title">React</div>
+                    <div class="bar" data-years="8">
+                        <div style="width: 80%">8</div>
+                    </div>
+                    <div class="value">8</div>
+
+                    <div class="skill-title">npm / yarn</div>
+                    <div class="bar" data-years="8">
+                        <div style="width: 80%">8</div>
+                    </div>
+                    <div class="value">8</div>
+
+                    <div class="skill-title">GraphQL</div>
+                    <div class="bar" data-years="3">
+                        <div style="width: 30%">3</div>
+                    </div>
+                    <div class="value">3</div>
+
+                    <div class="skill-title">NodeJS</div>
+                    <div class="bar" data-years="7">
+                        <div style="width: 70%">7</div>
+                    </div>
+                    <div class="value">7</div>
+
+                    <div class="skill-title">Jest / Vite / RTL</div>
+                    <div class="bar" data-years="6">
+                        <div style="width: 60%">6</div>
+                    </div>
+                    <div class="value">6</div>
+
+                    <div class="skill-title">Storybook</div>
+                    <div class="bar" data-years="2">
+                        <div style="width: 20%">2</div>
+                    </div>
+                    <div class="value">2</div>
+
+                    <div class="skill-title">webpack / babel</div>
+                    <div class="bar" data-years="7">
+                        <div style="width: 70%">7</div>
+                    </div>
+                    <div class="value">7</div>
+
+                    <div class="skill-title">Docker</div>
+                    <div class="bar" data-years="6">
+                        <div style="width: 60%">6</div>
+                    </div>
+                    <div class="value">6</div>
+                </section>
+                <div class="separator short"></div>
+
+                <aside>
+                    Technologies I&nbsp;used before, or use on personal projects
+                </aside>
+                <section class="skiull-subtitle">
+                    <div class="hgroup full">
+                        Technologies I&nbsp;used before, or use on personal
+                        projects
+                    </div>
+                </section>
+
+                <section>
+                    <div class="skill-title">Jenkins</div>
+                    <div class="bar" data-years="6">
+                        <div id="bar-12" style="width: 60%">6</div>
+                    </div>
+                    <div class="value">6</div>
+
+                    <div class="skill-title">React Native</div>
+                    <div class="bar" data-years="3">
+                        <div id="bar-13" style="width: 30%">3</div>
+                    </div>
+                    <div class="value">3</div>
+
+                    <div class="skill-title">MongoDB</div>
+                    <div class="bar" data-years="3">
+                        <div id="bar-14" style="width: 30%">3</div>
+                    </div>
+                    <div class="value">3</div>
+
+                    <div class="skill-title">AWS</div>
+                    <div class="bar" data-years="6">
+                        <div id="bar-15" style="width: 60%">3</div>
+                    </div>
+                    <div class="value">6</div>
+
+                    <div class="skill-title">Python</div>
+                    <div class="bar" data-years="4">
+                        <div id="bar-16" style="width: 40%">4</div>
+                    </div>
+                    <div class="value">4</div>
+
+                    <div class="skill-title">PHP</div>
+                    <div class="bar" data-years="6">
+                        <div id="bar-17" style="width: 60%">4</div>
+                    </div>
+                    <div class="value">6</div>
+
+                    <div class="skill-title">Java</div>
+                    <div class="bar" data-years="4">
+                        <div id="bar-18" style="width: 40%">4</div>
+                    </div>
+                    <div class="value">4</div>
+
+                    <div class="skill-title">SQL</div>
+                    <div class="bar" data-years="6">
+                        <div id="bar-19" style="width: 60%">6</div>
+                    </div>
+                    <div class="value">6</div>
+
+                    <div class="skill-title">C#</div>
+                    <div class="bar" data-years="2">
+                        <div id="bar-20" style="width: 20%">2</div>
+                    </div>
+                    <div class="value">2</div>
+                </section>
+            </article>
+
+            <article class="fact">
+                <div class="separator short"></div>
+
+                <h2>Teamwork</h2>
+                <section>
+                    <p>
+                        I excel at bridging the gap between designers and
+                        back-end developers, appreciating the value of
+                        responsive and accessible designs, which makes me a
+                        favourite collaborator for designers. Similarly, my
+                        ability to create structured, maintainable, and testable
+                        codebases has earned the trust and admiration of fellow
+                        developers.
+                    </p>
+                </section>
+            </article>
+
             <article class="recommendations">
                 <h2>What are others saying about me?</h2>
-                <div class="separator short"></div>
+                <div class="separator"></div>
                 <section>
                     <p class="indent--mobile">
                         Throughout my career, I have successfully delivered
@@ -64,6 +454,8 @@
                         engineer and mentor, ensuring the delivery of
                         exceptional user experiences for clients.
                     </p>
+                    <h3>Tim Mustafa</h3>
+                    <span>Delivery Manager</span>
                 </section>
             </article>
         </main>
@@ -82,20 +474,6 @@
             </div>
         </header> -->
         <!-- <button class="switch-button">switch theme</button> -->
-
-        <script>
-            const button = document.querySelector('.switch-button');
-            button.addEventListener('click', function (e) {
-                const header = document.querySelector('#header');
-                if (header.classList.contains('header--small')) {
-                    header.classList.remove('header--small');
-                    header.classList.add('header--big');
-                } else {
-                    header.classList.remove('header--big');
-                    header.classList.add('header--small');
-                }
-            });
-        </script>
 
         <!-- <header id="header" class="header header--small">
             <div class="header__text">
@@ -137,8 +515,7 @@
             </div>
             <div class="section_title">title</div>
         </div> -->
+        <script src="./script2.js"></script>
     </body>
     <!-- <script src="./script.js"></script> -->
-
-    <script></script>
 </html>

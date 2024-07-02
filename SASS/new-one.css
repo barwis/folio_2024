@@ -207,7 +207,7 @@ header {
 }
 @media (min-width: 768px) {
   header {
-    padding: calc(var(--naw-width) * 2) calc(var(--naw-width)) 0 calc(var(--naw-width));
+    padding: var(--naw-width) calc(var(--naw-width)) 0 calc(var(--naw-width));
     margin-bottom: 10vh;
   }
 }
@@ -253,11 +253,12 @@ header .tagline {
 header .side {
   padding-top: 20px;
   font-size: 14px;
+  color: rgba(255, 255, 255, 0.3);
 }
 @media (min-width: 768px) {
   header .side {
-    font-size: 1.25em;
-    padding-top: 0.85em;
+    font-size: 0.7em;
+    padding-top: 1em;
   }
 }
 header .circle {
@@ -276,8 +277,8 @@ header .circle {
     bottom: 7em;
     right: 7em;
     left: auto;
-    width: 150px;
-    height: 150px;
+    width: 116px;
+    height: 116px;
     margin-top: 0;
   }
 }

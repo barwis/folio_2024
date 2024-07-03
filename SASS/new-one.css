@@ -214,7 +214,8 @@ body.case-study p {
 }
 body.case-study aside {
   grid-column: 1/span 2;
-  font-size: 2em;
+  font-size: 1.5em;
+  line-height: 1.75;
 }
 body.case-study main {
   background: var(--color-1) url(../images/bg.png);

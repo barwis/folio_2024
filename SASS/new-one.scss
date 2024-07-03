@@ -64,15 +64,15 @@ body {
         }
         aside {
             grid-column: 1 / span 2;
-            font-size: 2em;
+            font-size: 1.5em;
+            line-height: 1.75;
         }
-    }
-
-    &.case-study main {
-        background: var(--color-1) url(../images/bg.png);
-        position: relative;
-        z-index: 2;
-        padding-top: 10vh;
+        main {
+            background: var(--color-1) url(../images/bg.png);
+            position: relative;
+            z-index: 2;
+            padding-top: 10vh;
+        }
     }
 }
 

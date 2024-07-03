@@ -209,6 +209,19 @@ body {
     font-size: 1vw;
   }
 }
+body.case-study p {
+  font-size: 2.5em;
+}
+body.case-study aside {
+  grid-column: 1/span 2;
+  font-size: 2em;
+}
+body.case-study main {
+  background: var(--color-1) url(../images/bg.png);
+  position: relative;
+  z-index: 2;
+  padding-top: 10vh;
+}
 
 header {
   display: flex;
@@ -319,6 +332,58 @@ header .circle .scroll-arrow {
 }
 header .orange {
   color: var(--accent-color);
+}
+header.header--big {
+  height: 60vh;
+  justify-content: end;
+  padding: 0;
+  margin-bottom: 0;
+}
+header.header--big .header__image {
+  position: fixed;
+  left: 0;
+  top: 0;
+  right: 0;
+  width: 100%;
+  height: 60vh;
+}
+header.header--big .header__image img {
+  height: 100%;
+  width: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+header.header--big .header__text {
+  display: flex;
+  position: relative;
+  width: 100%;
+  padding: 0 5vh 5vh 200px;
+  align-items: flex-end;
+  flex-direction: row;
+  justify-content: space-between;
+}
+header.header--big .header__text::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  display: block;
+  background: linear-gradient(to top, black 0%, transparent 100%);
+}
+header.header--big h2,
+header.header--big span {
+  position: relative;
+  z-index: 999;
+}
+header.header--big .header__title {
+  color: white;
+}
+header.header--big .header__dates {
+  line-height: 3.5em;
 }
 
 nav {
@@ -823,6 +888,11 @@ section p {
   .contact a:hover::after {
     width: 100%;
   }
+}
+
+.case-study-paragraph p {
+  grid-column: 1/span 4;
+  color: rgba(255, 255, 255, 0.7);
 }
 
 .ripple {

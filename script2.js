@@ -236,9 +236,13 @@ const header = {
             });
         }
 
-        document.querySelector('.circle').addEventListener('click', () => {
-            lenis.scrollTo('#main', { duration: 1, lerp: 0.1 });
-        });
+        const circle = document.querySelector('.circle');
+
+        if (!!circle) {
+            circle.addEventListener('click', () => {
+                lenis.scrollTo('#main', { duration: 1, lerp: 0.1 });
+            });
+        }
     },
     animateScrollBar: () => {
         let scrollBarTimeline = gsap.timeline();

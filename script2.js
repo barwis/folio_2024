@@ -368,6 +368,68 @@ const main = {
     },
 };
 
+const caseStudy = {
+    animateShowcaseItems: () => {
+        if (!isDesktop) {
+            return false;
+        }
+
+        const showcaseContainer = document.querySelector('.showcase');
+
+        const items = gsap.utils.toArray('.showcase-item');
+
+        if (items.length === 0) return;
+
+        const showcaseItemsContainerHeight = document
+            .querySelector('.showcase')
+            .getBoundingClientRect().height;
+
+        items.forEach((item) => {
+            const img = item.querySelector('img');
+
+            if (!item.classList.contains('full-bleed')) {
+                const container = item.querySelector(
+                    '.showcase-item-container'
+                );
+                const showcaseContainerMargin =
+                    container.getBoundingClientRect().height * 0.1;
+                gsap.set(showcaseContainer, {
+                    boxSizing: 'content-box',
+                    marginTop: showcaseContainerMargin,
+                    marginBottom: showcaseContainerMargin,
+                });
+                const containerOffset = item.classList.contains('wide')
+                    ? -1
+                    : 1;
+
+                gsap.set(container, { y: `${containerOffset * -10}%` });
+                gsap.to(container, {
+                    scrollTrigger: {
+                        trigger: item,
+                        scrub: true,
+                        end: () => `${viewportHeight}px`,
+                        // toggleActions: "play reset play reset"
+                    },
+                    y: `${containerOffset * 5}%`,
+                });
+            }
+
+            gsap.set(img, { y: '-10%' });
+
+            gsap.to(img, {
+                scrollTrigger: {
+                    trigger: item,
+                    scrub: true,
+                    end: () =>
+                        `${viewportHeight + showcaseItemsContainerHeight}px`,
+                    // toggleActions: "play reset play reset"
+                },
+                y: '10%',
+            });
+        });
+    },
+};
+
 document.addEventListener('readystatechange', (event) => {
     const mediaQuery = window.matchMedia('(min-width: 768px)');
 
@@ -391,6 +453,8 @@ document.addEventListener('readystatechange', (event) => {
 
         main.animateSectionHeadings();
         main.animateSkillBars();
+
+        caseStudy.animateShowcaseItems();
         // createRipple();
     }
 });

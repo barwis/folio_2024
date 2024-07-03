@@ -12,19 +12,55 @@
         <script src="./ScrambleTextPlugin3.js"></script>
         <script src="./lenis.min.js"></script>
 
+        <link rel="stylesheet" href="./SASS/new-one.css" />
+
         <style>
             :root {
-                --theme-color: #02c3aa;
+                --accent-color: #02c3aa;
             }
         </style>
-        <link rel="stylesheet" href="./SASS/new-one.css" />
     </head>
     <body class="case-study" id="body">
         <nav>
             <div class="logo" id="logo">
-                <img height="40px" src="./images/logo.svg" alt="" />
+                <div class="icon">
+                    <?xml version="1.0" encoding="UTF-8"?>
+                    <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        viewBox="0 0 155.88 194.62"
+                    >
+                        <polygon
+                            fill="currentColor"
+                            points=".5 149.33 .5 30.29 51.46 .87 51.46 119.91 77.94 135.19 104.42 119.91 104.42 89.33 52.96 59.62 103.92 30.19 155.38 59.91 155.38 149.33 77.94 194.04 .5 149.33"
+                        />
+                    </svg>
+                </div>
             </div>
-            <!-- <div class="menu">=</div> -->
+            <a class="go-back" href="index.html">
+                <div class="icon">
+                    <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        viewBox="0 0 60 60"
+                        width="60"
+                        height="60"
+                        preserveAspectRatio="xMinYMin"
+                    >
+                        <path
+                            fill="none"
+                            transform="scale(1, 1)"
+                            stroke="currentColor"
+                            stroke-width="1"
+                            vector-effect="non-scaling-stroke"
+                            d=" M10,10 L50,50z M10,50 L50,10z"
+                        />
+                    </svg>
+                </div>
+            </a>
+
+            <div class="go-back-2" onclick="history.back()">
+                <img src="./images/assets/back-arrow.svg" alt="" />
+                <span>Go back</span>
+            </div>
             <div class="scroll" id="scrollbar"></div>
         </nav>
         <header class="header header--big">
@@ -40,26 +76,231 @@
             </div>
         </header>
         <main id="main">
-            <article class="case-study-paragraph">
+            <article class="indent">
                 <aside>Brief</aside>
                 <section>
                     <p>
-                        Telegraph Travel offers the best holiday inspiration,
-                        advice, hotel reviews, news and interviews, first person
-                        stories, analysis, comment, data and interactive tools
-                        from the&nbsp;best writers in the business
+                        <span class="orange">Telegraph Travel</span> offers the
+                        best holiday inspiration, advice, hotel reviews, news
+                        and interviews, first person stories, analysis, comment,
+                        data and interactive tools from the&nbsp;best writers in
+                        the business
                     </p>
                 </section>
             </article>
 
-            <article class="tech-stack">
-                <aside>Tech stack</aside>
+            <article class="indent">
+                <div class="separator separator--short"></div>
+                <h2>My role</h2>
+                <section>
+                    <p>
+                        I was part of the Telegraph Travel agile team who owns
+                        the Travel section of Telegraph portal. We were
+                        responsible for maintaining and implementing new
+                        features for products across the Travel section. We
+                        worked closely with
+                        <span class="orange">Adobe Inc.</span> utilising
+                        <span class="orange">Adobe Experience Manager</span> cms
+                        and Adobe servers for deployment.
+                    </p>
+                </section>
+            </article>
+
+            <article>
+                <!-- <aside>Tech stack</aside> -->
+                <h2>Tech stack</h2>
+                <div class="separator separator--short"></div>
+
+                <section class="tech-stack">
+                    <div>
+                        <img src="./images/tech/html5.svg" alt="HTML5" /><span
+                            >HTML5</span
+                        >
+                    </div>
+                    <div>
+                        <img src="./images/tech/css3.svg" alt="CSS3" /><span
+                            >CSS3</span
+                        >
+                    </div>
+                    <div>
+                        <img src="./images/tech/sass.svg" alt="Sass" /><span
+                            >Sass</span
+                        >
+                    </div>
+                    <div>
+                        <img src="./images/tech/js.svg" alt="Javascript" /><span
+                            >JavaScript</span
+                        >
+                    </div>
+                    <div>
+                        <img
+                            src="./images/tech/nodejs.svg"
+                            alt="Node.js"
+                        /><span>Node.js</span>
+                    </div>
+                    <div>
+                        <img
+                            src="./images/tech/aem.svg"
+                            alt="Adobe Experience Manager"
+                        /><span>AEM</span>
+                    </div>
+                    <div>
+                        <img src="./images/tech/java.svg" alt="Java" /><span
+                            >Java</span
+                        >
+                    </div>
+                    <div>
+                        <img src="./images/tech/python.svg" alt="Python" /><span
+                            >Python</span
+                        >
+                    </div>
+                </section>
+            </article>
+
+            <article class="indent">
+                <div class="separator separator--short"></div>
+                <section>
+                    <p>
+                        I was involved in Telegraph Travel
+                        <span class="orange"
+                            >digital transformation project</span
+                        >
+                        in cooperation with designers and broader developers'
+                        forum.
+                    </p>
+                </section>
+            </article>
+
+            <article class="showcase">
+                <section>
+                    <div class="showcase-item wide">
+                        <div class="showcase-item-container">
+                            <picture>
+                                <source
+                                    srcset="./images/case/1920-citi-wide.jpg"
+                                    media="(min-width: 1366px)"
+                                />
+                                <source
+                                    srcset="./images//case/1600-citi-wide.jpg"
+                                    media="(min-width: 768px)"
+                                />
+                                <source
+                                    srcset="./images/case/1366-citi-wide.jpg"
+                                    media="(min-width: 640px)"
+                                />
+                                <img src="./images/case/768-citi-wide.jpg" />
+                            </picture>
+                        </div>
+                    </div>
+                    <div class="showcase-item narrow">
+                        <div class="showcase-item-container">
+                            <picture>
+                                <source
+                                    srcset="./images/case/1920-citi-narrow.jpg"
+                                    media="(min-width: 1366px)"
+                                />
+                                <source
+                                    srcset="./images//case/1600-citi-narrow.jpg"
+                                    media="(min-width: 768px)"
+                                />
+                                <source
+                                    srcset="./images/case/1366-citi-narrow.jpg"
+                                    media="(min-width: 640px)"
+                                />
+                                <img src="./images/case/768-citi-narrow.jpg" />
+                            </picture>
+                        </div>
+                    </div>
+                </section>
+            </article>
+            <article class="indent">
+                <section>
+                    <p>
+                        Our team was also responsible for Travel's internal CMS
+                        for managing travel products and services. This
+                        <span class="orange"> Travel Portal </span> app would
+                        ingest data from multiple 3rd parties API regarding all
+                        travel products and allowed editors to add or modify
+                        products' content to tailor them for Telegraph's
+                        customer base.
+                    </p>
+                </section>
+            </article>
+
+            <article class="indent">
+                <section>
+                    <p>
+                        I've taken the ownership of Travel Portal upgrade
+                        project which resulted in increase of editorial teams'
+                        efficiency by <span class="orange">40%</span>.
+                    </p>
+                </section>
+            </article>
+
+            <article class="showcase">
+                <section>
+                    <div class="showcase-item full-bleed">
+                        <div class="showcase-item-container">
+                            <picture>
+                                <source
+                                    srcset="./images/case/1920-citi-wide.jpg"
+                                    media="(min-width: 1366px)"
+                                />
+                                <source
+                                    srcset="./images//case/1600-citi-wide.jpg"
+                                    media="(min-width: 768px)"
+                                />
+                                <source
+                                    srcset="./images/case/1366-citi-wide.jpg"
+                                    media="(min-width: 640px)"
+                                />
+                                <img src="./images/case/768-citi-wide.jpg" />
+                            </picture>
+                        </div>
+                    </div>
+                </section>
+            </article>
+
+            <article class="recommendations indent">
+                <h2>What are they saying about me?</h2>
+                <div class="separator separator--short"></div>
+                <section>
+                    <p>
+                        I worked with Bartosz for a year and a half, and during
+                        that time I was able to see his attention to detail and
+                        effectiveness both amongst a team, as well as on his
+                        own, when it came to delivering his sprint tasks. He's a
+                        team player and will always look to assist where he can
+                        if a teammate requires assistance.
+                    </p>
+                    <p>
+                        Bartosz is also an engineer who will give honest and
+                        constructive criticism if he believes the desired
+                        approach/UI/UX is not the best fit for the end user
+                        and/or goal. Any team would be lucky to have him.
+                    </p>
+                    <h3>Tim Mustafa</h3>
+                    <span>Delivery Manager</span>
+                </section>
+
+                <div class="quote">”</div>
             </article>
 
             <article class="contact">
-                <a href="mailto:wisniewski.bart@gmail.com" id="contact"
-                    >Let's talk!</a
-                >
+                <section>
+                    <a href="mailto:wisniewski.bart@gmail.com" id="contact"
+                        >Let's talk!</a
+                    >
+                </section>
+            </article>
+            <article class="footer">
+                <section>
+                    <footer>
+                        <a href="mailto:wisniewski.bart@gmail.com"
+                            >wisniewski.bart@gmail.com</a
+                        >
+                    </footer>
+                </section>
             </article>
         </main>
 

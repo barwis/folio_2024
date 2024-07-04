@@ -160,8 +160,6 @@ html.lenis body {
   --col-num: 8;
   --gutter: 10px;
   --gap: 10px;
-  --accent-color: #ff6945;
-  --theme-color: #ff6945;
   --naw-width: 80px;
   --color-1: #1e1e1e;
 }
@@ -176,12 +174,12 @@ html.lenis body {
 
 ::-moz-selection {
   color: white;
-  background-color: var(--accent-color);
+  background-color: var(--theme-color);
 }
 
 ::selection {
   color: white;
-  background-color: var(--accent-color);
+  background-color: var(--theme-color);
 }
 
 img {
@@ -197,7 +195,7 @@ img {
 }
 
 .orange {
-  color: var(--accent-color, #ff6945);
+  color: var(--theme-color, #ff6945);
 }
 
 @keyframes circleRotate {
@@ -238,6 +236,7 @@ body {
   padding: 0;
   height: 100% !important;
   background: var(--color-1) url(../images/bg.png);
+  color: var(--theme-color);
 }
 @media (min-width: 768px) {
   body {
@@ -296,7 +295,7 @@ body.case-study article:not(.recommendations) .separator.separator--short {
 }
 
 .icon {
-  color: var(--accent-color);
+  color: var(--theme-color);
 }
 .icon img,
 .icon svg {
@@ -549,7 +548,7 @@ nav .scroll {
   top: 0;
   display: none;
   left: 0;
-  border-right: 1px solid var(--accent-color);
+  border-right: 1px solid var(--theme-color);
 }
 @media (min-width: 768px) {
   nav .scroll {
@@ -850,6 +849,7 @@ section .work-item {
   position: relative;
   overflow: hidden;
   border-radius: 16px;
+  color: var(--theme-color);
 }
 @media (min-width: 768px) {
   .work a .item-container .image-container {
@@ -990,7 +990,7 @@ section .work-item {
 .skills section .bar div {
   color: #1e1e1e;
   text-indent: 0.5ch;
-  background-color: var(--accent-color);
+  background-color: var(--theme-color);
   font-family: "Helveticanowdisplay";
 }
 @media (min-width: 768px) {
@@ -1022,7 +1022,7 @@ section .work-item {
   transform: translateX(20%);
   display: block;
   position: absolute;
-  color: var(--accent-color, #ff6945);
+  color: var(--theme-color, #ff6945);
   font-size: 100em;
   line-height: 0.5;
   font-family: "Wulkan display", sans-serif;
@@ -1072,7 +1072,7 @@ section .work-item {
   text-transform: uppercase;
   letter-spacing: 3px;
   opacity: 0.8;
-  color: var(--accent-color, #ff6945);
+  color: var(--theme-color, #ff6945);
 }
 @media (min-width: 768px) {
   .recommendations span {
@@ -1107,7 +1107,7 @@ section .work-item {
   margin: 0 auto;
   padding: 0;
   border-radius: 100px;
-  background: var(--accent-color);
+  background: var(--theme-color);
   color: var(--color-1);
   width: 200px;
   height: 200px;
@@ -1122,7 +1122,7 @@ section .work-item {
     width: auto;
     height: auto;
     background: none;
-    color: var(--accent-color);
+    color: var(--theme-color);
     position: relative;
     border-radius: 0;
     overflow: visible;
@@ -1136,7 +1136,7 @@ section .work-item {
     display: block;
     left: 0;
     bottom: 0;
-    background: var(--accent-color);
+    background: var(--theme-color);
     height: 5px;
     width: 0%;
     cursor: pointer;
@@ -1161,18 +1161,22 @@ section .work-item {
 }
 .showcase .showcase-item.wide {
   grid-column-end: span 8;
+  height: 65vw;
 }
 @media (min-width: 768px) {
   .showcase .showcase-item.wide {
     grid-column-end: span 6;
+    height: 38vw;
   }
 }
 .showcase .showcase-item.narrow {
   grid-column-end: span 8;
+  height: 100vw;
 }
 @media (min-width: 768px) {
   .showcase .showcase-item.narrow {
     grid-column-end: span 4;
+    height: 38vw;
   }
 }
 .showcase .showcase-item.full-bleed {
@@ -1185,7 +1189,9 @@ section .work-item {
 }
 .showcase .showcase-item-container {
   overflow: hidden;
+  position: relative;
   border-radius: 16px;
+  background: rgba(0, 0, 0, 0.15);
 }
 @media (min-width: 768px) {
   .showcase .showcase-item-container {
@@ -1282,7 +1288,7 @@ section .work-item {
 }
 
 .diamond {
-  color: var(--accent-color);
+  color: var(--theme-color);
   grid-column: 1/span var(--col-num);
   text-align: center;
 }
@@ -1299,5 +1305,17 @@ section .work-item {
   .diamond svg {
     width: 1em;
     height: 1em;
+  }
+}
+
+.spinner {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%) scale(0.5);
+}
+@media (min-width: 768px) {
+  .spinner {
+    transform: translate(-50%, -50%);
   }
 }/*# sourceMappingURL=new-one.css.map */

@@ -10,17 +10,85 @@
         <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/TextPlugin.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.9.1/ScrollTrigger.min.js"></script>
         <script src="./ScrambleTextPlugin3.js"></script>
+        <script src="./lazyload.min.js"></script>
         <script src="./lenis.min.js"></script>
-
-        <link rel="stylesheet" href="./SASS/new-one.css" />
 
         <style>
             :root {
-                --accent-color: #02c3aa;
+                --theme-color: #02c3aa;
             }
         </style>
+        <link rel="stylesheet" href="./SASS/new-one.css" />
     </head>
     <body class="case-study" id="body">
+        <svg
+            version="1.1"
+            xmlns="http://www.w3.org/2000/svg"
+            xmlns:xlink="http://www.w3.org/1999/xlink"
+            width="0"
+            height="0"
+            viewBox="0 0 0 0"
+        >
+            <defs>
+                <path
+                    fill="currentColor"
+                    transform="scale(.5, .5)"
+                    id="def-circle"
+                    vector-effect="non-scaling-stroke"
+                    d="M0,-25 L25,0, L0,25 L-25,0 L0,-25z"
+                />
+                <g id="spinner">
+                    <use xlink:href="#def-circle" transform="translate(25 25)">
+                        <animateTransform
+                            attributeName="transform"
+                            type="scale"
+                            additive="sum"
+                            values="0 0; 1 1; 1 1; 1 1; 1 1"
+                            dur="1s"
+                            repeatCount="indefinite"
+                        />
+                        <animate
+                            attributeName="opacity"
+                            values="1; 1; 0; 0; 0"
+                            dur="1s"
+                            repeatCount="indefinite"
+                        />
+                    </use>
+                    <use xlink:href="#def-circle" transform="translate(75 25)">
+                        <animateTransform
+                            attributeName="transform"
+                            type="scale"
+                            additive="sum"
+                            values="0 0; 0 0; 1 1; 1 1; 1 1"
+                            dur="1s"
+                            repeatCount="indefinite"
+                        />
+                        <animate
+                            attributeName="opacity"
+                            values="1; 1; 1; 0; 0"
+                            dur="1s"
+                            repeatCount="indefinite"
+                        />
+                    </use>
+                    <use xlink:href="#def-circle" transform="translate(125 25)">
+                        <animateTransform
+                            attributeName="transform"
+                            type="scale"
+                            additive="sum"
+                            values="0 0; 0 0; 0 0; 1 1; 1 1"
+                            dur="1s"
+                            repeatCount="indefinite"
+                        />
+                        <animate
+                            attributeName="opacity"
+                            values="1; 1; 0; 1; 0"
+                            dur="1s"
+                            repeatCount="indefinite"
+                        />
+                    </use>
+                </g>
+            </defs>
+        </svg>
         <nav>
             <div class="logo" id="logo">
                 <div class="icon">
@@ -197,6 +265,14 @@
                 <section>
                     <div class="showcase-item wide">
                         <div class="showcase-item-container">
+                            <svg
+                                width="150"
+                                height="50"
+                                viewBox="0 0 150 50"
+                                class="spinner"
+                            >
+                                <use xlink:href="#spinner" />
+                            </svg>
                             <picture>
                                 <source
                                     srcset="
@@ -224,6 +300,14 @@
                     </div>
                     <div class="showcase-item narrow">
                         <div class="showcase-item-container">
+                            <svg
+                                width="150"
+                                height="50"
+                                viewBox="0 0 150 50"
+                                class="spinner"
+                            >
+                                <use xlink:href="#spinner" />
+                            </svg>
                             <picture>
                                 <source
                                     srcset="
@@ -309,6 +393,14 @@
                 <section>
                     <div class="showcase-item full-bleed">
                         <div class="showcase-item-container">
+                            <svg
+                                width="150"
+                                height="50"
+                                viewBox="0 0 150 50"
+                                class="spinner"
+                            >
+                                <use xlink:href="#spinner" />
+                            </svg>
                             <picture>
                                 <source
                                     srcset="
@@ -379,7 +471,11 @@
                 </section>
             </article>
         </main>
-
+        <script>
+            var lazyLoadInstance = new LazyLoad({
+                // Your custom settings go here
+            });
+        </script>
         <script src="./script2.js"></script>
     </body>
     <!-- <script src="./script.js"></script> -->

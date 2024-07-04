@@ -7,8 +7,6 @@
     --col-num: 8;
     --gutter: 10px;
     --gap: 10px;
-    --accent-color: #ff6945;
-    --theme-color: #ff6945;
     --naw-width: 80px;
     --color-1: #1e1e1e;
 
@@ -22,7 +20,7 @@
 
 ::selection {
     color: white;
-    background-color: var(--accent-color);
+    background-color: var(--theme-color);
 }
 
 img {
@@ -30,7 +28,7 @@ img {
 }
 
 $bg-color: #1e1e1e;
-$orange: var(--accent-color, #ff6945);
+$orange: var(--theme-color, #ff6945);
 
 * {
     box-sizing: border-box;
@@ -39,7 +37,7 @@ $orange: var(--accent-color, #ff6945);
 }
 
 .orange {
-    color: var(--accent-color, #ff6945);
+    color: var(--theme-color, #ff6945);
 }
 
 @keyframes circleRotate {
@@ -82,6 +80,7 @@ body {
     padding: 0;
     height: 100% !important;
     background: var(--color-1) url(../images/bg.png);
+    color: var(--theme-color);
 
     @include desktop {
         font-size: 1vw;
@@ -145,7 +144,7 @@ body {
 }
 
 .icon {
-    color: var(--accent-color);
+    color: var(--theme-color);
 
     img,
     svg {
@@ -402,7 +401,7 @@ nav {
         top: 0;
         display: none;
         left: 0;
-        border-right: 1px solid var(--accent-color);
+        border-right: 1px solid var(--theme-color);
 
         @include desktop {
             display: block;
@@ -720,6 +719,8 @@ section {
                 position: relative;
                 overflow: hidden;
                 border-radius: 16px;
+
+                color: var(--theme-color);
                 @include desktop {
                     border-radius: 1em;
                 }
@@ -870,7 +871,7 @@ section {
             div {
                 color: $bg-color;
                 text-indent: 0.5ch;
-                background-color: var(--accent-color);
+                background-color: var(--theme-color);
                 font-family: 'Helveticanowdisplay';
 
                 @include desktop {
@@ -903,7 +904,7 @@ section {
         transform: translateX(20%);
         display: block;
         position: absolute;
-        color: var(--accent-color, #ff6945);
+        color: var(--theme-color, #ff6945);
         font-size: 100em;
         line-height: 0.5;
         font-family: 'Wulkan display', sans-serif;
@@ -953,7 +954,7 @@ section {
         text-transform: uppercase;
         letter-spacing: 3px;
         opacity: 0.8;
-        color: var(--accent-color, #ff6945);
+        color: var(--theme-color, #ff6945);
 
         @include desktop {
             font-size: 1em;
@@ -989,7 +990,7 @@ section {
         margin: 0 auto;
         padding: 0;
         border-radius: 100px;
-        background: var(--accent-color);
+        background: var(--theme-color);
         color: var(--color-1);
         width: 200px;
         height: 200px;
@@ -1003,7 +1004,7 @@ section {
             width: auto;
             height: auto;
             background: none;
-            color: var(--accent-color);
+            color: var(--theme-color);
             position: relative;
             border-radius: 0;
             overflow: visible;
@@ -1017,7 +1018,7 @@ section {
                 display: block;
                 left: 0;
                 bottom: 0;
-                background: var(--accent-color);
+                background: var(--theme-color);
                 height: 5px;
                 width: 0%;
                 cursor: pointer;
@@ -1047,18 +1048,22 @@ section {
 
         &.wide {
             grid-column-end: span 8;
+            height: 65vw;
 
             @include desktop {
                 grid-column-end: span 6;
+                height: 38vw;
             }
         }
 
         // 2nd
         &.narrow {
             grid-column-end: span 8;
+            height: 100vw;
 
             @include desktop {
                 grid-column-end: span 4;
+                height: 38vw;
             }
         }
 
@@ -1073,7 +1078,9 @@ section {
 
     .showcase-item-container {
         overflow: hidden;
+        position: relative;
         border-radius: 16px;
+        background: rgba(0, 0, 0, 0.15);
         @include desktop {
             border-radius: 1em;
         }
@@ -1166,7 +1173,7 @@ section {
 }
 
 .diamond {
-    color: var(--accent-color);
+    color: var(--theme-color);
     grid-column: 1 / span var(--col-num);
 
     text-align: center;
@@ -1182,5 +1189,16 @@ section {
             width: 1em;
             height: 1em;
         }
+    }
+}
+
+.spinner {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%) scale(0.5);
+
+    @include desktop {
+        transform: translate(-50%, -50%);
     }
 }

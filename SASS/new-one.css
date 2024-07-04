@@ -273,24 +273,32 @@ body.case-study main {
     padding-bottom: 0;
   }
 }
-body.case-study article:not(.recommendations) .separator.separator--long {
+body.case-study .separator.separator--long {
   display: none;
 }
 @media (min-width: 768px) {
-  body.case-study article:not(.recommendations) .separator.separator--long {
+  body.case-study .separator.separator--long {
     display: grid;
   }
 }
-body.case-study article:not(.recommendations) .separator.separator--short {
+body.case-study .separator.separator--short {
   display: block;
   margin-bottom: 0;
   padding-bottom: 10px;
-  grid-column: 3/span 6;
 }
 @media (min-width: 768px) {
-  body.case-study article:not(.recommendations) .separator.separator--short {
+  body.case-study .separator.separator--short {
     padding-bottom: 10px;
     margin-bottom: 130px;
+    grid-column: 3/span 6;
+  }
+}
+body.case-study .indent .separator.separator--short {
+  grid-column: 2/span 7;
+}
+@media (min-width: 768px) {
+  body.case-study .indent .separator.separator--short {
+    grid-column: 3/span 6;
   }
 }
 
@@ -901,6 +909,7 @@ section .work-item {
 
 .skills {
   gap: 0 var(--gutter);
+  color: rgba(255, 255, 255, 0.5);
 }
 .skills .separator {
   display: none;
@@ -1082,6 +1091,7 @@ section .work-item {
 @media (min-width: 768px) {
   .recommendations .separator {
     margin-bottom: 1em;
+    grid-column: 3/span 4 !important;
   }
 }
 .recommendations h3 {

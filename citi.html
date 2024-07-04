@@ -1,89 +1,213 @@
 <!DOCTYPE html>
-<html lang="en" class="scroll">
+<html lang="en" class="scroll lenis">
     <head>
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <title>[WIP] - Bart Wisniewski</title>
-        <link
-            rel="icon"
-            class="js-site-favicon"
-            type="image/svg+xml"
-            href="./favicon.svg"
-        />
+        <link rel="icon" type="image/svg+xml" href="./favicon.svg" />
         <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/2.1.2/TweenMax.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.9.1/gsap.min.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/TextPlugin.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.9.1/ScrollTrigger.min.js"></script>
-
+        <script src="./ScrambleTextPlugin3.js"></script>
+        <script src="./lazyload.min.js"></script>
         <script src="./lenis.min.js"></script>
-        <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-        <link
-            href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap"
-            rel="stylesheet"
-        />
 
-        <link rel="stylesheet" href="./styles/style.css" />
+        <style>
+            :root {
+                --theme-color: #056dae;
+            }
+        </style>
+        <link rel="stylesheet" href="./SASS/new-one.css" />
     </head>
-    <body id="body">
-        <div class="logo" id="logo">
-            <img height="40px" src="./images/logo.svg" alt="" />
-        </div>
-
-        <div class="go-back" onclick="history.back()">
-            <svg
-                xmlns="http://www.w3.org/2000/svg"
-                viewBox="0 0 60 60"
-                width="60"
-                height="60"
-                preserveAspectRatio="xMinYMin"
-            >
+    <body class="case-study" id="body">
+        <svg
+            version="1.1"
+            xmlns="http://www.w3.org/2000/svg"
+            xmlns:xlink="http://www.w3.org/1999/xlink"
+            width="0"
+            height="0"
+            viewBox="0 0 0 0"
+            style="display: none"
+        >
+            <defs>
                 <path
-                    fill="none"
-                    transform="scale(1, 1)"
-                    stroke="var(--orange)"
-                    stroke-width="1"
+                    fill="currentColor"
+                    transform="scale(.5, .5)"
+                    id="def-circle"
                     vector-effect="non-scaling-stroke"
-                    d="
-            M10,10 L50,50z
-            M10,50 L50,10z
-            "
+                    d="M0,-25 L25,0, L0,25 L-25,0 L0,-25z"
                 />
-            </svg>
-            <span>Go back</span>
-        </div>
+                <g id="spinner">
+                    <use xlink:href="#def-circle" transform="translate(25 25)">
+                        <animateTransform
+                            attributeName="transform"
+                            type="scale"
+                            additive="sum"
+                            values="0 0; 1 1; 1 1; 1 1; 1 1"
+                            dur="1s"
+                            repeatCount="indefinite"
+                        />
+                        <animate
+                            attributeName="opacity"
+                            values="1; 1; 0; 0; 0"
+                            dur="1s"
+                            repeatCount="indefinite"
+                        />
+                    </use>
+                    <use xlink:href="#def-circle" transform="translate(75 25)">
+                        <animateTransform
+                            attributeName="transform"
+                            type="scale"
+                            additive="sum"
+                            values="0 0; 0 0; 1 1; 1 1; 1 1"
+                            dur="1s"
+                            repeatCount="indefinite"
+                        />
+                        <animate
+                            attributeName="opacity"
+                            values="1; 1; 1; 0; 0"
+                            dur="1s"
+                            repeatCount="indefinite"
+                        />
+                    </use>
+                    <use xlink:href="#def-circle" transform="translate(125 25)">
+                        <animateTransform
+                            attributeName="transform"
+                            type="scale"
+                            additive="sum"
+                            values="0 0; 0 0; 0 0; 1 1; 1 1"
+                            dur="1s"
+                            repeatCount="indefinite"
+                        />
+                        <animate
+                            attributeName="opacity"
+                            values="1; 1; 0; 1; 0"
+                            dur="1s"
+                            repeatCount="indefinite"
+                        />
+                    </use>
+                </g>
+            </defs>
+        </svg>
         <nav>
+            <div class="logo" id="logo">
+                <div class="icon">
+                    <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        viewBox="0 0 155.88 194.62"
+                    >
+                        <polygon
+                            fill="currentColor"
+                            points=".5 149.33 .5 30.29 51.46 .87 51.46 119.91 77.94 135.19 104.42 119.91 104.42 89.33 52.96 59.62 103.92 30.19 155.38 59.91 155.38 149.33 77.94 194.04 .5 149.33"
+                        />
+                    </svg>
+                </div>
+            </div>
+            <a class="go-back" href="index.html">
+                <div class="icon">
+                    <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        viewBox="0 0 60 60"
+                        width="60"
+                        height="60"
+                        preserveAspectRatio="xMinYMin"
+                    >
+                        <path
+                            fill="none"
+                            transform="scale(1, 1)"
+                            stroke="currentColor"
+                            stroke-width="1"
+                            vector-effect="non-scaling-stroke"
+                            d=" M10,10 L50,50z M10,50 L50,10z"
+                        />
+                    </svg>
+                </div>
+            </a>
+
+            <div class="go-back-2 icon" onclick="history.back()">
+                <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    viewBox="0 0 100 100"
+                    width="100"
+                    height="100"
+                    preserveAspectRatio="xMinYMin"
+                    style="width: 100px; height: 100px"
+                >
+                    <path
+                        fill="none"
+                        transform="scale(1, 1)"
+                        stroke="currentColor"
+                        stroke-width="1"
+                        vector-effect="non-scaling-stroke"
+                        d="M25,50 L75,0z M25,50 L75,100z"
+                    />
+                </svg>
+
+                <span>Go back</span>
+            </div>
             <div class="scroll" id="scrollbar"></div>
         </nav>
+        <header class="header header--small">
+            <div class="header__text">
+                <h2 id="heading-featured-work" class="header__title">
+                    Citi Bank
+                </h2>
+                <span class="header__dates">May 2023 -</span>
 
-        <div class="page project">
-            <!-- <span class="separator"></span> -->
-            <h2 id="heading-featured-work">Citi Bank</h2>
-            <section class="case-study">
-                <aside id="work-aside">May 2023 -</aside>
-                <div class="lead-asset">
+                <div class="header__image">
                     <img
                         src="./images/showcase-citi.png"
                         alt=""
                         style="width: 100%"
                     />
                 </div>
-                <div class="text">
+            </div>
+        </header>
+        <main id="main">
+            <article class="indent">
+                <aside>Brief</aside>
+                <section>
                     <p>
-                        I was part of the XiP Desktop team, responsible for
-                        maintaining internal web apps that manage Independent
-                        Price Verifications operations and reports.
+                        <span class="orange">Citibank</span> offers multiple
+                        banking services that help you find the right credit
+                        cards, open a bank account for checking, & savings, or
+                        apply for mortgage & personal loans.
+                    </p>
+                </section>
+            </article>
+
+            <article class="indent">
+                <div class="separator separator--short"></div>
+                <h2>My role</h2>
+                <section>
+                    <p>
+                        As a member of the
+                        <span class="orange">XiP Desktop</span> team, I maintain
+                        and enhane internal web applications designed to manage
+                        <span class="orange">
+                            Independent Price Verifications
+                        </span>
+                        operations and generate comprehensive reports.
                     </p>
                     <p>
-                        In this role, I utilised JS/TypeScript, React, and
-                        GraphQL to develop and enhance our applications. We
-                        relied on APIs and microservices to power our apps.
-                        Additionally, we used external libraries such as AG Grid
-                        for data display.
+                        My responsibilities included ensuring the seamless
+                        functionality of these applications, troubleshooting
+                        issues, implementing updates, and optimizing performance
+                        to support the accuracy and efficiency of our
+                        verification processes. This work was integral to
+                        maintaining the integrity and reliability of our pricing
+                        data.
                     </p>
-                </div>
-                <aside>Tech Stack</aside>
-                <div class="tech-stack">
+                </section>
+            </article>
+
+            <article>
+                <!-- <aside>Tech stack</aside> -->
+                <h2>Tech stack</h2>
+                <div class="separator separator--long"></div>
+
+                <section class="tech-stack">
                     <div>
                         <img src="./images/tech/js.svg" alt="" /><span
                             >JavaScript</span
@@ -124,104 +248,242 @@
                             >NEXT.js</span
                         >
                     </div>
-                </div>
+                </section>
+            </article>
 
-                <div class="text">
+            <article class="indent">
+                <div class="separator separator--short"></div>
+                <h2>The process</h2>
+                <section>
                     <p>
-                        Part of my responsibilities, was to liaise with
-                        stakeholders and different teams to collect business
-                        requirements for new and existing features.
+                        I actively liaised with stakeholders and
+                        cross-functional teams to gather comprehensive business
+                        requirements for both new and existing features.
+                        This&nbsp;involved facilitating clear communication and
+                        collaboration to ensure that all needs and expectations
+                        are accurately captured.
                     </p>
-                    <p>
-                        I was also responsible for overseeing the deployment of
-                        our applications. I ensure smooth and efficient
-                        deployment processes.
-                    </p>
-                </div>
+                </section>
+            </article>
 
-                <div class="showcase">
+            <article>
+                <section>
+                    <div class="diamond">
+                        <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            viewBox="0 0 50 50"
+                            width="30"
+                            height="30"
+                            preserveAspectRatio="xMinYMin"
+                        >
+                            <path
+                                fill="currentColor"
+                                transform="scale(1, 1)"
+                                stroke="none"
+                                vector-effect="non-scaling-stroke"
+                                d="M25,0 L50,25 L25,50 L0,25 L25,0z"
+                            />
+                        </svg>
+                    </div>
+                </section>
+            </article>
+
+            <article class="indent">
+                <section>
+                    <p>
+                        I was responsible for deployment of our applications,
+                        meticulously managing each step to guarantee a smooth
+                        and efficient deployment process. This included
+                        coordinating with various departments, troubleshooting
+                        any issues that arise, and continuously optimizing the
+                        deployment workflow to enhance overall efficiency and
+                        effectiveness.
+                    </p>
+                </section>
+            </article>
+
+            <article class="showcase">
+                <section>
                     <div class="showcase-item wide">
                         <div class="showcase-item-container">
+                            <svg
+                                width="150"
+                                height="50"
+                                viewBox="0 0 150 50"
+                                class="spinner"
+                            >
+                                <use xlink:href="#spinner" />
+                            </svg>
                             <picture>
                                 <source
-                                    srcset="./images/case/1920-citi-wide.jpg"
+                                    srcset="./images/case/citi/1920-wide.jpg"
+                                    media="(min-width: 1920px)"
+                                />
+                                <source
+                                    srcset="./images/case/citi/1600-wide.jpg"
+                                    media="(min-width: 1600px)"
+                                />
+                                <source
+                                    srcset="./images/case/citi/1366-wide.jpg"
                                     media="(min-width: 1366px)"
                                 />
                                 <source
-                                    srcset="./images//case/1600-citi-wide.jpg"
+                                    srcset="./images/case/citi/768-wide.jpg"
                                     media="(min-width: 768px)"
                                 />
                                 <source
-                                    srcset="./images/case/1366-citi-wide.jpg"
+                                    srcset="./images/case/citi/640-wide.jpg"
                                     media="(min-width: 640px)"
                                 />
-                                <img src="./images/case/768-citi-wide.jpg" />
+                                <img src="./images/case/citi/640-wide.jpg" />
                             </picture>
                         </div>
                     </div>
                     <div class="showcase-item narrow">
                         <div class="showcase-item-container">
+                            <svg
+                                width="150"
+                                height="50"
+                                viewBox="0 0 150 50"
+                                class="spinner"
+                            >
+                                <use xlink:href="#spinner" />
+                            </svg>
                             <picture>
                                 <source
-                                    srcset="./images/case/1920-citi-narrow.jpg"
+                                    srcset="./images/case/citi/1920-narrow.jpg"
+                                    media="(min-width: 1920px)"
+                                />
+                                <source
+                                    srcset="./images/case/citi/1600-narrow.jpg"
+                                    media="(min-width: 1600px)"
+                                />
+                                <source
+                                    srcset="./images/case/citi/1366-narrow.jpg"
                                     media="(min-width: 1366px)"
                                 />
                                 <source
-                                    srcset="./images//case/1600-citi-narrow.jpg"
+                                    srcset="./images/case/citi/768-narrow.jpg"
                                     media="(min-width: 768px)"
                                 />
                                 <source
-                                    srcset="./images/case/1366-citi-narrow.jpg"
+                                    srcset="./images/case/citi/640-narrow.jpg"
                                     media="(min-width: 640px)"
                                 />
-                                <img src="./images/case/768-citi-narrow.jpg" />
+                                <img src="./images/case/citi/640-narrow.jpg" />
                             </picture>
                         </div>
                     </div>
-                </div>
-
-                <div class="text">
+                </section>
+            </article>
+            <article class="indent">
+                <div class="separator separator--short"></div>
+                <h2>Teamwork</h2>
+                <section>
                     <p>
-                        I have taken ownership of a project within our team,
-                        leading the migration to the NextJS framework and
-                        incorporating the Tailwind framework. This initiative
-                        has enhanced the performance and development efficiency
-                        of the project.
+                        As a senior developer, I actively contribute by
+                        assisting and supporting my colleagues in their work. I
+                        provide guidance, offer expertise, and help troubleshoot
+                        any challenges that arise, ensuring the team maintains
+                        high productivity and quality standards.
                     </p>
-                </div>
-            </section>
-        </div>
+                </section>
+            </article>
 
-        <footer>
-            <a href="mailto:wisniewski.bart@gmail.com"
-                >wisniewski.bart@gmail.com</a
-            >
-        </footer>
-        <div class="go-back-2" onclick="history.back()">
-            <svg
-                xmlns="http://www.w3.org/2000/svg"
-                viewBox="0 0 100 100"
-                width="100"
-                height="100"
-                preserveAspectRatio="xMinYMin"
-            >
-                <path
-                    fill="none"
-                    transform="scale(1, 1)"
-                    stroke="var(--orange)"
-                    stroke-width="1"
-                    vector-effect="non-scaling-stroke"
-                    d="
-            M25,50 L75,0z
-            M25,50 L75,100z
+            <article class="indent">
+                <div class="separator separator--short"></div>
+                <h2>Docs</h2>
+                <section>
+                    <p>
+                        I was responsible for authoring comprehensive
+                        documentation for our codebase and driving continuous
+                        improvements to our applications. This&nbsp;involves
+                        creating detailed and clear documentation to facilitate
+                        understanding and maintenance, as well as identifying
+                        and implementing enhancements to optimize performance
+                        and functionality.
+                    </p>
+                </section>
+            </article>
 
-            "
-                />
-            </svg>
-            <span>Go back</span>
-        </div>
+            <article class="showcase">
+                <section>
+                    <div class="showcase-item full-bleed">
+                        <div class="showcase-item-container">
+                            <svg
+                                width="150"
+                                height="50"
+                                viewBox="0 0 150 50"
+                                class="spinner"
+                            >
+                                <use xlink:href="#spinner" />
+                            </svg>
+                            <picture>
+                                <source
+                                    srcset="./images/case/citi/1920-full.jpg"
+                                    media="(min-width: 1920px)"
+                                />
+                                <source
+                                    srcset="./images/case/citi/1600-full.jpg"
+                                    media="(min-width: 1600px)"
+                                />
+                                <source
+                                    srcset="./images/case/citi/1366-full.jpg"
+                                    media="(min-width: 1366px)"
+                                />
+                                <source
+                                    srcset="./images/case/citi/768-full.jpg"
+                                    media="(min-width: 768px)"
+                                />
+                                <source
+                                    srcset="./images/case/citi/640-full.jpg"
+                                    media="(min-width: 640px)"
+                                />
+                                <img src="./images/case/citi/640-full.jpg" />
+                            </picture>
+                        </div>
+                    </div>
+                </section>
+            </article>
+
+            <article class="indent">
+                <div class="separator separator--short"></div>
+                <h2>XiP Docs</h2>
+                <section>
+                    <p>
+                        I have taken ownership of a
+                        <span class="orange">XiP Docs</span> project, leading
+                        the migration to the NextJS and incorporating the
+                        Tailwind framework. This initiative has enhanced the
+                        performance and development efficiency of&nbsp;the
+                        project.
+                    </p>
+                </section>
+            </article>
+
+            <article class="contact">
+                <section>
+                    <a href="mailto:wisniewski.bart@gmail.com" id="contact"
+                        >Let's talk!</a
+                    >
+                </section>
+            </article>
+            <article class="footer">
+                <section>
+                    <footer>
+                        <a href="mailto:wisniewski.bart@gmail.com"
+                            >wisniewski.bart@gmail.com</a
+                        >
+                    </footer>
+                </section>
+            </article>
+        </main>
+        <script>
+            var lazyLoadInstance = new LazyLoad({
+                // Your custom settings go here
+            });
+        </script>
+        <script src="./script2.js"></script>
     </body>
-    <script src="./script.js"></script>
-
-    <script></script>
+    <!-- <script src="./script.js"></script> -->
 </html>

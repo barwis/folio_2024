@@ -631,7 +631,7 @@ main {
 }
 @media (min-width: 768px) {
   main {
-    padding: 0 calc(var(--gutter) * 2) 0 calc(var(--naw-width) * 2);
+    padding: 0 calc(var(--gutter) * 2) 0 calc(var(--naw-width) + var(--gutter) * 2);
   }
 }
 
@@ -1196,6 +1196,7 @@ section .work-item {
 @media (min-width: 768px) {
   .showcase .showcase-item.full-bleed {
     grid-column-end: span 10;
+    height: 52vw;
   }
 }
 .showcase .showcase-item-container {
@@ -1266,6 +1267,7 @@ section .work-item {
   margin: 60px 0 0;
   justify-content: center;
   grid-column: 1/span var(--col-num);
+  color: rgba(255, 255, 255, 0.5);
 }
 @media (min-width: 768px) {
   .tech-stack {

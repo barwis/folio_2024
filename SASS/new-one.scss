@@ -1058,7 +1058,7 @@ section {
 
         &.wide {
             grid-column-end: span 8;
-            height: 65vw;
+            height: 100vw;
 
             @include desktop {
                 grid-column-end: span 6;
@@ -1079,6 +1079,7 @@ section {
 
         &.full-bleed {
             grid-column-end: span 8;
+            height: 100vw;
 
             @include desktop {
                 grid-column-end: span 10;

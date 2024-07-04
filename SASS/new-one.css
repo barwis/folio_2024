@@ -1171,7 +1171,7 @@ section .work-item {
 }
 .showcase .showcase-item.wide {
   grid-column-end: span 8;
-  height: 65vw;
+  height: 100vw;
 }
 @media (min-width: 768px) {
   .showcase .showcase-item.wide {
@@ -1191,6 +1191,7 @@ section .work-item {
 }
 .showcase .showcase-item.full-bleed {
   grid-column-end: span 8;
+  height: 100vw;
 }
 @media (min-width: 768px) {
   .showcase .showcase-item.full-bleed {

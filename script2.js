@@ -369,11 +369,22 @@ const main = {
 };
 
 const caseStudy = {
-    animateShowcaseItems: () => {
-        if (!isDesktop) {
-            return false;
-        }
+    animateHeroImage: () => {
+        const heroImage = document.querySelector('.header--big .header__image');
+        if (!heroImage) return;
 
+        gsap.to(heroImage, {
+            scrollTrigger: {
+                trigger: heroImage,
+                start: 'top top',
+                scrub: true,
+                end: () => `${viewportHeight}px`,
+                // toggleActions: "play reset play reset"
+            },
+            y: `-50%`,
+        });
+    },
+    animateShowcaseItems: () => {
         const showcaseContainer = document.querySelector('.showcase');
 
         const items = gsap.utils.toArray('.showcase-item');
@@ -383,11 +394,10 @@ const caseStudy = {
         const showcaseItemsContainerHeight = document
             .querySelector('.showcase')
             .getBoundingClientRect().height;
-
         items.forEach((item) => {
             const img = item.querySelector('img');
 
-            if (!item.classList.contains('full-bleed')) {
+            if (!item.classList.contains('full-bleed') && isDesktop) {
                 const container = item.querySelector(
                     '.showcase-item-container'
                 );
@@ -414,7 +424,9 @@ const caseStudy = {
                 });
             }
 
-            gsap.set(img, { y: '-10%' });
+            const yOffset = isDesktop ? 10 : 10;
+
+            gsap.set(img, { y: `-${yOffset}%` });
 
             gsap.to(img, {
                 scrollTrigger: {
@@ -424,8 +436,33 @@ const caseStudy = {
                         `${viewportHeight + showcaseItemsContainerHeight}px`,
                     // toggleActions: "play reset play reset"
                 },
-                y: '10%',
+                y: `${yOffset}%`,
             });
+        });
+    },
+    animateQuote: () => {
+        const quote = document.querySelector('.quote');
+        const recommendationContainer =
+            document.querySelector('.recommendations');
+
+        if (!quote) {
+            return;
+        }
+
+        // mobile: y: -100% - 100%;
+        // desktop: y: - 0% - 30%;
+        gsap.set(quote, { y: isDesktop ? '0%' : '-40%' });
+        gsap.to(quote, {
+            scrollTrigger: {
+                trigger: recommendationContainer,
+                scrub: true,
+                end: () =>
+                    `${
+                        viewportHeight +
+                        recommendationContainer.getBoundingClientRect().height
+                    }px`,
+            },
+            y: isDesktop ? '30%' : '40%',
         });
     },
 };
@@ -454,7 +491,9 @@ document.addEventListener('readystatechange', (event) => {
         main.animateSectionHeadings();
         main.animateSkillBars();
 
+        caseStudy.animateHeroImage();
         caseStudy.animateShowcaseItems();
+        caseStudy.animateQuote();
         // createRipple();
     }
 });

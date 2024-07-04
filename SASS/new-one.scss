@@ -20,6 +20,15 @@
     }
 }
 
+::selection {
+    color: white;
+    background-color: var(--accent-color);
+}
+
+img {
+    user-select: none;
+}
+
 $bg-color: #1e1e1e;
 $orange: var(--accent-color, #ff6945);
 
@@ -257,6 +266,10 @@ header {
         padding: 0;
         margin-bottom: 0;
 
+        @include desktop {
+            height: 80vh;
+        }
+
         .header__image {
             position: fixed;
             left: 0;
@@ -264,6 +277,11 @@ header {
             right: 0;
             width: 100%;
             height: 60vh;
+
+            @include desktop {
+                height: 80vh;
+            }
+
             img {
                 height: 100%;
                 width: 100%;
@@ -458,7 +476,8 @@ nav {
 
 main {
     display: flex;
-    // grid-template-columns: 2fr 8fr;
+    overflow: hidden;
+
     flex-direction: column;
     gap: 0 var(--gutter);
     padding: 0 calc(var(--gutter) * 2);
@@ -888,10 +907,11 @@ section {
         font-size: 100em;
         line-height: 0.5;
         font-family: 'Wulkan display', sans-serif;
-        opacity: 0.15;
+        opacity: 0.1;
 
         @include desktop {
             top: 0;
+            line-height: 0.8;
         }
     }
 
@@ -1064,10 +1084,7 @@ section {
         width: 100%;
         object-fit: cover;
         height: 100%;
-
-        @include desktop {
-            transform: scale(1.2);
-        }
+        transform: scale(1.2);
     }
 }
 
@@ -1084,7 +1101,7 @@ section {
 
     footer {
         grid-column: 1 / span 8;
-        padding: 20px 0;
+        padding: 20px;
         border-top: 1px solid hsla(0, 0%, 100%, 0.15);
         font-size: 20px;
         display: flex;
@@ -1093,6 +1110,7 @@ section {
         @include desktop {
             font-size: 1.27em;
             padding: 2em 0;
+            justify-content: flex-start;
         }
 
         a {
@@ -1143,6 +1161,26 @@ section {
         margin: auto;
         @include desktop {
             width: 100%;
+        }
+    }
+}
+
+.diamond {
+    color: var(--accent-color);
+    grid-column: 1 / span var(--col-num);
+
+    text-align: center;
+
+    @include desktop {
+        grid-column: 1 / span calc(var(--col-num) - 4);
+    }
+
+    svg {
+        width: 20px;
+        height: 20px;
+        @include desktop {
+            width: 1em;
+            height: 1em;
         }
     }
 }

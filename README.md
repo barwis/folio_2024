@@ -24,3 +24,9 @@ viewport width image size ratio
 1600 1107 x 707  
 1366 922 x 589
 768 600 x 383
+
+1920 1650 x 1,054
+
+1600: 1336 x 854
+1366 1112 x 710
+mobile 600 x 383

@@ -174,6 +174,22 @@ html.lenis body {
   }
 }
 
+::-moz-selection {
+  color: white;
+  background-color: var(--accent-color);
+}
+
+::selection {
+  color: white;
+  background-color: var(--accent-color);
+}
+
+img {
+  -webkit-user-select: none;
+     -moz-user-select: none;
+          user-select: none;
+}
+
 * {
   box-sizing: border-box;
   -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
@@ -400,6 +416,11 @@ header.header--big {
   padding: 0;
   margin-bottom: 0;
 }
+@media (min-width: 768px) {
+  header.header--big {
+    height: 80vh;
+  }
+}
 header.header--big .header__image {
   position: fixed;
   left: 0;
@@ -407,6 +428,11 @@ header.header--big .header__image {
   right: 0;
   width: 100%;
   height: 60vh;
+}
+@media (min-width: 768px) {
+  header.header--big .header__image {
+    height: 80vh;
+  }
 }
 header.header--big .header__image img {
   height: 100%;
@@ -591,6 +617,7 @@ nav .go-back-2:hover img, nav .go-back-2:hover svg {
 
 main {
   display: flex;
+  overflow: hidden;
   flex-direction: column;
   gap: 0 var(--gutter);
   padding: 0 calc(var(--gutter) * 2);
@@ -999,11 +1026,12 @@ section .work-item {
   font-size: 100em;
   line-height: 0.5;
   font-family: "Wulkan display", sans-serif;
-  opacity: 0.15;
+  opacity: 0.1;
 }
 @media (min-width: 768px) {
   .recommendations .quote {
     top: 0;
+    line-height: 0.8;
   }
 }
 @media (min-width: 768px) {
@@ -1170,11 +1198,7 @@ section .work-item {
   -o-object-fit: cover;
      object-fit: cover;
   height: 100%;
-}
-@media (min-width: 768px) {
-  .showcase img {
-    transform: scale(1.2);
-  }
+  transform: scale(1.2);
 }
 
 .footer {
@@ -1191,7 +1215,7 @@ section .work-item {
 }
 .footer footer {
   grid-column: 1/span 8;
-  padding: 20px 0;
+  padding: 20px;
   border-top: 1px solid hsla(0, 0%, 100%, 0.15);
   font-size: 20px;
   display: flex;
@@ -1201,6 +1225,7 @@ section .work-item {
   .footer footer {
     font-size: 1.27em;
     padding: 2em 0;
+    justify-content: flex-start;
   }
 }
 .footer footer a {
@@ -1253,5 +1278,26 @@ section .work-item {
 @media (min-width: 768px) {
   .tech-stack img {
     width: 100%;
+  }
+}
+
+.diamond {
+  color: var(--accent-color);
+  grid-column: 1/span var(--col-num);
+  text-align: center;
+}
+@media (min-width: 768px) {
+  .diamond {
+    grid-column: 1/span calc(var(--col-num) - 4);
+  }
+}
+.diamond svg {
+  width: 20px;
+  height: 20px;
+}
+@media (min-width: 768px) {
+  .diamond svg {
+    width: 1em;
+    height: 1em;
   }
 }/*# sourceMappingURL=new-one.css.map */

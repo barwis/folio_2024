@@ -419,7 +419,7 @@ const caseStudy = {
     },
     animateShowcaseItems: () => {
         const showcase = document.querySelector('.showcase');
-        const items = [...showcase.querySelectorAll('.work-item')];
+        const items = gsap.utils.toArray('.work-item');
         if (!isDesktop) return;
         if (items.length === 0) return;
 
@@ -482,6 +482,22 @@ const caseStudy = {
     },
 };
 
+function Marquee(selector, speed) {
+    const parentSelector = document.querySelector(selector);
+    if (!parentSelector) return;
+    const firstElement = parentSelector.children[0];
+    console.log(firstElement);
+    let i = 0;
+
+    setInterval(function () {
+        firstElement.style.marginLeft = `-${i}px`;
+        if (i > firstElement.clientWidth) {
+            i = 0;
+        }
+        i = i + speed;
+    }, 0);
+}
+
 document.addEventListener('readystatechange', (event) => {
     const mediaQuery = window.matchMedia('(min-width: 768px)');
 
@@ -509,6 +525,8 @@ document.addEventListener('readystatechange', (event) => {
         caseStudy.animateHeroImage();
         caseStudy.animateShowcaseItems();
         caseStudy.animateQuote();
+        Marquee('.marquee', 0.5);
+
         // createRipple();
     }
 });

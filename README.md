@@ -20,13 +20,21 @@
 showcase lead image
 
 viewport width image size ratio
+
+big
 1920 1360 x 868 1.566 ( 1.565365025466893 )
 1600 1107 x 707  
 1366 922 x 589
 768 600 x 383
 
-1920 1650 x 1,054
+small ratio 1:56:1 (14:9)
+1920 1334 x 858
+1600 1098 x 706
+1336 904 x 581
+768 486 x 312
+640 600 x 386
 
+1920 1650 x 1,054
 1600: 1336 x 854
 1366 1112 x 710
 mobile 600 x 383
@@ -48,7 +56,16 @@ scaled by 20% up
 768 ? 430x276 281x276 727x467
 640 ? 720x463 720x768 720x463
 
-index page aspect ratio: 0.83:1
+index page aspect ratio: 0.83:1 112x715
+
+breakpoint | dimension
+1920 | 773x928
+1600 | 636x763
+1366 | 537x644
+768 | 281x337  
+640 | 720x864
+
+work lead image smaller
 
 breakpoint | dimension
 1920 | 773x928

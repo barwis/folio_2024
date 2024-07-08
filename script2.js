@@ -301,29 +301,63 @@ const main = {
         });
     },
     animateWorks: () => {
-        const items = gsap.utils.toArray('.work a');
+        const classes = {
+            item: '.work.item',
+            pictureContainer: '.test',
+            picture: 'picture',
+        };
+
+        const items = gsap.utils.toArray('.work-item');
 
         if (items.length === 0) return;
-        const duration = isDesktop ? 2 : 1;
+
+        const duration = isDesktop ? 1 : 1;
         const start = isDesktop ? 'top 80%' : 'top 100%';
 
         items.forEach((item, index) => {
-            const itemContainer = item.querySelector('.item-container');
+            // slideUp on scroll
+            const pictureContainer = item.querySelector(
+                classes.pictureContainer
+            );
 
-            item.addEventListener('click', createRipple, false);
-            const delay = isDesktop ? (index % 2) / 3 : 0;
-            gsap.set(item, { y: 200, opacity: 0 });
-            gsap.to(item, {
-                scrollTrigger: {
-                    start: start,
-                    trigger: item,
-                },
-                opacity: 1,
-                y: 0,
-                ease: 'power3.out',
-                delay: delay,
-                duration: duration,
-            });
+            const itemHeight = item.getBoundingClientRect().height;
+
+            const picture = item.querySelector('picture');
+            const image = item.querySelector('img');
+
+            if (pictureContainer && document.body.classList.contains('index')) {
+                // item.addEventListener('click', createRipple, false);
+                const delay = isDesktop ? (index % 2) / 3 : 0;
+                gsap.set(pictureContainer, { y: 200, opacity: 0 });
+                gsap.to(pictureContainer, {
+                    scrollTrigger: {
+                        start: start,
+                        trigger: pictureContainer,
+                        end: viewportHeight + itemHeight,
+                    },
+                    opacity: 1,
+                    y: 0,
+                    ease: 'power3.out',
+                    delay: delay,
+                    duration: duration,
+                });
+            }
+
+            // img parallax
+            if (picture && image) {
+                const offsetY = image.getBoundingClientRect().height * 0.2;
+                gsap.set(picture, { width: '120%', height: '120%' });
+                gsap.set(image, { y: `${-20}%` });
+                gsap.to(image, {
+                    scrollTrigger: {
+                        trigger: item,
+                        scrub: true,
+                        end: () => `${viewportHeight + itemHeight}px`,
+                        // toggleActions: "play reset play reset"
+                    },
+                    y: `${20}%`,
+                });
+            }
         });
     },
     animateSkillBars: () => {
@@ -352,7 +386,6 @@ const main = {
         Fixed Nav
         ----------------------------*/
         ScrollTrigger.create({
-            markers: false,
             trigger: body,
             start: 'top top',
             onUpdate: (self) => {
@@ -385,58 +418,40 @@ const caseStudy = {
         });
     },
     animateShowcaseItems: () => {
-        const showcaseContainer = document.querySelector('.showcase');
-
-        const items = gsap.utils.toArray('.showcase-item');
-
+        const showcase = document.querySelector('.showcase');
+        const items = [...showcase.querySelectorAll('.work-item')];
+        if (!isDesktop) return;
         if (items.length === 0) return;
 
-        const showcaseItemsContainerHeight = document
-            .querySelector('.showcase')
-            .getBoundingClientRect().height;
+        const showcaseItemsContainerHeight =
+            showcase.getBoundingClientRect().height;
+
+        gsap.set(showcase, { paddingTop: '10%', paddingBottom: '10%' });
+
         items.forEach((item) => {
-            const img = item.querySelector('img');
+            if (item.classList.contains('work-item--full-bleed')) return;
 
-            if (!item.classList.contains('full-bleed') && isDesktop) {
-                const container = item.querySelector(
-                    '.showcase-item-container'
-                );
-                const showcaseContainerMargin =
-                    container.getBoundingClientRect().height * 0.1;
-                gsap.set(showcaseContainer, {
-                    boxSizing: 'content-box',
-                    marginTop: showcaseContainerMargin,
-                    marginBottom: showcaseContainerMargin,
-                });
-                const containerOffset = item.classList.contains('wide')
-                    ? -1
-                    : 1;
+            const itemHeight = item.getBoundingClientRect().height * 0.1;
+            console.log(itemHeight);
+            const containerOffset = item.classList.contains('work-item--wide')
+                ? -1
+                : 1;
 
-                gsap.set(container, { y: `${containerOffset * -10}%` });
-                gsap.to(container, {
-                    scrollTrigger: {
-                        trigger: item,
-                        scrub: true,
-                        end: () => `${viewportHeight}px`,
-                        // toggleActions: "play reset play reset"
-                    },
-                    y: `${containerOffset * 5}%`,
-                });
-            }
-
-            const yOffset = isDesktop ? 10 : 10;
-
-            gsap.set(img, { y: `-${yOffset}%` });
-
-            gsap.to(img, {
+            const perc = `${containerOffset * itemHeight}`;
+            console.log(perc);
+            gsap.set(item, { y: `${itemHeight * containerOffset * -1}` });
+            gsap.to(item, {
                 scrollTrigger: {
-                    trigger: item,
+                    trigger: showcase,
+                    start: 'top bottom',
                     scrub: true,
-                    end: () =>
-                        `${viewportHeight + showcaseItemsContainerHeight}px`,
+                    ease: 'none',
+                    end: `${
+                        showcaseItemsContainerHeight * 1.5 + viewportHeight
+                    }`,
                     // toggleActions: "play reset play reset"
                 },
-                y: `${yOffset}%`,
+                y: `${perc}`,
             });
         });
     },

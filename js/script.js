@@ -1,3 +1,9 @@
+gsap.config({
+    force3D: true,
+    nullTargetWarn: false,
+    trialWarn: false,
+});
+
 gsap.registerPlugin(ScrollTrigger);
 gsap.registerPlugin(TextPlugin);
 
@@ -22,6 +28,10 @@ const mediaQuery = window.matchMedia('(min-width: 768px)');
 const isDesktop = mediaQuery.matches;
 
 function createRipple(event) {
+    if (isDesktop && button.href) {
+        window.location.href = button.href;
+        return;
+    }
     event.preventDefault();
     event.stopPropagation();
     const itemContainer = event.currentTarget.querySelector('.item-container');
@@ -63,25 +73,39 @@ function createRipple(event) {
 }
 
 const header = {
-    randomiseHeaderText: () => {
-        const texts = [
-            ['and I make', 'the Web', '( like... really! )'],
-            ["and I'm a", 'web magican', '╰( ͡° ͜ʖ ͡° )つ──☆*:・ﾟ'],
-            ['and I make pixels', 'dance'],
-            [
-                'and I debug more than',
-                'I sleep',
-                "( I really shouldn't though... )",
-            ],
-            ['and I turn coffee', 'into code', "( yeah, I'm THAT cool! )"],
-            ['and I prefer spaces', 'over tabs', '( fight me! )'],
-            [
-                'and I turn caffeine',
-                'into websites',
-                '( weird flex, but OK... )',
-            ],
-        ];
+    text: [
+        ['and I make', 'the Web', '( like... really! )'],
+        ["and I'm a", 'web magican', '╰( ͡° ͜ʖ ͡° )つ──☆*:・ﾟ'],
+        ['and I make pixels', 'dance'],
+        [
+            'and I debug more than',
+            'I sleep',
+            "( I really shouldn't though... )",
+        ],
+        ['and I turn coffee', 'into code', "( yeah, I'm THAT cool! )"],
+        ['and I prefer spaces', 'over tabs', '( fight me! )'],
+        ['and I turn caffeine', 'into websites', '( weird flex, but OK... )'],
+    ],
+    elements: {
+        span1: document.querySelector('#sh1'),
+        span2: document.querySelector('#sh2'),
+        span3: document.querySelector('#sh3'),
+        hero: document.querySelector('header'),
+        scrollArrow: document.getElementById('scroll-arrow'),
+        scrollText: document.getElementById('scroll-text-wrapper'),
+        circle: document.querySelector('.circle'),
+        scrollBar: document.getElementById('scrollbar'),
+    },
 
+    reset: function () {
+        const { span1, span2, span3 } = this.elements;
+        span1 ? (span1.innerHTML = '') : null;
+        span2 ? (span2.innerHTML = '') : null;
+        span3 ? (span3.innerHTML = '') : null;
+        gsap.set(span3, { opacity: 0 });
+    },
+
+    randomiseHeaderText: function () {
         function shuffleArray(array) {
             let currentIndex = array.length,
                 temporaryValue,
@@ -114,9 +138,7 @@ const header = {
         }
 
         // get elements
-        const span1 = document.querySelector('#sh1');
-        const span2 = document.querySelector('#sh2');
-        const span3 = document.querySelector('#sh3');
+        const { span1, span2, span3 } = this.elements;
 
         if (!span1 || !span2) return;
 
@@ -128,7 +150,7 @@ const header = {
 
         gsap.registerPlugin(ScrambleTextPlugin);
 
-        const randomText = getRandomArrayItem(texts);
+        const randomText = getRandomArrayItem(this.text);
 
         const animate = () => {
             // clear elements' text
@@ -138,7 +160,6 @@ const header = {
 
             const textToShuffle = randomText.next().value;
 
-            gsap.set(span3, { opacity: 0 });
             span3.innerHTML = textToShuffle[2] || '';
 
             // calculate scramble dudation based on a length of the text
@@ -170,7 +191,10 @@ const header = {
 
         animate();
     },
-    animateHeroSection: () => {
+    animateHeroSection: function () {
+        // const hero = document.querySelector('header');
+        const { hero } = this.elements;
+
         const elements = {
             '#h-1': {
                 transform: 'translateX(-0.5em)',
@@ -184,9 +208,6 @@ const header = {
                 opacity: 0,
             },
         };
-
-        const hero = document.querySelector('header');
-        if (!hero) return;
 
         Object.entries(elements).forEach(([id, styles]) => {
             const elem = document.querySelector(id);
@@ -203,9 +224,9 @@ const header = {
             }
         });
     },
-    animateScrollIndicator: () => {
-        const scrollArrow = document.getElementById('scroll-arrow');
-        const scrollText = document.getElementById('scroll-text-wrapper');
+    animateScrollIndicator: function () {
+        const { scrollArrow, scrollText, circle } = this.elements;
+
         const end = isDesktop
             ? `+=${viewportHeight}`
             : `+=${viewportHeight * 2.5}`;
@@ -236,16 +257,16 @@ const header = {
             });
         }
 
-        const circle = document.querySelector('.circle');
-
         if (!!circle) {
             circle.addEventListener('click', () => {
                 lenis.scrollTo('#main', { duration: 1, lerp: 0.1 });
             });
         }
     },
-    animateScrollBar: () => {
-        gsap.to('#scrollbar', {
+    animateScrollBar: function () {
+        const { scrollBar } = this.elements;
+        if (!isDesktop || !scrollBar) return;
+        gsap.to(scrollBar, {
             scrollTrigger: {
                 scrub: true,
                 start: 'top top',
@@ -258,16 +279,33 @@ const header = {
 };
 
 const main = {
-    animateSectionHeadings: () => {
-        const headings = gsap.utils.toArray('h2');
-        if (headings.length === 0) return;
+    elements: {
+        body: document.querySelector('body'),
+        logo: document.querySelector('.logo'),
+        headings: gsap.utils.toArray('h2'),
+        paragraphs: gsap.utils.toArray(
+            '.fact section, .recommendations section'
+        ),
+        items: gsap.utils.toArray('.work-item'),
+        skillBars: gsap.utils.toArray('.bar'),
+    },
 
-        headings.forEach((heading) => {
-            gsap.set(heading, { x: -55, opacity: 0 });
+    reset: function () {
+        const initialYOffset = isDesktop ? '2em' : '20px';
+
+        this.elements.paragraphs.forEach((paragraph) =>
+            gsap.set(paragraph, { opacity: 0, y: initialYOffset })
+        );
+        this.elements.headings?.forEach((heading) =>
+            gsap.set(heading, { x: -55, opacity: 0 })
+        );
+    },
+
+    animateSectionHeadings: function () {
+        this.elements.headings?.forEach((heading) => {
             gsap.to(heading, {
                 scrollTrigger: {
                     trigger: heading,
-                    // toggleActions: 'play reset play reset',
                 },
                 opacity: 1,
                 x: 0,
@@ -276,21 +314,13 @@ const main = {
             });
         });
     },
-    animateParagraphs: () => {
-        const paragraphs = gsap.utils.toArray(
-            '.fact section, .recommendations section'
-        );
 
-        if (paragraphs.length === 0) return;
-
-        const initialYOffset = isDesktop ? '2em' : '20px';
-        paragraphs.forEach((paragraph) => {
-            gsap.set(paragraph, { opacity: 0, y: initialYOffset });
+    animateParagraphs: function () {
+        this.elements.paragraphs?.forEach((paragraph) => {
             gsap.to(paragraph, {
                 scrollTrigger: {
                     trigger: paragraph,
                     start: 'top 80%',
-                    // toggleActions: 'play reset play reset',
                 },
                 y: 0,
                 opacity: 1,
@@ -300,6 +330,26 @@ const main = {
             });
         });
     },
+
+    reset: function () {
+        this.elements.items?.forEach((item) => {
+            const i = gsap.utils.selector(item);
+
+            const pictureContainer = i('.test');
+            const picture = i('picture');
+            const image = i('img');
+            if (document.body.classList.contains('index')) {
+                gsap.set(pictureContainer, { y: 200, opacity: 0 });
+            }
+            gsap.set(picture, { width: '120%', height: '120%' });
+            gsap.set(image, { y: `${-20}%` });
+        });
+
+        this.elements.skillBars.forEach((bar) => {
+            gsap.set(bar.firstElementChild, { width: 0 });
+        });
+    },
+
     animateWorks: () => {
         const classes = {
             item: '.work.item',
@@ -314,21 +364,16 @@ const main = {
         const duration = isDesktop ? 1 : 1;
         const start = isDesktop ? 'top 80%' : 'top 100%';
 
-        items.forEach((item, index) => {
-            // slideUp on scroll
-            const pictureContainer = item.querySelector(
-                classes.pictureContainer
-            );
+        items.forEach((item) => {
+            const i = gsap.utils.selector(item);
 
-            const itemHeight = item.getBoundingClientRect().height;
+            const itemHeight = i('.test')[0]?.getBoundingClientRect().height;
 
-            const picture = item.querySelector('picture');
-            const image = item.querySelector('img');
+            const pictureContainer = i('.test');
+            const picture = i('picture');
+            const image = i('img');
 
             if (pictureContainer && document.body.classList.contains('index')) {
-                // item.addEventListener('click', createRipple, false);
-                const delay = isDesktop ? (index % 2) / 3 : 0;
-                gsap.set(pictureContainer, { y: 200, opacity: 0 });
                 gsap.to(pictureContainer, {
                     scrollTrigger: {
                         start: start,
@@ -338,19 +383,15 @@ const main = {
                     opacity: 1,
                     y: 0,
                     ease: 'power3.out',
-                    delay: delay,
                     duration: duration,
                 });
             }
 
             // img parallax
             if (picture && image) {
-                const offsetY = image.getBoundingClientRect().height * 0.2;
-                gsap.set(picture, { width: '120%', height: '120%' });
-                gsap.set(image, { y: `${-20}%` });
                 gsap.to(image, {
                     scrollTrigger: {
-                        trigger: item,
+                        trigger: pictureContainer,
                         scrub: true,
                         end: () => `${viewportHeight + itemHeight}px`,
                         // toggleActions: "play reset play reset"
@@ -360,14 +401,12 @@ const main = {
             }
         });
     },
-    animateSkillBars: () => {
-        const skillBars = gsap.utils.toArray('.bar');
-        if (skillBars.length === 0) return;
+    animateSkillBars: function () {
+        const { skillBars } = this.elements;
 
         skillBars.forEach((bar) => {
             const skillBar = bar.firstElementChild;
             const width = parseInt(bar.dataset.years) * 10;
-            gsap.set(skillBar, { width: 0 });
 
             gsap.to(skillBar, {
                 scrollTrigger: {
@@ -379,31 +418,57 @@ const main = {
             });
         });
     },
-    animateLogo: () => {
-        const body = document.querySelector('body');
-        const logo = document.querySelector('.logo');
+    animateLogo: function () {
+        if (isDesktop) return;
+        const { body, logo } = this.elements;
         /*----------------------------
         Fixed Nav
         ----------------------------*/
-        ScrollTrigger.create({
-            trigger: body,
-            start: 'top top',
-            onUpdate: (self) => {
-                if (self.direction === 1) {
-                    logo.classList.add('scrolling-down');
-                    logo.classList.remove('scrolling-up');
-                } else {
-                    logo.classList.add('scrolling-up');
-                    logo.classList.remove('scrolling-down');
-                }
+        if (!logo) return;
+
+        gsap.to(body, {
+            scrollTrigger: {
+                trigger: body,
+                start: 'top top',
+                onUpdate: (self) => {
+                    if (self.direction === 1) {
+                        logo.classList.add('scrolling-down');
+                        logo.classList.remove('scrolling-up');
+                    } else {
+                        logo.classList.add('scrolling-up');
+                        logo.classList.remove('scrolling-down');
+                    }
+                },
             },
         });
     },
 };
 
 const caseStudy = {
-    animateHeroImage: () => {
-        const heroImage = document.querySelector('.header--big .header__image');
+    elements: {
+        heroImage: document.querySelector('.header--big .header__image'),
+        showcase: document.querySelector('.showcase'),
+        items: gsap.utils.toArray('.showcase .work-item'),
+    },
+    reset: function () {
+        const { showcase, items } = this.elements;
+
+        gsap.set(showcase, {
+            paddingTop: '10%',
+            paddingBottom: '10%',
+        });
+
+        items.forEach((item) => {
+            if (item.classList.contains('work-item--full-bleed')) return;
+            const itemHeight = item.getBoundingClientRect().height * 0.1;
+            const containerOffset = item.classList.contains('work-item--wide')
+                ? -1
+                : 1;
+            gsap.set(item, { y: `${itemHeight * containerOffset * -1}` });
+        });
+    },
+    animateHeroImage: function () {
+        const { heroImage } = this.elements;
         if (!heroImage) return;
 
         gsap.to(heroImage, {
@@ -417,29 +482,21 @@ const caseStudy = {
             y: `-50%`,
         });
     },
-    animateShowcaseItems: () => {
-        const showcase = document.querySelector('.showcase');
-        const items = gsap.utils.toArray('.work-item');
+    animateShowcaseItems: function () {
         if (!isDesktop) return;
-        if (items.length === 0) return;
+        const { showcase, items } = this.elements;
 
         const showcaseItemsContainerHeight =
             showcase.getBoundingClientRect().height;
-
-        gsap.set(showcase, { paddingTop: '10%', paddingBottom: '10%' });
 
         items.forEach((item) => {
             if (item.classList.contains('work-item--full-bleed')) return;
 
             const itemHeight = item.getBoundingClientRect().height * 0.1;
-            console.log(itemHeight);
             const containerOffset = item.classList.contains('work-item--wide')
                 ? -1
                 : 1;
 
-            const perc = `${containerOffset * itemHeight}`;
-            console.log(perc);
-            gsap.set(item, { y: `${itemHeight * containerOffset * -1}` });
             gsap.to(item, {
                 scrollTrigger: {
                     trigger: showcase,
@@ -451,7 +508,7 @@ const caseStudy = {
                     }`,
                     // toggleActions: "play reset play reset"
                 },
-                y: `${perc}`,
+                y: `${containerOffset * itemHeight}`,
             });
         });
     },
@@ -498,27 +555,51 @@ function Marquee(selector, speed) {
     }, 0);
 }
 
+const resetStylesForAnimation = () => {
+    const splash = document.querySelector('.splash');
+    if (splash) {
+        var timeline = new TimelineMax({
+            onComplete: () => {
+                document.querySelector('.splash')?.remove();
+            },
+        });
+
+        timeline
+            .to(
+                '.splash .icon',
+                {
+                    opacity: 0,
+                },
+                0.5
+            )
+            .to('.splash', 1, {
+                opacity: 0,
+            });
+    }
+};
+
+// TODO:
+// combine animateWorks and animateShowcaseItems into one
+
 document.addEventListener('readystatechange', (event) => {
-    const mediaQuery = window.matchMedia('(min-width: 768px)');
+    header.reset();
+    main.reset();
+    caseStudy.reset();
 
     if (event.target.readyState === 'complete') {
-        if (mediaQuery.matches) {
-            header.animateScrollBar();
-        } else {
-            main.animateLogo();
-            const button = document.getElementById('contact');
+        const button = document.getElementById('contact');
 
-            if (button) {
-                button.addEventListener('click', createRipple);
-            }
+        if (button) {
+            button.addEventListener('click', createRipple);
         }
+        header.animateScrollBar();
         header.animateScrollIndicator();
         header.randomiseHeaderText();
         header.animateHeroSection();
 
+        main.animateLogo();
         main.animateWorks();
         main.animateParagraphs();
-
         main.animateSectionHeadings();
         main.animateSkillBars();
 

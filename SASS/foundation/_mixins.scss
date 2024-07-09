@@ -4,23 +4,6 @@
     }
 }
 
-// 1vw = 1920
-// user-agent font size: 16px;
-// if I want to set
-
-// Xvw = $desired-font-size * 100 / 1920 'vw';
-
-// 100vw - 150
-// 1vw - x
-
-// 150px - 100vw;
-
-// 1920 - 100%;
-// 150 - x%
-// x = 7.8
-
-// $desktop-size - desired font size for 1920px viewport
-
 @mixin font-size(
     $base-size,
     $desktop-size: $base-size,

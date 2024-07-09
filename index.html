@@ -10,15 +10,14 @@
         <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/TextPlugin.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.9.1/ScrollTrigger.min.js"></script>
 
-        <script src="./ScrambleTextPlugin3.js"></script>
-        <script src="./lazyload.min.js"></script>
-        <script src="./lenis.min.js"></script>
+        <script src="./js/ScrambleTextPlugin3.js"></script>
+        <script src="./js/lenis.min.js"></script>
         <style>
             :root {
                 --theme-color: #ff6945;
             }
         </style>
-        <link rel="stylesheet" href="./SASS/new-one.css" />
+        <link rel="stylesheet" href="./SASS/style.css" />
         <noscript>
             <style>
                 body {
@@ -28,8 +27,6 @@
         </noscript>
     </head>
     <body id="body" class="index">
-        <!-- <div class="splash"></div> -->
-
         <svg
             version="1.1"
             xmlns="http://www.w3.org/2000/svg"
@@ -104,8 +101,21 @@
                 </g>
             </defs>
         </svg>
+
+        <!-- <div class="splash">
+            <div class="icon">
+                <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    viewBox="0 0 155.88 194.62"
+                    width="30"
+                    height="40"
+                >
+                    <use href="#logo" />
+                </svg>
+            </div>
+        </div> -->
         <nav>
-            <div class="logo" id="logo">
+            <div class="logo">
                 <div class="icon">
                     <svg
                         xmlns="http://www.w3.org/2000/svg"
@@ -127,9 +137,10 @@
             </h1>
             <div id="h-tag" class="tagline">
                 <div>
-                    <span id="sh1"></span> <span class="orange" id="sh2"></span>
+                    <span id="sh1">and I'm a</span>
+                    <span class="orange" id="sh2">web magican</span>
                 </div>
-                <div class="side" id="sh3"></div>
+                <div class="side" id="sh3">╰( ͡° ͜ʖ ͡° )つ──☆*:・ﾟ</div>
             </div>
 
             <div class="circle">
@@ -165,7 +176,7 @@
                 </section>
             </article>
 
-            <article class="work showcase">
+            <article class="work">
                 <h2 id="work">Featured Work</h2>
                 <div class="separator separator--long"></div>
                 <aside>
@@ -428,187 +439,6 @@
 
                         <h4>Digitas LBi</h4>
                     </a>
-                    <!-- <a class="work-item">
-                        <div class="item-container showcase-item">
-                            <div
-                                class="image-container showcase-item-container"
-                            >
-                                <svg
-                                    width="150"
-                                    height="50"
-                                    viewBox="0 0 150 50"
-                                    class="spinner"
-                                >
-                                    <use href="#spinner" />
-                                </svg>
-                                <picture>
-                                    <source
-                                        srcset="./images/home/1920-justeat.jpg"
-                                        media="(min-width: 1366px)"
-                                    />
-                                    <source
-                                        srcset="./images/home/1600-justeat.jpg"
-                                        media="(min-width: 768px)"
-                                    />
-                                    <source
-                                        srcset="./images/home/1366-justeat.jpg"
-                                        media="(min-width: 640px)"
-                                    />
-                                    <img
-                                        src="./images/home/768-justeat.jpg"
-                                        alt="JustEat"
-                                    />
-                                </picture>
-                            </div>
-                        </div>
-                        <h4>Just Eat</h4>
-                    </a> -->
-                    <!-- <a class="work-item" href="telegraph.html">
-                        <div class="item-container showcase-item">
-                            <div
-                                class="image-container showcase-item-container"
-                            >
-                                <svg
-                                    width="150"
-                                    height="50"
-                                    viewBox="0 0 150 50"
-                                    class="spinner"
-                                >
-                                    <use href="#spinner" />
-                                </svg>
-                                <picture>
-                                    <source
-                                        srcset="
-                                            ./images/home/1920-telegraph.jpg
-                                        "
-                                        media="(min-width: 1366px)"
-                                    />
-                                    <source
-                                        srcset="
-                                            ./images/home/1600-telegraph.jpg
-                                        "
-                                        media="(min-width: 768px)"
-                                    />
-                                    <source
-                                        srcset="
-                                            ./images/home/1366-telegraph.jpg
-                                        "
-                                        media="(min-width: 640px)"
-                                    />
-                                    <img
-                                        src="./images/home/768-telegraph.jpg"
-                                        alt="Telegraph Travel"
-                                    />
-                                </picture>
-                            </div>
-                        </div>
-                        <h4>The Telegraphg - Travel</h4>
-                    </a>
-                    <a class="work-item">
-                        <div class="item-container showcase-item">
-                            <div
-                                class="image-container showcase-item-container"
-                            >
-                                <svg
-                                    width="150"
-                                    height="50"
-                                    viewBox="0 0 150 50"
-                                    class="spinner"
-                                >
-                                    <use href="#spinner" />
-                                </svg>
-                                <picture>
-                                    <source
-                                        srcset="./images/home/1920-virgin.jpg"
-                                        media="(min-width: 1366px)"
-                                    />
-                                    <source
-                                        srcset="./images/home/1600-virgin.jpg"
-                                        media="(min-width: 768px)"
-                                    />
-                                    <source
-                                        srcset="./images/home/1366-virgin.jpg"
-                                        media="(min-width: 640px)"
-                                    />
-                                    <img
-                                        src="./images/home/768-virgin.jpg"
-                                        alt="Virgin Holidays"
-                                    />
-                                </picture>
-                            </div>
-                        </div>
-                        <h4>Virgin Holidays</h4>
-                    </a>
-                    <a class="work-item">
-                        <div class="item-container showcase-item">
-                            <div
-                                class="image-container showcase-item-container"
-                            >
-                                <svg
-                                    width="150"
-                                    height="50"
-                                    viewBox="0 0 150 50"
-                                    class="spinner"
-                                >
-                                    <use href="#spinner" />
-                                </svg>
-                                <picture>
-                                    <source
-                                        srcset="./images/home/1920-sky.jpg"
-                                        media="(min-width: 1366px)"
-                                    />
-                                    <source
-                                        srcset="./images/home/1600-sky.jpg"
-                                        media="(min-width: 768px)"
-                                    />
-                                    <source
-                                        srcset="./images/home/1366-sky.jpg"
-                                        media="(min-width: 640px)"
-                                    />
-                                    <img
-                                        src="./images/home/768-sky.jpg"
-                                        alt="Sky"
-                                    />
-                                </picture>
-                            </div>
-                        </div>
-                        <h4>Sky</h4>
-                    </a>
-                    <a class="work-item">
-                        <div class="item-container showcase-item">
-                            <div
-                                class="image-container showcase-item-container"
-                            >
-                                <svg
-                                    width="150"
-                                    height="50"
-                                    viewBox="0 0 150 50"
-                                    class="spinner"
-                                >
-                                    <use href="#spinner" />
-                                </svg>
-                                <picture>
-                                    <source
-                                        srcset="./images/home/1920-man-utd.jpg"
-                                        media="(min-width: 1366px)"
-                                    />
-                                    <source
-                                        srcset="./images/home/1600-man-utd.jpg"
-                                        media="(min-width: 768px)"
-                                    />
-                                    <source
-                                        srcset="./images/home/1366-man-utd.jpg"
-                                        media="(min-width: 640px)"
-                                    />
-                                    <img
-                                        src="./images/home/768-man-utd.jpg"
-                                        alt="Digitas LBi"
-                                    />
-                                </picture>
-                            </div>
-                        </div>
-                        <h4>Manchester United</h4>
-                    </a> -->
                 </section>
             </article>
 
@@ -822,39 +652,6 @@
             </article>
         </main>
 
-        <!-- <header class="header header--big">
-           
-            <div class="header__text">
-                <h2 id="heading-featured-work">Telegraph - Travel</h2>
-                <span>Jun 2017 - Mar 2021</span>
-
-                <div
-                    class="header__image"
-                >
-                    <img src="./images/case/telegraph/lead.jpg" alt="">
-                </div>
-            </div>
-        </header> -->
-        <!-- <button class="switch-button">switch theme</button> -->
-
-        <!-- <header id="header" class="header header--small">
-            <div class="header__text">
-                <h2 class="header__title" id="heading-featured-work">Telegraph - Travel</h2>
-
-                <span class="header__dates">Jun 2017 - Mar 2021</span>
-
-                <div class="header__image-container">
-                    <img class="header__image" src="./images/case/telegraph/lead.jpg" alt="">
-                </div>
-
-            </div>
-        </header> -->
-        <script>
-            var lazyLoadInstance = new LazyLoad({
-                // Your custom settings go here
-            });
-        </script>
-        <script src="./script2.js"></script>
+        <script src="./js/script.js"></script>
     </body>
-    <!-- <script src="./script.js"></script> -->
 </html>

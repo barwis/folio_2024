@@ -487,7 +487,7 @@ const caseStudy = {
         const { showcase, items } = this.elements;
 
         const showcaseItemsContainerHeight =
-            showcase.getBoundingClientRect().height;
+            showcase?.getBoundingClientRect().height;
 
         items.forEach((item) => {
             if (item.classList.contains('work-item--full-bleed')) return;

@@ -245,14 +245,14 @@ const header = {
         }
     },
     animateScrollBar: () => {
-        let scrollBarTimeline = gsap.timeline();
-        scrollBarTimeline.to('#scrollbar', {
+        gsap.to('#scrollbar', {
             scrollTrigger: {
                 scrub: true,
                 start: 'top top',
                 end: () => `${pageHeight - viewportHeight}px`,
             },
             height: `${viewportHeight}px`,
+            ease: 'none',
         });
     },
 };

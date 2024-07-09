@@ -3,3 +3,35 @@
         @content;
     }
 }
+
+// 1vw = 1920
+// user-agent font size: 16px;
+// if I want to set
+
+// Xvw = $desired-font-size * 100 / 1920 'vw';
+
+// 100vw - 150
+// 1vw - x
+
+// 150px - 100vw;
+
+// 1920 - 100%;
+// 150 - x%
+// x = 7.8
+
+// $desktop-size - desired font size for 1920px viewport
+
+@mixin font-size(
+    $base-size,
+    $desktop-size: $base-size,
+    $line-height: 1,
+    $desktop-line-height: $line-height
+) {
+    font-size: $base-size * 1px;
+    line-height: $line-height;
+    @include desktop {
+        // font-size: $desktop-size * 0.1vw;
+        font-size: calc($desktop-size / 1920 * 100vw);
+        line-height: $desktop-line-height;
+    }
+}

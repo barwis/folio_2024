@@ -727,10 +727,13 @@ header.header--big .header__text::after {
   display: block;
   background: linear-gradient(to top, black 0%, transparent 100%);
 }
+header.header--big h2 {
+  color: white;
+}
 header.header--big h2,
 header.header--big span {
   position: relative;
-  z-index: 999;
+  z-index: 2;
 }
 header.header--big .header__dates {
   white-space: nowrap;

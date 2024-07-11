@@ -1,5 +1,7 @@
 @use 'foundation/fonts';
 @use 'foundation/lenis';
+@use 'work';
+
 @import 'foundation/mixins';
 
 :root {
@@ -18,13 +20,6 @@
         --gutter: 2em;
         --naw-width: 100px;
     }
-    h1 {
-    }
-}
-
-::selection {
-    color: white;
-    background-color: var(--theme-color);
 }
 
 img {
@@ -70,22 +65,23 @@ img {
     }
 }
 
+::selection {
+    background: var(--theme-color) !important;
+}
+
 html {
-    min-height: 100%;
+    scrollbar-width: thin;
+    scrollbar-color: rgba(255, 255, 255, 0.7) transparent;
 }
 
 body {
     margin: 0;
     padding: 0;
-    min-height: 100%;
     font-size: 1vw;
-    height: 100% !important;
     background: var(--color-1) url(../images/bg.png);
-    // color: var(--theme-color);
 
     &.case-study {
         p {
-            // color: rgba(255, 255, 255, 0.7);
             @include font-size(24, 48, 1.3);
         }
 
@@ -279,10 +275,6 @@ header {
         }
     }
 
-    .header__dates {
-        // color: rgba(255, 255, 255, 0.5);
-    }
-
     &.header--big {
         height: 60vh;
         justify-content: flex-end;
@@ -345,10 +337,6 @@ header {
         span {
             position: relative;
             z-index: 999;
-        }
-
-        .header__title {
-            // color: white;
         }
 
         .header__dates {
@@ -631,48 +619,12 @@ section {
         grid-column: 3 / span 8;
         margin-bottom: 8em;
     }
-
-    .work-item {
-        grid-column: 1 / span var(--col-num);
-
-        @include desktop {
-            grid-column: auto / span calc((var(--col-num) - 2) / 2);
-        }
-
-        &--narrow {
-            grid-column-end: span 8;
-            height: 100vw;
-
-            @include desktop {
-                grid-column-end: span 4;
-                height: 38vw;
-            }
-        }
-
-        &--wide {
-            grid-column-end: span 8;
-            height: 100vw;
-
-            @include desktop {
-                grid-column-end: span 6;
-                height: 38vw;
-            }
-        }
-
-        &--full-bleed {
-            grid-column-end: span 8;
-            height: 100vw;
-
-            @include desktop {
-                grid-column-end: span 10;
-                height: 52vw;
-            }
-        }
-    }
 }
 
 .indent {
-    grid-template-columns: 50px repeat(calc(var(--col-num) - 1), 1fr);
+    grid-template-columns:
+        calc(var(--naw-width) - var(--gutter) * 2 - var(--gap))
+        repeat(calc(var(--col-num) - 1), 1fr);
 
     @include desktop {
         grid-template-columns: repeat(calc(var(--col-num)), 1fr);
@@ -694,14 +646,6 @@ section {
 
             @include desktop {
                 grid-column: 1 / span 4;
-            }
-        }
-
-        .work-item {
-            grid-column: 1 / span calc(var(--col-num) - 1);
-
-            @include desktop {
-                grid-column: auto / span calc((var(--col-num) - 2) / 2);
             }
         }
     }
@@ -756,135 +700,6 @@ section {
             grid-column-end: span calc(var(--col-num) - 2);
         }
     }
-}
-
-.work {
-    section {
-        gap: calc(var(--gutter) * 2) var(--gutter);
-
-        @include desktop {
-            gap: var(--gutter);
-        }
-    }
-    .separator {
-        display: none;
-
-        @include desktop {
-            display: grid;
-        }
-    }
-}
-
-.work-item {
-    position: relative;
-    display: block;
-    height: 120vw;
-
-    @include desktop {
-        height: 40vw;
-    }
-
-    .test {
-        display: block;
-        clip-path: inset(0 round var(--border-radius));
-        position: relative;
-        transition: clip-path 0.4s 0.1s var(--timing-function);
-        height: 100%;
-        width: 100%;
-    }
-
-    picture {
-        display: block;
-        width: 100%;
-        height: 100%;
-        position: absolute;
-        left: 50%;
-        top: 50%;
-        transform: translate(-50%, -50%);
-
-        img {
-            display: block;
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
-    }
-
-    h4 {
-        position: absolute;
-        font-weight: 400;
-        line-height: 2;
-        bottom: 1em;
-        right: auto;
-        z-index: 10;
-        margin: 0;
-        //// color: rgb(255, 255, 255);
-        transform: rotate(-90deg);
-        transform-origin: 0 100%;
-        background: rgba(30, 30, 30, 0.7);
-        padding: 5px 15px;
-        left: 70px;
-        border-radius: var(--border-radius);
-        transition: all 0.4s var(--timing-function);
-        @include font-size(21, 26);
-
-        @include desktop {
-            font-weight: 300;
-            background: none;
-            transform: rotate(0deg) translateY(-50%);
-            opacity: 0;
-            top: 0%;
-            bottom: auto;
-            // color: rgba(255, 255, 255, 0.5) !important;
-        }
-    }
-}
-
-a.work-item:hover {
-    .test {
-        clip-path: inset(50px round var(--border-radius));
-        transition: clip-path 0.4s var(--timing-function);
-    }
-
-    h4 {
-        transition: all 0.4s 0.2s var(--timing-function);
-
-        opacity: 1;
-        @include desktop {
-            transform: translateY(0);
-        }
-    }
-}
-
-.index .work-item:nth-child(2n) {
-    @include desktop {
-        margin-top: 6em;
-        margin-bottom: -6em;
-    }
-}
-
-.index .work-item:not([href]) .test::after {
-    content: 'case study \00000a coming soon';
-    position: absolute;
-    text-align: center;
-    left: -10px;
-    right: -10px;
-    top: -10px;
-    bottom: -10px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background: rgba(0, 0, 0, 1);
-    opacity: 0;
-    transition: opacity 0.4s 0.2s var(--timing-function);
-    //// color: white;
-    white-space: pre;
-    @include font-size(20, 20);
-}
-
-.index .work-item:not([href]):hover .test::after {
-    opacity: 1;
-    transition: opacity 0.4s var(--timing-function);
 }
 
 .skills {
@@ -1135,36 +950,6 @@ body.case-study .recommendations {
     }
     .showcase-item {
         display: grid;
-
-        &.wide {
-            grid-column-end: span 8;
-            height: 100vw;
-
-            @include desktop {
-                grid-column-end: span 6;
-                height: 38vw;
-            }
-        }
-
-        &.narrow {
-            grid-column-end: span 8;
-            height: 100vw;
-
-            @include desktop {
-                grid-column-end: span 4;
-                height: 38vw;
-            }
-        }
-
-        &.full-bleed {
-            grid-column-end: span 8;
-            height: 100vw;
-
-            @include desktop {
-                grid-column-end: span 10;
-                height: 52vw;
-            }
-        }
     }
 
     img {

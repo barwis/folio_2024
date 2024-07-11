@@ -611,6 +611,26 @@ const resetStylesForAnimation = () => {
         var timeline = new TimelineMax({
             onComplete: () => {
                 document.querySelector('.splash')?.remove();
+                const button = document.getElementById('contact');
+
+                if (button) {
+                    button.addEventListener('click', createRipple);
+                }
+                header.animateScrollBar();
+                header.animateScrollIndicator();
+                header.randomiseHeaderText();
+                header.animateHeroSection();
+
+                main.animateLogo();
+                main.animateWorks();
+                main.animateParagraphs();
+                main.animateSectionHeadings();
+                main.animateSkillBars();
+
+                caseStudy.animateHeroImage();
+                // caseStudy.animateShowcaseItems();
+                caseStudy.animateQuote();
+                Marquee('.marquee', 0.5);
             },
         });
 
@@ -631,33 +651,16 @@ const resetStylesForAnimation = () => {
 // TODO:
 // combine animateWorks and animateShowcaseItems into one
 
+window.addEventListener('load', function () {
+    resetStylesForAnimation();
+});
+
 document.addEventListener('readystatechange', (event) => {
     header.reset();
     main.reset();
     caseStudy.reset();
 
     if (event.target.readyState === 'complete') {
-        const button = document.getElementById('contact');
-
-        if (button) {
-            button.addEventListener('click', createRipple);
-        }
-        header.animateScrollBar();
-        header.animateScrollIndicator();
-        header.randomiseHeaderText();
-        header.animateHeroSection();
-
-        main.animateLogo();
-        main.animateWorks();
-        main.animateParagraphs();
-        main.animateSectionHeadings();
-        main.animateSkillBars();
-
-        caseStudy.animateHeroImage();
-        // caseStudy.animateShowcaseItems();
-        caseStudy.animateQuote();
-        Marquee('.marquee', 0.5);
-
         // createRipple();
     }
 });

@@ -157,6 +157,7 @@ const header = {
             span1.innerHTML = '';
             span2.innerHTML = '';
             span3.innerHTML = '';
+            gsap.set(span3, { opacity: 0 });
 
             const textToShuffle = randomText.next().value;
 

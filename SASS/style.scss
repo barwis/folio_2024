@@ -66,11 +66,11 @@ img {
 }
 
 ::selection {
+    color: white;
     background: var(--theme-color) !important;
 }
 
 html {
-    scrollbar-width: thin;
     scrollbar-color: rgba(255, 255, 255, 0.7) transparent;
 }
 

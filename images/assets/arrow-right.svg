@@ -1,8 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 20" width="100" height="20" preserveAspectRatio="xMinYMin"  stroke="currentColor" >
-    <path fill="transparent" transform="scale(1, 1)"stroke-width="1" vector-effect="non-scaling-stroke" d="
-                    M0,10 L100,10z 
-                    M99,10 L90,0z
-                    M99,10 L90,20z"></path>
-                </svg>

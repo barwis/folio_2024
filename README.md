@@ -1,75 +1,46 @@
-# image sizes
+# Getting Started with Create React App
 
-| type       | min-width | width | height | folder |
-| ---------- | :-------: | :---: | :----: | ------ |
-| grid image |     0     |  260  |  312   | 640    |
-|            |    640    |  450  |  540   | 768    |
-|            |    768    |  540  |  648   | 1366   |
-|            |   1366    |  640  |  768   | 1600   |
-|            |   1600    | 1080  |  1296  | 1920   |
-|            |           |       |        |        |
+This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-| lead image
+## Available Scripts
 
-| | 0 | 260 | 312 | 640 |
-| | 640 | 450 | 540 | 768 |
-| | 768 | 540 | 648 | 1366 |
-| | 1366 | 640 | 768 | 1600 |
-| | 1600 | 1080 | 1296 | 1920 |
+In the project directory, you can run:
 
-showcase lead image
+### `npm start`
 
-viewport width image size ratio
+Runs the app in the development mode.\
+Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 
-big
-1920 1360 x 868 1.566 ( 1.565365025466893 )
-1600 1107 x 707  
-1366 922 x 589
-768 600 x 383
+The page will reload if you make edits.\
+You will also see any lint errors in the console.
 
-small ratio 1:56:1 (14:9)
-1920 1334 x 858
-1600 1098 x 706
-1336 904 x 581
-768 486 x 312
-640 600 x 386
+### `npm test`
 
-1920 1650 x 1,054
-1600: 1336 x 854
-1366 1112 x 710
-mobile 600 x 383
+Launches the test runner in the interactive watch mode.\
+See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
 
-new measures
-ratio 1.56:1 (14:9) (of the wide one and full-width one)
+### `npm run build`
 
-breakpoint wide narrow full-width
-1920 970x624 635x624 1645x1058
-1600 789x507 515x507 1336x859
-1366 656x422 428x422 1112x715
-768 ? 358x230 234x230 606x390  
-640 ? 600x386 600x640 600x386
+Builds the app for production to the `build` folder.\
+It correctly bundles React in production mode and optimizes the build for the best performance.
 
-scaled by 20% up
-1920 1164x748 762x748 1974x1269
-1600 947x609 618x609 1603x1031
-1366 787x506 514x506 1335x858
-768 ? 430x276 281x276 727x467
-640 ? 720x463 720x768 720x463
+The build is minified and the filenames include the hashes.\
+Your app is ready to be deployed!
 
-index page aspect ratio: 0.83:1 112x715
+See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
 
-breakpoint | dimension
-1920 | 773x928
-1600 | 636x763
-1366 | 537x644
-768 | 281x337  
-640 | 720x864
+### `npm run eject`
 
-work lead image smaller
+**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
 
-breakpoint | dimension
-1920 | 773x928
-1600 | 636x763
-1366 | 537x644
-768 | 281x337  
-640 | 720x864
+If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+
+Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+
+You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+
+## Learn More
+
+You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+
+To learn React, check out the [React documentation](https://reactjs.org/).

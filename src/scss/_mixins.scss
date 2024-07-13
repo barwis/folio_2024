@@ -1,0 +1,39 @@
+@mixin desktop {
+  @media (min-width: 768px) {
+    @content;
+  }
+}
+
+@mixin font-size(
+  $base-size,
+  $desktop-size: $base-size,
+  $line-height: 1,
+  $desktop-line-height: $line-height
+) {
+  font-size: $base-size * 1px;
+  line-height: $line-height;
+  @include desktop {
+    // font-size: $desktop-size * 0.1vw;
+    font-size: calc($desktop-size / 1920 * 100vw);
+    line-height: $desktop-line-height;
+  }
+}
+
+@mixin element-font-size(
+  $selector,
+  $base-size,
+  $desktop-size: $base-size,
+  $line-height: 1,
+  $desktop-line-height: $line-height
+) {
+  #{$selector} {
+    font-size: $base-size * 1px;
+    line-height: $line-height;
+  }
+  @media (min-width: 768px) {
+    #{$selector} {
+      font-size: calc($desktop-size / 1920 * 100vw);
+      line-height: $desktop-line-height;
+    }
+  }
+}

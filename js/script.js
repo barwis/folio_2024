@@ -120,6 +120,13 @@ const header = {
 
         if (!span1 || !span2) return;
 
+        span1.innerHTML = '';
+        span2.innerHTML = '';
+        span3.innerHTML = '';
+        gsap.set(span1, { opacity: 1 });
+        gsap.set(span2, { opacity: 1 });
+        gsap.set(span3, { opacity: 0 });
+
         const animate = () => {
             const defaultScrambleTextProps = {
                 chars: 'lowerCase',
@@ -189,15 +196,19 @@ const header = {
             const elem = document.querySelector(id);
 
             if (elem && hero) {
-                gsap.to(id, {
-                    scrollTrigger: {
-                        scrub: true,
-                        start: 'top top',
-                        trigger: hero,
-                        end: () => `${window.viewportHeight}px`,
-                    },
-                    ...styles,
-                });
+                gsap.fromTo(
+                    id,
+                    { opacity: 1, transform: 'translateX(0)' },
+                    {
+                        scrollTrigger: {
+                            scrub: true,
+                            start: 'top top',
+                            trigger: hero,
+                            end: () => `${window.viewportHeight}px`,
+                        },
+                        ...styles,
+                    }
+                );
             }
         });
     },
@@ -796,6 +807,7 @@ document.addEventListener('DOMContentLoaded', (event) => {
     pageTransition.enter(() => {
         header.animateScrollBar();
         header.animateScrollIndicator();
+        header.animateHeroSection();
         const animate = header.randomiseHeaderText();
         if (animate) animate();
         main.animateParagraphs();

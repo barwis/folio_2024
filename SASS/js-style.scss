@@ -25,3 +25,18 @@ picture {
 .bar > div.width {
     width: 0;
 }
+
+#h-1 {
+    opacity: 0;
+    transition: opacity 0.5s cubic-bezier(0.17, 0.67, 0.36, 1);
+}
+
+#h-2 {
+    opacity: 0;
+    transition: opacity 0.5s cubic-bezier(0.17, 0.67, 0.36, 1);
+}
+
+#h-tag {
+    opacity: 0;
+    transition: opacity 0.5s cubic-bezier(0.17, 0.67, 0.36, 1);
+}

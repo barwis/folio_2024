@@ -911,6 +911,13 @@ section h3, section > span {
     grid-template-columns: repeat(var(--col-num), 1fr);
   }
 }
+@media (min-width: 768px) {
+  .work .padded {
+    padding-top: 50px;
+    padding-bottom: 50px;
+    outline: 1px solid red;
+  }
+}
 .work .separator {
   display: none;
 }
@@ -1501,16 +1508,48 @@ body.case-study .recommendations span {
   }
 }
 
+.gs-dev-tools {
+  z-index: 99999999;
+}
+
 .splash {
   position: fixed;
-  display: flex;
+  display: block;
   z-index: 999999;
   width: 100%;
-  height: 100%;
-  background: black;
+  height: 100vh;
   align-items: center;
   justify-content: center;
   pointer-events: none;
+  overflow: hidden;
+  background: black;
+}
+.splash .icon {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.bg {
+  left: 0;
+  top: 0;
+  position: absolute;
+  margin: 0;
+  max-height: none;
+  display: block;
+  width: 100vw;
+  height: 100vh;
+}
+
+.splash-logo {
+  position: absolute;
+  z-index: 9999;
+  height: 50px;
+  width: 40px;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
 }
 
 h1,

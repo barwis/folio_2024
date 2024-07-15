@@ -6,6 +6,8 @@ gsap.config({
 
 gsap.registerPlugin(ScrollTrigger);
 gsap.registerPlugin(TextPlugin);
+gsap.registerPlugin(ScrambleTextPlugin);
+gsap.registerPlugin(SplitText);
 
 const lenis = new Lenis();
 
@@ -17,18 +19,10 @@ gsap.ticker.add((time) => {
 
 gsap.ticker.lagSmoothing(0);
 
-const viewportHeight = window.innerHeight;
-const pageHeight =
-    document.height !== undefined
-        ? document.height
-        : document.body.offsetHeight;
-
-const mediaQuery = window.matchMedia('(min-width: 768px)');
-
-const isDesktop = mediaQuery.matches;
+window.timelines = [];
 
 function createRipple(event) {
-    if (isDesktop && button.href) {
+    if (window.isDesktop && button.href) {
         window.location.href = button.href;
         return;
     }
@@ -86,24 +80,6 @@ const header = {
         ['and I prefer spaces', 'over tabs', '( fight me! )'],
         ['and I turn caffeine', 'into websites', '( weird flex, but OK... )'],
     ],
-    elements: {
-        span1: document.querySelector('#sh1'),
-        span2: document.querySelector('#sh2'),
-        span3: document.querySelector('#sh3'),
-        hero: document.querySelector('header'),
-        scrollArrow: document.getElementById('scroll-arrow'),
-        scrollText: document.getElementById('scroll-text-wrapper'),
-        circle: document.querySelector('.circle'),
-        scrollBar: document.getElementById('scrollbar'),
-    },
-
-    reset: function () {
-        const { span1, span2, span3 } = this.elements;
-        span1 ? (span1.innerHTML = '') : null;
-        span2 ? (span2.innerHTML = '') : null;
-        span3 ? (span3.innerHTML = '') : null;
-        gsap.set(span3, { opacity: 0 });
-    },
 
     randomiseHeaderText: function () {
         function shuffleArray(array) {
@@ -138,21 +114,21 @@ const header = {
         }
 
         // get elements
-        const { span1, span2, span3 } = this.elements;
+        const span1 = document.querySelector('#sh1');
+        const span2 = document.querySelector('#sh2');
+        const span3 = document.querySelector('#sh3');
 
         if (!span1 || !span2) return;
 
-        const defaultScrambleTextProps = {
-            chars: 'lowerCase',
-            tweenLength: true,
-            speed: 0.3,
-        };
-
-        gsap.registerPlugin(ScrambleTextPlugin);
-
-        const randomText = getRandomArrayItem(this.text);
-
         const animate = () => {
+            const defaultScrambleTextProps = {
+                chars: 'lowerCase',
+                tweenLength: true,
+                duration: 2,
+            };
+
+            const randomText = getRandomArrayItem(this.text);
+
             // clear elements' text
             span1.innerHTML = '';
             span2.innerHTML = '';
@@ -190,11 +166,10 @@ const header = {
             setTimeout(animate, newDuration * 1000 + 5000);
         };
 
-        animate();
+        return animate;
     },
     animateHeroSection: function () {
-        // const hero = document.querySelector('header');
-        const { hero } = this.elements;
+        const hero = document.querySelector('header.index');
 
         const elements = {
             '#h-1': {
@@ -212,13 +187,14 @@ const header = {
 
         Object.entries(elements).forEach(([id, styles]) => {
             const elem = document.querySelector(id);
+
             if (elem && hero) {
                 gsap.to(id, {
                     scrollTrigger: {
                         scrub: true,
                         start: 'top top',
                         trigger: hero,
-                        end: () => `${viewportHeight}px`,
+                        end: () => `${window.viewportHeight}px`,
                     },
                     ...styles,
                 });
@@ -226,11 +202,21 @@ const header = {
         });
     },
     animateScrollIndicator: function () {
-        const { scrollArrow, scrollText, circle } = this.elements;
+        // const [scrollArrow, scrollText, circle] = Array.prototype.map.apply(
+        //     ['#scroll-arrow', '#scroll-text-wrapper', '.circle'],
+        //     [document.querySelector, document]
+        // );
 
-        const end = isDesktop
-            ? `+=${viewportHeight}`
-            : `+=${viewportHeight * 2.5}`;
+        const [scrollArrow, scrollText, circle] = Array.prototype.map.call(
+            ['#scroll-arrow', '#scroll-text-wrapper', '.circle'],
+            document.querySelector,
+            document
+        );
+
+        // end marker based on viewport
+        const end = window.isDesktop
+            ? `+=${window.viewportHeight}`
+            : `+=${window.viewportHeight * 2.5}`;
 
         if (scrollArrow) {
             gsap.to(scrollArrow, {
@@ -250,10 +236,10 @@ const header = {
                 scrollTrigger: {
                     trigger: 'main',
                     start: 'top 100%',
-                    end: viewportHeight,
+                    end: window.viewportHeight,
                     scrub: true,
                 },
-                opacity: isDesktop ? 1 : 0,
+                opacity: window.isDesktop ? 1 : 0,
                 rotation: 180,
             });
         }
@@ -265,60 +251,72 @@ const header = {
         }
     },
     animateScrollBar: function () {
-        const { scrollBar } = this.elements;
-        if (!isDesktop || !scrollBar) return;
+        const scrollBar = document.getElementById('scrollbar');
+
+        if (!window.isDesktop || !scrollBar) return;
         gsap.to(scrollBar, {
             scrollTrigger: {
                 scrub: true,
                 start: 'top top',
-                end: () => `${pageHeight - viewportHeight}px`,
+                end: () => `${window.pageHeight - window.viewportHeight}px`,
             },
-            height: `${viewportHeight}px`,
+            height: `${window.viewportHeight}px`,
             ease: 'none',
         });
     },
 };
 
 const main = {
-    elements: {
-        body: document.querySelector('body'),
-        logo: document.querySelector('.logo'),
-        headings: gsap.utils.toArray('h2'),
-        paragraphs: gsap.utils.toArray(
-            '.fact section, .recommendations section'
-        ),
-        items: gsap.utils.toArray('.work-item'),
-        work: document.querySelector('.work section'),
-        skillBars: gsap.utils.toArray('.bar'),
-    },
-
     animateSectionHeadings: function () {
-        this.elements.headings?.forEach((heading) => {
-            gsap.to(heading, {
+        // section headings
+
+        gsap.utils.toArray('h2').forEach((heading) => {
+            // gsap.set(heading, { x: -55, opacity: 0 });
+
+            const t = gsap.timeline({
                 scrollTrigger: {
                     trigger: heading,
                 },
+            });
+            t.to(heading, {
                 opacity: 1,
                 x: 0,
                 ease: 'power2.out',
-                duration: isDesktop ? 2 : 1,
+                duration: window.isDesktop ? 2 : 1,
             });
         });
     },
 
     animateParagraphs: function () {
-        this.elements.paragraphs?.forEach((paragraph) => {
-            gsap.to(paragraph, {
+        const initialYOffset = window.isDesktop ? '2em' : '20px';
+        const paragraphs = gsap.utils.toArray('.fact section  p');
+
+        paragraphs.forEach((paragraph, index) => {
+            var split = new SplitText(paragraph, { type: 'lines' });
+
+            let paragraphAnimation = gsap.timeline({
+                id: `paragraph-${index}`,
+                // timeScale: 2,
                 scrollTrigger: {
                     trigger: paragraph,
-                    start: 'top 80%',
                 },
-                y: 0,
-                opacity: 1,
-                ease: 'power2.out',
-                duration: 1,
-                delay: 0.2,
             });
+            gsap.set(paragraph, { opacity: 1 });
+            paragraphAnimation.fromTo(
+                split.lines,
+                {
+                    opacity: 0,
+                    rotationX: -120,
+                    transformOrigin: 'top center -150',
+                },
+                {
+                    opacity: 1,
+                    rotationX: 0,
+                    transformOrigin: 'top center -150',
+                    duration: 0.5,
+                    stagger: 0.1,
+                }
+            );
         });
     },
 
@@ -327,141 +325,198 @@ const main = {
         if (item.classList.contains('work-item--narrow')) return -1;
         return 0;
     },
-    reset: function () {
-        const { work, items, skillBars, paragraphs, headings } = this.elements;
-        const initialYOffset = isDesktop ? '2em' : '20px';
 
-        paragraphs.forEach((paragraph) =>
-            gsap.set(paragraph, { opacity: 0, y: initialYOffset })
-        );
+    animateIndexShowcase: function () {
+        const items = gsap.utils.toArray('.work-item.slide-up');
+        console.log('items', items);
 
-        headings.forEach((heading) =>
-            gsap.set(heading, { x: -55, opacity: 0 })
-        );
+        items.forEach((item, index) => {
+            const pictureContainer = item.querySelector('.picture-container');
+            const picture = item.querySelector('picture');
+            const img = item.querySelector('img');
 
-        let itemHeight;
+            const start = window.isDesktop ? 'top 80%' : 'top 80%';
 
-        // reset work examples
-        items.forEach((item) => {
-            const i = gsap.utils.selector(item);
+            const { height: pictureContainerHeight } =
+                pictureContainer.getBoundingClientRect();
 
-            const picture = i('picture');
-            const image = i('img');
-
-            if (item.classList.contains('slide-up')) {
-                gsap.set(item, { y: 200, opacity: 0 });
-            }
-
-            if (item.classList.contains('parallax') && isDesktop) {
-                itemHeight = item.getBoundingClientRect().height * 0.1;
-                const containerOffset = this.getItemOffset(item);
-                gsap.set(item, { y: `${itemHeight * containerOffset}` });
-            }
-            gsap.set(picture, { width: '120%', height: '120%' });
-            gsap.set(image, { y: `${-20}%` });
-        });
-
-        if (work.classList.contains('padded') && isDesktop) {
-            gsap.set(work, {
-                paddingTop: itemHeight,
-                paddingBottom: itemHeight,
+            const imageTimeline = gsap.timeline({
+                scrollTrigger: {
+                    trigger: item,
+                    start: start,
+                    end: () =>
+                        window.viewportHeight +
+                        item.getBoundingClientRect().height,
+                },
             });
-        }
 
-        skillBars.forEach((bar) => {
-            gsap.set(bar.firstElementChild, { width: 0 });
+            gsap.set(picture, {
+                height: pictureContainerHeight * 1.2,
+            });
+
+            imageTimeline.to(pictureContainer, {
+                opacity: 1,
+                y: 0,
+                ease: 'power3.out',
+                duration: window.isDesktop ? 1 : 1,
+            });
+
+            const diff = pictureContainerHeight * 0.2;
+
+            const hDiff = (window.innerHeight - pictureContainerHeight) / 10;
+            console.log(diff, hDiff);
+
+            gsap.set(img, { y: -diff });
+
+            gsap.to(img, {
+                scrollTrigger: {
+                    trigger: item,
+                    scrub: true,
+                    ease: 'none',
+                    markers: index === 1,
+                    onUpdate: ({ progress }) => {
+                        const actualXTransform = diff * 2 * progress - diff;
+
+                        gsap.set(img, { y: actualXTransform * 2 });
+                    },
+                    end: () =>
+                        `+=${
+                            window.innerHeight +
+                            item.getBoundingClientRect().height
+                        }px`,
+                },
+                y: diff,
+            });
         });
     },
 
     animateWorks: function () {
-        const { work } = this.elements;
-
+        this.animateIndexShowcase();
+        // elements
         const items = gsap.utils.toArray('.work-item');
 
-        if (items.length === 0) return;
+        // settings
+        const start = window.isDesktop ? 'top 80%' : 'top 80%';
 
-        const duration = isDesktop ? 1 : 1;
-        const start = isDesktop ? 'top 80%' : 'top 100%';
+        items.forEach((item, index) => {
+            const [picture, img] = ['picture', 'img'].map((selector) =>
+                item.querySelector(selector)
+            );
 
-        const showcaseItemsContainerHeight =
-            work?.getBoundingClientRect().height;
+            const work = item.closest('.work section');
 
-        items.forEach((item) => {
-            const i = gsap.utils.selector(item);
+            const workContainerHeight = work.getBoundingClientRect().height;
 
-            const itemHeight =
-                i('.picture-container')[0]?.getBoundingClientRect().height;
+            const possiblePadding = parseFloat(
+                window.getComputedStyle(work).paddingTop
+            );
 
-            const pictureContainer = i('.picture-container');
-            const picture = i('picture');
-            const image = i('img');
+            // reset
 
             if (item.classList.contains('slide-up')) {
+                // const imageTimeline = gsap.timeline({
+                //     scrollTrigger: {
+                //         trigger: item,
+                //         start: start,
+                //         end: window.viewportHeight + itemHeight,
+                //     },
+                // });
+                // gsap.set(pictureContainer, { y: 200, opacity: 0 });
+                // imageTimeline.to(pictureContainer, {
+                //     opacity: 1,
+                //     y: 0,
+                //     ease: 'power3.out',
+                //     duration: window.isDesktop ? 1 : 1,
+                // });
+                // gsap.set(img, { y: `${possiblePadding * -2}` });
+                // gsap.to(img, {
+                //     scrollTrigger: {
+                //         trigger: work,
+                //         scrub: true,
+                //         ease: 'none',
+                //         start: start,
+                //         markers: index === 1,
+                //         end: () =>
+                //             `+=${workContainerHeight * 2 + possiblePadding}px`,
+                //         // toggleActions: "play reset play reset"
+                //     },
+                //     y: `${possiblePadding * 2}`,
+                // });
+            }
+
+            // container parallax
+            if (item.classList.contains('parallax') && window.isDesktop) {
+                const containerOffset = this.getItemOffset(item);
+                const diff = containerOffset * possiblePadding;
+
+                gsap.set(item, {
+                    y: `${diff * -1}`,
+                    opacity: 1,
+                });
+
                 gsap.to(item, {
                     scrollTrigger: {
-                        start: start,
-                        trigger: item,
-                        end: viewportHeight + itemHeight,
+                        trigger: work,
+                        scrub: true,
+                        ease: 'none',
+                        onUpdate: ({ progress }) => {
+                            const actualXTransform =
+                                diff + diff * progress * -2;
+                            // console.log('update', diff + diff * progress * -2);
+                            gsap.set(item, { y: actualXTransform });
+                        },
+                        end: () =>
+                            `+=${workContainerHeight * 2 + possiblePadding}`,
                     },
-                    opacity: 1,
-                    y: 0,
-                    ease: 'power3.out',
-                    duration: duration,
                 });
             }
 
-            if (item.classList.contains('parallax') && isDesktop) {
-                const itemHeight10perc =
-                    item.getBoundingClientRect().height * 0.1;
+            if (item.classList.contains('work-item--full-bleed')) {
+                const w = img.closest('.work section');
+                gsap.set(picture, { width: '120%', height: '120%' });
 
-                const containerOffset = this.getItemOffset(item);
-                const dfiff = containerOffset * itemHeight10perc * -1;
+                w.style.outline = '1px solid red';
 
-                console.log(
-                    showcaseItemsContainerHeight,
-                    viewportHeight,
-                    itemHeight10perc
-                );
+                console.log('w', w);
+                const _workContainerHeight = w.getBoundingClientRect().height;
 
-                gsap.to(item, {
+                gsap.set(img, { y: `-10%` });
+
+                const diff = -50;
+
+                gsap.to(img, {
                     scrollTrigger: {
-                        trigger: this.elements.work,
-                        // start: 'top bottom',
+                        trigger: w,
                         scrub: true,
                         ease: 'none',
-                        end: `${
-                            showcaseItemsContainerHeight +
-                            viewportHeight +
-                            itemHeight10perc * 4
-                        }`,
-                        // toggleActions: "play reset play reset"
+                        start: start,
+                        markers: true,
+                        onUpdate: ({ progress }) => {
+                            const actualXTransform =
+                                diff + diff * progress * -2;
+                            console.log('update', diff + diff * progress * -2);
+                            // gsap.set(item, { y: actualXTransform });
+                        },
+                        end: () =>
+                            `+=${_workContainerHeight + window.innerHeight}px`,
                     },
-                    y: `${dfiff}`,
                 });
             }
 
             // img parallax
-            if (picture && image) {
-                gsap.to(image, {
-                    scrollTrigger: {
-                        trigger: pictureContainer,
-                        scrub: true,
-                        end: () => `${viewportHeight + itemHeight}px`,
-                        // toggleActions: "play reset play reset"
-                    },
-                    y: `${20}%`,
-                });
-            }
         });
     },
     animateSkillBars: function () {
-        const { skillBars } = this.elements;
+        const skillBars = gsap.utils.toArray('.bar');
 
         skillBars.forEach((bar) => {
             const skillBar = bar.firstElementChild;
+
+            gsap.set(bar.firstElementChild, { width: 0 });
+
             const width = parseInt(bar.dataset.years) * 10;
 
-            gsap.to(skillBar, {
+            var t = gsap.to(skillBar, {
                 scrollTrigger: {
                     trigger: skillBar,
                     start: 'top 80%',
@@ -472,16 +527,14 @@ const main = {
         });
     },
     animateLogo: function () {
-        if (isDesktop) return;
-        const { body, logo } = this.elements;
-        /*----------------------------
-        Fixed Nav
-        ----------------------------*/
+        if (window.isDesktop) return;
+        const logo = document.querySelector('.logo');
+
         if (!logo) return;
 
-        gsap.to(body, {
+        gsap.to(document.body, {
             scrollTrigger: {
-                trigger: body,
+                trigger: document.body,
                 start: 'top top',
                 onUpdate: (self) => {
                     if (self.direction === 1) {
@@ -498,96 +551,165 @@ const main = {
 };
 
 const caseStudy = {
-    elements: {
-        heroImage: document.querySelector('.header--big .header__image'),
-        showcase: document.querySelector('.showcase'),
-        items: gsap.utils.toArray('.showcase .work-item'),
-    },
-    reset: function () {
-        // const { showcase, items } = this.elements;
-        // gsap.set(showcase, {
-        //     paddingTop: '10%',
-        //     paddingBottom: '10%',
-        // });
-        // items.forEach((item) => {
-        //     if (item.classList.contains('work-item--full-bleed')) return;
-        //     const itemHeight = item.getBoundingClientRect().height * 0.1;
-        //     const containerOffset = item.classList.contains('work-item--wide')
-        //         ? -1
-        //         : 1;
-        //     gsap.set(item, { y: `${itemHeight * containerOffset * -1}` });
-        // });
-    },
     animateHeroImage: function () {
-        const { heroImage } = this.elements;
+        console.log('animateHeroImage');
+        const heroImage = document.querySelector('.header--big .header__image');
         if (!heroImage) return;
 
         gsap.to(heroImage, {
             scrollTrigger: {
-                trigger: heroImage,
                 start: 'top top',
+                trigger: heroImage,
                 scrub: true,
-                end: () => `${viewportHeight}px`,
+                end: () => `${window.viewportHeight}px`,
                 // toggleActions: "play reset play reset"
             },
             y: `-50%`,
         });
     },
-    // animateShowcaseItems: function () {
-    //     if (!isDesktop) return;
-    //     const { showcase, items } = this.elements;
-
-    //     const showcaseItemsContainerHeight =
-    //         showcase?.getBoundingClientRect().height;
-
-    //     items.forEach((item) => {
-    //         if (item.classList.contains('work-item--full-bleed')) return;
-
-    //         const itemHeight = item.getBoundingClientRect().height * 0.1;
-    //         const containerOffset = item.classList.contains('work-item--wide')
-    //             ? -1
-    //             : 1;
-
-    //         gsap.to(item, {
-    //             scrollTrigger: {
-    //                 trigger: showcase,
-    //                 start: 'top bottom',
-    //                 scrub: true,
-    //                 ease: 'none',
-    //                 end: `${
-    //                     showcaseItemsContainerHeight * 1.5 + viewportHeight
-    //                 }`,
-    //                 // toggleActions: "play reset play reset"
-    //             },
-    //             y: `${containerOffset * itemHeight}`,
-    //         });
-    //     });
-    // },
     animateQuote: () => {
-        const quote = document.querySelector('.quote');
-        const recommendationContainer =
-            document.querySelector('.recommendations');
+        const [quote, recommendationContainer] = [
+            '.quote',
+            '.recommendations',
+        ].map((s) => document.querySelector(s));
+
+        console.log(quote);
 
         if (!quote) {
             return;
         }
 
-        // mobile: y: -100% - 100%;
-        // desktop: y: - 0% - 30%;
-        gsap.set(quote, { y: isDesktop ? '0%' : '-40%' });
+        gsap.set(quote, { y: window.isDesktop ? '0%' : '-40%' });
         gsap.to(quote, {
             scrollTrigger: {
                 trigger: recommendationContainer,
                 scrub: true,
                 end: () =>
                     `${
-                        viewportHeight +
+                        window.viewportHeight +
                         recommendationContainer.getBoundingClientRect().height
                     }px`,
             },
-            y: isDesktop ? '30%' : '40%',
+            y: window.isDesktop ? '30%' : '40%',
         });
     },
+};
+
+const pageTransition = {
+    paths: {
+        mask_from_right: `M0,0 L80,0 A 60,30,0,0,0,80,50 L 0,50 L 0,0Z`,
+        mask_from_left: `M0,0 L80,0 A 60 30 0 0 1 80 50 L 0,50 L 0,0 Z`,
+        mask_empty: 'M0,0 L0,0 A 1 80 0 0 0 0 50 L0,50 L0,0Z',
+    },
+    elements: {
+        splash: document.querySelector('.splash'),
+        mask: document.getElementById('mask'),
+        main: document.querySelector('.toAnim'),
+    },
+    init: function () {
+        var svgNS = 'http://www.w3.org/2000/svg';
+
+        let splash = document.querySelector('.splash');
+
+        if (!splash) {
+            console.log('no splash', this.elements.splash);
+            console.log('splash element not detected');
+            splash = document.createElement('div');
+            const insertBeforeThisNode = document.querySelector('nav');
+            splash.classList.add('splash');
+            document.body.insertBefore(splash, insertBeforeThisNode);
+        }
+
+        // create svg
+        var svg = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
+        svg.setAttributeNS(null, 'viewBox', '0 0 50 50');
+
+        svg.setAttributeNS(null, 'preserveAspectRatio', 'none');
+        svg.setAttributeNS(null, 'class', 'bg');
+
+        const path = document.createElementNS(svgNS, 'path');
+        path.id = 'mask';
+
+        svg.appendChild(path);
+
+        this.elements.mask = path;
+        this.elements.splash = splash;
+        this.elements.main = document.querySelector('.toAnim');
+        splash.prepend(svg);
+
+        splash.style.backgroundColor = 'transparent';
+    },
+    enter: function (onCompleteCb = () => {}) {
+        window.customTimeLine = new gsap.timeline({
+            id: 'pageTransition.enter',
+            timeScale: 2,
+            onComplete: () => {
+                onCompleteCb();
+            },
+        });
+
+        const { mask, main } = this.elements;
+
+        const { mask_from_right, mask_empty } = this.paths;
+
+        if (!this.elements.main) {
+            this.elements.main = document.querySelector('.toAnim');
+        }
+
+        mask.setAttributeNS(null, 'd', mask_from_right);
+
+        // gsap
+
+        window.customTimeLine
+            .add('blueGreenSpin')
+            .to(
+                '.splash .icon',
+                {
+                    opacity: 0,
+                    duration: 0.5,
+                    ease: 'none',
+                },
+                0
+            )
+            .to(
+                mask,
+                {
+                    morphSVG: mask_empty,
+                    duration: 0.5,
+                    ease: 'power4.inOut',
+                },
+                0.5
+            );
+    },
+    // leave: function (onCompleteCb = () => {}) {
+    //     const { mask, main, splash } = this.elements;
+
+    //     console.log('splash!,', splash);
+    //     const { mask_from_left, mask_from_right, mask_empty } = this.paths;
+
+    //     var timeline = new TimelineMax({
+    //         id: 'pageTransition.leave',
+    //         onComplete: () => {
+    //             splash.style.backgroundColor = 'black';
+    //             mask.removeAttributeNS(null, 'd');
+    //             onCompleteCb();
+    //         },
+    //     });
+
+    //     gsap.set(main, { x: 0, opacity: 1 });
+    //     mask.setAttributeNS(null, 'd', mask_empty);
+    //     console.log('mask', mask);
+
+    //     timeline.to(
+    //         mask,
+    //         {
+    //             morphSVG: mask_from_left,
+    //             duration: 1,
+    //             ease: 'power4.inOut',
+    //         },
+    //         'reveal'
+    //     );
+    // },
 };
 
 function Marquee(selector, speed) {
@@ -606,62 +728,84 @@ function Marquee(selector, speed) {
     }, 0);
 }
 
-const resetStylesForAnimation = () => {
-    const splash = document.querySelector('.splash');
-    if (splash) {
-        var timeline = new TimelineMax({
-            onComplete: () => {
-                document.querySelector('.splash')?.remove();
-                const button = document.getElementById('contact');
+// const resetStylesForAnimation = () => {
+//     const splash = document.querySelector('.splash');
+//     if (splash) {
+//         var timeline = new TimelineMax({
+//             onComplete: () => {
+//                 document.querySelector('.splash')?.remove();
+//                 const button = document.getElementById('contact');
 
-                if (button) {
-                    button.addEventListener('click', createRipple);
-                }
-                header.animateScrollBar();
-                header.animateScrollIndicator();
-                header.randomiseHeaderText();
-                header.animateHeroSection();
+//                 if (button) {
+//                     button.addEventListener('click', createRipple);
+//                 }
+//                 header.animateScrollBar();
+//                 header.animateScrollIndicator();
+//                 header.randomiseHeaderText();
+//                 header.animateHeroSection();
 
-                main.animateLogo();
-                main.animateWorks();
-                main.animateParagraphs();
-                main.animateSectionHeadings();
-                main.animateSkillBars();
+//                 caseStudy.animateHeroImage();
+//                 caseStudy.animateQuote();
+//                 Marquee('.marquee', 0.5);
+//             },
+//         });
 
-                caseStudy.animateHeroImage();
-                // caseStudy.animateShowcaseItems();
-                caseStudy.animateQuote();
-                Marquee('.marquee', 0.5);
-            },
-        });
-
-        timeline
-            .to(
-                '.splash .icon',
-                {
-                    opacity: 0,
-                },
-                0.5
-            )
-            .to('.splash', 1, {
-                opacity: 0,
-            });
-    }
-};
-
-// TODO:
-// combine animateWorks and animateShowcaseItems into one
+//         timeline
+//             .to(
+//                 '.splash .icon',
+//                 {
+//                     opacity: 0,
+//                 },
+//                 0.5
+//             )
+//             .to('.splash', 1, {
+//                 opacity: 0,
+//             });
+//     }
+// };
 
 window.addEventListener('load', function () {
-    resetStylesForAnimation();
+    console.log('all resources loaded');
+
+    // window.timelines.forEach((timeline) => timeline.resume());
 });
 
-document.addEventListener('readystatechange', (event) => {
-    header.reset();
-    main.reset();
-    caseStudy.reset();
+// DOM loaded
+document.addEventListener('DOMContentLoaded', (event) => {
+    // GSDevTools.create();
 
-    if (event.target.readyState === 'complete') {
-        // createRipple();
-    }
+    console.log('test');
+    pageTransition.init();
+
+    pageTransition.enter(() => {
+        main.animateParagraphs();
+
+        main.animateSectionHeadings();
+        main.animateSkillBars();
+        main.animateWorks();
+    });
+
+    window.viewportHeight = window.innerHeight;
+    window.pageHeight =
+        document.height !== undefined
+            ? document.height
+            : document.body.offsetHeight;
+
+    const mediaQuery = window.matchMedia('(min-width: 768px)');
+
+    window.isDesktop = mediaQuery.matches;
+
+    // header.animateScrollBar();
+    // header.animateScrollIndicator();
+    // const animate = header.randomiseHeaderText();
+    // if (animate) animate();
+
+    // header.animateHeroSection();
+
+    // main.animateLogo();
+    // main.animateParagraphs();
+    //
+
+    // caseStudy.animateHeroImage();
+    // caseStudy.animateQuote();
 });

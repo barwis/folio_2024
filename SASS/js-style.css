@@ -1,0 +1,18 @@
+h2 {
+    transform: translateX(-55px);
+    opacity: 0;
+}
+
+.fact section p {
+    opacity: 0;
+}
+
+.work-item.parallax {
+    opacity: 0;
+    transition: opacity 0.5s cubic-bezier(0.17, 0.67, 0.36, 1);
+} /*# sourceMappingURL=js-style.css.map */
+
+.work-item.slide-up .picture-container {
+    transform: translateY(200px);
+    opacity: 0;
+}

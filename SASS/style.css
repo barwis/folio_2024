@@ -1579,6 +1579,7 @@ body.case-study .recommendations span {
 .diamond {
   grid-column: 1/span var(--col-num);
   text-align: center;
+  margin: 8em 0;
 }
 @media (min-width: 768px) {
   .diamond {
@@ -1696,4 +1697,5 @@ aside,
 
 .skills section .bar div {
   background-color: var(--theme-color, #ff6945);
+  color: var(--color-1);
 }/*# sourceMappingURL=style.css.map */

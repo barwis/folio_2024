@@ -310,6 +310,12 @@ const main = {
 
         paragraphs.forEach((paragraph, index) => {
             var split = new SplitText(paragraph, { type: 'lines' });
+            const vw = window.innerWidth / 100;
+
+            const val =
+                parseFloat(window.getComputedStyle(paragraph).fontSize) * 2;
+
+            console.log(val);
 
             let paragraphAnimation = gsap.timeline({
                 id: `paragraph-${index}`,
@@ -323,15 +329,14 @@ const main = {
                 split.lines,
                 {
                     opacity: 0,
-                    rotationX: -120,
-                    transformOrigin: 'top center -150',
+                    rotationX: -val,
+                    transformOrigin: `top center -${val}`,
                 },
                 {
                     opacity: 1,
                     rotationX: 0,
-                    transformOrigin: 'top center -150',
-                    duration: 0.5,
-                    stagger: 0.1,
+                    duration: 0.3,
+                    stagger: 0.05,
                 }
             );
         });
@@ -799,7 +804,20 @@ window.addEventListener('load', function () {
 });
 
 // DOM loaded
-document.addEventListener('DOMContentLoaded', (event) => {
+function docReady(fn) {
+    // see if DOM is already available
+    if (
+        document.readyState === 'complete' ||
+        document.readyState === 'interactive'
+    ) {
+        // call on next available tick
+        setTimeout(fn, 1);
+    } else {
+        document.addEventListener('DOMContentLoaded', fn);
+    }
+}
+
+docReady(() => {
     // GSDevTools.create();
 
     pageTransition.init();
@@ -815,6 +833,7 @@ document.addEventListener('DOMContentLoaded', (event) => {
         main.animateSectionHeadings();
         main.animateSkillBars();
         main.animateWorks();
+        caseStudy.animateQuote();
     });
 
     window.viewportHeight = window.innerHeight;
@@ -826,17 +845,4 @@ document.addEventListener('DOMContentLoaded', (event) => {
     const mediaQuery = window.matchMedia('(min-width: 768px)');
 
     window.isDesktop = mediaQuery.matches;
-
-    // header.animateScrollIndicator();
-    // const animate = header.randomiseHeaderText();
-    // if (animate) animate();
-
-    // header.animateHeroSection();
-
-    // main.animateLogo();
-    // main.animateParagraphs();
-    //
-
-    // caseStudy.animateHeroImage();
-    // caseStudy.animateQuote();
 });

@@ -1243,6 +1243,7 @@ body.case-study .recommendations {
     // color: var(--theme-color);
     grid-column: 1 / span var(--col-num);
     text-align: center;
+    margin: 8em 0;
 
     @include desktop {
         grid-column: 1 / span calc(var(--col-num) - 4);
@@ -1358,4 +1359,5 @@ aside,
 
 .skills section .bar div {
     background-color: var(--theme-color, #ff6945);
+    color: var(--color-1);
 }

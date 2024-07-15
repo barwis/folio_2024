@@ -247,6 +247,11 @@ body.case-study p {
     line-height: 1.3;
   }
 }
+@media (-webkit-min-device-pixel-ratio: 1.25), (min-resolution: 120dpi) {
+  body.case-study p {
+    font-size: max(24px, 2.5vw);
+  }
+}
 @media (min-width: 768px) {
   body.case-study article:not(.recommendations) p {
     grid-column-end: span 6 !important;
@@ -264,16 +269,16 @@ body.case-study aside {
     line-height: 1;
   }
 }
+@media (-webkit-min-device-pixel-ratio: 1.25), (min-resolution: 120dpi) {
+  body.case-study aside {
+    font-size: max(30px, 1.5625vw);
+  }
+}
 body.case-study main {
   background: var(--color-1) url(../images/bg.png);
   position: relative;
   z-index: 2;
   padding-top: 10vh;
-}
-@media (min-width: 768px) {
-  body.case-study article:not(.showcase) {
-    padding-bottom: 0;
-  }
 }
 body.case-study .separator.separator--long {
   display: none;
@@ -319,6 +324,11 @@ h1 {
     line-height: 1;
   }
 }
+@media (-webkit-min-device-pixel-ratio: 1.25), (min-resolution: 120dpi) {
+  h1 {
+    font-size: max(64px, 8.0208333333vw);
+  }
+}
 
 h2 {
   font-size: 64px;
@@ -328,6 +338,11 @@ h2 {
   h2 {
     font-size: 8.0208333333vw;
     line-height: 1.3;
+  }
+}
+@media (-webkit-min-device-pixel-ratio: 1.25), (min-resolution: 120dpi) {
+  h2 {
+    font-size: max(64px, 8.0208333333vw);
   }
 }
 
@@ -341,6 +356,11 @@ h3 {
   h3 {
     font-size: 1.9791666667vw;
     line-height: 1.3;
+  }
+}
+@media (-webkit-min-device-pixel-ratio: 1.25), (min-resolution: 120dpi) {
+  h3 {
+    font-size: max(30px, 1.9791666667vw);
   }
 }
 
@@ -403,6 +423,11 @@ header .tagline {
     line-height: 1;
   }
 }
+@media (-webkit-min-device-pixel-ratio: 1.25), (min-resolution: 120dpi) {
+  header .tagline {
+    font-size: max(20px, 1.8229166667vw);
+  }
+}
 @media (min-width: 768px) {
   header .tagline {
     padding-top: 0.85em;
@@ -424,11 +449,16 @@ header .side {
     line-height: 1;
   }
 }
-header .circle {
+@media (-webkit-min-device-pixel-ratio: 1.25), (min-resolution: 120dpi) {
+  header .side {
+    font-size: max(14px, 1.25vw);
+  }
+}
+header .scroll-down-indicator {
   display: flex !important;
   flex-direction: column;
   align-items: center;
-  width: 230px;
+  width: 240px;
   height: 130px;
   position: relative;
   margin-top: 186px;
@@ -436,7 +466,7 @@ header .circle {
   cursor: pointer;
 }
 @media (min-width: 768px) {
-  header .circle {
+  header .scroll-down-indicator {
     position: absolute;
     bottom: 7em;
     right: 7em;
@@ -446,22 +476,22 @@ header .circle {
     margin-top: 0;
   }
 }
-header .circle .scroll-text-wrapper {
+header .scroll-down-indicator .scroll-text-wrapper {
   transform: translate(0px, 0px);
   opacity: 1;
   width: 90px;
   height: 90px;
 }
 @media (min-width: 768px) {
-  header .circle .scroll-text-wrapper {
+  header .scroll-down-indicator .scroll-text-wrapper {
     width: 70%;
     height: 70%;
   }
 }
-header .circle .scroll-text {
+header .scroll-down-indicator .scroll-text {
   animation: circleRotate 10s linear infinite;
 }
-header .circle .scroll-arrow {
+header .scroll-down-indicator .scroll-arrow {
   transform: translateY(-50%);
 }
 header.header--big {
@@ -541,6 +571,11 @@ header.header--big .header__dates {
     line-height: 3;
   }
 }
+@media (-webkit-min-device-pixel-ratio: 1.25), (min-resolution: 120dpi) {
+  header.header--big .header__dates {
+    font-size: max(20px, 1.0416666667vw);
+  }
+}
 header.header--small {
   padding: calc(var(--naw-width) + var(--gutter) * 2) calc(var(--gutter) * 2) 0;
 }
@@ -568,6 +603,11 @@ header.header--small .header__dates {
   header.header--small .header__dates {
     font-size: 1.1979166667vw;
     line-height: 1;
+  }
+}
+@media (-webkit-min-device-pixel-ratio: 1.25), (min-resolution: 120dpi) {
+  header.header--small .header__dates {
+    font-size: max(20px, 1.1979166667vw);
   }
 }
 @media (min-width: 768px) {
@@ -747,7 +787,6 @@ article {
 @media (min-width: 768px) {
   article {
     gap: 0 var(--gutter);
-    padding-bottom: 300px;
   }
 }
 article > h1, article > h2, article > h3 {
@@ -782,6 +821,11 @@ aside {
     line-height: 1.2;
   }
 }
+@media (-webkit-min-device-pixel-ratio: 1.25), (min-resolution: 120dpi) {
+  aside {
+    font-size: max(20px, 1.0416666667vw);
+  }
+}
 @media (min-width: 768px) {
   aside {
     display: flex;
@@ -802,6 +846,11 @@ section p, section > span {
   section p, section > span {
     font-size: 1.3541666667vw;
     line-height: 1.3;
+  }
+}
+@media (-webkit-min-device-pixel-ratio: 1.25), (min-resolution: 120dpi) {
+  section p, section > span {
+    font-size: max(21px, 1.3541666667vw);
   }
 }
 section p,
@@ -915,7 +964,6 @@ section h3, section > span {
   .work .padded {
     padding-top: 50px;
     padding-bottom: 50px;
-    outline: 1px solid red;
   }
 }
 .work .separator {
@@ -1045,6 +1093,11 @@ section h3, section > span {
     line-height: 1;
   }
 }
+@media (-webkit-min-device-pixel-ratio: 1.25), (min-resolution: 120dpi) {
+  .work-item h4 {
+    font-size: max(21px, 1.3541666667vw);
+  }
+}
 @media (min-width: 768px) {
   .work-item h4 {
     background: none;
@@ -1107,6 +1160,11 @@ a.work-item:hover h4 {
     line-height: 1;
   }
 }
+@media (-webkit-min-device-pixel-ratio: 1.25), (min-resolution: 120dpi) {
+  .index .work-item:not([href]) .picture-container::after {
+    font-size: max(20px, 1.0416666667vw);
+  }
+}
 
 .index .work-item:not([href]):hover .picture-container::after {
   opacity: 1;
@@ -1145,6 +1203,11 @@ a.work-item:hover h4 {
     line-height: 1;
   }
 }
+@media (-webkit-min-device-pixel-ratio: 1.25), (min-resolution: 120dpi) {
+  .skills section * {
+    font-size: max(18px, 1.25vw);
+  }
+}
 @media (min-width: 768px) {
   .skills section {
     grid-column: 3/span 6;
@@ -1166,6 +1229,11 @@ a.work-item:hover h4 {
     line-height: 0.8;
   }
 }
+@media (-webkit-min-device-pixel-ratio: 1.25), (min-resolution: 120dpi) {
+  .skills section .hgroup {
+    font-size: max(14px, 0.9895833333vw);
+  }
+}
 .skills section .hgroup.full {
   grid-column: 1/span 10 !important;
   text-align: center;
@@ -1176,6 +1244,11 @@ a.work-item:hover h4 {
   .skills section .hgroup.full {
     font-size: 0.9895833333vw;
     line-height: 1.5;
+  }
+}
+@media (-webkit-min-device-pixel-ratio: 1.25), (min-resolution: 120dpi) {
+  .skills section .hgroup.full {
+    font-size: max(14px, 0.9895833333vw);
   }
 }
 .skills section .hgroup + .hgroup {
@@ -1207,6 +1280,8 @@ a.work-item:hover h4 {
   }
 }
 .skills section .bar div {
+  overflow: hidden;
+  width: 0;
   text-indent: 0.5ch;
   background-color: var(--theme-color);
   font-family: "Helveticanowdisplay";
@@ -1250,6 +1325,11 @@ body.case-study .recommendations .quote {
     line-height: 0.8;
   }
 }
+@media (-webkit-min-device-pixel-ratio: 1.25), (min-resolution: 120dpi) {
+  body.case-study .recommendations .quote {
+    font-size: max(390px, 100vw);
+  }
+}
 @media (min-width: 768px) {
   body.case-study .recommendations .quote {
     top: 0;
@@ -1275,6 +1355,11 @@ body.case-study .recommendations h2 {
     line-height: 1;
   }
 }
+@media (-webkit-min-device-pixel-ratio: 1.25), (min-resolution: 120dpi) {
+  body.case-study .recommendations h2 {
+    font-size: max(42px, 5.1041666667vw);
+  }
+}
 @media (min-width: 768px) {
   body.case-study .recommendations h2 {
     grid-column: 1/span 5;
@@ -1289,6 +1374,11 @@ body.case-study .recommendations p {
   body.case-study .recommendations p {
     font-size: 1.25vw;
     line-height: 1.3;
+  }
+}
+@media (-webkit-min-device-pixel-ratio: 1.25), (min-resolution: 120dpi) {
+  body.case-study .recommendations p {
+    font-size: max(21px, 1.25vw);
   }
 }
 body.case-study .recommendations p:not(:first-child),
@@ -1306,6 +1396,11 @@ body.case-study .recommendations span {
   body.case-study .recommendations span {
     font-size: 0.9895833333vw;
     line-height: 1;
+  }
+}
+@media (-webkit-min-device-pixel-ratio: 1.25), (min-resolution: 120dpi) {
+  body.case-study .recommendations span {
+    font-size: max(15px, 0.9895833333vw);
   }
 }
 @media (min-width: 768px) {
@@ -1339,6 +1434,11 @@ body.case-study .recommendations span {
   .contact a {
     font-size: 8.0208333333vw;
     line-height: 1.1;
+  }
+}
+@media (-webkit-min-device-pixel-ratio: 1.25), (min-resolution: 120dpi) {
+  .contact a {
+    font-size: max(40px, 8.0208333333vw);
   }
 }
 @media (min-width: 768px) {

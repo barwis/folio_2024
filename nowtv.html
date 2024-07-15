@@ -5,12 +5,18 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <title>Bart Wisniewski | Senior Web Engineer</title>
         <link rel="icon" type="image/svg+xml" href="./favicon.svg" />
+        <script src="./js/gsapDevTools.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/2.1.2/TweenMax.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.9.1/gsap.min.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/TextPlugin.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.9.1/ScrollTrigger.min.js"></script>
+
         <script src="./js/ScrambleTextPlugin3.js"></script>
+        <script src="./js/MorphSVGPlugin3.min.js"></script>
+        <script src="./js/SplitText3.min.js"></script>
         <script src="./js/lenis.min.js"></script>
+
+        <script src="./js/script.js"></script>
 
         <style>
             :root {
@@ -18,6 +24,7 @@
             }
         </style>
         <link rel="stylesheet" href="./SASS/style.css" />
+        <link rel="stylesheet" href="./SASS/js-style.css" />
     </head>
     <body class="case-study" id="body">
         <svg
@@ -89,6 +96,20 @@
                 </g>
             </defs>
         </svg>
+        <div class="splash">
+            <div class="icon splash-logo">
+                <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    viewBox="0 0 155.88 194.62"
+                >
+                    <polygon
+                        id="logo"
+                        fill="currentColor"
+                        points=".5 149.33 .5 30.29 51.46 .87 51.46 119.91 77.94 135.19 104.42 119.91 104.42 89.33 52.96 59.62 103.92 30.19 155.38 59.91 155.38 149.33 77.94 194.04 .5 149.33"
+                    />
+                </svg>
+            </div>
+        </div>
         <nav>
             <div class="logo" id="logo">
                 <div class="icon">
@@ -124,7 +145,7 @@
                 </div>
             </a>
 
-            <div class="go-back-2 icon" onclick="history.back()">
+            <a class="go-back-2 icon" href="index.html">
                 <svg
                     xmlns="http://www.w3.org/2000/svg"
                     viewBox="0 0 100 100"
@@ -144,7 +165,7 @@
                 </svg>
 
                 <span>Go back</span>
-            </div>
+            </a>
             <div class="scroll" id="scrollbar"></div>
         </nav>
         <header class="header header--small">
@@ -177,314 +198,339 @@
             </div>
         </header>
         <main id="main">
-            <article class="indent">
-                <aside>Brief</aside>
-                <section>
-                    <p>
-                        <span class="orange">Now</span> is a subscription
-                        over-the-top streaming television service operated by
-                        British satellite television provider
-                        <span class="orange">Sky Group</span> and American cable
-                        provider <span class="orange">Xfinity</span>.
-                    </p>
-                </section>
-            </article>
+            <div class="toAnim">
+                <article class="indent">
+                    <aside>Brief</aside>
+                    <section>
+                        <p>
+                            <span class="orange">Now</span> is a subscription
+                            over-the-top streaming television service operated
+                            by British satellite television provider
+                            <span class="orange">Sky Group</span> and American
+                            cable provider <span class="orange">Xfinity</span>.
+                        </p>
+                    </section>
+                </article>
 
-            <article class="indent">
-                <div class="separator separator--short"></div>
-                <h2>My role</h2>
-                <section>
-                    <p>
-                        I was part of the NOW TV agile team, building web,
-                        hybrid and native streaming apps for web, mobile , Smart
-                        TV, TalkTalk TV Box, AppleTV, FireTV, XBOX S/X and PS5
-                    </p>
-                    <p>
-                        I worked closely with sprint team members, stakeholders
-                        and product owners throughout the new and existing
-                        initiatives - from planning, through implementing,
-                        assisting QA and CI deployment.
-                    </p>
-                </section>
-            </article>
+                <article class="indent">
+                    <div class="separator separator--short"></div>
+                    <h2>My role</h2>
+                    <section>
+                        <p>
+                            I was part of the NOW TV agile team, building web,
+                            hybrid and native streaming apps for web, mobile ,
+                            Smart TV, TalkTalk TV Box, AppleTV, FireTV, XBOX S/X
+                            and PS5
+                        </p>
+                        <p>
+                            I worked closely with sprint team members,
+                            stakeholders and product owners throughout the new
+                            and existing initiatives - from planning, through
+                            implementing, assisting QA and CI deployment.
+                        </p>
+                    </section>
+                </article>
 
-            <article>
-                <!-- <aside>Tech stack</aside> -->
-                <h2>Tech stack</h2>
-                <div class="separator separator--long"></div>
+                <article>
+                    <!-- <aside>Tech stack</aside> -->
+                    <h2>Tech stack</h2>
+                    <div class="separator separator--long"></div>
 
-                <section class="tech-stack">
-                    <div>
-                        <img src="./images/tech/js.svg" alt="" /><span
-                            >JavaScript</span
-                        >
-                    </div>
-                    <div>
-                        <img src="./images/tech/ts.svg" alt="" /><span
-                            >TypeScript</span
-                        >
-                    </div>
-                    <div>
-                        <img src="./images/tech/react.svg" alt="" /><span
-                            >React</span
-                        >
-                    </div>
-                    <div>
-                        <img src="./images/tech/redux.svg" alt="" /><span
-                            >redux</span
-                        >
-                    </div>
-                    <div>
-                        <img src="./images/tech/GraphQL.svg" alt="" /><span
-                            >GraphQL</span
-                        >
-                    </div>
-                    <div>
-                        <img src="./images/tech/sass.svg" alt="" /><span
-                            >SASS</span
-                        >
-                    </div>
-                </section>
-            </article>
-
-            <article class="indent">
-                <div class="separator separator--short"></div>
-                <h2>TypeScript migration</h2>
-                <section>
-                    <p>
-                        I have played a significant role in the initiative to
-                        migrate the NOWTV app codebase from JavaScript to
-                        TypeScript. This transition has involved meticulous
-                        planning, thorough testing, and close collaboration with
-                        the development team to ensure a seamless and efficient
-                        upgrade. By adopting TypeScript, we have enhanced the
-                        app's performance, improved code quality, and provided a
-                        more robust and scalable foundation for future
-                        development.
-                    </p>
-                </section>
-            </article>
-
-            <article>
-                <section>
-                    <div class="diamond">
-                        <svg
-                            xmlns="http://www.w3.org/2000/svg"
-                            viewBox="0 0 50 50"
-                            width="30"
-                            height="30"
-                            preserveAspectRatio="xMinYMin"
-                        >
-                            <path
-                                fill="currentColor"
-                                transform="scale(1, 1)"
-                                stroke="none"
-                                vector-effect="non-scaling-stroke"
-                                d="M25,0 L50,25 L25,50 L0,25 L25,0z"
-                            />
-                        </svg>
-                    </div>
-                </section>
-            </article>
-
-            <article class="indent">
-                <section>
-                    <p>
-                        This project has not only strengthened my technical
-                        skills but also underscored the importance of teamwork
-                        and innovation in achieving our goals.
-                    </p>
-                </section>
-            </article>
-
-            <article class="work">
-                <section class="padded">
-                    <div class="work-item parallax work-item--wide">
-                        <div class="picture-container">
-                            <svg
-                                width="150"
-                                height="50"
-                                viewBox="0 0 150 50"
-                                class="spinner"
+                    <section class="tech-stack">
+                        <div>
+                            <img src="./images/tech/js.svg" alt="" /><span
+                                >JavaScript</span
                             >
-                                <use xlink:href="#spinner" />
-                            </svg>
-                            <picture>
-                                <source
-                                    srcset="./images/case/nowtv/1920-wide.jpg"
-                                    media="(min-width: 1920px)"
-                                />
-                                <source
-                                    srcset="./images/case/nowtv/1600-wide.jpg"
-                                    media="(min-width: 1600px)"
-                                />
-                                <source
-                                    srcset="./images/case/nowtv/1366-wide.jpg"
-                                    media="(min-width: 1366px)"
-                                />
-                                <source
-                                    srcset="./images/case/nowtv/768-wide.jpg"
-                                    media="(min-width: 768px)"
-                                />
-
-                                <img src="./images/case/nowtv/640-wide.jpg" />
-                            </picture>
                         </div>
-                    </div>
-                    <div class="work-item parallax work-item--narrow">
-                        <div class="picture-container">
-                            <svg
-                                width="150"
-                                height="50"
-                                viewBox="0 0 150 50"
-                                class="spinner"
+                        <div>
+                            <img src="./images/tech/ts.svg" alt="" /><span
+                                >TypeScript</span
                             >
-                                <use xlink:href="#spinner" />
-                            </svg>
-                            <picture>
-                                <source
-                                    srcset="
-                                        ./images/case/nowtv/1920-2-narrow.jpg
-                                    "
-                                    media="(min-width: 1920px)"
-                                />
-                                <source
-                                    srcset="
-                                        ./images/case/nowtv/1600-2-narrow.jpg
-                                    "
-                                    media="(min-width: 1600px)"
-                                />
-                                <source
-                                    srcset="
-                                        ./images/case/nowtv/1366-2-narrow.jpg
-                                    "
-                                    media="(min-width: 1366px)"
-                                />
-                                <source
-                                    srcset="./images/case/nowtv/768-narrow.jpg"
-                                    media="(min-width: 768px)"
-                                />
-
-                                <img
-                                    src="./images/case/nowtv/640-2-narrow.jpg"
-                                />
-                            </picture>
                         </div>
-                    </div>
-                </section>
-            </article>
-            <article class="indent">
-                <div class="separator separator--short"></div>
-                <h2>New testing strategy</h2>
-                <section>
-                    <p>
-                        I have successfully co-led and implemented a new code
-                        testing strategy, migrating from Enzyme to React Testing
-                        Library. This initiative involved developing a
-                        comprehensive plan, conducting extensive testing, and
-                        working closely with the team to ensure a smooth
-                        transition. By adopting React Testing Library, we have
-                        improved our testing efficiency, increased code
-                        coverage, and enhanced the overall quality of our
-                        codebase.
-                    </p>
-                </section>
-            </article>
-
-            <article class="work">
-                <section>
-                    <div class="work-item work-item--full-bleed">
-                        <div class="picture-container">
-                            <svg
-                                width="150"
-                                height="50"
-                                viewBox="0 0 150 50"
-                                class="spinner"
+                        <div>
+                            <img src="./images/tech/react.svg" alt="" /><span
+                                >React</span
                             >
-                                <use xlink:href="#spinner" />
-                            </svg>
-                            <picture>
-                                <source
-                                    srcset="./images/case/nowtv/1920-full.jpg"
-                                    media="(min-width: 1920px)"
-                                />
-                                <source
-                                    srcset="./images/case/nowtv/1600-full.jpg"
-                                    media="(min-width: 1600px)"
-                                />
-                                <source
-                                    srcset="./images/case/nowtv/1366-full.jpg"
-                                    media="(min-width: 1366px)"
-                                />
-                                <source
-                                    srcset="./images/case/nowtv/768-full.jpg"
-                                    media="(min-width: 768px)"
-                                />
-
-                                <img src="./images/case/nowtv/640-full.jpg" />
-                            </picture>
                         </div>
-                    </div>
-                </section>
-            </article>
+                        <div>
+                            <img src="./images/tech/redux.svg" alt="" /><span
+                                >redux</span
+                            >
+                        </div>
+                        <div>
+                            <img src="./images/tech/GraphQL.svg" alt="" /><span
+                                >GraphQL</span
+                            >
+                        </div>
+                        <div>
+                            <img src="./images/tech/sass.svg" alt="" /><span
+                                >SASS</span
+                            >
+                        </div>
+                    </section>
+                </article>
 
-            <article class="indent">
-                <div class="separator separator--short"></div>
-                <h2>Mentoring</h2>
-                <section>
-                    <p>
-                        I have had the privilege of mentoring junior developers
-                        and graduates, helping to enhance their product and
-                        technical knowledge. Through personalized guidance,
-                        hands-on training, and continuous support, I have
-                        contributed to their professional growth and
-                        development. This mentoring experience has been
-                        incredibly rewarding, as I've witnessed their skills
-                        flourish and their confidence grow. It has also
-                        reinforced my belief in the power of knowledge sharing
-                        and teamwork in building a stronger, more capable
-                        development team.
-                    </p>
-                </section>
-            </article>
-            <article class="recommendations indent">
-                <h2>What are they saying about me?</h2>
-                <div class="separator separator--short"></div>
-                <section>
-                    <p>
-                        Bart was part of a team working with applications
-                        written in React.js and Typescript. He is a great team
-                        player, and keen to volunteer to pick up whatever task
-                        is the priority. He showed interest in both tech
-                        improvements as well as feature work and offered
-                        valuable contribution. Bart is friendly, works well with
-                        others and doesn't give up until he finds a solution to
-                        the task at hand.
-                    </p>
+                <article class="indent">
+                    <div class="separator separator--short"></div>
+                    <h2>TypeScript migration</h2>
+                    <section>
+                        <p>
+                            I have played a significant role in the initiative
+                            to migrate the NOWTV app codebase from JavaScript to
+                            TypeScript. This transition has involved meticulous
+                            planning, thorough testing, and close collaboration
+                            with the development team to ensure a seamless and
+                            efficient upgrade. By adopting TypeScript, we have
+                            enhanced the app's performance, improved code
+                            quality, and provided a more robust and scalable
+                            foundation for future development.
+                        </p>
+                    </section>
+                </article>
 
-                    <h3>Lydia Chatziioannou</h3>
-                    <span> Engineering Manager</span>
-                </section>
+                <article>
+                    <section>
+                        <div class="diamond">
+                            <svg
+                                xmlns="http://www.w3.org/2000/svg"
+                                viewBox="0 0 50 50"
+                                width="30"
+                                height="30"
+                                preserveAspectRatio="xMinYMin"
+                            >
+                                <path
+                                    fill="currentColor"
+                                    transform="scale(1, 1)"
+                                    stroke="none"
+                                    vector-effect="non-scaling-stroke"
+                                    d="M25,0 L50,25 L25,50 L0,25 L25,0z"
+                                />
+                            </svg>
+                        </div>
+                    </section>
+                </article>
 
-                <div class="quote">”</div>
-            </article>
+                <article class="indent">
+                    <section>
+                        <p>
+                            This project has not only strengthened my technical
+                            skills but also underscored the importance of
+                            teamwork and innovation in achieving our goals.
+                        </p>
+                    </section>
+                </article>
 
-            <article class="contact">
-                <section>
-                    <a href="mailto:wisniewski.bart@gmail.com" id="contact"
-                        >Let's talk!</a
-                    >
-                </section>
-            </article>
-            <article class="footer">
-                <section>
-                    <footer>
-                        <a href="mailto:wisniewski.bart@gmail.com"
-                            >wisniewski.bart@gmail.com</a
+                <article class="work">
+                    <section class="padded">
+                        <div class="work-item parallax work-item--wide">
+                            <div class="picture-container">
+                                <svg
+                                    width="150"
+                                    height="50"
+                                    viewBox="0 0 150 50"
+                                    class="spinner"
+                                >
+                                    <use xlink:href="#spinner" />
+                                </svg>
+                                <picture>
+                                    <source
+                                        srcset="
+                                            ./images/case/nowtv/1920-wide.jpg
+                                        "
+                                        media="(min-width: 1920px)"
+                                    />
+                                    <source
+                                        srcset="
+                                            ./images/case/nowtv/1600-wide.jpg
+                                        "
+                                        media="(min-width: 1600px)"
+                                    />
+                                    <source
+                                        srcset="
+                                            ./images/case/nowtv/1366-wide.jpg
+                                        "
+                                        media="(min-width: 1366px)"
+                                    />
+                                    <source
+                                        srcset="
+                                            ./images/case/nowtv/768-wide.jpg
+                                        "
+                                        media="(min-width: 768px)"
+                                    />
+
+                                    <img
+                                        src="./images/case/nowtv/640-wide.jpg"
+                                    />
+                                </picture>
+                            </div>
+                        </div>
+                        <div class="work-item parallax work-item--narrow">
+                            <div class="picture-container">
+                                <svg
+                                    width="150"
+                                    height="50"
+                                    viewBox="0 0 150 50"
+                                    class="spinner"
+                                >
+                                    <use xlink:href="#spinner" />
+                                </svg>
+                                <picture>
+                                    <source
+                                        srcset="
+                                            ./images/case/nowtv/1920-2-narrow.jpg
+                                        "
+                                        media="(min-width: 1920px)"
+                                    />
+                                    <source
+                                        srcset="
+                                            ./images/case/nowtv/1600-2-narrow.jpg
+                                        "
+                                        media="(min-width: 1600px)"
+                                    />
+                                    <source
+                                        srcset="
+                                            ./images/case/nowtv/1366-2-narrow.jpg
+                                        "
+                                        media="(min-width: 1366px)"
+                                    />
+                                    <source
+                                        srcset="
+                                            ./images/case/nowtv/768-narrow.jpg
+                                        "
+                                        media="(min-width: 768px)"
+                                    />
+
+                                    <img
+                                        src="./images/case/nowtv/640-2-narrow.jpg"
+                                    />
+                                </picture>
+                            </div>
+                        </div>
+                    </section>
+                </article>
+                <article class="indent">
+                    <div class="separator separator--short"></div>
+                    <h2>New testing strategy</h2>
+                    <section>
+                        <p>
+                            I have successfully co-led and implemented a new
+                            code testing strategy, migrating from Enzyme to
+                            React Testing Library. This initiative involved
+                            developing a comprehensive plan, conducting
+                            extensive testing, and working closely with the team
+                            to ensure a smooth transition. By adopting React
+                            Testing Library, we have improved our testing
+                            efficiency, increased code coverage, and enhanced
+                            the overall quality of our codebase.
+                        </p>
+                    </section>
+                </article>
+
+                <article class="work">
+                    <section>
+                        <div class="work-item work-item--full-bleed">
+                            <div class="picture-container">
+                                <svg
+                                    width="150"
+                                    height="50"
+                                    viewBox="0 0 150 50"
+                                    class="spinner"
+                                >
+                                    <use xlink:href="#spinner" />
+                                </svg>
+                                <picture>
+                                    <source
+                                        srcset="
+                                            ./images/case/nowtv/1920-full.jpg
+                                        "
+                                        media="(min-width: 1920px)"
+                                    />
+                                    <source
+                                        srcset="
+                                            ./images/case/nowtv/1600-full.jpg
+                                        "
+                                        media="(min-width: 1600px)"
+                                    />
+                                    <source
+                                        srcset="
+                                            ./images/case/nowtv/1366-full.jpg
+                                        "
+                                        media="(min-width: 1366px)"
+                                    />
+                                    <source
+                                        srcset="
+                                            ./images/case/nowtv/768-full.jpg
+                                        "
+                                        media="(min-width: 768px)"
+                                    />
+
+                                    <img
+                                        src="./images/case/nowtv/640-full.jpg"
+                                    />
+                                </picture>
+                            </div>
+                        </div>
+                    </section>
+                </article>
+
+                <article class="indent">
+                    <div class="separator separator--short"></div>
+                    <h2>Mentoring</h2>
+                    <section>
+                        <p>
+                            I have had the privilege of mentoring junior
+                            developers and graduates, helping to enhance their
+                            product and technical knowledge. Through
+                            personalized guidance, hands-on training, and
+                            continuous support, I have contributed to their
+                            professional growth and development. This mentoring
+                            experience has been incredibly rewarding, as I've
+                            witnessed their skills flourish and their confidence
+                            grow. It has also reinforced my belief in the power
+                            of knowledge sharing and teamwork in building a
+                            stronger, more capable development team.
+                        </p>
+                    </section>
+                </article>
+                <article class="recommendations indent">
+                    <h2>What are they saying about me?</h2>
+                    <div class="separator separator--short"></div>
+                    <section>
+                        <p>
+                            Bart was part of a team working with applications
+                            written in React.js and Typescript. He is a great
+                            team player, and keen to volunteer to pick up
+                            whatever task is the priority. He showed interest in
+                            both tech improvements as well as feature work and
+                            offered valuable contribution. Bart is friendly,
+                            works well with others and doesn't give up until he
+                            finds a solution to the task at hand.
+                        </p>
+
+                        <h3>Lydia Chatziioannou</h3>
+                        <span> Engineering Manager</span>
+                    </section>
+
+                    <div class="quote">”</div>
+                </article>
+
+                <article class="contact">
+                    <section>
+                        <a href="mailto:wisniewski.bart@gmail.com" id="contact"
+                            >Let's talk!</a
                         >
-                    </footer>
-                </section>
-            </article>
+                    </section>
+                </article>
+                <article class="footer">
+                    <section>
+                        <footer>
+                            <a href="mailto:wisniewski.bart@gmail.com"
+                                >wisniewski.bart@gmail.com</a
+                            >
+                        </footer>
+                    </section>
+                </article>
+            </div>
         </main>
 
         <script src="./js/script.js"></script>

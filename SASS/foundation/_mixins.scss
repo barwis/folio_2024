@@ -4,6 +4,12 @@
     }
 }
 
+@mixin retina {
+    @media (-webkit-min-device-pixel-ratio: 1.25), (min-resolution: 120dpi) {
+        @content;
+    }
+}
+
 @mixin font-size(
     $base-size,
     $desktop-size: $base-size,
@@ -16,5 +22,12 @@
         // font-size: $desktop-size * 0.1vw;
         font-size: calc($desktop-size / 1920 * 100vw);
         line-height: $desktop-line-height;
+    }
+
+    @include retina {
+        font-size: max(
+            calc($base-size * 1px),
+            calc($desktop-size / 1920 * 100vw)
+        );
     }
 }

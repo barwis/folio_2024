@@ -207,11 +207,16 @@ const header = {
         //     [document.querySelector, document]
         // );
 
-        const [scrollArrow, scrollText, circle] = Array.prototype.map.call(
-            ['#scroll-arrow', '#scroll-text-wrapper', '.circle'],
-            document.querySelector,
-            document
-        );
+        const [scrollArrow, scrollText, scrollDownIndicator] =
+            Array.prototype.map.call(
+                [
+                    '#scroll-arrow',
+                    '#scroll-text-wrapper',
+                    '.scroll-down-indicator',
+                ],
+                document.querySelector,
+                document
+            );
 
         // end marker based on viewport
         const end = window.isDesktop
@@ -244,8 +249,9 @@ const header = {
             });
         }
 
-        if (!!circle) {
-            circle.addEventListener('click', () => {
+        if (scrollDownIndicator) {
+            gsap.set(scrollDownIndicator, { opacity: 1 });
+            scrollDownIndicator.addEventListener('click', () => {
                 lenis.scrollTo('#main', { duration: 1, lerp: 0.1 });
             });
         }
@@ -328,7 +334,6 @@ const main = {
 
     animateIndexShowcase: function () {
         const items = gsap.utils.toArray('.work-item.slide-up');
-        console.log('items', items);
 
         items.forEach((item, index) => {
             const pictureContainer = item.querySelector('.picture-container');
@@ -350,48 +355,54 @@ const main = {
                 },
             });
 
-            gsap.set(picture, {
-                height: pictureContainerHeight * 1.2,
-            });
-
             imageTimeline.to(pictureContainer, {
                 opacity: 1,
                 y: 0,
                 ease: 'power3.out',
                 duration: window.isDesktop ? 1 : 1,
             });
+        });
+    },
 
-            const diff = pictureContainerHeight * 0.2;
+    animateCaseStudyParallax: function () {
+        const items = gsap.utils.toArray('.work-item.parallax');
 
-            const hDiff = (window.innerHeight - pictureContainerHeight) / 10;
-            console.log(diff, hDiff);
+        items.forEach((item, index) => {
+            const containerOffset = -this.getItemOffset(item);
+            const pictureContainer = item.querySelector('.picture-container');
 
-            gsap.set(img, { y: -diff });
-
-            gsap.to(img, {
+            const work = item.closest('.padded');
+            const workPadding =
+                parseFloat(window.getComputedStyle(work).paddingTop) / 2;
+            const diff = containerOffset * workPadding;
+            gsap.to(pictureContainer, {
                 scrollTrigger: {
                     trigger: item,
                     scrub: true,
                     ease: 'none',
-                    markers: index === 1,
                     onUpdate: ({ progress }) => {
-                        const actualXTransform = diff * 2 * progress - diff;
-
-                        gsap.set(img, { y: actualXTransform * 2 });
+                        const off = workPadding * 2;
+                        const actualXTransform = off * progress - workPadding;
+                        gsap.set(pictureContainer, {
+                            y: actualXTransform * 2 * containerOffset,
+                        });
                     },
                     end: () =>
                         `+=${
                             window.innerHeight +
-                            item.getBoundingClientRect().height
+                            item.getBoundingClientRect().height * 1
                         }px`,
                 },
-                y: diff,
+                y: workPadding * containerOffset,
             });
         });
     },
 
     animateWorks: function () {
         this.animateIndexShowcase();
+        if (isDesktop) {
+            this.animateCaseStudyParallax();
+        }
         // elements
         const items = gsap.utils.toArray('.work-item');
 
@@ -399,110 +410,98 @@ const main = {
         const start = window.isDesktop ? 'top 80%' : 'top 80%';
 
         items.forEach((item, index) => {
-            const [picture, img] = ['picture', 'img'].map((selector) =>
-                item.querySelector(selector)
-            );
+            const pictureContainer = item.querySelector('.picture-container');
+            const picture = item.querySelector('picture');
+            const img = item.querySelector('img');
 
-            const work = item.closest('.work section');
+            const { height: pictureContainerHeight } =
+                pictureContainer.getBoundingClientRect();
 
-            const workContainerHeight = work.getBoundingClientRect().height;
+            const imgOffset = pictureContainerHeight * 0.1;
 
-            const possiblePadding = parseFloat(
-                window.getComputedStyle(work).paddingTop
-            );
+            gsap.set(picture, {
+                height: pictureContainerHeight * 1.2,
+                opacity: 1,
+            });
 
-            // reset
+            gsap.to(img, {
+                scrollTrigger: {
+                    trigger: item,
+                    scrub: true,
+                    ease: 'none',
+                    onUpdate: ({ progress }) => {
+                        const off = imgOffset * 2;
+                        const actualXTransform = off * progress - imgOffset;
 
-            if (item.classList.contains('slide-up')) {
-                // const imageTimeline = gsap.timeline({
-                //     scrollTrigger: {
-                //         trigger: item,
-                //         start: start,
-                //         end: window.viewportHeight + itemHeight,
-                //     },
-                // });
-                // gsap.set(pictureContainer, { y: 200, opacity: 0 });
-                // imageTimeline.to(pictureContainer, {
-                //     opacity: 1,
-                //     y: 0,
-                //     ease: 'power3.out',
-                //     duration: window.isDesktop ? 1 : 1,
-                // });
-                // gsap.set(img, { y: `${possiblePadding * -2}` });
-                // gsap.to(img, {
-                //     scrollTrigger: {
-                //         trigger: work,
-                //         scrub: true,
-                //         ease: 'none',
-                //         start: start,
-                //         markers: index === 1,
-                //         end: () =>
-                //             `+=${workContainerHeight * 2 + possiblePadding}px`,
-                //         // toggleActions: "play reset play reset"
-                //     },
-                //     y: `${possiblePadding * 2}`,
-                // });
-            }
-
-            // container parallax
-            if (item.classList.contains('parallax') && window.isDesktop) {
-                const containerOffset = this.getItemOffset(item);
-                const diff = containerOffset * possiblePadding;
-
-                gsap.set(item, {
-                    y: `${diff * -1}`,
-                    opacity: 1,
-                });
-
-                gsap.to(item, {
-                    scrollTrigger: {
-                        trigger: work,
-                        scrub: true,
-                        ease: 'none',
-                        onUpdate: ({ progress }) => {
-                            const actualXTransform =
-                                diff + diff * progress * -2;
-                            // console.log('update', diff + diff * progress * -2);
-                            gsap.set(item, { y: actualXTransform });
-                        },
-                        end: () =>
-                            `+=${workContainerHeight * 2 + possiblePadding}`,
+                        gsap.set(img, { y: actualXTransform * 2 });
                     },
-                });
-            }
+                    end: () =>
+                        `+=${
+                            window.innerHeight +
+                            item.getBoundingClientRect().height * 1
+                        }px`,
+                },
+            });
 
-            if (item.classList.contains('work-item--full-bleed')) {
-                const w = img.closest('.work section');
-                gsap.set(picture, { width: '120%', height: '120%' });
-
-                w.style.outline = '1px solid red';
-
-                console.log('w', w);
-                const _workContainerHeight = w.getBoundingClientRect().height;
-
-                gsap.set(img, { y: `-10%` });
-
-                const diff = -50;
-
-                gsap.to(img, {
-                    scrollTrigger: {
-                        trigger: w,
-                        scrub: true,
-                        ease: 'none',
-                        start: start,
-                        markers: true,
-                        onUpdate: ({ progress }) => {
-                            const actualXTransform =
-                                diff + diff * progress * -2;
-                            console.log('update', diff + diff * progress * -2);
-                            // gsap.set(item, { y: actualXTransform });
-                        },
-                        end: () =>
-                            `+=${_workContainerHeight + window.innerHeight}px`,
-                    },
-                });
-            }
-
+            // const [picture, img] = ['picture', 'img'].map((selector) =>
+            //     item.querySelector(selector)
+            // );
+            // const work = item.closest('.work section');
+            // const workContainerHeight = work.getBoundingClientRect().height;
+            // const possiblePadding = parseFloat(
+            //     window.getComputedStyle(work).paddingTop
+            // );
+            // // reset
+            // // container parallax
+            // if (item.classList.contains('parallax') && window.isDesktop) {
+            //     const containerOffset = this.getItemOffset(item);
+            //     const diff = containerOffset * possiblePadding;
+            //     gsap.set(item, {
+            //         y: `${diff * -1}`,
+            //         opacity: 1,
+            //     });
+            //     gsap.to(item, {
+            //         scrollTrigger: {
+            //             trigger: work,
+            //             scrub: true,
+            //             ease: 'none',
+            //             onUpdate: ({ progress }) => {
+            //                 const actualXTransform =
+            //                     diff + diff * progress * -2;
+            //                 // console.log('update', diff + diff * progress * -2);
+            //                 gsap.set(item, { y: actualXTransform });
+            //             },
+            //             end: () =>
+            //                 `+=${workContainerHeight * 2 + possiblePadding}`,
+            //         },
+            //     });
+            // }
+            // if (item.classList.contains('work-item--full-bleed')) {
+            //     const w = img.closest('.work section');
+            //     gsap.set(picture, { width: '120%', height: '120%' });
+            //     w.style.outline = '1px solid red';
+            //     console.log('w', w);
+            //     const _workContainerHeight = w.getBoundingClientRect().height;
+            //     gsap.set(img, { y: `-10%` });
+            //     const diff = -50;
+            //     gsap.to(img, {
+            //         scrollTrigger: {
+            //             trigger: w,
+            //             scrub: true,
+            //             ease: 'none',
+            //             start: start,
+            //             markers: true,
+            //             onUpdate: ({ progress }) => {
+            //                 const actualXTransform =
+            //                     diff + diff * progress * -2;
+            //                 console.log('update', diff + diff * progress * -2);
+            //                 // gsap.set(item, { y: actualXTransform });
+            //             },
+            //             end: () =>
+            //                 `+=${_workContainerHeight + window.innerHeight}px`,
+            //         },
+            //     });
+            // }
             // img parallax
         });
     },
@@ -552,7 +551,6 @@ const main = {
 
 const caseStudy = {
     animateHeroImage: function () {
-        console.log('animateHeroImage');
         const heroImage = document.querySelector('.header--big .header__image');
         if (!heroImage) return;
 
@@ -681,35 +679,40 @@ const pageTransition = {
                 0.5
             );
     },
-    // leave: function (onCompleteCb = () => {}) {
-    //     const { mask, main, splash } = this.elements;
+    leave: function (onCompleteCb = () => {}) {
+        // const { mask, main, splash } = this.elements;
 
-    //     console.log('splash!,', splash);
-    //     const { mask_from_left, mask_from_right, mask_empty } = this.paths;
+        const [splash, mask, main] = Array.prototype.map.call(
+            ['.splash', '#mask', '.toAnim'],
+            document.querySelector,
+            document
+        );
 
-    //     var timeline = new TimelineMax({
-    //         id: 'pageTransition.leave',
-    //         onComplete: () => {
-    //             splash.style.backgroundColor = 'black';
-    //             mask.removeAttributeNS(null, 'd');
-    //             onCompleteCb();
-    //         },
-    //     });
+        const { mask_from_left, mask_from_right, mask_empty } = this.paths;
 
-    //     gsap.set(main, { x: 0, opacity: 1 });
-    //     mask.setAttributeNS(null, 'd', mask_empty);
-    //     console.log('mask', mask);
+        var timeline = new TimelineMax({
+            id: 'pageTransition.leave',
+            onComplete: () => {
+                splash.style.backgroundColor = 'black';
+                mask.removeAttributeNS(null, 'd');
+                onCompleteCb();
+            },
+        });
 
-    //     timeline.to(
-    //         mask,
-    //         {
-    //             morphSVG: mask_from_left,
-    //             duration: 1,
-    //             ease: 'power4.inOut',
-    //         },
-    //         'reveal'
-    //     );
-    // },
+        gsap.set(main, { x: 0, opacity: 1 });
+        mask.setAttributeNS(null, 'd', mask_empty);
+        console.log('mask', mask);
+
+        timeline.to(
+            mask,
+            {
+                morphSVG: mask_from_left,
+                duration: 1,
+                ease: 'power4.inOut',
+            },
+            'reveal'
+        );
+    },
 };
 
 function Marquee(selector, speed) {
@@ -767,6 +770,20 @@ function Marquee(selector, speed) {
 window.addEventListener('load', function () {
     console.log('all resources loaded');
 
+    // override anchors
+    const activeAnchors = gsap.utils.toArray('a[href]').forEach((a) => {
+        a.addEventListener('click', function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+            const href = e.currentTarget.getAttribute('href');
+            console.log('nope', e.currentTarget.getAttribute('href'));
+
+            pageTransition.leave(() => {
+                window.location.href = href;
+            });
+        });
+    });
+
     // window.timelines.forEach((timeline) => timeline.resume());
 });
 
@@ -774,10 +791,13 @@ window.addEventListener('load', function () {
 document.addEventListener('DOMContentLoaded', (event) => {
     // GSDevTools.create();
 
-    console.log('test');
     pageTransition.init();
 
     pageTransition.enter(() => {
+        header.animateScrollBar();
+        header.animateScrollIndicator();
+        const animate = header.randomiseHeaderText();
+        if (animate) animate();
         main.animateParagraphs();
 
         main.animateSectionHeadings();
@@ -795,7 +815,6 @@ document.addEventListener('DOMContentLoaded', (event) => {
 
     window.isDesktop = mediaQuery.matches;
 
-    // header.animateScrollBar();
     // header.animateScrollIndicator();
     // const animate = header.randomiseHeaderText();
     // if (animate) animate();

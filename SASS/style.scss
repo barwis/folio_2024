@@ -103,7 +103,7 @@ body {
 
         article:not(.showcase) {
             @include desktop {
-                padding-bottom: 0;
+                // padding-bottom: 0;
             }
         }
 
@@ -233,11 +233,11 @@ header {
         @include font-size(14, 24);
     }
 
-    .circle {
+    .scroll-down-indicator {
         display: flex !important;
         flex-direction: column;
         align-items: center;
-        width: 230px;
+        width: 240px;
         height: 130px;
         position: relative;
         margin-top: 186px;
@@ -558,7 +558,6 @@ article {
 
     @include desktop {
         gap: 0 var(--gutter);
-        padding-bottom: 300px;
     }
 
     & > h1,
@@ -720,7 +719,6 @@ section {
         @include desktop {
             padding-top: 50px;
             padding-bottom: 50px;
-            outline: 1px solid red;
         }
     }
 
@@ -985,7 +983,8 @@ a.work-item:hover {
             }
 
             div {
-                // color: var(--color-1);
+                overflow: hidden;
+                width: 0;
                 text-indent: 0.5ch;
                 background-color: var(--theme-color);
                 font-family: 'Helveticanowdisplay';

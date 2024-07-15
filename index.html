@@ -17,7 +17,6 @@
         <script src="./js/lenis.min.js"></script>
 
         <script src="./js/script.js"></script>
-         
 
         <style>
             :root {
@@ -27,11 +26,7 @@
         <link rel="stylesheet" href="./SASS/style.css" />
         <link rel="stylesheet" href="./SASS/js-style.css" />
         <noscript>
-            <style>
-                body {
-                    background: red;
-                }
-            </style>
+            <link rel="stylesheet" href="./SASS/no-js-style.css" />
         </noscript>
     </head>
     <body id="body" class="index">
@@ -110,11 +105,20 @@
             </defs>
         </svg>
 
-        <!-- <div class="splash">
+        <div class="splash">
             <div class="icon splash-logo">
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 155.88 194.62"><polygon id="logo" fill="currentColor" points=".5 149.33 .5 30.29 51.46 .87 51.46 119.91 77.94 135.19 104.42 119.91 104.42 89.33 52.96 59.62 103.92 30.19 155.38 59.91 155.38 149.33 77.94 194.04 .5 149.33"/></svg>
+                <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    viewBox="0 0 155.88 194.62"
+                >
+                    <polygon
+                        id="logo"
+                        fill="currentColor"
+                        points=".5 149.33 .5 30.29 51.46 .87 51.46 119.91 77.94 135.19 104.42 119.91 104.42 89.33 52.96 59.62 103.92 30.19 155.38 59.91 155.38 149.33 77.94 194.04 .5 149.33"
+                    />
+                </svg>
             </div>
-        </div> -->
+        </div>
         <nav>
             <div class="logo">
                 <div class="icon">
@@ -133,18 +137,20 @@
         </nav>
         <header class="index">
             <h1>
-                <span id="h-1" >Hey there!</span>
+                <span id="h-1">Hey there!</span>
                 <span id="h-2">I am Bart</span>
             </h1>
             <div id="h-tag" class="tagline">
                 <div>
-                    <span id="sh1" data-text="asdasdasd">and I'm a</span>
-                    <span class="orange" id="sh2" data-text="asdasdasd">web magican</span>
+                    <span id="sh1" data-text="asdasdasd">and I make</span>
+                    <span class="orange" id="sh2" data-text="asdasdasd"
+                        >the Web</span
+                    >
                 </div>
-                <div class="side" id="sh3">╰( ͡° ͜ʖ ͡° )つ──☆*:・ﾟ</div>
+                <div class="side" id="sh3">( like... really! )</div>
             </div>
 
-            <div class="circle">
+            <div class="scroll-down-indicator">
                 <div class="scroll-text-wrapper" id="scroll-text-wrapper">
                     <img
                         src="./images/assets/scroll-circle.svg"
@@ -484,67 +490,67 @@
 
                         <div class="skill-title">HTML/CSS</div>
                         <div class="bar" data-years="10+">
-                            <div>10+</div>
+                            <div class="width width-100">10+</div>
                         </div>
                         <div class="value">10+</div>
 
                         <div class="skill-title">JavaScript</div>
                         <div class="bar" data-years="10+">
-                            <div>10+</div>
+                            <div class="width width-100">10+</div>
                         </div>
                         <div class="value">10+</div>
 
                         <div class="skill-title">TypeScript</div>
                         <div class="bar" data-years="5">
-                            <div>5</div>
+                            <div class="width width-50">5</div>
                         </div>
                         <div class="value">5</div>
 
                         <div class="skill-title">React</div>
                         <div class="bar" data-years="8">
-                            <div>8</div>
+                            <div class="width width-80">8</div>
                         </div>
                         <div class="value">8</div>
 
                         <div class="skill-title">npm / yarn</div>
                         <div class="bar" data-years="8">
-                            <div>8</div>
+                            <div class="width width-80">8</div>
                         </div>
                         <div class="value">8</div>
 
                         <div class="skill-title">GraphQL</div>
                         <div class="bar" data-years="3">
-                            <div>3</div>
+                            <div class="width width-30">3</div>
                         </div>
                         <div class="value">3</div>
 
                         <div class="skill-title">NodeJS</div>
                         <div class="bar" data-years="7">
-                            <div>7</div>
+                            <div class="width width-70">7</div>
                         </div>
                         <div class="value">7</div>
 
                         <div class="skill-title">Jest / Vite / RTL</div>
                         <div class="bar" data-years="6">
-                            <div>6</div>
+                            <div class="width width-60">6</div>
                         </div>
                         <div class="value">6</div>
 
                         <div class="skill-title">Storybook</div>
                         <div class="bar" data-years="2">
-                            <div>2</div>
+                            <div class="width width-20">2</div>
                         </div>
                         <div class="value">2</div>
 
                         <div class="skill-title">webpack / babel</div>
                         <div class="bar" data-years="7">
-                            <div >7</div>
+                            <div class="width width-70">7</div>
                         </div>
                         <div class="value">7</div>
 
                         <div class="skill-title">Docker</div>
                         <div class="bar" data-years="6">
-                            <div >6</div>
+                            <div class="width width-60">6</div>
                         </div>
                         <div class="value">6</div>
                     </section>
@@ -559,55 +565,55 @@
                     <section>
                         <div class="skill-title">Jenkins</div>
                         <div class="bar" data-years="6">
-                            <div id="bar-12" style="width: 60%">6</div>
+                            <div class="width width-60">6</div>
                         </div>
                         <div class="value">6</div>
 
                         <div class="skill-title">React Native</div>
                         <div class="bar" data-years="3">
-                            <div id="bar-13" style="width: 30%">3</div>
+                            <div class="width width-30">3</div>
                         </div>
                         <div class="value">3</div>
 
                         <div class="skill-title">MongoDB</div>
                         <div class="bar" data-years="3">
-                            <div id="bar-14" style="width: 30%">3</div>
+                            <div class="width width-30">3</div>
                         </div>
                         <div class="value">3</div>
 
                         <div class="skill-title">AWS</div>
                         <div class="bar" data-years="6">
-                            <div id="bar-15" style="width: 60%">3</div>
+                            <div class="width width-60">6</div>
                         </div>
                         <div class="value">6</div>
 
                         <div class="skill-title">Python</div>
                         <div class="bar" data-years="4">
-                            <div id="bar-16" style="width: 40%">4</div>
+                            <div class="width width-40">4</div>
                         </div>
                         <div class="value">4</div>
 
                         <div class="skill-title">PHP</div>
                         <div class="bar" data-years="6">
-                            <div id="bar-17" style="width: 60%">4</div>
+                            <div class="width width-60">6</div>
                         </div>
                         <div class="value">6</div>
 
                         <div class="skill-title">Java</div>
                         <div class="bar" data-years="4">
-                            <div id="bar-18" style="width: 40%">4</div>
+                            <div class="width width-40">4</div>
                         </div>
                         <div class="value">4</div>
 
                         <div class="skill-title">SQL</div>
                         <div class="bar" data-years="6">
-                            <div id="bar-19" style="width: 60%">6</div>
+                            <div class="width width-60">6</div>
                         </div>
                         <div class="value">6</div>
 
                         <div class="skill-title">C#</div>
                         <div class="bar" data-years="2">
-                            <div id="bar-20" style="width: 20%">2</div>
+                            <div class="width width-20">2</div>
                         </div>
                         <div class="value">2</div>
                     </section>
@@ -664,6 +670,7 @@
                         </footer>
                     </section>
                 </article>
+            </div>
         </main>
 
         <!-- <script src="./js/script.js"></script> -->

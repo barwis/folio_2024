@@ -291,28 +291,27 @@ const main = {
 
             const val =
                 parseFloat(window.getComputedStyle(paragraph).fontSize) * 2;
+            gsap.set(paragraph, { opacity: 1 });
 
-            let paragraphAnimation = gsap.timeline({
-                id: `paragraph-${index}`,
+            gsap.set(split.lines, {
+                opacity: 0,
+                rotationX: -val,
+                transformOrigin: `top center -${val}`,
+            });
+
+            gsap.to(split.lines, {
                 scrollTrigger: {
                     trigger: paragraph,
+                    start: 'top 70%',
+                    scrub: 1,
+                    markers: true,
+                    end: `+=${paragraph.getBoundingClientRect().height}`,
                 },
+                opacity: 1,
+                rotationX: 0,
+                duration: 0.3,
+                stagger: 0.05,
             });
-            gsap.set(paragraph, { opacity: 1 });
-            paragraphAnimation.fromTo(
-                split.lines,
-                {
-                    opacity: 0,
-                    rotationX: -val,
-                    transformOrigin: `top center -${val}`,
-                },
-                {
-                    opacity: 1,
-                    rotationX: 0,
-                    duration: 0.3,
-                    stagger: 0.05,
-                }
-            );
         });
     },
 

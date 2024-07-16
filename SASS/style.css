@@ -669,11 +669,6 @@ nav .logo.scrolling-down {
 nav .logo.scrolling-up {
   transform: translateY(0px);
 }
-@media (min-width: 768px) {
-  nav .logo {
-    margin: 10px;
-  }
-}
 nav .logo img,
 nav .logo svg {
   height: 40px;
@@ -683,7 +678,8 @@ nav .logo svg {
 @media (min-width: 768px) {
   nav .logo img,
   nav .logo svg {
-    width: 1.6841em;
+    width: 40px;
+    height: auto;
   }
 }
 @media (min-width: 768px) {
@@ -735,6 +731,19 @@ nav .go-back-2 {
   height: 100px;
   cursor: pointer;
   z-index: 10;
+  font-size: 20px;
+  line-height: 1;
+}
+@media (min-width: 768px) {
+  nav .go-back-2 {
+    font-size: 1.0416666667vw;
+    line-height: 1;
+  }
+}
+@media (-webkit-min-device-pixel-ratio: 1.25), (min-resolution: 120dpi) {
+  nav .go-back-2 {
+    font-size: max(20px, 1.0416666667vw);
+  }
 }
 @media (min-width: 768px) {
   nav .go-back-2 {

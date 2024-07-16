@@ -435,7 +435,7 @@ nav {
         }
 
         @include desktop {
-            margin: 10px;
+            // margin: 10px;
         }
 
         img,
@@ -445,7 +445,8 @@ nav {
             width: auto;
 
             @include desktop {
-                width: 1.6841em;
+                width: 40px;
+                height: auto;
             }
         }
     }
@@ -500,6 +501,7 @@ nav {
         height: 100px;
         cursor: pointer;
         z-index: 10;
+        @include font-size(20, 20);
 
         @include desktop {
             display: flex;
@@ -1238,13 +1240,11 @@ body.case-study .recommendations {
 }
 
 .diamond {
-    // color: var(--theme-color);
     grid-column: 1 / span var(--col-num);
     text-align: center;
     margin: 8em 0;
 
     @include desktop {
-        // grid-column: 1 / span calc(var(--col-num) - 4);
         margin: 0 0 8em;
     }
 

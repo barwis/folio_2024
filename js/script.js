@@ -642,6 +642,7 @@ const pageTransition = {
     },
 
     enter: function (onCompleteCb = () => {}) {
+        let splash = document.querySelector('.splash');
         window.customTimeLine = new gsap.timeline({
             id: 'pageTransition.enter',
             timeScale: 2,
@@ -659,6 +660,7 @@ const pageTransition = {
         }
 
         mask.setAttributeNS(null, 'd', mask_from_right);
+        splash.style.backgroundColor = 'transparent';
 
         // gsap
 

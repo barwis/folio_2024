@@ -128,11 +128,11 @@ const header = {
 
         // get elements
 
-        const elems = getAllRequiredElements(['#sh1', '#sh2', '#sh2']);
+        const elems = getAllRequiredElements(['#sh1', '#sh2', '#sh3']);
         if (!elems) return;
 
         const [span1, span2, span3] = elems;
-
+        console.log([span1, span2, span3]);
         // prevent FOUC
         gsap.set(span1, { opacity: 1 });
         gsap.set(span2, { opacity: 1 });
@@ -153,6 +153,7 @@ const header = {
             [span1, span2, span3].forEach((span) => (span.innerHTML = ''));
 
             // update span3 - this one isn't going to be scrambled
+
             gsap.set(span3, { opacity: 0 });
             span3.innerHTML = span3text;
 

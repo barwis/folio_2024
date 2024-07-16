@@ -644,7 +644,6 @@ nav {
   flex-direction: row;
   justify-content: space-between;
   z-index: 9999;
-  border-right: 1px solid rgba(122, 122, 122, 0.1);
 }
 @media (min-width: 768px) {
   nav {
@@ -652,11 +651,11 @@ nav {
     padding-bottom: var(--naw-width);
     height: unset;
     flex-direction: column;
+    border-right: 1px solid rgba(122, 122, 122, 0.1);
   }
 }
 nav .logo {
   display: block;
-  width: 80px;
   height: 80px;
   transition: transform 0.3s linear;
   position: relative;
@@ -677,9 +676,9 @@ nav .logo.scrolling-up {
 }
 nav .logo img,
 nav .logo svg {
-  height: 50px;
+  height: 40px;
   margin: 20px;
-  width: 40px;
+  width: auto;
 }
 @media (min-width: 768px) {
   nav .logo img,
@@ -1583,7 +1582,7 @@ body.case-study .recommendations span {
 }
 @media (min-width: 768px) {
   .diamond {
-    grid-column: 1/span calc(var(--col-num) - 4);
+    margin: 0 0 8em;
   }
 }
 .diamond svg {

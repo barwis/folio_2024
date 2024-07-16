@@ -687,7 +687,8 @@ const pageTransition = {
     },
     leave: function (onCompleteCb = () => {}) {
         // const { mask, main, splash } = this.elements;
-        const elems = getAllRequiredElements([['.splash', '#mask', '.toAnim']]);
+        const elems = getAllRequiredElements(['.splash', '#mask', '.toAnim']);
+        console.log('elems', elems);
         if (!elems) return;
 
         const [splash, mask, main] = elems;
@@ -739,18 +740,6 @@ window.addEventListener('load', function () {
     console.log('all resources loaded');
 
     // override anchors
-    const activeAnchors = gsap.utils.toArray('a[href]').forEach((a) => {
-        a.addEventListener('click', function (e) {
-            e.preventDefault();
-            e.stopPropagation();
-            const href = e.currentTarget.getAttribute('href');
-            console.log('nope', e.currentTarget.getAttribute('href'));
-
-            pageTransition.leave(() => {
-                window.location.href = href;
-            });
-        });
-    });
 });
 
 // DOM loaded
@@ -799,5 +788,17 @@ window.onload = function () {
         const t1 = performance.now();
         console.log(`Call to doSomething took ${t1 - t0} milliseconds.`);
         main.animateWorks();
+        gsap.utils.toArray('a[href]').forEach((a) => {
+            a.addEventListener('click', function (e) {
+                e.preventDefault();
+                e.stopPropagation();
+                const href = e.currentTarget.getAttribute('href');
+                console.log('nope', e.currentTarget.getAttribute('href'));
+
+                pageTransition.leave(() => {
+                    window.location.href = href;
+                });
+            });
+        });
     });
 };

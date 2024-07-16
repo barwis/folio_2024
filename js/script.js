@@ -20,6 +20,19 @@ gsap.ticker.add((time) => {
 gsap.ticker.lagSmoothing(0);
 window.timelines = [];
 
+function randomNoRepeats(array) {
+    var copy = array.slice(0);
+    return function () {
+        if (copy.length < 1) {
+            copy = array.slice(0);
+        }
+        var index = Math.floor(Math.random() * copy.length);
+        var item = copy[index];
+        copy.splice(index, 1);
+        return item;
+    };
+}
+
 function createRipple(event) {
     if (window.isDesktop && button.href) {
         window.location.href = button.href;
@@ -95,37 +108,7 @@ const header = {
     ],
 
     randomiseHeaderText: function () {
-        function shuffleArray(array) {
-            let currentIndex = array.length,
-                temporaryValue,
-                randomIndex;
-
-            while (0 !== currentIndex) {
-                randomIndex = Math.floor(Math.random() * currentIndex);
-                currentIndex -= 1;
-
-                temporaryValue = array[currentIndex];
-                array[currentIndex] = array[randomIndex];
-                array[randomIndex] = temporaryValue;
-            }
-
-            return array;
-        }
-
-        function* getRandomArrayItem(array) {
-            let index = Infinity;
-            const items = array.slice(); //take a copy of the array;
-
-            while (true) {
-                if (index >= array.length) {
-                    shuffleArray(items);
-                    index = 0;
-                }
-
-                yield items[index++];
-            }
-        }
-
+        const randomTagLine = randomNoRepeats(this.text);
         // get elements
 
         const elems = getAllRequiredElements(['#sh1', '#sh2', '#sh3']);
@@ -145,9 +128,8 @@ const header = {
                 duration: 2,
             };
 
-            const randomText = getRandomArrayItem(this.text);
-            const [span1text, span2text, span3text = ''] =
-                randomText.next().value;
+            const randomText = randomTagLine();
+            const [span1text, span2text, span3text = ''] = randomText;
 
             // clear text
             [span1, span2, span3].forEach((span) => (span.innerHTML = ''));

@@ -304,7 +304,6 @@ const main = {
                     trigger: paragraph,
                     start: 'top 70%',
                     scrub: 1,
-                    markers: true,
                     end: `+=${paragraph.getBoundingClientRect().height}`,
                 },
                 opacity: 1,

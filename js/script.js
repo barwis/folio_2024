@@ -639,8 +639,6 @@ const pageTransition = {
         this.elements.splash = splash;
         this.elements.main = document.querySelector('.toAnim');
         splash.prepend(svg);
-
-        splash.style.backgroundColor = 'transparent';
     },
 
     enter: function (onCompleteCb = () => {}) {

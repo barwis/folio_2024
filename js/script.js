@@ -319,8 +319,7 @@ const main = {
 
             gsap.set(e, {
                 opacity: 0,
-                rotationX: -val,
-                transformOrigin: `top center -${val}`,
+                y: val * 2,
             });
 
             gsap.to(e, {
@@ -328,11 +327,14 @@ const main = {
                     trigger: paragraph,
                     start: 'top 70%',
                     scrub: 1,
+                    markers: true,
                     end: `+=${window.innerHeight * 0.3}`,
+                    duration: 2,
                 },
                 opacity: 1,
-                rotationX: 0,
-                stagger: 0.05,
+                ease: 'circ.out',
+                y: 0,
+                stagger: 0.1,
             });
         });
     },

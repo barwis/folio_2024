@@ -653,6 +653,7 @@ const pageTransition = {
 
         splash.style.backgroundColor = 'transparent';
     },
+
     enter: function (onCompleteCb = () => {}) {
         window.customTimeLine = new gsap.timeline({
             id: 'pageTransition.enter',
@@ -822,20 +823,6 @@ docReady(() => {
 
     pageTransition.init();
 
-    pageTransition.enter(() => {
-        header.animateScrollBar();
-        header.animateScrollIndicator();
-        header.animateHeroSection();
-        const animate = header.randomiseHeaderText();
-        if (animate) animate();
-        main.animateParagraphs();
-
-        main.animateSectionHeadings();
-        main.animateSkillBars();
-        main.animateWorks();
-        caseStudy.animateQuote();
-    });
-
     window.viewportHeight = window.innerHeight;
     window.pageHeight =
         document.height !== undefined
@@ -846,3 +833,20 @@ docReady(() => {
 
     window.isDesktop = mediaQuery.matches;
 });
+
+window.onload = function () {
+    // code to run animation.
+
+    pageTransition.enter(() => {
+        header.animateScrollBar();
+        header.animateScrollIndicator();
+        header.animateHeroSection();
+        const animate = header.randomiseHeaderText();
+        if (animate) animate();
+        main.animateParagraphs();
+        main.animateSectionHeadings();
+        main.animateSkillBars();
+        main.animateWorks();
+        caseStudy.animateQuote();
+    });
+};

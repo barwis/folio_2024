@@ -1370,4 +1370,11 @@ aside,
     padding: 0 10px;
     z-index: 9999;
     letter-spacing: 1px;
+
+    @include desktop {
+        right: auto;
+        left: 0;
+        width: var(--naw-width);
+        text-align: center;
+    }
 }

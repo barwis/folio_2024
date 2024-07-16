@@ -1729,4 +1729,12 @@ aside,
   .version {
     font-size: max(12px, 0.625vw);
   }
+}
+@media (min-width: 768px) {
+  .version {
+    right: auto;
+    left: 0;
+    width: var(--naw-width);
+    text-align: center;
+  }
 }/*# sourceMappingURL=style.css.map */

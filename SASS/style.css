@@ -1706,4 +1706,27 @@ aside,
 .skills section .bar div {
   background-color: var(--theme-color, #ff6945);
   color: var(--color-1);
+}
+
+.version {
+  position: fixed;
+  display: block;
+  right: 0;
+  bottom: 0;
+  font-size: 12px;
+  line-height: 2;
+  padding: 0 10px;
+  z-index: 9999;
+  letter-spacing: 1px;
+}
+@media (min-width: 768px) {
+  .version {
+    font-size: 0.625vw;
+    line-height: 2;
+  }
+}
+@media (-webkit-min-device-pixel-ratio: 1.25), (min-resolution: 120dpi) {
+  .version {
+    font-size: max(12px, 0.625vw);
+  }
 }/*# sourceMappingURL=style.css.map */

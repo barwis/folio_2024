@@ -107,6 +107,21 @@ const header = {
         ['and I turn caffeine', 'into websites', '( weird flex, but OK... )'],
     ],
 
+    versionFadeOut: function () {
+        const versionElem = document.querySelector('.version');
+        const main = document.querySelector('main');
+        if (!versionElem) return;
+
+        gsap.to(versionElem, {
+            scrollTrigger: {
+                trigger: main,
+                end: () => window.innerHeight,
+                scrub: true,
+            },
+            opacity: 0,
+        });
+    },
+
     randomiseHeaderText: function () {
         const randomTagLine = randomNoRepeats(this.text);
         // get elements
@@ -291,11 +306,7 @@ const main = {
             '.fact section  p, .fact .diamond'
         );
 
-        console.log(paragraphs);
-
         paragraphs.forEach((paragraph, index) => {
-            console.log(paragraph.tagName === 'P');
-
             const e =
                 paragraph.tagName === 'P'
                     ? new SplitText(paragraph, { type: 'lines' }).lines
@@ -773,6 +784,7 @@ window.onload = function () {
 
     pageTransition.enter(() => {
         const t0 = performance.now();
+        header.versionFadeOut();
         header.animateScrollBar();
         header.animateScrollIndicator();
         header.animateHeroSection();

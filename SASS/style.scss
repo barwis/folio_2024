@@ -1360,3 +1360,14 @@ aside,
     background-color: var(--theme-color, #ff6945);
     color: var(--color-1);
 }
+
+.version {
+    position: fixed;
+    display: block;
+    right: 0;
+    bottom: 0;
+    @include font-size(12, 12, 2);
+    padding: 0 10px;
+    z-index: 9999;
+    letter-spacing: 1px;
+}

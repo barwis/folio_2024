@@ -132,7 +132,7 @@ const header = {
         if (!elems) return;
 
         const [span1, span2, span3] = elems;
-        console.log([span1, span2, span3]);
+
         // prevent FOUC
         gsap.set(span1, { opacity: 1 });
         gsap.set(span2, { opacity: 1 });
@@ -380,25 +380,31 @@ const main = {
             const pictureContainer = item.querySelector('.picture-container');
 
             const work = item.closest('.padded');
-            const workPadding =
-                parseFloat(window.getComputedStyle(work).paddingTop) / 2;
-            const diff = containerOffset * workPadding;
+            const workPadding = parseFloat(
+                window.getComputedStyle(work).paddingTop
+            );
+
+            var mapper = gsap.utils.mapRange(
+                0,
+                1,
+                -workPadding * containerOffset,
+                workPadding * containerOffset
+            );
+
             gsap.to(pictureContainer, {
                 scrollTrigger: {
                     trigger: item,
                     scrub: true,
                     ease: 'none',
                     onUpdate: ({ progress }) => {
-                        const off = workPadding * 2;
-                        const actualXTransform = off * progress - workPadding;
                         gsap.set(pictureContainer, {
-                            y: actualXTransform * 2 * containerOffset,
+                            y: mapper(progress),
                         });
                     },
                     end: () =>
                         `+=${
                             window.innerHeight +
-                            item.getBoundingClientRect().height * 1
+                            item.getBoundingClientRect().height
                         }px`,
                 },
                 y: workPadding * containerOffset,
@@ -425,12 +431,14 @@ const main = {
             const { height: pictureContainerHeight } =
                 pictureContainer.getBoundingClientRect();
 
-            const imgOffset = pictureContainerHeight * 0.1;
+            const imgOffset = pictureContainerHeight * 0.2;
 
             gsap.set(picture, {
                 height: pictureContainerHeight * 1.2,
                 opacity: 1,
             });
+
+            var mapper = gsap.utils.mapRange(0, 1, -imgOffset, imgOffset);
 
             gsap.to(img, {
                 scrollTrigger: {
@@ -438,10 +446,7 @@ const main = {
                     scrub: true,
                     ease: 'none',
                     onUpdate: ({ progress }) => {
-                        const off = imgOffset * 2;
-                        const actualXTransform = off * progress - imgOffset;
-
-                        gsap.set(img, { y: actualXTransform * 2 });
+                        gsap.set(img, { y: mapper(progress) });
                     },
                     end: () =>
                         `+=${

@@ -271,6 +271,9 @@ const main = {
             const t = gsap.timeline({
                 scrollTrigger: {
                     trigger: heading,
+                    start: `top bottom-=${
+                        heading.getBoundingClientRect().height
+                    }px`,
                 },
             });
             t.to(heading, {
@@ -284,31 +287,40 @@ const main = {
 
     animateParagraphs: function () {
         const initialYOffset = window.isDesktop ? '2em' : '20px';
-        const paragraphs = gsap.utils.toArray('.fact section  p');
+        const paragraphs = gsap.utils.toArray(
+            '.fact section  p, .fact .diamond'
+        );
+
+        console.log(paragraphs);
 
         paragraphs.forEach((paragraph, index) => {
-            var split = new SplitText(paragraph, { type: 'lines' });
+            console.log(paragraph.tagName === 'P');
+
+            const e =
+                paragraph.tagName === 'P'
+                    ? new SplitText(paragraph, { type: 'lines' }).lines
+                    : paragraph;
 
             const val =
                 parseFloat(window.getComputedStyle(paragraph).fontSize) * 2;
+
             gsap.set(paragraph, { opacity: 1 });
 
-            gsap.set(split.lines, {
+            gsap.set(e, {
                 opacity: 0,
                 rotationX: -val,
                 transformOrigin: `top center -${val}`,
             });
 
-            gsap.to(split.lines, {
+            gsap.to(e, {
                 scrollTrigger: {
                     trigger: paragraph,
                     start: 'top 70%',
                     scrub: 1,
-                    end: `+=${paragraph.getBoundingClientRect().height}`,
+                    end: `+=${window.innerHeight * 0.3}`,
                 },
                 opacity: 1,
                 rotationX: 0,
-                duration: 0.3,
                 stagger: 0.05,
             });
         });

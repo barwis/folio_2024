@@ -18,7 +18,6 @@ gsap.ticker.add((time) => {
 });
 
 gsap.ticker.lagSmoothing(0);
-
 window.timelines = [];
 
 function createRipple(event) {
@@ -64,6 +63,20 @@ function createRipple(event) {
             window.location.href = button.href;
         }
     }, 300);
+}
+
+function allElementsfound(elems) {
+    return ![elems].every((element) => !!element);
+}
+
+function getAllRequiredElements(selectors) {
+    const elems = Array.prototype.map.call(
+        selectors,
+        document.querySelector,
+        document
+    );
+
+    return elems.every((element) => !!element) && elems;
 }
 
 const header = {
@@ -114,15 +127,13 @@ const header = {
         }
 
         // get elements
-        const span1 = document.querySelector('#sh1');
-        const span2 = document.querySelector('#sh2');
-        const span3 = document.querySelector('#sh3');
 
-        if (!span1 || !span2) return;
+        const elems = getAllRequiredElements(['#sh1', '#sh2', '#sh2']);
+        if (!elems) return;
 
-        span1.innerHTML = '';
-        span2.innerHTML = '';
-        span3.innerHTML = '';
+        const [span1, span2, span3] = elems;
+
+        // prevent FOUC
         gsap.set(span1, { opacity: 1 });
         gsap.set(span2, { opacity: 1 });
         gsap.set(span3, { opacity: 0 });
@@ -135,42 +146,39 @@ const header = {
             };
 
             const randomText = getRandomArrayItem(this.text);
+            const [span1text, span2text, span3text = ''] =
+                randomText.next().value;
 
-            // clear elements' text
-            span1.innerHTML = '';
-            span2.innerHTML = '';
-            span3.innerHTML = '';
+            // clear text
+            [span1, span2, span3].forEach((span) => (span.innerHTML = ''));
+
+            // update span3 - this one isn't going to be scrambled
             gsap.set(span3, { opacity: 0 });
+            span3.innerHTML = span3text;
 
-            const textToShuffle = randomText.next().value;
-
-            span3.innerHTML = textToShuffle[2] || '';
-
-            // calculate scramble dudation based on a length of the text
-            const newDuration = parseFloat(
-                textToShuffle.join('').length / 30
+            // calculate scramble dudation based on the length of given text
+            const cycleDuration = parseFloat(
+                [span1, span2, span3].join('').length / 30
             ).toFixed(2);
 
-            let tlscramble = gsap.timeline({
-                defaults: { duration: newDuration, ease: 'none' },
-            });
-
-            tlscramble
+            gsap.timeline({
+                defaults: { duration: cycleDuration, ease: 'none' },
+            })
                 .to(span1, {
                     scrambleText: {
-                        text: textToShuffle[0],
+                        text: span1text,
                         ...defaultScrambleTextProps,
                     },
                 })
                 .to(span2, {
                     scrambleText: {
-                        text: textToShuffle[1],
+                        text: span2text,
                         ...defaultScrambleTextProps,
                     },
                 })
                 .to(span3, { opacity: 1, duration: 0.2, delay: 1 });
 
-            setTimeout(animate, newDuration * 1000 + 5000);
+            setTimeout(animate, cycleDuration * 1000 + 5000);
         };
 
         return animate;
@@ -195,77 +203,68 @@ const header = {
         Object.entries(elements).forEach(([id, styles]) => {
             const elem = document.querySelector(id);
 
-            if (elem && hero) {
-                gsap.fromTo(
-                    id,
-                    { opacity: 1, transform: 'translateX(0)' },
-                    {
-                        scrollTrigger: {
-                            scrub: true,
-                            start: 'top top',
-                            trigger: hero,
-                            end: () => `${window.viewportHeight}px`,
-                        },
-                        ...styles,
-                    }
-                );
-            }
+            gsap.fromTo(
+                id,
+                { opacity: 1, transform: 'translateX(0)' },
+                {
+                    scrollTrigger: {
+                        scrub: true,
+                        start: 'top top',
+                        trigger: hero,
+                        end: () => `${window.viewportHeight}px`,
+                    },
+                    ...styles,
+                }
+            );
         });
     },
     animateScrollIndicator: function () {
-        // const [scrollArrow, scrollText, circle] = Array.prototype.map.apply(
-        //     ['#scroll-arrow', '#scroll-text-wrapper', '.circle'],
-        //     [document.querySelector, document]
-        // );
+        const elems = getAllRequiredElements([
+            '#scroll-arrow',
+            '#scroll-text-wrapper',
+            '.scroll-down-indicator',
+            'main',
+        ]);
+        if (!elems) return;
 
-        const [scrollArrow, scrollText, scrollDownIndicator] =
-            Array.prototype.map.call(
-                [
-                    '#scroll-arrow',
-                    '#scroll-text-wrapper',
-                    '.scroll-down-indicator',
-                ],
-                document.querySelector,
-                document
-            );
+        const [
+            scrollDownArrow,
+            scrollDownCircularText,
+            scrollDowncontainer,
+            main,
+        ] = elems;
 
         // end marker based on viewport
-        const end = window.isDesktop
+        const scrollIndicatorEndPos = window.isDesktop
             ? `+=${window.viewportHeight}`
             : `+=${window.viewportHeight * 2.5}`;
 
-        if (scrollArrow) {
-            gsap.to(scrollArrow, {
-                scrollTrigger: {
-                    trigger: 'main',
-                    start: 'top 100%',
-                    end: end,
-                    scrub: true,
-                },
-                y: 100,
-                opacity: 0,
-            });
-        }
+        // handle FOUC
+        gsap.set(scrollDowncontainer, { opacity: 1 });
 
-        if (scrollText) {
-            gsap.to(scrollText, {
-                scrollTrigger: {
-                    trigger: 'main',
-                    start: 'top 100%',
-                    end: window.viewportHeight,
-                    scrub: true,
-                },
-                opacity: window.isDesktop ? 1 : 0,
-                rotation: 180,
-            });
-        }
+        gsap.to(scrollDownArrow, {
+            scrollTrigger: {
+                trigger: main,
+                end: scrollIndicatorEndPos,
+                scrub: true,
+            },
+            y: 100,
+            opacity: 0,
+        });
 
-        if (scrollDownIndicator) {
-            gsap.set(scrollDownIndicator, { opacity: 1 });
-            scrollDownIndicator.addEventListener('click', () => {
-                lenis.scrollTo('#main', { duration: 1, lerp: 0.1 });
-            });
-        }
+        gsap.to(scrollDownCircularText, {
+            scrollTrigger: {
+                trigger: main,
+                end: window.viewportHeight,
+                scrub: true,
+            },
+            opacity: window.isDesktop ? 1 : 0,
+            rotation: 180,
+        });
+
+        scrollDowncontainer.addEventListener('click', () => {
+            lenis.scrollTo('#main', { duration: 1, lerp: 0.1 });
+        });
     },
     animateScrollBar: function () {
         const scrollBar = document.getElementById('scrollbar');
@@ -285,11 +284,7 @@ const header = {
 
 const main = {
     animateSectionHeadings: function () {
-        // section headings
-
         gsap.utils.toArray('h2').forEach((heading) => {
-            // gsap.set(heading, { x: -55, opacity: 0 });
-
             const t = gsap.timeline({
                 scrollTrigger: {
                     trigger: heading,
@@ -310,16 +305,12 @@ const main = {
 
         paragraphs.forEach((paragraph, index) => {
             var split = new SplitText(paragraph, { type: 'lines' });
-            const vw = window.innerWidth / 100;
 
             const val =
                 parseFloat(window.getComputedStyle(paragraph).fontSize) * 2;
 
-            console.log(val);
-
             let paragraphAnimation = gsap.timeline({
                 id: `paragraph-${index}`,
-                // timeScale: 2,
                 scrollTrigger: {
                     trigger: paragraph,
                 },
@@ -587,8 +578,6 @@ const caseStudy = {
             '.recommendations',
         ].map((s) => document.querySelector(s));
 
-        console.log(quote);
-
         if (!quote) {
             return;
         }
@@ -698,14 +687,12 @@ const pageTransition = {
     },
     leave: function (onCompleteCb = () => {}) {
         // const { mask, main, splash } = this.elements;
+        const elems = getAllRequiredElements([['.splash', '#mask', '.toAnim']]);
+        if (!elems) return;
 
-        const [splash, mask, main] = Array.prototype.map.call(
-            ['.splash', '#mask', '.toAnim'],
-            document.querySelector,
-            document
-        );
+        const [splash, mask, main] = elems;
 
-        const { mask_from_left, mask_from_right, mask_empty } = this.paths;
+        const { mask_from_left, mask_empty } = this.paths;
 
         var timeline = new TimelineMax({
             id: 'pageTransition.leave',
@@ -748,42 +735,6 @@ function Marquee(selector, speed) {
     }, 0);
 }
 
-// const resetStylesForAnimation = () => {
-//     const splash = document.querySelector('.splash');
-//     if (splash) {
-//         var timeline = new TimelineMax({
-//             onComplete: () => {
-//                 document.querySelector('.splash')?.remove();
-//                 const button = document.getElementById('contact');
-
-//                 if (button) {
-//                     button.addEventListener('click', createRipple);
-//                 }
-//                 header.animateScrollBar();
-//                 header.animateScrollIndicator();
-//                 header.randomiseHeaderText();
-//                 header.animateHeroSection();
-
-//                 caseStudy.animateHeroImage();
-//                 caseStudy.animateQuote();
-//                 Marquee('.marquee', 0.5);
-//             },
-//         });
-
-//         timeline
-//             .to(
-//                 '.splash .icon',
-//                 {
-//                     opacity: 0,
-//                 },
-//                 0.5
-//             )
-//             .to('.splash', 1, {
-//                 opacity: 0,
-//             });
-//     }
-// };
-
 window.addEventListener('load', function () {
     console.log('all resources loaded');
 
@@ -800,8 +751,6 @@ window.addEventListener('load', function () {
             });
         });
     });
-
-    // window.timelines.forEach((timeline) => timeline.resume());
 });
 
 // DOM loaded
@@ -819,8 +768,6 @@ function docReady(fn) {
 }
 
 docReady(() => {
-    // GSDevTools.create();
-
     pageTransition.init();
 
     window.viewportHeight = window.innerHeight;
@@ -838,6 +785,7 @@ window.onload = function () {
     // code to run animation.
 
     pageTransition.enter(() => {
+        const t0 = performance.now();
         header.animateScrollBar();
         header.animateScrollIndicator();
         header.animateHeroSection();
@@ -846,7 +794,10 @@ window.onload = function () {
         main.animateParagraphs();
         main.animateSectionHeadings();
         main.animateSkillBars();
-        main.animateWorks();
         caseStudy.animateQuote();
+
+        const t1 = performance.now();
+        console.log(`Call to doSomething took ${t1 - t0} milliseconds.`);
+        main.animateWorks();
     });
 };

@@ -544,8 +544,7 @@ main {
     padding: 0 calc(var(--gutter) * 2);
 
     @include desktop {
-        padding: 0 calc(var(--gutter) * 2) 0
-            calc(var(--naw-width) + var(--gutter) * 2);
+        padding: 0 calc(var(--gutter) * 2) 0 calc(var(--naw-width) * 2);
     }
 }
 

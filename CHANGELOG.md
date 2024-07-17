@@ -18,7 +18,7 @@ v. 0.1.7
 
 -   changed index header element height from 100vh to 1000dvh;
 
-v. 0.1.8
+v. 0.1.9
 
 -   scroll down indicator now rotates the opposite direction if scrolling up as opposed to scrolling down
 -   window.location hash updates on scroll

@@ -630,6 +630,7 @@ header.header--small .header__image img {
 
 .index header {
   height: 100vh;
+  height: 100dvh;
 }
 
 nav {

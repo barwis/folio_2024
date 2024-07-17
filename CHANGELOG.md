@@ -9,3 +9,11 @@ v. 0.1.4
 v 0.1.5
 
 -   updated paragraph animations
+
+v. 0.1.6
+
+-   markers removed
+
+v. 0.1.7
+
+-   changed index header element height from 100vh to 1000dvh;

@@ -327,7 +327,6 @@ const main = {
                     trigger: paragraph,
                     start: 'top 70%',
                     scrub: 1,
-                    markers: true,
                     end: `+=${window.innerHeight * 0.3}`,
                     duration: 2,
                 },
@@ -460,67 +459,6 @@ const main = {
                         }px`,
                 },
             });
-
-            // const [picture, img] = ['picture', 'img'].map((selector) =>
-            //     item.querySelector(selector)
-            // );
-            // const work = item.closest('.work section');
-            // const workContainerHeight = work.getBoundingClientRect().height;
-            // const possiblePadding = parseFloat(
-            //     window.getComputedStyle(work).paddingTop
-            // );
-            // // reset
-            // // container parallax
-            // if (item.classList.contains('parallax') && window.isDesktop) {
-            //     const containerOffset = this.getItemOffset(item);
-            //     const diff = containerOffset * possiblePadding;
-            //     gsap.set(item, {
-            //         y: `${diff * -1}`,
-            //         opacity: 1,
-            //     });
-            //     gsap.to(item, {
-            //         scrollTrigger: {
-            //             trigger: work,
-            //             scrub: true,
-            //             ease: 'none',
-            //             onUpdate: ({ progress }) => {
-            //                 const actualXTransform =
-            //                     diff + diff * progress * -2;
-            //                 // console.log('update', diff + diff * progress * -2);
-            //                 gsap.set(item, { y: actualXTransform });
-            //             },
-            //             end: () =>
-            //                 `+=${workContainerHeight * 2 + possiblePadding}`,
-            //         },
-            //     });
-            // }
-            // if (item.classList.contains('work-item--full-bleed')) {
-            //     const w = img.closest('.work section');
-            //     gsap.set(picture, { width: '120%', height: '120%' });
-            //     w.style.outline = '1px solid red';
-            //     console.log('w', w);
-            //     const _workContainerHeight = w.getBoundingClientRect().height;
-            //     gsap.set(img, { y: `-10%` });
-            //     const diff = -50;
-            //     gsap.to(img, {
-            //         scrollTrigger: {
-            //             trigger: w,
-            //             scrub: true,
-            //             ease: 'none',
-            //             start: start,
-            //             markers: true,
-            //             onUpdate: ({ progress }) => {
-            //                 const actualXTransform =
-            //                     diff + diff * progress * -2;
-            //                 console.log('update', diff + diff * progress * -2);
-            //                 // gsap.set(item, { y: actualXTransform });
-            //             },
-            //             end: () =>
-            //                 `+=${_workContainerHeight + window.innerHeight}px`,
-            //         },
-            //     });
-            // }
-            // img parallax
         });
     },
     animateSkillBars: function () {

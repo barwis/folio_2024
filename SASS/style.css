@@ -488,8 +488,9 @@ header .scroll-down-indicator .scroll-text-wrapper {
     height: 70%;
   }
 }
-header .scroll-down-indicator .scroll-text {
-  animation: circleRotate 10s linear infinite;
+header .scroll-down-indicator .scroll-text-wrapper .scroll-text-wrapper-inner {
+  width: 100%;
+  height: 100%;
 }
 header .scroll-down-indicator .scroll-arrow {
   transform: translateY(-50%);
@@ -628,6 +629,29 @@ header.header--small .header__image img {
   width: 100%;
 }
 
+.scroll-text {
+  animation: circleRotate 10s linear infinite;
+}
+
+.scrolling-down .scroll-text {
+  animation-direction: normal;
+}
+.scrolling-down .logo {
+  transform: translateY(-100px);
+}
+@media (min-width: 768px) {
+  .scrolling-down .logo {
+    transform: translateY(0px);
+  }
+}
+
+.scrolling-up .scroll-text {
+  animation-direction: reverse;
+}
+.scrolling-up .logo {
+  transform: translateY(0px);
+}
+
 .index header {
   height: 100vh;
   height: 100dvh;
@@ -663,12 +687,6 @@ nav .logo {
   z-index: 999;
   display: flex;
   justify-content: center;
-}
-nav .logo.scrolling-down {
-  transform: translateY(-100px);
-}
-nav .logo.scrolling-up {
-  transform: translateY(0px);
 }
 nav .logo img,
 nav .logo svg {

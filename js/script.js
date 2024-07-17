@@ -20,6 +20,21 @@ gsap.ticker.add((time) => {
 gsap.ticker.lagSmoothing(0);
 window.timelines = [];
 
+if (Array.prototype.revEach === undefined) {
+    Object.defineProperty(Array.prototype, 'revEach', {
+        writable: false,
+        enumerable: false,
+        configurable: false,
+        value: function (func) {
+            var i;
+            var len = this.length - 1;
+            for (i = len; i >= 0; i--) {
+                func(this[i], i, this);
+            }
+        },
+    });
+}
+
 function randomNoRepeats(array) {
     var copy = array.slice(0);
     return function () {
@@ -258,6 +273,7 @@ const header = {
             },
             opacity: window.isDesktop ? 1 : 0,
             rotation: 180,
+            ease: 'none',
         });
 
         scrollDowncontainer.addEventListener('click', () => {
@@ -281,6 +297,45 @@ const header = {
 };
 
 const main = {
+    updateHash: function () {
+        const sections = [...document.querySelectorAll('article')].map((a) => {
+            const b = a.getBoundingClientRect();
+            return { id: a.dataset.id || '', y: b.y + window.scrollY };
+        });
+
+        sections.unshift({
+            id: '',
+            y: 0,
+        });
+
+        var mapper = gsap.utils.mapRange(0, 1, 0, document.body.offsetHeight);
+
+        gsap.to(document.body, {
+            scrollTrigger: {
+                trigger: document.body,
+                scrub: true,
+                start: 'top top',
+                ease: 'none',
+                end: () => document.body.offsetHeight - window.innerHeight,
+                onUpdate: () => {
+                    let active;
+                    for (let i = sections.length - 1; i >= 0; i--) {
+                        if (sections[i].y <= window.scrollY) {
+                            active = sections[i];
+                            break;
+                        }
+                    }
+
+                    if (active.id === '') {
+                        history.replaceState(null, null, ' ');
+                    } else {
+                        window.location.hash = active.id;
+                    }
+                },
+            },
+        });
+    },
+
     animateSectionHeadings: function () {
         gsap.utils.toArray('h2').forEach((heading) => {
             const t = gsap.timeline({
@@ -482,7 +537,7 @@ const main = {
         });
     },
     animateLogo: function () {
-        if (window.isDesktop) return;
+        // if (window.isDesktop) return;
         const logo = document.querySelector('.logo');
 
         if (!logo) return;
@@ -493,11 +548,19 @@ const main = {
                 start: 'top top',
                 onUpdate: (self) => {
                     if (self.direction === 1) {
-                        logo.classList.add('scrolling-down');
-                        logo.classList.remove('scrolling-up');
+                        document.body.classList.add('scrolling-down');
+                        document.body.classList.remove('scrolling-up');
+                        if (!window.isDesktop) {
+                            logo.classList.add('scrolling-down');
+                            logo.classList.remove('scrolling-up');
+                        }
                     } else {
-                        logo.classList.add('scrolling-up');
-                        logo.classList.remove('scrolling-down');
+                        document.body.classList.add('scrolling-up');
+                        document.body.classList.remove('scrolling-down');
+                        if (!window.isDesktop) {
+                            logo.classList.add('scrolling-up');
+                            logo.classList.remove('scrolling-down');
+                        }
                     }
                 },
             },
@@ -564,8 +627,6 @@ const pageTransition = {
         let splash = document.querySelector('.splash');
 
         if (!splash) {
-            console.log('no splash', this.elements.splash);
-            console.log('splash element not detected');
             splash = document.createElement('div');
             const insertBeforeThisNode = document.querySelector('nav');
             splash.classList.add('splash');
@@ -637,7 +698,6 @@ const pageTransition = {
     leave: function (onCompleteCb = () => {}) {
         // const { mask, main, splash } = this.elements;
         const elems = getAllRequiredElements(['.splash', '#mask', '.toAnim']);
-        console.log('elems', elems);
         if (!elems) return;
 
         const [splash, mask, main] = elems;
@@ -655,7 +715,6 @@ const pageTransition = {
 
         gsap.set(main, { x: 0, opacity: 1 });
         mask.setAttributeNS(null, 'd', mask_empty);
-        console.log('mask', mask);
 
         timeline.to(
             mask,
@@ -673,7 +732,6 @@ function Marquee(selector, speed) {
     const parentSelector = document.querySelector(selector);
     if (!parentSelector) return;
     const firstElement = parentSelector.children[0];
-    console.log(firstElement);
     let i = 0;
 
     setInterval(function () {
@@ -719,15 +777,20 @@ docReady(() => {
     window.isDesktop = mediaQuery.matches;
 });
 
+// 1288.991455078125 0
+// -355.553955078125 1644.54541015625
 window.onload = function () {
     // code to run animation.
 
     pageTransition.enter(() => {
         const t0 = performance.now();
         header.versionFadeOut();
+
         header.animateScrollBar();
         header.animateScrollIndicator();
         header.animateHeroSection();
+        main.updateHash();
+        main.animateLogo();
         const animate = header.randomiseHeaderText();
         if (animate) animate();
         main.animateParagraphs();
@@ -736,19 +799,28 @@ window.onload = function () {
         caseStudy.animateQuote();
 
         const t1 = performance.now();
-        console.log(`Call to doSomething took ${t1 - t0} milliseconds.`);
+        console.log(`took ${t1 - t0} milliseconds.`);
         main.animateWorks();
+
         gsap.utils.toArray('a[href]').forEach((a) => {
             a.addEventListener('click', function (e) {
                 e.preventDefault();
                 e.stopPropagation();
                 const href = e.currentTarget.getAttribute('href');
-                console.log('nope', e.currentTarget.getAttribute('href'));
 
                 pageTransition.leave(() => {
                     window.location.href = href;
                 });
             });
         });
+
+        if (window.location.hash) {
+            let locationHash = window.location.hash.replace('#', '');
+
+            const target = document.querySelector(`[data-id=${locationHash}`);
+            if (target) {
+                lenis.scrollTo(target, { duration: 1, lerp: 0.1 });
+            }
+        }
     });
 };

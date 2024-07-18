@@ -1412,7 +1412,7 @@ body.case-study .recommendations p:not(:first-child),
 body.case-study .recommendations h3:not(:first-child) {
   margin-top: 30px;
 }
-body.case-study .recommendations span {
+body.case-study .recommendations section > span {
   text-transform: uppercase;
   letter-spacing: 3px;
   opacity: 0.8;
@@ -1420,13 +1420,13 @@ body.case-study .recommendations span {
   line-height: 1;
 }
 @media (min-width: 768px) {
-  body.case-study .recommendations span {
+  body.case-study .recommendations section > span {
     font-size: 0.9895833333vw;
     line-height: 1;
   }
 }
 @media (-webkit-min-device-pixel-ratio: 1.25), (min-resolution: 120dpi) {
-  body.case-study .recommendations span {
+  body.case-study .recommendations section > span {
     font-size: max(15px, 0.9895833333vw);
   }
 }

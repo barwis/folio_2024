@@ -20,7 +20,7 @@
 
         <style>
             :root {
-                --theme-color: #00818a;
+                --theme-color: #1fa637;
             }
         </style>
         <link rel="stylesheet" href="./SASS/style.css" />
@@ -38,12 +38,22 @@
         >
             <defs>
                 <path
+                    id="diamond"
+                    fill="currentColor"
+                    transform="scale(1, 1)"
+                    stroke="none"
+                    vector-effect="non-scaling-stroke"
+                    d="M25,0 L50,25 L25,50 L0,25 L25,0z"
+                />
+
+                <path
                     fill="currentColor"
                     transform="scale(.5, .5)"
                     id="def-circle"
                     vector-effect="non-scaling-stroke"
                     d="M0,-25 L25,0, L0,25 L-25,0 L0,-25z"
                 />
+
                 <g id="spinner">
                     <use xlink:href="#def-circle" transform="translate(25 25)">
                         <animateTransform
@@ -146,56 +156,59 @@
             </a>
 
             <a class="go-back-2 icon" href="index.html">
-                <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    viewBox="0 0 100 100"
-                    width="100"
-                    height="100"
-                    preserveAspectRatio="xMinYMin"
-                    style="width: 100px; height: 100px"
-                >
-                    <path
-                        fill="none"
-                        transform="scale(1, 1)"
-                        stroke="currentColor"
-                        stroke-width="1"
-                        vector-effect="non-scaling-stroke"
-                        d="M25,50 L75,0z M25,50 L75,100z"
-                    />
-                </svg>
-
+                <div class="icon">
+                    <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        viewBox="0 0 100 100"
+                        width="100"
+                        height="100"
+                        preserveAspectRatio="xMinYMin"
+                        style="width: 100px; height: 100px"
+                    >
+                        <path
+                            fill="none"
+                            transform="scale(1, 1)"
+                            stroke="currentColor"
+                            stroke-width="1"
+                            vector-effect="non-scaling-stroke"
+                            d="M25,50 L75,0z M25,50 L75,100z"
+                        />
+                    </svg>
+                </div>
                 <span>Go back</span>
             </a>
             <div class="scroll" id="scrollbar"></div>
         </nav>
         <header class="header header--small">
             <div class="header__text">
-                <h2 id="heading-featured-work" class="header__title">NowTV</h2>
-                <span class="header__dates">Apr 2021 - Jan 2023</span>
+                <h2 id="heading-featured-work" class="header__title">
+                    JustPark
+                </h2>
+                <span class="header__dates">Mar 2017 – May 2017</span>
 
                 <div class="header__image">
                     <picture>
                         <source
-                            srcset="./images/case/nowtv/retina-lead.jpg"
+                            srcset="./images/case/justpark/retina-lead.jpg"
                             media="(min-width: 1920px)"
                         />
                         <source
-                            srcset="./images/case/nowtv/1920-lead.jpg"
+                            srcset="./images/case/justpark/1920-lead.jpg"
                             media="(min-width: 1600px)"
                         />
                         <source
-                            srcset="./images/case/nowtv/1600-lead.jpg"
+                            srcset="./images/case/justpark/1600-lead.jpg"
                             media="(min-width: 1366px)"
                         />
                         <source
-                            srcset="./images/case//nowtv/1366-lead.jpg"
+                            srcset="./images/case/justpark/1366-lead.jpg"
                             media="(min-width: 768px)"
                         />
                         <source
-                            srcset="./images/case//nowtv/768-lead.jpg"
+                            srcset="./images/case/justpark/768-lead.jpg"
                             media="(min-width: 640px)"
                         />
-                        <img src="./images/case/nowtv/640-lead.jpg" />
+                        <img src="./images/case/justpark/640-lead.jpg" />
                     </picture>
                 </div>
             </div>
@@ -206,11 +219,9 @@
                     <aside>Brief</aside>
                     <section>
                         <p>
-                            <span class="orange">Now</span> is a subscription
-                            over-the-top streaming television service operated
-                            by British satellite television provider
-                            <span class="orange">Sky Group</span> and American
-                            cable provider <span class="orange">Xfinity</span>.
+                            <span class="orange">JustPark</span> is a technology
+                            platform that matches drivers with parking spaces
+                            through its website and mobile application.
                         </p>
                     </section>
                 </article>
@@ -220,10 +231,16 @@
                     <h2>My role</h2>
                     <section>
                         <p>
-                            I was part of the NOW TV agile team, building web,
-                            hybrid and native streaming apps for web, mobile ,
-                            Smart TV, TalkTalk TV Box, AppleTV, FireTV, XBOX S/X
-                            and PS5
+                            Led the extensive
+                            <span class="orange">redesign</span> and
+                            <span class="orange">redevelopment</span> of both
+                            web and mobile applications from the ground up,
+                            focusing on improving user experience and overall
+                            functionality. This involved working closely with
+                            cross-functional teams, including designers, product
+                            managers, and backend developers, to ensure a
+                            cohesive and intuitive interface across all
+                            platforms.
                         </p>
                     </section>
                     <div class="diamond">
@@ -245,10 +262,16 @@
                     </div>
                     <section>
                         <p>
-                            I worked closely with sprint team members,
-                            stakeholders and product owners throughout the new
-                            and existing initiatives - from planning, through
-                            implementing, assisting QA and CI deployment.
+                            Conducted thorough user
+                            <span class="orange">research</span> and
+                            <span class="orange">testing</span> to identify pain
+                            points and areas for improvement, implementing
+                            modern design principles and cutting-edge
+                            technologies to create a seamless and engaging user
+                            experience. The project also included optimizing the
+                            performance and responsiveness of the applications,
+                            ensuring they meet the highest standards of
+                            efficiency and reliability.
                         </p>
                     </section>
                 </article>
@@ -260,58 +283,75 @@
 
                     <section class="tech-stack">
                         <div>
-                            <img src="./images/tech/js.svg" alt="" /><span
-                                >JavaScript</span
+                            <img
+                                src="./images/tech/html5.svg"
+                                alt="HTML5"
+                            /><span>HTML5</span>
+                        </div>
+                        <div>
+                            <img src="./images/tech/css3.svg" alt="CSS3" /><span
+                                >CSS3</span
                             >
                         </div>
                         <div>
-                            <img src="./images/tech/ts.svg" alt="" /><span
-                                >TypeScript</span
+                            <img src="./images/tech/sass.svg" alt="Sass" /><span
+                                >Sass</span
                             >
                         </div>
                         <div>
-                            <img src="./images/tech/react.svg" alt="" /><span
-                                >React</span
-                            >
+                            <img
+                                src="./images/tech/js.svg"
+                                alt="Javascript"
+                            /><span>JavaScript</span>
                         </div>
                         <div>
-                            <img src="./images/tech/redux.svg" alt="" /><span
-                                >redux</span
-                            >
+                            <img
+                                src="./images/tech/react.svg"
+                                alt="React.js"
+                            /><span>React.js</span>
+                        </div>
+
+                        <div>
+                            <img
+                                src="./images/tech/redux.svg"
+                                alt="Java"
+                            /><span>Redux</span>
                         </div>
                         <div>
-                            <img src="./images/tech/GraphQL.svg" alt="" /><span
-                                >GraphQL</span
-                            >
+                            <img
+                                src="./images/tech/webpack.svg"
+                                alt="webpack"
+                            /><span>webpack</span>
                         </div>
                         <div>
-                            <img src="./images/tech/sass.svg" alt="" /><span
-                                >SASS</span
-                            >
+                            <img
+                                src="./images/tech/docker.svg"
+                                alt="Docker"
+                            /><span>Docker</span>
                         </div>
                     </section>
                 </article>
 
-                <article class="indent fact" data-id="typescript-integration">
+                <article class="indent fact" data-id="isomorphic-react">
                     <div class="separator separator--short"></div>
-                    <h2>TypeScript migration</h2>
+                    <h2>Isomorphic React</h2>
                     <section>
                         <p>
-                            I have played a significant role in the initiative
-                            to migrate the NOWTV app codebase from
-                            <span class="orange">JavaScript</span> to
-                            <span class="orange">TypeScript</span>. This
-                            transition has involved meticulous planning,
-                            thorough testing, and close collaboration with the
-                            development team to ensure a seamless and efficient
-                            upgrade. By adopting
-                            <span class="orange">TypeScript</span>, we have
-                            enhanced the app's performance, improved code
-                            quality, and provided a more robust and scalable
-                            foundation for future development.
+                            Employed
+                            <span class="orange">isomorphic </span>&nbsp;
+                            <span class="orange">React</span> to develop robust,
+                            high-performance applications that deliver a uniform
+                            and seamless user experience across both web and
+                            mobile platforms. This approach involved leveraging
+                            the benefits of
+                            <span class="orange">server-side</span>
+                            <span class="orange">rendering</span> to improve
+                            load times and overall application performance,
+                            ensuring that users received a fast and
+                            <span class="orange">responsive</span>
+                            experience regardless of the device they were using.
                         </p>
                     </section>
-
                     <div class="diamond">
                         <svg
                             xmlns="http://www.w3.org/2000/svg"
@@ -329,12 +369,22 @@
                             />
                         </svg>
                     </div>
-
                     <section>
                         <p>
-                            This project has not only strengthened my technical
-                            skills but also underscored the importance of
-                            teamwork and innovation in achieving our goals.
+                            Additionally, I focused on creating a cohesive
+                            codebase that could be shared between
+                            <span class="orange">web</span> and
+                            <span class="orange">mobile</span>
+                            environments, reducing development time and
+                            maintaining consistency in functionality and design.
+                            By integrating isomorphic React, I was able to
+                            achieve a significant improvement in the efficiency
+                            and reliability of the applications, providing users
+                            with a smooth and engaging interface across all
+                            platforms. This method also facilitated easier
+                            maintenance and scalability of the applications,
+                            allowing for quicker updates and feature
+                            enhancements.
                         </p>
                     </section>
                 </article>
@@ -343,106 +393,132 @@
                     <section class="padded">
                         <div class="work-item parallax work-item--wide">
                             <div class="picture-container">
-                                <svg
-                                    width="150"
-                                    height="50"
-                                    viewBox="0 0 150 50"
-                                    class="spinner"
-                                >
-                                    <use xlink:href="#spinner" />
-                                </svg>
                                 <picture>
                                     <source
                                         srcset="
-                                            ./images/case/nowtv/1920-wide.jpg
+                                            ./images/case/justpark/1920-wide.jpg
                                         "
                                         media="(min-width: 1920px)"
                                     />
                                     <source
                                         srcset="
-                                            ./images/case/nowtv/1600-wide.jpg
+                                            ./images/case/justpark/retina-wide.jpg
                                         "
                                         media="(min-width: 1600px)"
                                     />
                                     <source
                                         srcset="
-                                            ./images/case/nowtv/1366-wide.jpg
+                                            ./images/case/justpark/1920-wide.jpg
                                         "
                                         media="(min-width: 1366px)"
                                     />
                                     <source
                                         srcset="
-                                            ./images/case/nowtv/768-wide.jpg
+                                            ./images/case/justpark/1366-wide.jpg
                                         "
                                         media="(min-width: 768px)"
                                     />
-
+                                    <source
+                                        srcset="
+                                            ./images/case/justpark/768-wide.jpg
+                                        "
+                                        media="(min-width: 640px)"
+                                    />
                                     <img
-                                        src="./images/case/nowtv/640-wide.jpg"
+                                        src="./images/case/justpark/640-wide.jpg"
                                     />
                                 </picture>
                             </div>
                         </div>
+
                         <div class="work-item parallax work-item--narrow">
                             <div class="picture-container">
-                                <svg
-                                    width="150"
-                                    height="50"
-                                    viewBox="0 0 150 50"
-                                    class="spinner"
-                                >
-                                    <use xlink:href="#spinner" />
-                                </svg>
                                 <picture>
                                     <source
                                         srcset="
-                                            ./images/case/nowtv/1920-2-narrow.jpg
+                                            ./images/case/justpark/1920-narrow.jpg
                                         "
                                         media="(min-width: 1920px)"
                                     />
                                     <source
                                         srcset="
-                                            ./images/case/nowtv/1600-2-narrow.jpg
+                                            ./images/case/justpark/retina-narrow.jpg
                                         "
                                         media="(min-width: 1600px)"
                                     />
                                     <source
                                         srcset="
-                                            ./images/case/nowtv/1366-2-narrow.jpg
+                                            ./images/case/justpark/1920-narrow.jpg
                                         "
                                         media="(min-width: 1366px)"
                                     />
                                     <source
                                         srcset="
-                                            ./images/case/nowtv/768-narrow.jpg
+                                            ./images/case/justpark/1366-narrow.jpg
                                         "
                                         media="(min-width: 768px)"
                                     />
-
+                                    <source
+                                        srcset="
+                                            ./images/case/justpark/768-narrow.jpg
+                                        "
+                                        media="(min-width: 640px)"
+                                    />
                                     <img
-                                        src="./images/case/nowtv/640-2-narrow.jpg"
+                                        src="./images/case/justpark/640-narrow.jpg"
                                     />
                                 </picture>
                             </div>
                         </div>
                     </section>
                 </article>
-                <article class="indent fact" data-id="new-testing-strategy">
+                <article class="indent fact" data-id="ui-ux">
                     <div class="separator separator--short"></div>
-                    <h2>New testing strategy</h2>
+                    <h2>UI/UX</h2>
                     <section>
                         <p>
-                            I have successfully co-led and implemented a new
-                            <span class="orange">code </span>
-                            <span class="orange">testing </span>
-                            <span class="orange">strategy</span>, migrating from
-                            Enzyme to React Testing Library. This initiative
-                            involved developing a comprehensive plan, conducting
-                            extensive testing, and working closely with the team
-                            to ensure a smooth transition. By adopting React
-                            Testing Library, we have improved our testing
-                            efficiency, increased code coverage, and enhanced
-                            the overall quality of our codebase.
+                            Implemented modern, intuitive designs that
+                            significantly improved user engagement and
+                            satisfaction.
+                        </p>
+                    </section>
+
+                    <div class="diamond">
+                        <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            viewBox="0 0 50 50"
+                            width="30"
+                            height="30"
+                            preserveAspectRatio="xMinYMin"
+                        >
+                            <use href="#diamond" />
+                        </svg>
+                    </div>
+
+                    <section>
+                        <p>
+                            Ensured applications are fully responsive, providing
+                            optimal performance and appearance on various
+                            devices and screen sizes.
+                        </p>
+                    </section>
+                    <div class="diamond">
+                        <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            viewBox="0 0 50 50"
+                            width="30"
+                            height="30"
+                            preserveAspectRatio="xMinYMin"
+                        >
+                            <use href="#diamond" />
+                        </svg>
+                    </div>
+                    <section>
+                        <p>
+                            Optimized application performance through code
+                            refactoring, efficient state management, and
+                            implementation of best practices in React
+                            development.
                         </p>
                     </section>
                 </article>
@@ -462,31 +538,36 @@
                                 <picture>
                                     <source
                                         srcset="
-                                            ./images/case/nowtv/1920-full.jpg
+                                            ./images/case/justpark/retina-full.jpg
+                                        "
+                                        media="(min-width: 1920px)"
+                                    />
+                                    <source
+                                        srcset="
+                                            ./images/case/justpark/1920-full.jpg
                                         "
                                         media="(min-width: 1600px)"
                                     />
                                     <source
                                         srcset="
-                                            ./images/case/nowtv/1600-full.jpg
+                                            ./images/case/justpark/1600-full.jpg
                                         "
                                         media="(min-width: 1366px)"
                                     />
                                     <source
                                         srcset="
-                                            ./images/case/nowtv/1366-full.jpg
+                                            ./images/case/justpark/1366-full.jpg
                                         "
                                         media="(min-width: 768px)"
                                     />
                                     <source
                                         srcset="
-                                            ./images/case/nowtv/768-full.jpg
+                                            ./images/case/justpark/768-full.jpg
                                         "
                                         media="(min-width: 640px)"
                                     />
-
                                     <img
-                                        src="./images/case/nowtv/640-full.jpg"
+                                        src="./images/case/justpark/640-full.jpg"
                                     />
                                 </picture>
                             </div>
@@ -494,25 +575,6 @@
                     </section>
                 </article>
 
-                <article class="indent fact" data-id="mentoring">
-                    <div class="separator separator--short"></div>
-                    <h2>Mentoring</h2>
-                    <section>
-                        <p>
-                            I have had the privilege of mentoring junior
-                            developers and graduates, helping to enhance their
-                            product and technical knowledge. Through
-                            personalized guidance, hands-on training, and
-                            continuous support, I have contributed to their
-                            professional growth and development. This mentoring
-                            experience has been incredibly rewarding, as I've
-                            witnessed their skills flourish and their confidence
-                            grow. It has also reinforced my belief in the power
-                            of knowledge sharing and teamwork in building a
-                            stronger, more capable development team.
-                        </p>
-                    </section>
-                </article>
                 <article
                     class="recommendations indent"
                     data-id="recommendations"
@@ -521,18 +583,21 @@
                     <div class="separator separator--short"></div>
                     <section>
                         <p>
-                            Bart was part of a team working with applications
-                            written in React.js and Typescript. He is a great
-                            team player, and keen to volunteer to pick up
-                            whatever task is the priority. He showed interest in
-                            both tech improvements as well as feature work and
-                            offered valuable contribution. Bart is friendly,
-                            works well with others and doesn't give up until he
-                            finds a solution to the task at hand.
+                            Bart played a pivotal role in the comprehensive
+                            redesign and rebuild of our web and mobile
+                            applications. His expertise in isomorphic React
+                            significantly improved performance and provided a
+                            seamless user experience across platforms. Their
+                            dedication, technical skill, and innovative approach
+                            led to a
+                            <span class="orange">25%&nbsp;increase</span> in
+                            user retention and a
+                            <span class="orange">40%&nbsp;reduction</span> in
+                            page load times. Bart is a talented professional and
+                            a valuable asset to any team.
                         </p>
-
-                        <h3>Lydia Chatziioannou</h3>
-                        <span> Engineering Manager</span>
+                        <h3>David Allen</h3>
+                        <span>Lead Software Engineer</span>
                     </section>
 
                     <div class="quote">”</div>

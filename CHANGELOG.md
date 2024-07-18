@@ -23,3 +23,7 @@ v. 0.1.9
 -   scroll down indicator now rotates the opposite direction if scrolling up as opposed to scrolling down
 -   window.location hash updates on scroll
 -   on page enter - scroll to a hash if it exists
+
+0.2.0
+
+-   JustPark case study page added

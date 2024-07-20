@@ -1,0 +1,99 @@
+@import '../foundation/mixins';
+
+@font-face {
+    font-family: 'Wulkan display';
+    src: url('../../fonts/WulkanDisplay-Medium.otf') format('opentype');
+    font-weight: 500;
+    font-style: normal;
+    font-display: swap;
+}
+
+body {
+    margin: 0;
+}
+* {
+    box-sizing: border-box;
+}
+
+h1,
+h2,
+h3,
+h4,
+p,
+span {
+    color: black !important;
+    margin: 0;
+    padding: 0;
+}
+
+h1,
+h2 {
+    font-weight: 500;
+    font-family: 'Wulkan display';
+}
+
+h1 {
+    font-size: 60px;
+}
+
+h2 {
+    font-size: 48px;
+}
+
+main,
+header {
+    width: max(960px, 90%);
+    margin: 0 auto;
+    padding: 60px 25px;
+}
+
+header {
+    border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+}
+
+table {
+    width: 90%;
+    margin: 35px auto;
+    border-collapse: collapse;
+}
+table td,
+table th {
+    border: 1px solid black;
+}
+table tr:first-child th {
+    border-top: 0;
+}
+table tr:last-child td {
+    border-bottom: 0;
+}
+table tr td:first-child,
+table tr th:first-child {
+    border-left: 0;
+}
+table tr td:last-child,
+table tr th:last-child {
+    border-right: 0;
+}
+
+table td,
+table th {
+    padding: 5px 10px;
+}
+
+table td {
+    text-align: center;
+}
+
+.font-h1 {
+    @include font-size(64, 140);
+}
+
+.font-h2 {
+    @include font-size(64, 154);
+}
+
+section {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}

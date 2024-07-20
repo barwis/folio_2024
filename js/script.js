@@ -789,7 +789,7 @@ window.onload = function () {
         header.animateScrollBar();
         header.animateScrollIndicator();
         header.animateHeroSection();
-        main.updateHash();
+        // main.updateHash();
         main.animateLogo();
         const animate = header.randomiseHeaderText();
         if (animate) animate();
@@ -814,13 +814,13 @@ window.onload = function () {
             });
         });
 
-        if (window.location.hash) {
-            let locationHash = window.location.hash.replace('#', '');
+        // if (window.location.hash) {
+        //     let locationHash = window.location.hash.replace('#', '');
 
-            const target = document.querySelector(`[data-id=${locationHash}`);
-            if (target) {
-                lenis.scrollTo(target, { duration: 1, lerp: 0.1 });
-            }
-        }
+        //     const target = document.querySelector(`[data-id=${locationHash}`);
+        //     if (target) {
+        //         lenis.scrollTo(target, { duration: 1, lerp: 0.1 });
+        //     }
+        // }
     });
 };

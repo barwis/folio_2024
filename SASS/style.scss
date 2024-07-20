@@ -94,6 +94,12 @@ body {
             @include font-size(30);
             line-height: 1.75;
         }
+
+        &.case-study.work aside {
+            @include font-size(20, 20, 1.2);
+            grid-column: 1 / span 1;
+        }
+
         main {
             background: var(--color-1) url(../images/bg.png);
             position: relative;
@@ -107,14 +113,14 @@ body {
             }
         }
 
-        .separator.separator--long {
+        article > .separator.separator--long {
             display: none;
             @include desktop {
                 display: grid;
             }
         }
 
-        .separator.separator--short {
+        article > .separator.separator--short {
             display: block;
             margin-bottom: 0;
             padding-bottom: 10px;
@@ -126,12 +132,18 @@ body {
             }
         }
 
-        .indent .separator.separator--short {
+        article.indent > .separator.separator--short {
             grid-column: 2 / span 7;
 
             @include desktop {
                 grid-column: 3 / span 6;
             }
+        }
+    }
+
+    &.work {
+        p {
+            @include font-size(20, 46, 1.3);
         }
     }
 }
@@ -150,7 +162,7 @@ h1 {
 }
 
 h2 {
-    @include font-size(64, 154, 1.3);
+    @include font-size(64, 154, 0.9, 1.3);
 }
 
 h3 {
@@ -652,6 +664,16 @@ section {
     }
 }
 
+article section .separator {
+    display: none;
+
+    @include desktop {
+        grid-column: 1 / span calc(var(--col-num) - 2);
+        margin-top: 2em;
+        display: grid;
+    }
+}
+
 .indent {
     grid-template-columns:
         calc(var(--naw-width) - var(--gutter) * 2 - var(--gap))
@@ -665,8 +687,8 @@ section {
         grid-template-columns: repeat(calc(var(--col-num) - 1), 1fr);
         grid-column: 2 / span calc(var(--col-num) - 1);
         @include desktop {
-            grid-template-columns: repeat(8, 1fr);
-            grid-column: 3 / span 8;
+            grid-template-columns: repeat(calc(var(--col-num) - 2), 1fr);
+            grid-column: 3 / span calc(var(--col-num) - 2);
             margin-left: 0;
         }
 
@@ -703,16 +725,16 @@ section {
             padding-bottom: 30px;
         }
     }
+}
 
-    &.separator--long {
-        margin-top: 110px;
-        margin-bottom: 130px;
-        grid-column-end: span calc(var(--col-num) - 2);
-    }
+article > .separator--long {
+    margin-top: 110px;
+    margin-bottom: 130px;
+    grid-column-end: span calc(var(--col-num) - 2);
 }
 
 .indent {
-    .separator {
+    > .separator {
         grid-column-start: 2;
 
         @include desktop {
@@ -741,6 +763,10 @@ section {
         @include desktop {
             gap: var(--gutter);
             grid-template-columns: repeat(var(--col-num), 1fr);
+        }
+
+        &:not(:first-child) {
+            padding-bottom: 80px;
         }
     }
 
@@ -776,6 +802,14 @@ section {
             @include desktop {
                 grid-column: 3 / span calc(var(--col-num) - 2);
                 grid-template-columns: repeat(calc(var(--col-num) - 2), 1fr);
+            }
+
+            p {
+                grid-column: 2 / span calc(var(--col-num) - 2);
+
+                @include desktop {
+                    grid-column: 1 / span calc(var(--col-num) - 2);
+                }
             }
         }
 
@@ -1096,11 +1130,21 @@ body.case-study .recommendations {
         @include font-size(15, 19);
     }
 
-    .separator {
+    article > .separator {
         @include desktop {
             margin-bottom: 1em;
             grid-column: 3 / span 4 !important;
         }
+    }
+}
+
+body.work {
+    h1 {
+        @include font-size(64, 170, 0.9, 1.3);
+    }
+
+    main {
+        padding-top: 30em;
     }
 }
 

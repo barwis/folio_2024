@@ -27,3 +27,7 @@ v. 0.1.9
 0.2.0
 
 -   JustPark case study page added
+
+0.2.1
+
+-   disabled hash update for performance reasons

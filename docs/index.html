@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Design system</title>
+        <link rel="stylesheet" href="../SASS/docs/style.css" />
+    </head>
+    <body>
+        <header><h1>Design system</h1></header>
+        <main>
+            <section>
+                <h2>01. Fonts</h2>
+                <p>
+                    Note 1. Desktop font sizes should be in vw units, based on
+                    1920px viewport witdh.
+                </p>
+                <p>
+                    To calculate vw font size from a given pixel size, use the
+                    following formula
+                </p>
+                <code>font-size: calc({font-size-in-px} / 1920 * 100vw);</code>
+                <p>
+                    For example, if you want to apply font-size 154px for
+                    desktop (width 1928), font size will be:
+                </p>
+
+                <code>
+                    font-size: calc({font-size-in-px} / 1920 * 100vw);
+                </code>
+                <p>output:</p>
+                <code>font-size: 8.0208333333vw</code>
+            </section>
+
+            <table>
+                <tbody>
+                    <tr>
+                        <th>element</th>
+                        <th>page</th>
+                        <th>mobile size / line height</th>
+                        <th>desktop size / line height</th>
+                    </tr>
+                    <tr>
+                        <td rowspan="2">aside</td>
+                        <td>index</td>
+                        <td>20px / 1.2</td>
+                        <td>20px / 1.2</td>
+                    </tr>
+                    <tr>
+                        <td>work</td>
+                        <td>30px / 1.75 (although not used)</td>
+                        <td>23px / 1</td>
+                    </tr>
+
+                    <tr>
+                        <td>h2</td>
+                        <td>index</td>
+                        <td>20px / 1.2</td>
+                        <td>20px / 1.2</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <!-- <table>
+                <thead>
+                    <tr>
+                        <th>Level</th>
+                        <th>size - base (mobile)</th>
+                        <th>size - tablet</th>
+                        <th>size - desktop</th>
+                        <th>letter spacing</th>
+                        <th>weight</th>
+                        <th>example</th>
+                    </tr>
+                    <tr>
+                        <td>h1</td>
+                        <td>64</td>
+                        <td>140</td>
+                        <td>140</td>
+                        <td>0 (normal)</td>
+                        <td>500</td>
+                        <td class="font-h1">Heading 1</td>
+                    </tr>
+                    <tr>
+                        <td>h2</td>
+                        <td>64</td>
+                        <td>154</td>
+                        <td>154</td>
+                        <td>1px</td>
+                        <td>500</td>
+                        <td class="font-h2">Heading 2</td>
+                    </tr>
+                </thead>
+                <tbody></tbody>
+            </table> -->
+        </main>
+    </body>
+</html>
+
+<!-- 
+
+14
+20
+
+aside: 20px 30px
+
+
+
+
+-->

@@ -73,3 +73,7 @@ breakpoint | dimension
 1366 | 537x644
 768 | 281x337  
 640 | 720x864
+
+
+
+font sizes

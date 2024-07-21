@@ -726,12 +726,33 @@ const pageTransition = {
                 1
             );
 
-        if (indexHeader) {
+        if (indexHeader && isDesktop) {
             window.customTimeLine
                 .to(
                     indexHeader,
                     {
                         width: '55%',
+                        duration: 1.5,
+                        ease: 'expoScale(1, 2)',
+                    },
+                    0
+                )
+                .to(
+                    indexHeader,
+                    {
+                        opacity: 1,
+                        duration: 1.5,
+                        ease: 'expoScale(1, 2)',
+                    },
+                    1
+                );
+        } else {
+            gsap.set(indexHeader, { opacity: 0, x: '10vh' });
+            window.customTimeLine
+                .to(
+                    indexHeader,
+                    {
+                        x: 0,
                         duration: 1.5,
                         ease: 'expoScale(1, 2)',
                     },

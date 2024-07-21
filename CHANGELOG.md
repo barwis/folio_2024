@@ -35,3 +35,7 @@ v. 0.1.9
 0.3.0
 
 -   page transition animations reworked
+
+0.3.1
+
+-   fix initial animation for header on index page for mobile devices

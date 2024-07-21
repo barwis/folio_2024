@@ -8,6 +8,7 @@ gsap.registerPlugin(ScrollTrigger);
 gsap.registerPlugin(TextPlugin);
 gsap.registerPlugin(ScrambleTextPlugin);
 gsap.registerPlugin(SplitText);
+gsap.registerPlugin(EasePack);
 
 const lenis = new Lenis();
 
@@ -199,6 +200,12 @@ const header = {
     animateHeroSection: function () {
         const hero = document.querySelector('header.index');
 
+        const elems = getAllRequiredElements(['#sh1', '#sh2', '#sh3']);
+        if (!elems) return;
+
+        // prevent FOUC
+        elems.forEach((span) => (span.innerHTML = ''));
+
         const elements = {
             '#h-1': {
                 transform: 'translateX(-0.5em)',
@@ -215,20 +222,20 @@ const header = {
 
         Object.entries(elements).forEach(([id, styles]) => {
             const elem = document.querySelector(id);
+            const end =
+                elem.getBoundingClientRect().top +
+                elem.getBoundingClientRect().height;
 
-            gsap.fromTo(
-                id,
-                { opacity: 1, transform: 'translateX(0)' },
-                {
-                    scrollTrigger: {
-                        scrub: true,
-                        start: 'top top',
-                        trigger: hero,
-                        end: () => `${window.viewportHeight}px`,
-                    },
-                    ...styles,
-                }
-            );
+            gsap.to(id, {
+                scrollTrigger: {
+                    scrub: 0.5,
+                    start: 'top top',
+                    end: () => `+=${window.innerHeight}`,
+                    trigger: hero,
+                },
+                ...styles,
+                ease: 'none',
+            });
         });
     },
     animateScrollIndicator: function () {
@@ -380,7 +387,7 @@ const main = {
             gsap.to(e, {
                 scrollTrigger: {
                     trigger: paragraph,
-                    start: 'top 70%',
+                    start: 'top 80%',
                     scrub: 1,
                     end: `+=${window.innerHeight * 0.3}`,
                     duration: 2,
@@ -655,19 +662,25 @@ const pageTransition = {
         let splash = document.querySelector('.splash');
         window.customTimeLine = new gsap.timeline({
             id: 'pageTransition.enter',
-            timeScale: 2,
+            timeScale: 1,
             onComplete: () => {
                 onCompleteCb();
             },
         });
 
-        const { mask, main } = this.elements;
+        const { mask } = this.elements;
 
         const { mask_from_right, mask_empty } = this.paths;
 
         if (!this.elements.main) {
             this.elements.main = document.querySelector('.toAnim');
         }
+
+        const indexHeader = document.querySelector('header h1');
+        const smallHeader = document.querySelector(
+            '.header--small .header__text'
+        );
+        const toAnim = document.querySelector('.toAnim');
 
         mask.setAttributeNS(null, 'd', mask_from_right);
         splash.style.backgroundColor = 'transparent';
@@ -680,7 +693,7 @@ const pageTransition = {
                 '.splash .icon',
                 {
                     opacity: 0,
-                    duration: 0.5,
+                    duration: 1,
                     ease: 'none',
                 },
                 0
@@ -689,11 +702,77 @@ const pageTransition = {
                 mask,
                 {
                     morphSVG: mask_empty,
-                    duration: 0.5,
+                    duration: 1,
                     ease: 'power4.inOut',
                 },
                 0.5
+            )
+            .to(
+                toAnim,
+                {
+                    x: 0,
+                    duration: 1.3,
+                    ease: 'expoScale(1, 2)',
+                },
+                0.3
+            )
+            .to(
+                toAnim,
+                {
+                    opacity: 1,
+                    duration: 1.5,
+                    ease: 'expoScale(1, 2)',
+                },
+                1
             );
+
+        if (indexHeader) {
+            window.customTimeLine
+                .to(
+                    indexHeader,
+                    {
+                        width: '55%',
+                        duration: 1.5,
+                        ease: 'expoScale(1, 2)',
+                    },
+                    0
+                )
+                .to(
+                    indexHeader,
+                    {
+                        opacity: 1,
+                        duration: 1.5,
+                        ease: 'expoScale(1, 2)',
+                    },
+                    1
+                );
+        }
+        if (smallHeader) {
+            gsap.set(smallHeader, {
+                x: isDesktop ? '10vw' : '10vh',
+                opacity: 0,
+            });
+
+            window.customTimeLine
+                .to(
+                    smallHeader,
+                    {
+                        x: 0,
+                        duration: 1.3,
+                        ease: 'expoScale(1, 2)',
+                    },
+                    0.3
+                )
+                .to(
+                    smallHeader,
+                    {
+                        opacity: 1,
+                        duration: 1.5,
+                        ease: 'expoScale(1, 2)',
+                    },
+                    1
+                );
+        }
     },
     leave: function (onCompleteCb = () => {}) {
         // const { mask, main, splash } = this.elements;
@@ -723,7 +802,7 @@ const pageTransition = {
                 duration: 1,
                 ease: 'power4.inOut',
             },
-            'reveal'
+            0
         );
     },
 };
@@ -781,46 +860,37 @@ docReady(() => {
 // -355.553955078125 1644.54541015625
 window.onload = function () {
     // code to run animation.
+    header.animateHeroSection();
+    header.animateScrollBar();
+    header.animateScrollIndicator();
+    main.animateSectionHeadings();
+    main.animateParagraphs();
+    main.animateSkillBars();
+    caseStudy.animateQuote();
+    main.animateWorks();
+
+    gsap.utils.toArray('a[href]').forEach((a) => {
+        a.addEventListener('click', function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+            const href = e.currentTarget.getAttribute('href');
+
+            pageTransition.leave(() => {
+                window.location.href = href;
+            });
+        });
+    });
 
     pageTransition.enter(() => {
         const t0 = performance.now();
         header.versionFadeOut();
 
-        header.animateScrollBar();
-        header.animateScrollIndicator();
-        header.animateHeroSection();
         // main.updateHash();
         main.animateLogo();
         const animate = header.randomiseHeaderText();
         if (animate) animate();
-        main.animateParagraphs();
-        main.animateSectionHeadings();
-        main.animateSkillBars();
-        caseStudy.animateQuote();
 
         const t1 = performance.now();
         console.log(`took ${t1 - t0} milliseconds.`);
-        main.animateWorks();
-
-        gsap.utils.toArray('a[href]').forEach((a) => {
-            a.addEventListener('click', function (e) {
-                e.preventDefault();
-                e.stopPropagation();
-                const href = e.currentTarget.getAttribute('href');
-
-                pageTransition.leave(() => {
-                    window.location.href = href;
-                });
-            });
-        });
-
-        // if (window.location.hash) {
-        //     let locationHash = window.location.hash.replace('#', '');
-
-        //     const target = document.querySelector(`[data-id=${locationHash}`);
-        //     if (target) {
-        //         lenis.scrollTo(target, { duration: 1, lerp: 0.1 });
-        //     }
-        // }
     });
 };

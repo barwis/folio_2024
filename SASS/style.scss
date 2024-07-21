@@ -78,6 +78,7 @@ body {
     padding: 0;
     font-size: 1vw;
     background: var(--color-1) url(../images/bg.png);
+    overflow-x: hidden;
 
     &.case-study {
         p {
@@ -194,7 +195,6 @@ header {
         align-items: center;
 
         @include desktop {
-            width: 55%;
             align-items: unset;
         }
 

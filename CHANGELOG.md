@@ -31,3 +31,7 @@ v. 0.1.9
 0.2.1
 
 -   disabled hash update for performance reasons
+
+0.3.0
+
+-   page transition animations reworked

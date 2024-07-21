@@ -7,9 +7,10 @@
         <link rel="icon" type="image/svg+xml" href="./favicon.svg" />
         <script src="./js/gsapDevTools.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/2.1.2/TweenMax.min.js"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.9.1/gsap.min.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/TextPlugin.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.9.1/ScrollTrigger.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/EasePack.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.9.1/gsap.min.js"></script>
 
         <script src="./js/ScrambleTextPlugin3.js"></script>
         <script src="./js/MorphSVGPlugin3.min.js"></script>
@@ -37,6 +38,11 @@
             style="display: none"
         >
             <defs>
+                <polygon
+                    id="logo"
+                    fill="currentColor"
+                    points=".5 149.33 .5 30.29 51.46 .87 51.46 119.91 77.94 135.19 104.42 119.91 104.42 89.33 52.96 59.62 103.92 30.19 155.38 59.91 155.38 149.33 77.94 194.04 .5 149.33"
+                />
                 <path
                     fill="currentColor"
                     transform="scale(.5, .5)"
@@ -102,11 +108,7 @@
                     xmlns="http://www.w3.org/2000/svg"
                     viewBox="0 0 155.88 194.62"
                 >
-                    <polygon
-                        id="logo"
-                        fill="currentColor"
-                        points=".5 149.33 .5 30.29 51.46 .87 51.46 119.91 77.94 135.19 104.42 119.91 104.42 89.33 52.96 59.62 103.92 30.19 155.38 59.91 155.38 149.33 77.94 194.04 .5 149.33"
-                    />
+                    <use href="#logo" />
                 </svg>
             </div>
         </div>
@@ -117,10 +119,7 @@
                         xmlns="http://www.w3.org/2000/svg"
                         viewBox="0 0 155.88 194.62"
                     >
-                        <polygon
-                            fill="currentColor"
-                            points=".5 149.33 .5 30.29 51.46 .87 51.46 119.91 77.94 135.19 104.42 119.91 104.42 89.33 52.96 59.62 103.92 30.19 155.38 59.91 155.38 149.33 77.94 194.04 .5 149.33"
-                        />
+                        <use href="#logo" />
                     </svg>
                 </div>
             </div>

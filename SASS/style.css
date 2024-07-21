@@ -236,6 +236,7 @@ body {
   padding: 0;
   font-size: 1vw;
   background: var(--color-1) url(../images/bg.png);
+  overflow-x: hidden;
 }
 body.case-study p {
   font-size: 24px;
@@ -417,7 +418,6 @@ header h1 {
 }
 @media (min-width: 768px) {
   header h1 {
-    width: 55%;
     align-items: unset;
   }
 }

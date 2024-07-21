@@ -10,7 +10,10 @@ gsap.registerPlugin(ScrambleTextPlugin);
 gsap.registerPlugin(SplitText);
 gsap.registerPlugin(EasePack);
 
-const lenis = new Lenis();
+const lenis = new Lenis({
+    lerp: 0,
+    syncTouch: true,
+});
 
 lenis.on('scroll', ScrollTrigger.update);
 

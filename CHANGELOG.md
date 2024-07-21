@@ -47,3 +47,7 @@ v. 0.1.9
 0.3.3
 
 -   simplified img animations
+
+0.3.4
+
+-   scroll fix on mobile attempt

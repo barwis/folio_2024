@@ -39,3 +39,7 @@ v. 0.1.9
 0.3.1
 
 -   fix initial animation for header on index page for mobile devices
+
+0.3.2
+
+-   added script.0.3.2.js versioning

@@ -304,45 +304,6 @@ const header = {
 };
 
 const main = {
-    updateHash: function () {
-        const sections = [...document.querySelectorAll('article')].map((a) => {
-            const b = a.getBoundingClientRect();
-            return { id: a.dataset.id || '', y: b.y + window.scrollY };
-        });
-
-        sections.unshift({
-            id: '',
-            y: 0,
-        });
-
-        var mapper = gsap.utils.mapRange(0, 1, 0, document.body.offsetHeight);
-
-        gsap.to(document.body, {
-            scrollTrigger: {
-                trigger: document.body,
-                scrub: true,
-                start: 'top top',
-                ease: 'none',
-                end: () => document.body.offsetHeight - window.innerHeight,
-                onUpdate: () => {
-                    let active;
-                    for (let i = sections.length - 1; i >= 0; i--) {
-                        if (sections[i].y <= window.scrollY) {
-                            active = sections[i];
-                            break;
-                        }
-                    }
-
-                    if (active.id === '') {
-                        history.replaceState(null, null, ' ');
-                    } else {
-                        window.location.hash = active.id;
-                    }
-                },
-            },
-        });
-    },
-
     animateSectionHeadings: function () {
         gsap.utils.toArray('h2').forEach((heading) => {
             const t = gsap.timeline({
@@ -446,9 +407,8 @@ const main = {
             const pictureContainer = item.querySelector('.picture-container');
 
             const work = item.closest('.padded');
-            const workPadding = parseFloat(
-                window.getComputedStyle(work).paddingTop
-            );
+            const workPadding =
+                parseFloat(window.getComputedStyle(work).paddingTop) * 2;
 
             var mapper = gsap.utils.mapRange(
                 0,
@@ -456,23 +416,15 @@ const main = {
                 -workPadding * containerOffset,
                 workPadding * containerOffset
             );
-
+            gsap.set(pictureContainer, { y: -workPadding * containerOffset });
             gsap.to(pictureContainer, {
                 scrollTrigger: {
                     trigger: item,
                     scrub: true,
-                    ease: 'none',
-                    onUpdate: ({ progress }) => {
-                        gsap.set(pictureContainer, {
-                            y: mapper(progress),
-                        });
-                    },
-                    end: () =>
-                        `+=${
-                            window.innerHeight +
-                            item.getBoundingClientRect().height
-                        }px`,
+                    start: 'top bottom',
+                    end: 'bottom top',
                 },
+                ease: 'none',
                 y: workPadding * containerOffset,
             });
         });
@@ -505,21 +457,16 @@ const main = {
             });
 
             var mapper = gsap.utils.mapRange(0, 1, -imgOffset, imgOffset);
-
+            gsap.set(img, { y: -imgOffset });
             gsap.to(img, {
                 scrollTrigger: {
                     trigger: item,
                     scrub: true,
-                    ease: 'none',
-                    onUpdate: ({ progress }) => {
-                        gsap.set(img, { y: mapper(progress) });
-                    },
-                    end: () =>
-                        `+=${
-                            window.innerHeight +
-                            item.getBoundingClientRect().height * 1
-                        }px`,
+                    start: 'top bottom',
+                    end: 'bottom top',
                 },
+                y: imgOffset,
+                ease: 'none',
             });
         });
     },
@@ -877,8 +824,6 @@ docReady(() => {
     window.isDesktop = mediaQuery.matches;
 });
 
-// 1288.991455078125 0
-// -355.553955078125 1644.54541015625
 window.onload = function () {
     // code to run animation.
     header.animateHeroSection();

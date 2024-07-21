@@ -51,3 +51,7 @@ v. 0.1.9
 0.3.4
 
 -   scroll fix on mobile attempt
+
+0.3.5
+
+-   added smoothwheel option to lenis config

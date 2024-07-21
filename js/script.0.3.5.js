@@ -13,6 +13,7 @@ gsap.registerPlugin(EasePack);
 const lenis = new Lenis({
     lerp: 0,
     syncTouch: true,
+    smoothWheel: true,
 });
 
 lenis.on('scroll', ScrollTrigger.update);
